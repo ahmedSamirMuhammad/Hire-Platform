@@ -22,7 +22,7 @@ import { ManageCandidatesComponent } from './Components/Dashboard/company-dashbo
 import { PostJobComponent } from './Components/Dashboard/company-dashboard/post-job/post-job.component';
 import { SidebarComponent } from './Components/Dashboard/sidebar/sidebar.component';
 import { SummaryComponent } from './Components/Dashboard/summary/summary.component';
-  
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,15 +43,10 @@ import { SummaryComponent } from './Components/Dashboard/summary/summary.compone
     ManageCandidatesComponent,
     PostJobComponent,
     SidebarComponent,
-    SummaryComponent
-    
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
+    SummaryComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
