@@ -20,6 +20,8 @@ import { MessagesComponent } from './Components/Dashboard/messages/messages.comp
 import { ManageJobsComponent } from './Components/Dashboard/company-dashboard/manage-jobs/manage-jobs.component';
 import { ManageCandidatesComponent } from './Components/Dashboard/company-dashboard/manage-candidates/manage-candidates.component';
 import { PostJobComponent } from './Components/Dashboard/company-dashboard/post-job/post-job.component';
+import { SidebarComponent } from './Components/Dashboard/sidebar/sidebar.component';
+import { SummaryComponent } from './Components/Dashboard/summary/summary.component';
   
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { PostJobComponent } from './Components/Dashboard/company-dashboard/post-
     MessagesComponent,
     ManageJobsComponent,
     ManageCandidatesComponent,
-    PostJobComponent
+    PostJobComponent,
+    SidebarComponent,
+    SummaryComponent
     
    ],
   imports: [
