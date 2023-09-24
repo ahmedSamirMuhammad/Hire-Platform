@@ -1,0 +1,144 @@
+.h3-title, footer .footer-middle-section .middle-container .middle-details h3 {
+  font-size: 18px;
+  color: #fff;
+  font-family: "Nunito", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.button-arrow, footer .footer-bottom-section button, footer .footer-middle-section .middle-container .middle-details .nav_links .newsLetter button {
+  border-radius: 4px;
+  border: none;
+  min-width: 48px;
+  max-width: 48px;
+  text-align: center;
+  line-height: 48px;
+  font-size: 18px;
+  color: #fff;
+  margin-left: 10px;
+  background-color: #2a41e8;
+}
+
+footer {
+  background-color: #303030;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  color: #c0c0c0;
+}
+footer .footer-top-section {
+  border-bottom: 1px solid #484848;
+  height: 20%;
+}
+footer .footer-top-section .top-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  height: 100%;
+}
+footer .footer-top-section .top-container .footer-logo {
+  display: flex;
+  align-items: center;
+}
+footer .footer-top-section .top-container .footer-logo img {
+  max-height: 46px;
+}
+footer .footer-top-section .top-container .footer-icons {
+  border-right: 1px solid #484848;
+  border-left: 1px solid #484848;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  padding: 0 30px;
+}
+footer .footer-top-section .top-container .footer-icons .bi {
+  font-size: 20px;
+  color: #c0c0c0;
+}
+footer .footer-top-section .top-container .footer-icons .bi:hover {
+  color: white;
+  cursor: pointer;
+}
+footer .footer-middle-section {
+  height: 65%;
+  border-bottom: 1px solid #484848;
+}
+footer .footer-middle-section .middle-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+footer .footer-middle-section .middle-container .middle-details {
+  height: 60%;
+  text-transform: capitalize;
+}
+footer .footer-middle-section .middle-container .middle-details h3 i {
+  font-size: 20px;
+  font-weight: 400 !important;
+}
+footer .footer-middle-section .middle-container .middle-details .nav_links {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+footer .footer-middle-section .middle-container .middle-details .nav_links a {
+  position: relative;
+  text-decoration: none;
+  color: #c0c0c0;
+  margin: 5px 0;
+}
+footer .footer-middle-section .middle-container .middle-details .nav_links a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #2a41e8;
+  transition: 0.6s width linear;
+}
+footer .footer-middle-section .middle-container .middle-details .nav_links a:hover:after {
+  width: 100%;
+}
+footer .footer-middle-section .middle-container .middle-details .nav_links .newsLetter {
+  display: flex;
+}
+footer .footer-middle-section .middle-container .middle-details .nav_links .newsLetter input {
+  background: #262626;
+  color: #808080;
+  font-weight: 500;
+  opacity: 1;
+  border-radius: 4px;
+  border: none;
+  border-radius: 4px;
+  padding: 0 20px;
+  font-family: "Nunito", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+footer .footer-middle-section .middle-container .middle-details .nav_links .newsLetter input:focus {
+  outline: none;
+}
+footer .footer-middle-section .middle-container .middle-details .nav_links .newsLetter button:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+footer .footer-bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15%;
+}
+footer .footer-bottom-section button {
+  margin-right: 30px;
+}
+footer .footer-bottom-section button i {
+  font-weight: 900;
+  font-size: 20px;
+}
+footer .footer-bottom-section button:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=footer.component.css.map */

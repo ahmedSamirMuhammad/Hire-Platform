@@ -1,0 +1,180 @@
+@import '../../../scss/variables.scss';
+.h3-title {
+    font-size: 18px;
+    color: #fff;
+    font-family: "Nunito", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+
+.button-arrow {
+    border-radius: 4px;
+    border: none;
+    min-width: 48px;
+    max-width: 48px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 18px;
+    color: #fff;
+    margin-left: 10px;
+    background-color: $blue-color;
+}
+
+footer {
+    background-color: #303030;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    
+    color: #c0c0c0;
+    .footer-top-section {
+        border-bottom: 1px solid $grey-color;
+        height: 20%;
+        .top-container {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            height: 100%;
+            .footer-logo{
+                display:flex;
+                align-items: center;
+                img {
+                    max-height: 46px;
+                }
+            }
+            .footer-icons {
+                border-right: 1px solid $grey-color;
+                border-left: 1px solid $grey-color;
+                height: 100%;
+                display:flex;
+                justify-content: space-around;
+               align-items: center;
+               width:20%;
+               padding:0 30px;
+                .bi{
+                    // width: 20px;
+                    // height:20px;
+                    font-size: 20px;
+                    color:$light-grey-color;
+                }
+                .bi:hover{
+                    color: white;
+                    cursor: pointer;
+                }
+               
+            }
+        }
+    }
+    .footer-middle-section {
+        height: 65%;
+        border-bottom: 1px solid $grey-color;
+     
+       
+
+        .middle-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+       
+        align-items: center;
+       
+        height:100%;
+
+        .middle-details {
+            height: 60%;      
+            text-transform: capitalize;    
+            // width:30%; 
+
+            h3 {
+                @extend .h3-title;
+                i{
+                    font-size: 20px;
+                    font-weight: 400 !important;
+                }
+            }
+            .nav_links {
+                display: flex;
+                flex-direction: column;
+                padding-top: 10px;
+               
+                a {
+                    position: relative;
+                    text-decoration: none;
+                    color: $light-grey-color;
+                    margin: 5px 0;
+                    
+                   
+                    
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        bottom: -5px;
+                        width: 0;
+                        height: 2px;
+                        background-color: $blue-color;
+                        transition: .6s width linear;
+                      }
+                      &:hover {
+                        &:after {
+                          width: 100%;
+                        }
+                      }
+                }
+                .newsLetter {
+                    display: flex;
+                    input {
+                        background: $dark-color;
+                        color: #808080;
+                        font-weight: 500;
+                        opacity: 1;
+                        border-radius: 4px;
+                        border: none;
+                        border-radius: 4px;
+                        padding: 0 20px;
+                        font-family: "Nunito", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                        font-size: 16px;
+                    }
+                    input:focus {
+                        outline: none;
+                    }
+
+                    button {
+                        @extend .button-arrow;
+                    }
+                    button:hover {
+                        background-color: white;
+                        color: black;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        }
+        
+    }
+
+    .footer-bottom-section {
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+        height: 15%;
+       
+        
+        button {
+            @extend .button-arrow;
+            margin-right: 30px;
+            i{
+                font-weight: 900;
+                font-size: 20px;
+               
+            }
+        }
+        button:hover{
+            cursor: pointer;
+        }
+
+       
+    }
+}
