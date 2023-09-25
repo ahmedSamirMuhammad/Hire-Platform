@@ -26,6 +26,9 @@ import { CompanyDashboardComponent } from "./Components/Dashboard/company-dashbo
 import { JobComponent } from "./Components/Dashboard/company-dashboard/job/job.component";
 import { DashboardComponent } from "./Components/Dashboard/dashboard/dashboard.component";
 import { EmployeeDashboardComponent } from './Components/Dashboard/employee-dashboard/employee-dashboard.component';
+import { ProfileSettingComponent } from "./Components/Dashboard/profile-setting/profile-setting.component";
+import { DashboardFooterComponent } from "./Components/Dashboard/company-dashboard/dashboard-footer/dashboard-footer.component";
+import { CandidateComponent } from "./Components/Dashboard/company-dashboard/candidate/candidate.component";
 
 @NgModule({
   declarations: [
@@ -49,7 +52,13 @@ import { EmployeeDashboardComponent } from './Components/Dashboard/employee-dash
     SidebarComponent,
     SummaryComponent,
     CompanyDashboardComponent,
-    JobComponent
+    JobComponent,
+    DashboardComponent,
+    EmployeeDashboardComponent,
+    ProfileSettingComponent,
+    DashboardFooterComponent,
+    CandidateComponent
+
     
    ],
   imports: [
