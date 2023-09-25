@@ -24,7 +24,11 @@ import { SidebarComponent } from './Components/Dashboard/sidebar/sidebar.compone
 import { SummaryComponent } from './Components/Dashboard/summary/summary.component';
 import { CompanyDashboardComponent } from './Components/Dashboard/company-dashboard/company-dashboard.component';
 import { JobComponent } from './Components/Dashboard/company-dashboard/job/job.component';
-  
+import { CandidateComponent } from './Components/Dashboard/company-dashboard/candidate/candidate.component';
+import { DashboardFooterComponent } from './Components/Dashboard/company-dashboard/dashboard-footer/dashboard-footer.component';
+import { ProfileSettingComponent } from './Components/Dashboard/profile-setting/profile-setting.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -48,13 +52,17 @@ import { JobComponent } from './Components/Dashboard/company-dashboard/job/job.c
     SidebarComponent,
     SummaryComponent,
     CompanyDashboardComponent,
-    JobComponent
+    JobComponent,
+    CandidateComponent,
+    DashboardFooterComponent,
+    ProfileSettingComponent
     
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

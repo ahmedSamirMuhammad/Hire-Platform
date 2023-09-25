@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./job.component.scss']
 })
 export class JobComponent {
-
+  isexpired :boolean = false;
+  isApproved : boolean = false;
+  isPending: boolean = true;
 }

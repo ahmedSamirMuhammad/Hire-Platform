@@ -1,24 +1,57 @@
-<div class="job">
-  <div class="d-flex justify-content-start align-items-center main-info">
-    <div class="title">Frontend React Developer</div>
-    <div class="status">Pending Approval</div>
+<div class="job-listing">
+  <!-- Job Listing Details -->
+  <div class="job-listing-details">
+
+    <!-- Details -->
+    <div class="job-listing-description">
+      <h3 class="job-listing-title">
+        <a href="#">Frontend React Developer</a>
+
+        <span *ngIf="isexpired" class="dashboard-status-button red"
+          >Expired</span
+        >
+        <span *ngIf="isApproved" class="dashboard-status-button yellow"
+          >Expiring</span
+        > 
+     
+        <span *ngIf="isPending"   class="dashboard-status-button green">Pending Approval</span>
+      </h3>
+
+      <!-- Job Listing Footer -->
+      <div class="job-listing-footer">
+        <ul>
+          <li>
+            <i class="icon-material-outline-date-range"></i> Posted on 10 July,
+            2018
+          </li>
+          <li>
+            <i class="icon-material-outline-date-range"></i> Expiring on 10
+            August, 2018
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="info d-flex justify-content-start align-items-center">
-        <div class="date d-flex justify-content-center align-items-center me-4">
-        <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-        <div class="txt">Posted on 10 July, 2019</div>
-        </div>
-        <div class="expire d-flex justify-content-start align-items-center">
-        <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-        <div class="txt">Expiring on 10 August, 2019</div>
-        </div>
-  </div>
-  <div class="mng-cad d-flex justify-content-start align-items-center">
-    <button class="mng-cad-btn"><i class="bi bi-people-fill"></i>
-          Manage Candidates
-         <small class="ms-2">0</small>
-        </button>
-    <div class="edit" data-tippy-placement="top" data-tippy data-original-title="Edit"><i class="bi bi-pencil-square"></i></div>
-    <div class="remove" title="Remove"><i class="bi bi-trash"></i></div>
-  </div>
+</div>
+
+<!-- Buttons -->
+<div class="buttons-to-right always-visible">
+  <a href="dashboard-manage-candidates.html" class="button ripple-effect"
+    ><i class="icon-material-outline-supervisor-account"></i> Manage Candidates
+    <span class="button-info">0</span></a
+  >
+  <a
+    href="#"
+    class="button gray ripple-effect ico"
+    title="Edit"
+    data-tippy-placement="top"
+    ><i class="icon-feather-edit"></i
+  ></a>
+  <a
+    href="#"
+    class="button gray ripple-effect ico"
+    title="Remove"
+    data-tippy-placement="top"
+    ><i class="icon-feather-trash-2"></i
+  ></a>
 </div>
