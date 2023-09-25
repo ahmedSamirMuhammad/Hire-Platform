@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExploreCompaniesComponent } from './Components/Explore/explore-companies/explore-companies/explore-companies.component';
+import { CompanyProfileComponent } from './Components/Profiles/company-profile/company-profile/company-profile.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'explore-companies',
+    component: ExploreCompaniesComponent,
+  },
+  {
+    path: 'company-profile',
+    component: CompanyProfileComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

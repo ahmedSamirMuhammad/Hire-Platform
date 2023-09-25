@@ -13,7 +13,7 @@ import { Error404Component } from './Components/ErrorComponents/error404/error40
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { JobProfileComponent } from './Components/Profiles/job-profile/job-profile.component';
 import { ExploreJobsComponent } from './Components/Explore/explore-jobs/explore-jobs.component';
-import { ExploreCompaniesComponent } from './Components/Explore/explore-companies/explore-companies.component';
+import { ExploreCompaniesComponent } from './Components/Explore/explore-companies/explore-companies/explore-companies.component';
 import { BookmarksComponent } from './Components/Dashboard/employee-dashboard/bookmarks/bookmarks.component';
 import { ReviewsComponent } from './Components/Dashboard/employee-dashboard/reviews/reviews.component';
 import { MessagesComponent } from './Components/Dashboard/messages/messages.component';
@@ -24,7 +24,14 @@ import { SidebarComponent } from './Components/Dashboard/sidebar/sidebar.compone
 import { SummaryComponent } from './Components/Dashboard/summary/summary.component';
 import { CompanyDashboardComponent } from './Components/Dashboard/company-dashboard/company-dashboard.component';
 import { JobComponent } from './Components/Dashboard/company-dashboard/job/job.component';
-  
+import { LettersListComponent } from './Components/Explore/explore-companies/letters-list/letters-list.component';
+import { CompaniesListComponent } from './Components/Explore/explore-companies/companies-list/companies-list.component';
+import { CompanyProfileComponent } from './Components/Profiles/company-profile/company-profile/company-profile.component';
+import { CompanyTitlebarComponent } from './Components/Profiles/company-profile/company-titlebar/company-titlebar.component';
+import { CompanyAboutComponent } from './Components/Profiles/company-profile/company-about/company-about.component';
+import { CompanyOpenjobsComponent } from './Components/Profiles/company-profile/company-openjobs/company-openjobs.component';
+import { CompanyReviewsComponent } from './Components/Profiles/company-profile/company-reviews/company-reviews.component';
+import { CompanySidebarComponent } from './Components/Profiles/company-profile/company-sidebar/company-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -48,14 +55,17 @@ import { JobComponent } from './Components/Dashboard/company-dashboard/job/job.c
     SidebarComponent,
     SummaryComponent,
     CompanyDashboardComponent,
-    JobComponent
-    
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
+    JobComponent,
+    LettersListComponent,
+    CompaniesListComponent,
+    CompanyProfileComponent,
+    CompanyTitlebarComponent,
+    CompanyAboutComponent,
+    CompanyOpenjobsComponent,
+    CompanyReviewsComponent,
+    CompanySidebarComponent,
   ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
