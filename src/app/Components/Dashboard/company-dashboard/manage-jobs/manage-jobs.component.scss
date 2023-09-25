@@ -1,25 +1,5 @@
-@import "../../../../scss/variables.scss";
+.manage-jobs{    
+    margin-top: 136px;
+    height: 100vh;
 
-.manage-jobs{
-    margin-top: 140px;
-    background-color: $light-background;
-    padding: 50px;
-    padding-bottom: 0;
-    position: relative;
-}
-h2{
-    font-weight: normal;
-}
-.title{
-    padding: 22px 30px ;
-    background-color: #fff;
-    font-weight: normal;
-    border-bottom: 1px solid #dee2e6;
-
-}
-.icon{
-    color: $blue-color
-}
-.manage-jobs{
-    box-shadow: 10px 10px 10px 10px $light-grey-color outset;
 }
