@@ -1,0 +1,132 @@
+@import "../../../../scss/variables.scss";
+.job{
+    // margin-top: 140px;
+    padding: 22px 30px ;
+    width: 100%;
+    transition: 0.3s;
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 40px;
+}
+.main-info{
+    margin-bottom: 12px;
+}
+.title{
+    font-size: 20px;
+}
+.status{
+    font-size: 14px;
+    background: #E0F5D7;
+    color: #449626;
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: 40px;
+}
+.info{
+    color:  $font-grey-color;
+    margin-bottom: 15px;
+
+}
+
+i{
+ margin-right: 10px;
+ color: $font-grey-color;
+}
+
+.mng-cad-btn:hover{
+    background-color: $grey-color;
+    transition: .4s;
+}
+.mng-cad-btn{
+    background-color: #2a41e8;
+    padding: 5px 10px;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    outline: none;
+    margin-right: 15px;
+}
+.mng-cad-btn i {
+    color: #fff;
+    margin-right: 15px;
+
+}
+.remove ,
+.edit{
+    width: fit-content;
+    background: #dee2e6;
+    padding: 5px;
+    border-radius: 3px;
+    margin-right: 20px;
+   cursor: pointer;
+   position: relative;
+   transition: .4s;
+}
+.remove i , .edit i{
+    display: inline-block;
+    margin: auto;
+    position: relative;
+}
+.remove:hover ,
+.edit:hover{
+    background-color: $light-grey-color;
+}
+
+//tooltip for Edit button
+
+.edit:hover::after{
+    content: "Edit";
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 7px;
+    opacity: 0.9;
+   transition: .4s;
+
+}
+.edit:hover::before{
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 10px;
+    border-color: $grey-color transparent transparent transparent;
+    width: 0;
+    height: 0;
+    bottom: 30px;
+    left: 13px ;
+   transition: .4s;
+
+}
+
+//tooltip for Remove button
+.remove:hover::after{
+    content: "Remove";
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 7px;
+    opacity: 0.9;
+   transition: .4s;
+
+}
+.remove:hover::before{
+    content: "";
+    position: absolute;
+    border-style: solid;
+    border-width: 10px;
+    border-color: $grey-color transparent transparent transparent;
+    width: 0;
+    height: 0;
+    bottom: 30px;
+    left: 13px ;
+   transition: .4s;
+
+}

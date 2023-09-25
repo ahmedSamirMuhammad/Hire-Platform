@@ -1,0 +1,53 @@
+@import "../../../scss/variables.scss";
+
+.sideBar{
+    width: 280px;
+    height: 700px;
+    background-color: #fff;
+    overflow: hidden;
+    margin-top: 140px;
+    padding-top: 30px;
+    // position: absolute;
+}
+
+.block{
+    display: flex;
+    align-items: center;
+    color: $font-grey-color;
+    font-size: 20px;
+    transition: .3s;
+    padding: 15px 30px ;
+    margin-bottom: 23px;
+}
+.block:hover{
+    color: $blue-color;
+    background: #e0e2ec79;
+}
+.start-txt , .mng-txt{
+    color: $blue-color;
+    font-size: 20px;
+    padding-left: 30px;
+}
+.block .txt{
+    cursor: pointer;
+}
+i{
+    margin-right: 10px;
+    cursor: pointer;
+}
+.msg{
+    position: relative;
+}
+.msg-count{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: $blue-color;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:4px;
+    margin-left: 13px;
+
+}

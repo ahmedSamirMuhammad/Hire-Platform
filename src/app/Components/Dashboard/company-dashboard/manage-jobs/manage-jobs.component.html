@@ -1,1 +1,11 @@
-<p>manage-jobs works!</p>
+<div class="manage-jobs">
+    <h2 class="mb-5">Manage Jobs</h2>
+    <div class="title d-flex justify-content-start align-items-center h4">
+        <div class="icon me-3 "><i class="bi bi-briefcase"></i></div>
+        <div>My Job Listings</div>
+    </div>
+
+    <div class="all-jobs" *ngFor="let item of jobs">
+        <app-job></app-job>
+    </div>
+</div>
