@@ -25,6 +25,7 @@ import { SummaryComponent } from './Components/Dashboard/summary/summary.compone
 import { CompanyDashboardComponent } from './Components/Dashboard/company-dashboard/company-dashboard.component';
 import { JobComponent } from './Components/Dashboard/company-dashboard/job/job.component';
   
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +57,6 @@ import { JobComponent } from './Components/Dashboard/company-dashboard/job/job.c
     NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
