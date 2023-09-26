@@ -23,7 +23,13 @@
           <!-- Job Listing -->
 
           <!-- Company-Openjob Component / Start-->
-          <app-company-openjobs></app-company-openjobs>
+          <a
+            *ngFor="let open_job of open_jobs_list"
+            href="single-job-page.html"
+            class="job-listing"
+          >
+            <app-company-openjobs [open_job]="open_job"></app-company-openjobs>
+          </a>
           <!-- Company-Openjob Component / End-->
         </div>
       </div>
@@ -36,8 +42,8 @@
         </div>
         <ul class="boxed-list-ul">
           <!-- Company-reviews Component / Start-->
-          <li>
-            <app-company-reviews></app-company-reviews>
+          <li *ngFor="let review of company_reviews">
+            <app-company-reviews [review]="review"></app-company-reviews>
           </li>
           <!-- Company-reviews Component / End-->
         </ul>

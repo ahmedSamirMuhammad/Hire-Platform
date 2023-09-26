@@ -1,23 +1,28 @@
-<a href="single-job-page.html" class="job-listing">
-  <!-- Job Listing Details -->
-  <div class="job-listing-details">
-    <!-- Details -->
-    <div class="job-listing-description">
-      <h3 class="job-listing-title">Junior Full Stack Developer</h3>
+<!-- Job Listing Details -->
+<div class="job-listing-details">
+  <!-- Details -->
+  <div class="job-listing-description">
+    <h3 class="job-listing-title">{{ open_job.title }}</h3>
 
-      <!-- Job Listing Footer -->
-      <div class="job-listing-footer">
-        <ul>
-          <li><i class="icon-material-outline-location-on"></i> Berlin</li>
-          <li>
-            <i class="icon-material-outline-business-center"></i> Full Time
-          </li>
-          <li><i class="icon-material-outline-access-time"></i> 2 days ago</li>
-        </ul>
-      </div>
+    <!-- Job Listing Footer -->
+    <div class="job-listing-footer">
+      <ul>
+        <li>
+          <i class="icon-material-outline-location-on"></i>
+          {{ open_job.location }}
+        </li>
+        <li>
+          <i class="icon-material-outline-business-center"></i>
+          {{ open_job.type }}
+        </li>
+        <li>
+          <i class="icon-material-outline-access-time"></i>
+          {{ open_job.post_date }}
+        </li>
+      </ul>
     </div>
   </div>
+</div>
 
-  <!-- Bookmark -->
-  <span class="bookmark-icon"></span>
-</a>
+<!-- Bookmark -->
+<span class="bookmark-icon"></span>
