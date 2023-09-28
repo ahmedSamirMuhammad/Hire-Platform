@@ -47,6 +47,7 @@ import { JobsComponent } from './Components/Home/jobs/jobs.component';
 import { CitiesComponent } from './Components/Home/cities/cities.component';
 import { PaymentPlansComponent } from './Components/Home/payment-plans/payment-plans.component';
 import { IndexComponent } from './Components/Home/index/index.component';
+import { UserProfileComponent } from './Components/Profiles/user-profile/user-profile.component';
 
 
 
@@ -70,7 +71,6 @@ import { IndexComponent } from './Components/Home/index/index.component';
     PostJobComponent,
     SidebarComponent,
     SummaryComponent,
-<<<<<<< HEAD
     JobCategoriesComponent,
     JobsComponent,
     CitiesComponent,
@@ -78,7 +78,6 @@ import { IndexComponent } from './Components/Home/index/index.component';
     IndexComponent,
 
 
-=======
     CompanyDashboardComponent,
     JobComponent,
     DashboardComponent,
@@ -99,7 +98,7 @@ import { IndexComponent } from './Components/Home/index/index.component';
     JobSidebarComponent,
     ExploreJobsComponent,
     MatchedJobsComponent,
->>>>>>> 06e818db200877be7a69fb8942f78c33b30db67d
+    UserProfileComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
