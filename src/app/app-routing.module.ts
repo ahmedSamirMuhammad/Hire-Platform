@@ -5,8 +5,25 @@ import { ExploreCompaniesComponent } from './Components/Explore/explore-companie
 import { CompanyProfileComponent } from './Components/Profiles/company-profile/company-profile/company-profile.component';
 import { JobProfileComponent } from './Components/Profiles/job-profile/job-profile/job-profile.component';
 import { ExploreJobsComponent } from './Components/Explore/explore-jobs/explore-jobs/explore-jobs.component';
+import { IndexComponent } from './Components/Home/index/index.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
+import { Error404Component } from './Components/ErrorComponents/error404/error404.component';
+import { UserProfileComponent } from './Components/Profiles/user-profile/user-profile.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: IndexComponent
+  },
+
+  {
+    path: 'contact-us',
+    component: ContactUsComponent
+  },
+  {
+    path: 'error404',
+    component: Error404Component
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
@@ -24,6 +41,10 @@ const routes: Routes = [
     component: JobProfileComponent,
   },
   {
+    path: 'user-profile',
+    component: UserProfileComponent ,
+  },
+  {
     path: 'explore-jobs',
     component: ExploreJobsComponent,
   },
@@ -33,4 +54,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
