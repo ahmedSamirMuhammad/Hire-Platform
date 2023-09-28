@@ -27,7 +27,7 @@
             "styles": [
               "src/styles.css",
               "src/assets/css/style.css",
-              "src/assets/css/colors/red.css",
+              "src/assets/css/colors/blue.css",
               "src/assets/css/invoice.css"
             ],
             "scripts": [

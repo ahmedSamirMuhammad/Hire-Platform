@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/includes/header/header.component';
 import { FooterComponent } from './Components/includes/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HomeComponent } from './Components/Home/home.component';
+
 import { LoginComponent } from './Components/Authentications/login/login.component';
 import { SignupComponent } from './Components/Authentications/signup/signup.component';
 import { Error404Component } from './Components/ErrorComponents/error404/error404.component';
@@ -23,12 +23,20 @@ import { PostJobComponent } from './Components/Dashboard/company-dashboard/post-
 import { SidebarComponent } from './Components/Dashboard/sidebar/sidebar.component';
 import { SummaryComponent } from './Components/Dashboard/summary/summary.component';
 
+import { JobCategoriesComponent } from './Components/Home/job-categories/job-categories.component';
+import { JobsComponent } from './Components/Home/jobs/jobs.component';
+import { CitiesComponent } from './Components/Home/cities/cities.component';
+import { PaymentPlansComponent } from './Components/Home/payment-plans/payment-plans.component';
+import { IndexComponent } from './Components/Home/index/index.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent,
+
     LoginComponent,
     SignupComponent,
     Error404Component,
@@ -44,6 +52,13 @@ import { SummaryComponent } from './Components/Dashboard/summary/summary.compone
     PostJobComponent,
     SidebarComponent,
     SummaryComponent,
+    JobCategoriesComponent,
+    JobsComponent,
+    CitiesComponent,
+    PaymentPlansComponent,
+    IndexComponent,
+
+
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
