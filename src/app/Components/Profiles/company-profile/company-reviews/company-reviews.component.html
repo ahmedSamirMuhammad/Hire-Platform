@@ -1,0 +1,19 @@
+<div class="boxed-list-item">
+  <!-- Content -->
+  <div class="item-content">
+    <h4>
+      {{ review.title }} <span> {{ review.holder }}</span>
+    </h4>
+    <div class="item-details margin-top-10">
+      <div class="star-rating" [attr.data-rating]="review.rating"></div>
+      <div class="detail-item">
+        <i class="icon-material-outline-date-range"></i> {{ review.date }}
+      </div>
+    </div>
+    <div class="item-description">
+      <p>
+        {{ review.description }}
+      </p>
+    </div>
+  </div>
+</div>

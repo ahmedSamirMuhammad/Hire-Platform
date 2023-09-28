@@ -1,1 +1,46 @@
-<p>manage-jobs works!</p>
+<div class="manage-jobs">
+    <div class="dashboard-container">
+
+        <!-- add sideBar  -->
+        <app-sidebar></app-sidebar>
+        <div class="dashboard-content-container" data-simplebar>
+          <div class="dashboard-content-inner">
+            <!-- Dashboard Headline -->
+            <div class="dashboard-headline">
+              <h3>Manage Jobs</h3>
+      
+              <!-- Breadcrumbs -->
+              <nav id="breadcrumbs" class="dark">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Dashboard</a></li>
+                  <li>Manage Jobs</li>
+                </ul>
+              </nav>
+            </div>
+            <div class="row">
+              <!-- Dashboard Box -->
+              <div class="col-xl-12">
+                <div class="dashboard-box">
+                  <!-- Headline -->
+                  <div class="headline">
+                    <h3>
+                      <i class="icon-material-outline-business-center"></i>
+                      My Job Listings
+                    </h3>
+                  </div>
+                  <!-- add all jobs  -->
+                  <div class="content">
+                    <ul class="dashboard-box-list">
+                        <li *ngFor="let job of jobs">
+                            <app-job></app-job>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+ 
+</div>

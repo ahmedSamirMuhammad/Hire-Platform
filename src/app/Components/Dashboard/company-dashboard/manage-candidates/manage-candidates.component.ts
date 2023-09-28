@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./manage-candidates.component.scss']
 })
 export class ManageCandidatesComponent {
-
+  candidates : any[] = [ 1,2,3];
 }

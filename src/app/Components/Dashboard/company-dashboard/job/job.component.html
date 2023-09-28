@@ -1,0 +1,57 @@
+<div class="job-listing">
+  <!-- Job Listing Details -->
+  <div class="job-listing-details">
+
+    <!-- Details -->
+    <div class="job-listing-description">
+      <h3 class="job-listing-title">
+        <a href="#">Frontend React Developer</a>
+
+        <span *ngIf="isexpired" class="dashboard-status-button red"
+          >Expired</span
+        >
+        <span *ngIf="isApproved" class="dashboard-status-button yellow"
+          >Expiring</span
+        > 
+     
+        <span *ngIf="isPending"   class="dashboard-status-button green">Pending Approval</span>
+      </h3>
+
+      <!-- Job Listing Footer -->
+      <div class="job-listing-footer">
+        <ul>
+          <li>
+            <i class="icon-material-outline-date-range"></i> Posted on 10 July,
+            2018
+          </li>
+          <li>
+            <i class="icon-material-outline-date-range"></i> Expiring on 10
+            August, 2018
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Buttons -->
+<div class="buttons-to-right always-visible">
+  <a href="dashboard-manage-candidates.html" class="button ripple-effect"
+    ><i class="icon-material-outline-supervisor-account"></i> Manage Candidates
+    <span class="button-info">0</span></a
+  >
+  <a
+    href="#"
+    class="button gray ripple-effect ico"
+    title="Edit"
+    data-tippy-placement="top"
+    ><i class="icon-feather-edit"></i
+  ></a>
+  <a
+    href="#"
+    class="button gray ripple-effect ico"
+    title="Remove"
+    data-tippy-placement="top"
+    ><i class="icon-feather-trash-2"></i
+  ></a>
+</div>
