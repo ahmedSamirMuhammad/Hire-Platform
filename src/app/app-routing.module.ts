@@ -16,11 +16,11 @@ const routes: Routes = [
     component: ExploreCompaniesComponent,
   },
   {
-    path: 'company-profile',
+    path: 'company-profile/:id',
     component: CompanyProfileComponent,
   },
   {
-    path: 'job-profile',
+    path: 'job-profile/:id',
     component: JobProfileComponent,
   },
   {

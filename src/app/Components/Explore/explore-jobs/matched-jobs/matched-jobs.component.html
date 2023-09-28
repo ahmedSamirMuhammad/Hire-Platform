@@ -1,5 +1,9 @@
 <!-- Job Listing Details -->
-<div class="job-listing-details">
+<a
+  href="javascript:;"
+  class="job-listing-details"
+  (click)="redirectToProfile(matched_job.id)"
+>
   <!-- Logo -->
   <div class="job-listing-company-logo">
     <img [src]="matched_job.logo" alt="" />
@@ -39,4 +43,4 @@
 
   <!-- Bookmark -->
   <span class="bookmark-icon"></span>
-</div>
+</a>
