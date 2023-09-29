@@ -10,10 +10,18 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { Error404Component } from './Components/ErrorComponents/error404/error404.component';
 import { UserProfileComponent } from './Components/Profiles/user-profile/user-profile.component';
 
+//dashboard
+import { ProfileSettingComponent } from './Components/Dashboard/profile-setting/profile-setting.component';
+import { MessagesComponent } from './Components/Dashboard/messages/messages.component';
+import { SummaryComponent } from './Components/Dashboard/summary/summary.component';
+import { BookmarksComponent } from './Components/Dashboard/employee-dashboard/bookmarks/bookmarks.component';
+
+
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent
+		component: IndexComponent
+	
   },
 
   {
@@ -26,7 +34,14 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+	component: DashboardComponent,
+	children: [
+			{ path: "", redirectTo: "summary", pathMatch: "full" },
+			{ path: "settings", component: ProfileSettingComponent },
+			{ path: 'messages', component: MessagesComponent},
+			{ path: 'summary', component: SummaryComponent},
+			{ path: 'bookmarks', component: BookmarksComponent},
+		],
   },
   {
     path: 'explore-companies',

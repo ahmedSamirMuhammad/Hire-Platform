@@ -50,7 +50,6 @@ import { IndexComponent } from './Components/Home/index/index.component';
 import { UserProfileComponent } from './Components/Profiles/user-profile/user-profile.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
