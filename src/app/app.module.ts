@@ -6,10 +6,14 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/includes/header/header.component';
 import { FooterComponent } from './Components/includes/footer/footer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
 
-import { LoginComponent } from './Components/Authentications/login/login.component';
-import { SignupComponent } from './Components/Authentications/signup/signup.component';
-import { Error404Component } from './Components/ErrorComponents/error404/error404.component';
+
+
+import { AuthGuard } from './Guards/auth.guard';
+ import { Error404Component } from './Components/ErrorComponents/error404/error404.component';
 import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 import { JobProfileComponent } from './Components/Profiles/job-profile/job-profile/job-profile.component';
 import { ExploreCompaniesComponent } from './Components/Explore/explore-companies/explore-companies/explore-companies.component';
@@ -48,7 +52,12 @@ import { CitiesComponent } from './Components/Home/cities/cities.component';
 import { PaymentPlansComponent } from './Components/Home/payment-plans/payment-plans.component';
 import { IndexComponent } from './Components/Home/index/index.component';
 import { UserProfileComponent } from './Components/Profiles/user-profile/user-profile.component';
-
+import { EmployeeSignupComponent } from './Components/Authentications/signup/employee-signup/employee-signup.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CompanySignupComponent } from './Components/Authentications/signup/company-signup/company-signup.component';
+import { LoginComponent } from './Components/Authentications/login/login.component';
+    
 
 @NgModule({
   declarations: [
@@ -56,9 +65,7 @@ import { UserProfileComponent } from './Components/Profiles/user-profile/user-pr
     HeaderComponent,
     FooterComponent,
 
-    LoginComponent,
-    SignupComponent,
-    Error404Component,
+     Error404Component,
     ContactUsComponent,
     JobProfileComponent,
     ExploreCompaniesComponent,
@@ -98,8 +105,12 @@ import { UserProfileComponent } from './Components/Profiles/user-profile/user-pr
     ExploreJobsComponent,
     MatchedJobsComponent,
     UserProfileComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+    EmployeeSignupComponent,
+    CompanySignupComponent,
+    LoginComponent,
+       
+   ],
+  imports: [BrowserModule, AppRoutingModule, NgbModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule,ToastrModule, ToastrModule.forRoot(),FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

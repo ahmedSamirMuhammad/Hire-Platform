@@ -15,6 +15,10 @@ import { ProfileSettingComponent } from './Components/Dashboard/profile-setting/
 import { MessagesComponent } from './Components/Dashboard/messages/messages.component';
 import { SummaryComponent } from './Components/Dashboard/summary/summary.component';
 import { BookmarksComponent } from './Components/Dashboard/employee-dashboard/bookmarks/bookmarks.component';
+import { EmployeeSignupComponent } from './Components/Authentications/signup/employee-signup/employee-signup.component';
+import { CompanySignupComponent } from './Components/Authentications/signup/company-signup/company-signup.component';
+import { LoginComponent } from './Components/Authentications/login/login.component';
+import { AuthGuard } from './Guards/auth.guard';
 
 
 const routes: Routes = [
@@ -42,6 +46,8 @@ const routes: Routes = [
 			{ path: 'summary', component: SummaryComponent},
 			{ path: 'bookmarks', component: BookmarksComponent},
 		],
+    canActivate : [AuthGuard]
+
   },
   {
     path: 'explore-companies',
@@ -62,6 +68,20 @@ const routes: Routes = [
   {
     path: 'explore-jobs',
     component: ExploreJobsComponent,
+ 
+  },
+  {
+    path: 'employee-signup',
+    component: EmployeeSignupComponent,
+  },
+  {
+    path: 'company-signup',
+    component: CompanySignupComponent,
+  },
+
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
 
