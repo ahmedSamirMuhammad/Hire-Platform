@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+ import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+
 
 
 @Injectable({
@@ -26,6 +29,11 @@ export class DataService {
     return this.http.post('http://127.0.0.1:8000/api/company-login',data)
 
   }
+
+  loginWithGoogle(){
+   
+    
+    return this.http.get('http://127.0.0.1:8000/api/auth/google/redirect');  }
 
    
 }

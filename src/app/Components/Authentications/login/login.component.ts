@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+
  
 @Component({
   selector: 'app-login',
@@ -14,15 +16,19 @@ import { catchError, throwError } from 'rxjs';
 export class LoginComponent {
   form: FormGroup;
   data :any
-  token : any
-  name : any
+  token: any;
+  name: any;
+  email: any;
+
+
 
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router ,
     private dataService:DataService ,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {
   }
 
@@ -31,6 +37,20 @@ export class LoginComponent {
        email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
      });
+
+     const token = this.route.snapshot.queryParamMap.get('token');
+     const name = this.route.snapshot.queryParamMap.get('name');
+    
+     if (token) {
+       // Token is present in the URL, save it to local storage
+       localStorage.setItem('token', token);
+       localStorage.setItem('name', name);
+ 
+       // Navigate the user to the home page or another page as needed
+       this.router.navigate(['/home']);
+     }
+
+ 
   }
 
   
@@ -97,5 +117,71 @@ export class LoginComponent {
       });
     }
   }
+
+
+
+
+  // loginGoogle(): void {
+  //   this.dataService.loginWithGoogle().subscribe(
+  //     (response) => {
+  //       // Handle a successful response from the server, which may contain user data or tokens.
+  //       // You can redirect to a new page or perform other actions here.
+  //       console.log('Login with Google successful!', response);
+  //     },
+  //     (error) => {
+  //       // Handle errors if the login process fails.
+  //       console.error('Login with Google failed!', error);
+  //     }
+  //   );
+  // }
+  
+
+  loginGoogle() {
+  // Create a unique state for the OAuth2 flow
+  const state = Math.random().toString(36).substring(7);
+  // Store the state in a session or a cookie for later verification
+
+  // Construct the Google OAuth2 URL
+  const oauthUrl = `http://127.0.0.1:8000/api/auth/google/redirect?state=${state}`;
+
+  // Open a new tab with the OAuth2 URL
+  const newTab = window.open(oauthUrl, '_blank');
+
+  // Check for the token in the new tab's HTML content
   
 }
+
+  
+  
+  
+}
+
+
+
+
+// not working also 
+// let me tell u the scenario in case u have better solution 
+
+// 1- user click on google button  that assioated with link http://127.0.0.1:8000/api/auth/google/redirect
+// 2- a pop up display to login with his login account 
+// 3-there is a call back link http://127.0.0.1:8000/api/auth/google/callback 
+// that link display json response like that 
+
+// {
+// "status": 200,
+// "msg": "Login Successfully",
+// "data": {
+// "token": "114|r8wgBxyaCbfc69Rm480j61vHb2dNh0jxXQsuRP9N87a25ccc",
+// "name": "Ahmed Ali",
+// "email": "sionquinn1@gmail.com"
+// }
+// }
+
+// or if there is something error it shows like that 
+// {
+// "status": 401,
+// "msg": "Error with your credentials",
+// "data": ""
+// } 
+
+// tell me what is the best thing to store that token from pop window to my app
