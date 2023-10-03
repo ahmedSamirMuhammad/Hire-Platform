@@ -57,6 +57,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanySignupComponent } from './Components/Authentications/signup/company-signup/company-signup.component';
 import { LoginComponent } from './Components/Authentications/login/login.component';
+import { ForgetPasswordComponent } from './Components/Authentications/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './Components/Authentications/reset-password/reset-password.component';
     
 
 @NgModule({
@@ -108,6 +110,8 @@ import { LoginComponent } from './Components/Authentications/login/login.compone
     EmployeeSignupComponent,
     CompanySignupComponent,
     LoginComponent,
+    ForgetPasswordComponent,
+    ResetPasswordComponent,
        
    ],
   imports: [BrowserModule, AppRoutingModule, NgbModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule,ToastrModule, ToastrModule.forRoot(),FormsModule],

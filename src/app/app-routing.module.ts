@@ -19,6 +19,8 @@ import { EmployeeSignupComponent } from './Components/Authentications/signup/emp
 import { CompanySignupComponent } from './Components/Authentications/signup/company-signup/company-signup.component';
 import { LoginComponent } from './Components/Authentications/login/login.component';
 import { AuthGuard } from './Guards/auth.guard';
+import { ForgetPasswordComponent } from './Components/Authentications/forget-password/forget-password.component';
+import { ResetPasswordComponent } from './Components/Authentications/reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -83,6 +85,16 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+
+  {
+    path: 'forget-password',
+    component: ForgetPasswordComponent,
+  },
+
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent ,
+  }
 ];
 
 @NgModule({

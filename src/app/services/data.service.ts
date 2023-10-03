@@ -31,9 +31,33 @@ export class DataService {
   }
 
   loginWithGoogle(){
-   
-    
-    return this.http.get('http://127.0.0.1:8000/api/auth/google/redirect');  }
+    return this.http.get('http://127.0.0.1:8000/api/auth/google/redirect'); 
+   }
+
+
+   ForgetPassEmployee(data)
+   {
+    return this.http.post('http://127.0.0.1:8000/api/user/forget-password',data)
+
+   }
+
+   ForgetPassCompany(data)
+   {
+    return this.http.post('http://127.0.0.1:8000/api/company/forget-password',data)
+
+   }
+
+   EmployeeResetPassword(data)
+   {
+    return this.http.post('http://127.0.0.1:8000/api/user/reset-password',data)
+
+   }
+
+   CompanyResetPassword(data)
+   {
+    return this.http.post('http://127.0.0.1:8000/api/company/reset-password',data)
+
+   }
 
    
 }
