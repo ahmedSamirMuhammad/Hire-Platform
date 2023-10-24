@@ -9,9 +9,9 @@ import { JobCrudService } from 'src/app/services/job-crud.service';
 import { FormGroup , FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-profile-setting',
-  templateUrl: './profile-setting.component.html',
-  styleUrls: ['./profile-setting.component.scss']
+	selector: "app-profile-setting",
+	templateUrl: "./profile-setting.component.html",
+	styleUrls: ["./profile-setting.component.scss"],
 })
 export class ProfileSettingComponent {
 
@@ -61,7 +61,7 @@ export class ProfileSettingComponent {
 
    }
 
-  //add new Skill into Skills section
+	//add new Skill into Skills section
 
   addToSkillsArr(skill:string){
     if(skill.trim()!== ''){
@@ -74,21 +74,19 @@ export class ProfileSettingComponent {
 
 ;
 
-    // Remove Skill From Skills section
+	// Remove Skill From Skills section
 
-  removeFromSkillsArr(skill:string , input:any){
-    if(skill.trim()!== ''){
+	removeFromSkillsArr(skill: string, input: any) {
+		if (skill.trim() !== "") {
+			let newFilteredArr = this.skillsArr.filter((el) => el != skill);
+			this.skillsArr = newFilteredArr;
 
-      let newFilteredArr =  this.skillsArr.filter( (el)=>  el!=skill );
-      this.skillsArr=newFilteredArr;
+			console.log(this.skillsArr);
+			input.value = "";
+		}
+	}
 
-      console.log(this.skillsArr);
-      input.value="";
-      
-    } 
-  };
-
-  // Check newPassword is Repeated Correctly
+	// Check newPassword is Repeated Correctly
 
   notMatched !: boolean; // flag to appear and disappear  sentence error
   CheckNewPass(newPass : string , repeatedNewPass:string){

@@ -1,0 +1,46 @@
+<!-- Job Listing Details -->
+<a
+  href="javascript:;"
+  class="job-listing-details"
+  (click)="redirectToProfile(matched_job.id)"
+>
+  <!-- Logo -->
+  <div class="job-listing-company-logo">
+    <img [src]="matched_job.logo" alt="" />
+  </div>
+
+  <!-- Details -->
+  <div class="job-listing-description">
+    <h3 class="job-listing-title">{{ matched_job.title }}</h3>
+
+    <!-- Job Listing Footer -->
+    <div class="job-listing-footer">
+      <ul>
+        <li>
+          <i class="icon-material-outline-business"></i>
+          {{ matched_job.company_name }}
+          <div
+            class="verified-badge"
+            title="Verified Employer"
+            data-tippy-placement="top"
+          ></div>
+        </li>
+        <li>
+          <i class="icon-material-outline-location-on"></i>
+          {{ matched_job.location }}
+        </li>
+        <li>
+          <i class="icon-material-outline-business-center"></i>
+          {{ matched_job.type }}
+        </li>
+        <li>
+          <i class="icon-material-outline-access-time"></i>
+          {{ matched_job.date }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bookmark -->
+  <span class="bookmark-icon"></span>
+</a>

@@ -1,0 +1,44 @@
+<div id="wrapper">
+  <!-- Titlebar / Start -->
+  <div id="titlebar" class="gradient">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Browse Companies</h2>
+
+          <!-- Breadcrumbs -->
+          <!-- breadcrumbs-child-component / Start -->
+          <nav id="breadcrumbs" class="dark">
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Find Work</a></li>
+              <li>Browse Companies</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Titlebar / End -->
+
+  <!-- Page Content / Start -->
+  <div class="container">
+    <!-- letters-listing-child-component / Start -->
+    <app-letters-list></app-letters-list>
+    <!-- letters-listing-child-component / End -->
+
+    <!-- companies-listing-child-component / Start -->
+    <div class="companies-list">
+      <div class="col-md-6 col-lg-4" *ngFor="let company of company_list">
+        <app-companies-list [company]="company"></app-companies-list>
+      </div>
+    </div>
+  </div>
+  <!-- companies-listing-child-component / End -->
+
+  <!-- Page Content / End -->
+
+  <!-- Spacer -->
+  <div class="margin-top-70"></div>
+  <!-- Spacer / End-->
+</div>
