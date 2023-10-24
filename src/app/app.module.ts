@@ -29,6 +29,10 @@ import { EmployeeDashboardComponent } from './Components/Dashboard/employee-dash
 import { ProfileSettingComponent } from "./Components/Dashboard/profile-setting/profile-setting.component";
 import { DashboardFooterComponent } from "./Components/Dashboard/company-dashboard/dashboard-footer/dashboard-footer.component";
 import { CandidateComponent } from "./Components/Dashboard/company-dashboard/candidate/candidate.component";
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { CompanySettingsComponent } from './Components/Dashboard/company-dashboard/company-settings/company-settings.component';
+
 
 @NgModule({
   declarations: [
@@ -57,14 +61,22 @@ import { CandidateComponent } from "./Components/Dashboard/company-dashboard/can
     EmployeeDashboardComponent,
     ProfileSettingComponent,
     DashboardFooterComponent,
-    CandidateComponent
+    CandidateComponent,
+    CompanySettingsComponent,
+    
+  
 
     
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent],

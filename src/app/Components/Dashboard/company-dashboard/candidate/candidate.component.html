@@ -14,7 +14,7 @@
         <div class="freelancer-name">
           <h4>
             <a href="#"
-              >Sindy Forest
+              >{{ candidate['first_name'] }}  {{ candidate['last_name'] }}
               <img
                 class="flag"
                 src="../../../../../assets//images/flags/ad.svg"
@@ -28,12 +28,12 @@
           <span class="freelancer-detail-item"
             ><a href="#"
               ><i class="icon-feather-mail"></i>
-              sindy@example.com</a
+              {{ candidate['email'] }}</a
             ></span
           >
           <span class="freelancer-detail-item"
-            ><i class="icon-feather-phone"></i> (+61)
-            123-456-789</span
+            ><i class="icon-feather-phone"></i> 
+            {{ candidate['mobile'] }}</span
           >
 
           <!-- Rating -->
@@ -59,6 +59,7 @@
               class="button gray ripple-effect ico"
               title="Remove Candidate"
               data-tippy-placement="top"
+              (onclick)="delete(candidate['id'])"
               ><i class="icon-feather-trash-2"></i
             ></a>
           </div>

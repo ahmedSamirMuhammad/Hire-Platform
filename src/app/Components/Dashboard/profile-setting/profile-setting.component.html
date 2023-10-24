@@ -1,36 +1,38 @@
-  <div class="dashboard-container">
-    <!-- Dashboard Sidebar-->
-    <app-sidebar></app-sidebar>
+<div class="dashboard-container">
+  <!-- Dashboard Sidebar-->
+  <app-sidebar></app-sidebar>
 
-    <!-- Dashboard Content  -->
-    <div class="dashboard-content-container" data-simplebar>
-      <div class="dashboard-content-inner">
-        <!-- Dashboard Headline -->
-        <div class="dashboard-headline">
-          <h3>Settings</h3>
-          
-          <!-- Breadcrumbs -->
-          <nav id="breadcrumbs" class="dark">
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Dashboard</a></li>
-              <li>Settings</li>
-            </ul>
-          </nav>
-        </div>
+  <!-- Dashboard Content  -->
+  <div class="dashboard-content-container" data-simplebar>
+    <div class="dashboard-content-inner">
+      <!-- Dashboard Headline -->
+      <div class="dashboard-headline">
+        <h3>Settings</h3>
 
-        <!-- Row -->
-        <div class="row">
-          <!-- Dashboard Box -->
-          <div class="col-xl-12">
-            <div class="dashboard-box margin-top-0">
-              <!-- Headline -->
-              <div class="headline">
-                <h3>
-                  <i class="icon-material-outline-account-circle"></i> My
-                  Account
-                </h3>
-              </div>
+        <!-- Breadcrumbs -->
+        <nav id="breadcrumbs" class="dark">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li>Settings</li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Row -->
+      <form action="#" method="post" [formGroup]="userForm">
+      <div class="row">
+        <!-- Dashboard Box -->
+
+        <div class="col-xl-12">
+          <div class="dashboard-box margin-top-0">
+            <!-- Headline -->
+            <div class="headline">
+              <h3>
+                <i class="icon-material-outline-account-circle"></i> My Account
+              </h3>
+            </div>
+            
 
               <div class="content with-padding padding-bottom-0">
                 <div class="row">
@@ -46,7 +48,8 @@
                         alt=""
                       />
                       <div class="upload-button"></div>
-                      <input class="file-upload" type="file" accept="image/*" />
+                      <input class="file-upload" type="file" accept="image/*" 
+                      formControlName="avatar"/>
                     </div>
                   </div>
 
@@ -55,46 +58,53 @@
                       <div class="col-xl-6">
                         <div class="submit-field">
                           <h5>First Name</h5>
-                          <input type="text" class="with-border" />
+                          <input type="text" class="with-border"
+                          formControlName="first_name" />
                         </div>
                       </div>
 
                       <div class="col-xl-6">
                         <div class="submit-field">
                           <h5>Last Name</h5>
-                          <input type="text" class="with-border" />
+                          <input type="text" class="with-border"
+                          formControlName="last_name" />
                         </div>
                       </div>
 
-                      <div class="col-xl-6">
-                        <!-- Account Type -->
+                      <!-- Account Type -->
+                      <!-- <div class="col-xl-6">
                         <div class="submit-field">
                           <h5>Account Type</h5>
                           <div class="account-type">
                             <div>
-                                <input
-                                  type="radio"
-                                  name="account-type-radio"
-                                  id="employee-radio"
-                                  class="account-type-radio"
-                                 
-                                />
-                                <label (click)="setUserType('emp')"
-                                for="employee-radio" class="ripple-effect-dark">
-                                  <i class="icon-material-outline-account-circle"></i>
-                                  Employee
-                                </label>
-                              </div>
+                              <input
+                                type="radio"
+                                name="account-type-radio"
+                                id="employee-radio"
+                                class="account-type-radio"
+                              />
+                              <label
                               
+                                for="employee-radio"
+                                class="ripple-effect-dark"
+                              >
+                                <i
+                                  class="icon-material-outline-account-circle"
+                                ></i>
+                                Employee
+                              </label>
+                            </div>
 
                             <div>
-                              <input type="radio"
+                              <input
+                                type="radio"
                                 name="account-type-radio"
                                 id="company-radio"
                                 class="account-type-radio"
                               />
-                              <label  (click)="setUserType('cmp')"
-                               for="company-radio"
+                              <label
+                              
+                                for="company-radio"
                                 class="ripple-effect-dark"
                                 ><i
                                   class="icon-material-outline-business-center"
@@ -104,22 +114,24 @@
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
 
                       <div class="col-xl-6">
                         <div class="submit-field">
                           <h5>Email</h5>
-                          <input type="text" class="with-border" />
+                          <input type="text" class="with-border" 
+                          formControlName="email"/>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
           </div>
+        </div>
 
-          <!-- Dashboard Box -->
+        <!-- Dashboard Box -->
+       
           <div class="col-xl-12">
             <div class="dashboard-box">
               <!-- Headline -->
@@ -131,7 +143,7 @@
                 <ul class="fields-ul">
                   <li>
                     <!--this Row(Skills & Attachments)Appears For Employees Only  -->
-                    <div *ngIf="userType=='emp'" class="row">
+                    <div class="row">
                       <!-- skills Input  -->
                       <div class="col-xl-6">
                         <div class="submit-field">
@@ -148,25 +160,39 @@
                           <div class="keywords-container">
                             <div class="keyword-input-container">
                               <input
-                              #keywordInput
+                                #keywordInput
                                 type="text"
                                 class="keyword-input with-border"
                                 placeholder="e.g. Angular, Laravel"
+                                formControlName="skills[]"
+                               
                               />
-                              <button (click)="addToSkillsArr(keywordInput.value)"
+                              <button
+                                (click)="addToSkillsArr(keywordInput.value)"
                                 class="keyword-input-button ripple-effect"
                               >
                                 <i class="icon-material-outline-add"></i>
                               </button>
                             </div>
                             <div class="keywords-list">
-                                <!-- list all skills  -->
-                                <span *ngFor="let skill of skillsArr" class="keyword">
-                                    <span (click)="removeFromSkillsArr(skillTxt.innerText,keywordInput)"
-                                     class="skill-remove"></span>
-                                    <span #skillTxt class="skill-text">{{skill}}</span>
-                                </span>
-
+                              <!-- list all skills  -->
+                              <span
+                                *ngFor="let skill of skillsArr"
+                                class="keyword"
+                              >
+                                <span
+                                  (click)="
+                                    removeFromSkillsArr(
+                                      skillTxt.innerText,
+                                      keywordInput
+                                    )
+                                  "
+                                  class="skill-remove"
+                                ></span>
+                                <span #skillTxt class="skill-text">{{
+                                  skill
+                                }}</span>
+                              </span>
                             </div>
                             <div class="clearfix"></div>
                           </div>
@@ -209,6 +235,9 @@
                               accept="image/*, application/pdf"
                               id="upload"
                               multiple
+
+                               formControlName="attachments[]"
+                            
                             />
                             <label
                               class="uploadButton-button ripple-effect"
@@ -228,12 +257,14 @@
                     <div class="row">
                       <div class="col-xl-6">
                         <div class="submit-field">
-                          <h5  *ngIf="userType=='emp' ">Position</h5>
-                          <h5 *ngIf="userType=='cmp'" >Field</h5>
+                          <h5 >Position</h5>
+                          <!-- <h5 *ngIf="userType == 'cmp'">Field</h5> -->
                           <input
                             type="text"
                             class="with-border"
                             placeholder="iOS Expert + Node Dev"
+                            name="position | field"
+                          
                           />
                         </div>
                       </div>
@@ -244,10 +275,13 @@
 
                           <!-- select Nationality  -->
                           <select
+
                             class="selectpicker with-border"
                             data-size="7"
                             title="Select Job Type"
                             data-live-search="true"
+                             formControlName="nationality"
+                            
                           >
                             <option value="AR">Argentina</option>
                             <option value="AM">Armenia</option>
@@ -344,7 +378,13 @@
                       <div class="col-xl-12">
                         <div class="submit-field">
                           <h5>Introduce Yourself</h5>
-                          <textarea cols="30" rows="5" class="with-border">
+                          <textarea
+                            cols="30"
+                            rows="5"
+                            class="with-border"
+                            formControlName="about"
+                            
+                          >
                           </textarea>
                         </div>
                       </div>
@@ -370,21 +410,43 @@
                   <div class="col-xl-4">
                     <div class="submit-field">
                       <h5>Current Password</h5>
-                      <input type="password" class="with-border">
+                      <input
+                        type="password"
+                        class="with-border"
+                        required
+                        formControlName="password"
+                       
+                      />
                     </div>
                   </div>
 
                   <div class="col-xl-4">
                     <div class="submit-field">
                       <h5>New Password</h5>
-                      <input #newPass type="password" class="with-border" />
+                      <input
+                        #newPass
+                        type="password"
+                        class="with-border"
+                        required
+                        name="pass"
+                      
+                      />
                     </div>
                   </div>
 
                   <div class="col-xl-4">
                     <div class="submit-field">
                       <h5>Repeat New Password</h5>
-                      <input #repeatedNewPass type="password" class="with-border" />
+                      <input
+                        #repeatedNewPass
+                        type="password"
+                        class="with-border"
+                        name="pass"
+                       
+                        (change)="
+                          CheckNewPass(newPass.value, repeatedNewPass.value)
+                        "
+                      />
                       <p class="repErrorMsg" *ngIf="notMatched">
                         not matched passwords !
                       </p>
@@ -393,7 +455,13 @@
 
                   <div class="col-xl-12">
                     <div class="checkbox">
-                      <input type="checkbox" id="two-step" checked />
+                      <input
+                        type="checkbox"
+                        id="two-step"
+                        checked
+                        name="two-way"
+                        
+                      />
                       <label for="two-step"
                         ><span class="checkbox-icon"></span> Enable Two-Step
                         Verification via Email</label
@@ -407,18 +475,22 @@
 
           <!-- Button -->
           <div class="col-xl-12">
-            <a (click)="CheckNewPass(newPass.value , repeatedNewPass.value)" href="#" class="button ripple-effect big margin-top-30"
-              >Save Changes</a
-            >
+            <input
+              type="submit"
+              value="Save Changes"
+              class="button ripple-effect big margin-top-30"
+            />
           </div>
-        </div>
-        <!-- Row / End -->
-
-        <!-- Footer -->
-        <app-dashboard-footer></app-dashboard-footer>
-        <!-- Footer / End -->
+       
       </div>
+    </form>
+      <!-- Row / End -->
+
+      <!-- Footer -->
+      <app-dashboard-footer></app-dashboard-footer>
+      <!-- Footer / End -->
     </div>
-    <!-- Dashboard Content / End -->
   </div>
-  <!-- Dashboard Container / End -->
+  <!-- Dashboard Content / End -->
+</div>
+<!-- Dashboard Container / End -->

@@ -9,10 +9,7 @@
           <!-- Manage Candidates Headline -->
             <div class="dashboard-headline">
                 <h3>Manage Candidates</h3>
-                <span class="margin-top-7">
-                    Job Applications for Full Stack PHP Developer
-                </span>
-    
+               
                 <!-- Breadcrumbs -->
                 <nav id="breadcrumbs" class="dark">
                 <ul>
@@ -32,15 +29,15 @@
                 <div class="headline">
                   <h3>
                     <i class="icon-material-outline-supervisor-account"></i> 
-                    <span>3 </span>
+                    <span>{{ candidates.length }} </span>
                     Candidates
                   </h3>
                 </div>
     
                 <div class="content">
                   <ul class="dashboard-box-list">
-                    <li *ngFor="let Candidate of candidates">
-                        <app-candidate></app-candidate>
+                    <li *ngFor="let candidate of candidates">
+                        <app-candidate [candidate]="candidate"></app-candidate>
                     </li>
                   </ul>
                 </div>

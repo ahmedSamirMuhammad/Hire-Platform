@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-job',
@@ -9,4 +9,6 @@ export class JobComponent {
   isexpired :boolean = false;
   isApproved : boolean = false;
   isPending: boolean = true;
+
+  @Input() job :any;
 }
