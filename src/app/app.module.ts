@@ -59,6 +59,7 @@ import { CompanySignupComponent } from './Components/Authentications/signup/comp
 import { LoginComponent } from './Components/Authentications/login/login.component';
 import { ForgetPasswordComponent } from './Components/Authentications/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Components/Authentications/reset-password/reset-password.component';
+import { PaginationComponent } from './Components/pagination/pagination.component';
     
 
 @NgModule({
@@ -66,8 +67,7 @@ import { ResetPasswordComponent } from './Components/Authentications/reset-passw
     AppComponent,
     HeaderComponent,
     FooterComponent,
-
-     Error404Component,
+    Error404Component,
     ContactUsComponent,
     JobProfileComponent,
     ExploreCompaniesComponent,
@@ -112,6 +112,7 @@ import { ResetPasswordComponent } from './Components/Authentications/reset-passw
     LoginComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
+    PaginationComponent,
        
    ],
   imports: [BrowserModule, AppRoutingModule, NgbModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule,ToastrModule, ToastrModule.forRoot(),FormsModule],

@@ -1,24 +1,26 @@
-<div
-  class="single-page-header"
-  data-background-image="/assets/images/single-company.jpg"
->
+<div class="single-page-header" data-background-image="/assets/images/single-company.jpg">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="single-page-header-inner">
           <div class="left-side">
             <div class="header-image">
-              <img src="/assets/images/browse-companies-03.png" alt="" />
+              <img src="/assets/images/{{ company_data.logo }}" alt="" />
             </div>
             <div class="header-details">
-              <h3>Acodia <span>Software House</span></h3>
+              <h3>{{ company_data.name }} <span>{{ company_data.title }} </span></h3>
               <ul>
-                <li><div class="star-rating" data-rating="4.9"></div></li>
                 <li>
-                  <img class="flag" src="/assets/images/flags/de.svg" alt="" />
-                  Germany
+                  <div class="star-rating" [attr.data-rating]="company_data.rating || 0">
+                    <!-- <span class="star" *ngFor="let star of getFilledStars(company_data.rating)"></span>
+                    <span class="star empty" *ngFor="let star of getEmptyStars(company_data.rating)"></span> -->
+                  </div>
                 </li>
-                <li><div class="verified-badge-with-title">Verified</div></li>
+                <li>
+                  <img class="flag" [src]="'/assets/images/flags/' + company_data.nationality + '.svg'" alt="" />
+                  {{ company_data.nationality }}
+                </li>
+                <li><div class="verified-badge-with-title" *ngIf="company_data.verified">Verified</div></li>
               </ul>
             </div>
           </div>
@@ -28,7 +30,7 @@
               <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Browse Companies</a></li>
-                <li>Acodia</li>
+                <li>{{ company_data.name }}</li>
               </ul>
             </nav>
           </div>

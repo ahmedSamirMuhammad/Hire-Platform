@@ -7,4 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class CompanyReviewsComponent {
   @Input() review: any;
-}
+
+  getFilledStars(rating: number): number[] {
+    return Array(Math.floor(rating)).fill(0);
+  }
+
+  getEmptyStars(rating: number): number[] {
+    return Array(5 - Math.floor(rating)).fill(0);
+  }
+} 

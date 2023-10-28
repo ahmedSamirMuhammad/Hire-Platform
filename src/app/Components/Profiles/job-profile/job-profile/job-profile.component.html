@@ -1,19 +1,21 @@
 <!-- Job-Titlebar Component / Start-->
-<app-job-titlebar></app-job-titlebar>
+<app-job-titlebar [jobData]="jobData"></app-job-titlebar>
 <!-- Job-Titlebar Component / End-->
 
 <div class="container">
   <div class="row">
     <!-- Content -->
     <div class="col-xl-8 col-lg-8 content-right-offset">
+
       <!-- Job-description Component / Start-->
-      <app-job-description></app-job-description>
+      <app-job-description [jobData]="jobData"></app-job-description>
       <!-- Job-description Component / End-->
+
     </div>
     <div class="col-xl-4 col-lg-4">
       <div class="sidebar-container">
         <!-- Company-sidebar Component / Start-->
-        <app-job-sidebar></app-job-sidebar>
+        <app-job-sidebar [jobData]="jobData" (toggleBookmark)="toggleBookmark(jobId)"></app-job-sidebar>
         <!-- Company-sidebar Component / End-->
       </div>
     </div>

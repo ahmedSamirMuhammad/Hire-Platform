@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class MatchedJobsComponent {
   @Input() matched_job: any;
+  @Output() toggleBookmark = new EventEmitter<void>();
 
   // Sending the job id to the (selected-job) profile page
   //initializing the "Router" service
@@ -15,5 +16,10 @@ export class MatchedJobsComponent {
 
   redirectToProfile(id: any) {
     this.router.navigate(['job-profile', id]);
+  }
+
+  onToggleBookmark(jobId: number) {
+    // Emit an event to notify the parent component to toggle the bookmark
+    this.toggleBookmark.emit();
   }
 }

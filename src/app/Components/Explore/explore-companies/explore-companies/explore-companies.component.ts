@@ -1,47 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CompanyService } from 'src/app/services/company.service';
+import { BehaviorSubject } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-explore-companies',
   templateUrl: './explore-companies.component.html',
   styleUrls: ['./explore-companies.component.scss'],
 })
-export class ExploreCompaniesComponent {
-  company_list: Array<any> = [
-    {
-      id: 1,
-      name: 'company one',
-      logo: '/assets/images/company-logo-placeholder.png',
-      rating: 5,
-    },
-    {
-      id: 2,
-      name: 'company two',
-      logo: '/assets/images/company-logo-placeholder.png',
-      rating: 3,
-    },
-    {
-      id: 3,
-      name: 'company three',
-      logo: '/assets/images/company-logo-placeholder.png',
-      rating: 4,
-    },
-    {
-      id: 4,
-      name: 'company four',
-      logo: '/assets/images/company-logo-placeholder.png',
-      rating: 3,
-    },
-    {
-      id: 5,
-      name: 'company five',
-      logo: '/assets/images/company-logo-placeholder.png',
-      rating: 5,
-    },
-    {
-      id: 6,
-      name: 'company six',
-      logo: '/assets/images/company-logo-placeholder.png',
-      rating: 4,
-    },
-  ];
+export class ExploreCompaniesComponent implements OnInit{
+  paginationData: BehaviorSubject<any> = new BehaviorSubject({});
+  company_list: Array<any> = [];
+
+  constructor(private companyService: CompanyService, private activatedRoute: ActivatedRoute) {}
+
+  ngOnInit() {
+    const page = this.activatedRoute.snapshot.params["page"];
+
+    //<!---------- calling the function "getCompanies" from "company" service / Start -------------->
+    this.companyService.getCompanies(page).subscribe(
+      (response: any) => {
+        this.company_list = response.data.data;
+        
+        this.paginationData.next( {
+          current_page:response.data.current_page,
+          last_page: response.data.last_page,
+      });
+      },
+      (error: any) => {
+        console.error('Error fetching companies', error);
+      }
+    );
+  }
+      //<!-------- calling the function "getCompanies" from "company" service  / End ---------------->
 }

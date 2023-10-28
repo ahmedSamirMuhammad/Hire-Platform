@@ -2,16 +2,16 @@
 <a
   href="javascript:;"
   class="job-listing-details"
-  (click)="redirectToProfile(matched_job.id)"
+  (click)="redirectToProfile(matched_job.job_id)"
 >
   <!-- Logo -->
   <div class="job-listing-company-logo">
-    <img [src]="matched_job.logo" alt="" />
+    <img [src]="matched_job.company_logo" alt="" />
   </div>
 
   <!-- Details -->
   <div class="job-listing-description">
-    <h3 class="job-listing-title">{{ matched_job.title }}</h3>
+    <h3 class="job-listing-title">{{ matched_job.job_name }}</h3>
 
     <!-- Job Listing Footer -->
     <div class="job-listing-footer">
@@ -20,27 +20,29 @@
           <i class="icon-material-outline-business"></i>
           {{ matched_job.company_name }}
           <div
-            class="verified-badge"
+          [class.verified-badge]="matched_job.company_verified"
             title="Verified Employer"
             data-tippy-placement="top"
           ></div>
         </li>
         <li>
           <i class="icon-material-outline-location-on"></i>
-          {{ matched_job.location }}
+          {{ matched_job.job_location }}
         </li>
         <li>
           <i class="icon-material-outline-business-center"></i>
-          {{ matched_job.type }}
+          {{ matched_job.job_type }}
         </li>
         <li>
           <i class="icon-material-outline-access-time"></i>
-          {{ matched_job.date }}
+          {{ matched_job.job_date }}
         </li>
       </ul>
     </div>
   </div>
 
   <!-- Bookmark -->
-  <span class="bookmark-icon"></span>
-</a>
+  <!-- <span class="bookmark-icon" [ngClass]="{'bookmarked': matched_job.is_bookmarked}"></span> -->
+  <span class="bookmark-icon" [ngClass]="{'bookmarked': matched_job.job_bookmarked}" (click)="onToggleBookmark(matched_job.job_id)"></span>
+
+<!-- </a> -->

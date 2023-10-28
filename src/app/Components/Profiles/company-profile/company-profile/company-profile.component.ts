@@ -1,73 +1,99 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { CompanyService } from 'src/app/services/company.service';
+import { JobService } from 'src/app/services/job.service';
+import { ReviewService } from 'src/app/services/review.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
   styleUrls: ['./company-profile.component.scss'],
 })
-export class CompanyProfileComponent {
-  //<-- company-open-jobs list / Start-->
+export class CompanyProfileComponent implements OnInit{
 
-  open_jobs_list: Array<any> = [
-    {
-      title: 'Restaurant General Manager',
-      location: 'Cairo',
-      type: 'Full-Time',
-      post_date: '2023-08-12',
-    },
-    {
-      title: 'Bilingual Event Support Specialist',
-      location: 'Alexandria',
-      type: 'Part-Time',
-      post_date: '2023-07-29',
-    },
-    {
-      title: 'Human Resources Consultant',
-      location: 'Luxor',
-      type: 'Contract',
-      post_date: '2023-09-22',
-    },
-    {
-      title: 'Construction Labourers',
-      location: 'El-Fayum',
-      type: 'Intership',
-      post_date: '2023-08-30',
-    },
-  ];
-  //<-- company-open-jobs list / End-->
-  //<-- company-reviews list / Start -->
+  company_data: Array<any> = [];
+  open_jobs_list: Array<any> = [];
+  company_reviews: Array<any> = [];
+  companyId: number;
+  reviewData = {
+    rating: '',
+    name: '',
+    title: '',
+    comment: '',
+  };
 
-  company_reviews: Array<any> = [
-    {
-      title: 'Outstanding Work Environment',
-      holder: '7ambola',
-      date: 'January 2023',
-      description:
-        "They do business with integrity and rational thinking. Overall, it's an excellent place to work, with products that are winning in the marketplace.",
-      rating: 4.5,
-    },
-    {
-      title: 'Doing things the right way',
-      holder: 'Anonymous Employee',
-      date: 'August 2022',
-      description:
-        'Great company and especially ideal for the career-minded individual. The company is large enough to offer a variety of jobs in all kinds of interesting locations. Even if you never change roles, your job changes and evolves as the company grows, keeping things fresh.',
-      rating: 5,
-    },
-    {
-      title: 'Good Place',
-      holder: 'Anonymous Employee',
-      date: 'June 2020',
-      description: 'Good place to start with.',
-      rating: 3.5,
-    },
-    {
-      title: 'Excellent Workspace',
-      holder: '3am zain',
-      date: 'December 2015',
-      description: 'Agmad company fel donia',
-      rating: 4,
-    },
-  ];
-  //<-- company-reviews list / End -->
+  constructor(private companyService: CompanyService, private jobService: JobService, private route: ActivatedRoute, private reviewService: ReviewService) {}
+
+
+  //<!---------- calling the function "getCompanyByID" from "company" service / Start -------------->
+  ngOnInit() {
+    // get the company ID from the route
+    this.companyId = +this.route.snapshot.paramMap.get('id');
+
+    // fetch company details by ID
+    this.companyService.getCompanyByID(this.companyId).subscribe(
+      (response: any) => {
+        // assign data to variables
+        this.company_data = response.data;
+        this.open_jobs_list = response.data.open_jobs;
+        this.company_reviews = response.data.reviews;
+      },
+      (error: any) => {
+        console.error('Error fetching company data', error);
+      }
+    );
+    //<!-------- calling the function "getCompanyByID" from "company" service  / End ---------------->
+  }
+
+
+  onSubmit() {
+    // Ensure that the company ID is set correctly
+    const companyId = this.companyId.toString();
+
+    // Send the review data to the service
+    this.reviewService.addReview(companyId, this.reviewData).subscribe(
+      (response) => {
+        // Handle success response here
+        // console.log('Review added successfully', response);
+        alert('Review added successfully!');
+        
+        // Clear the reviewData object for a new review
+        this.reviewData = {
+          rating: '',
+          name: '',
+          title: '',
+          comment: '',
+        };
+      },
+      (error) => {
+        // Handle error response here
+        console.error('Error adding review', error);
+      }
+    );
+  }
+
+
+  toggleBookmark(companyId: number, jobId: number) {
+    // Send a request to toggle the job bookmark
+    this.jobService.toggleJobBookmark(companyId, jobId).subscribe(
+      (response) => {
+        // Handle success response here
+        if (response.msg === 'Job bookmarked successfully' || response.msg === 'Job unbookmarked successfully') {
+          // Find the job in open_jobs_list array and update its is_bookmarked property
+          const job = this.open_jobs_list.find((j) => j.id === jobId);
+          if (job) {
+            job.is_bookmarked = !job.is_bookmarked;
+          }
+        } else {
+          // Handle other possible responses or show an error message
+        }
+      },
+      (error) => {
+        // Handle error response here
+        console.error('Error toggling job bookmark', error);
+      }
+    );
+  }
+
+
+
 }

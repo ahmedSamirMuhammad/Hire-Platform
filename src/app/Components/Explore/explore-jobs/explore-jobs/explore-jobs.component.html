@@ -1,186 +1,139 @@
 <div class="container">
   <div class="row">
     <div class="col-xl-3 col-lg-4">
-      <div class="sidebar-container">
-        <!-- Location -->
-        <div class="sidebar-widget">
-          <h3>Location</h3>
-          <div class="input-with-icon">
-            <div id="autocomplete-container">
-              <input
-                id="autocomplete-input"
-                type="text"
-                placeholder="Location"
-              />
-            </div>
-            <i class="icon-material-outline-location-on"></i>
-          </div>
-        </div>
+      <form [formGroup]="filterForm" (ngSubmit)="filter()">
+        <div class="sidebar-container">
+          <!-- Location -->
+          <div class="sidebar-widget">
+            <h3>Location</h3>
+            <div class="input-with-icon">
+              <div id="autocomplete-container">
+                <input id="autocomplete-input" type="text" placeholder="Location" formControlName="location" />
 
-        <!-- Category -->
-        <div class="sidebar-widget">
-          <h3>Category</h3>
-          <select
-            class="selectpicker"
-            multiple
-            data-selected-text-format="count"
-            data-size="7"
-            title="All Categories"
-          >
-            <option>Accounting and Finance</option>
-            <option>Clerical & Data Entry</option>
-            <option>Counseling</option>
-            <option>Court Administration</option>
-            <option>Human Resources</option>
-            <option>Investigative</option>
-            <option>IT and Computers</option>
-            <option>Law Enforcement</option>
-            <option>Management</option>
-            <option>Miscellaneous</option>
-            <option>Public Relations</option>
-          </select>
-        </div>
-
-        <!-- Experience -->
-        <div class="sidebar-widget">
-          <h3>Experience</h3>
-          <select
-            class="selectpicker"
-            data-selected-text-format="count"
-            data-size="5"
-            title="Experience"
-          >
-            <option>0-1</option>
-            <option>1-3</option>
-            <option>3-6</option>
-            <option>6-10</option>
-            <option>+10 years</option>
-          </select>
-        </div>
-
-        <!-- Job Types -->
-        <div class="sidebar-widget">
-          <h3>Job Type</h3>
-
-          <div class="switches-list">
-            <div class="switch-container">
-              <label class="switch"
-                ><input type="checkbox" /><span class="switch-button"></span>
-                Full Time</label
-              >
-            </div>
-
-            <div class="switch-container">
-              <label class="switch"
-                ><input type="checkbox" /><span class="switch-button"></span>
-                Part Time</label
-              >
-            </div>
-
-            <div class="switch-container">
-              <label class="switch"
-                ><input type="checkbox" /><span class="switch-button"></span>
-                Contract</label
-              >
-            </div>
-
-            <div class="switch-container">
-              <label class="switch"
-                ><input type="checkbox" /><span class="switch-button"></span>
-                Temporary</label
-              >
-            </div>
-
-            <div class="switch-container">
-              <label class="switch"
-                ><input type="checkbox" /><span class="switch-button"></span>
-                Internship</label
-              >
+              </div>
+              <i class="icon-material-outline-location-on"></i>
             </div>
           </div>
-        </div>
 
-        <!-- Salary -->
-        <div class="sidebar-widget">
-          <h3>Salary</h3>
-          <div class="margin-top-55"></div>
+          <!-- Sort by -->
+          <div class="sidebar-widget">
+            <h3>Sort by</h3>
+            <select class="selectpicker hide-tick" formControlName="sort" title="Sort By">
+              <option value="newest" selected>Newest</option>
+              <option value="oldest">Oldest</option>
+            </select>
+          </div>
 
-          <!-- Range Slider -->
-          <input
-            class="range-slider"
-            type="text"
-            value=""
-            data-slider-currency="$"
-            data-slider-min="1500"
-            data-slider-max="15000"
-            data-slider-step="100"
-            data-slider-value="[1500,15000]"
-          />
+          <!-- Category -->
+          <div class="sidebar-widget">
+            <h3>Category</h3>
+            <select formControlName="category_name">
+              <option value="" disabled selected>Select a Category</option>
+              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+          </div>
+          
+          <!-- Experience -->
+          <div class="sidebar-widget">
+            <h3>Experience</h3>
+            <select class="selectpicker" formControlName="experience" data-selected-text-format="count" data-size="6"
+              title="Experience">
+              <option value="0-1">0-1 years</option>
+              <option value="1-3">1-3 years</option>
+              <option value="3-6">3-6 years</option>
+              <option value="6-10">6-10 years</option>
+              <option value="10-15">10-15 years</option>
+              <option value="15-20">15-20 years</option>
+            </select>
+
+          </div>
+
+          <!-- Job Types -->
+          <div class="sidebar-widget">
+            <h3>Job Type</h3>
+
+            <div class="switches-list">
+              <div class="switch-container">
+                <label class="switch">
+                  <input type="checkbox" (change)="updateTypeSelection($event, 'full_time')" formControlName="full_time" />
+                  <span class="switch-button"></span>
+                  Full Time
+                </label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input type="checkbox" (change)="updateTypeSelection($event, 'part_time')" formControlName="part_time" />
+                  <span class="switch-button"></span>
+                  Part Time
+                </label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input type="checkbox" (change)="updateTypeSelection($event, 'contract')"  formControlName="contract" />
+                  <span class="switch-button"></span>
+                  Contract
+                </label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input type="checkbox" (change)="updateTypeSelection($event, 'temporary')" formControlName="temporary" />
+                  <span class="switch-button"></span>
+                  Temporary
+                </label>
+              </div>
+
+              <div class="switch-container">
+                <label class="switch">
+                  <input type="checkbox" (change)="updateTypeSelection($event, 'internship')" formControlName="internship" />
+                  <span class="switch-button"></span>
+                  Internship
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Salary -->
+          <div class="sidebar-widget">
+            <div class="margin-top-55"></div>
+          
+            <!-- Min Salary Input -->
+            <label for="minSalary">Min Salary:</label>
+            <input type="number" id="minSalary" formControlName="min_salary">
+          
+            <!-- Max Salary Input -->
+            <label for="maxSalary">Max Salary:</label>
+            <input type="number" id="maxSalary" formControlName="max_salary">
+          
+            <!-- Range Slider (optional) -->
+            <!-- Note: You can choose to keep or remove the range slider based on your preference -->
+            <!-- <input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="1500"
+              data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" /> -->
+          </div>
         </div>
-      </div>
+        <input type="submit" class="btn btn-primary" value="Apply Filters">
+      </form>
     </div>
     <div class="col-xl-9 col-lg-8 content-left-offset">
-      <h3 class="page-title">Search Results</h3>
-
-      <div class="notify-box margin-top-15">
-        <div class="switch-container">
-          <label class="switch"
-            ><input type="checkbox" /><span class="switch-button"></span
-            ><span class="switch-text"
-              >Turn on email alerts for this search</span
-            ></label
-          >
-        </div>
-        <div class="sort-by">
-          <span>Sort by:</span>
-          <select class="selectpicker hide-tick">
-            <option>Relevance</option>
-            <option>Newest</option>
-            <option>Oldest</option>
-          </select>
-        </div>
-      </div>
 
       <div class="listings-container compact-list-layout margin-top-35">
         <!-- Job Listing -->
         <!-- Matched-Jobs Component /Start -->
-        <a
-          *ngFor="let matched_job of jobs_array"
-          href="single-job-page.html"
-          class="job-listing"
-        >
-          <app-matched-jobs [matched_job]="matched_job"></app-matched-jobs>
+        <a *ngFor="let matched_job of jobs_array" href="javascript:;" class="job-listing">
+          <app-matched-jobs [matched_job]="matched_job" (toggleBookmark)="toggleBookmark(matched_job.job_id)"></app-matched-jobs>
         </a>
         <!-- Matched-Jobs Component /End -->
       </div>
 
+      <!-- Spacer -->
+      <div class="margin-top-70"></div>
+      <!-- Spacer / End-->
+
       <!-- Pagination -->
-      <div class="clearfix"></div>
-      <div class="row">
-        <div class="col-md-12">
-          <!-- Pagination -->
-          <div class="pagination-container margin-top-60 margin-bottom-60">
-            <nav class="pagination">
-              <ul>
-                <li class="pagination-arrow">
-                  <a href="#"
-                    ><i class="icon-material-outline-keyboard-arrow-left"></i
-                  ></a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#" class="current-page">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li class="pagination-arrow">
-                  <a href="#"
-                    ><i class="icon-material-outline-keyboard-arrow-right"></i
-                  ></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
+      <app-pagination [paginationData]="paginationData"></app-pagination>
       <!-- Pagination / End -->
     </div>
   </div>

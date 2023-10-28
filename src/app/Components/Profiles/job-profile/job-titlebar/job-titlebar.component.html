@@ -8,26 +8,31 @@
         <div class="single-page-header-inner">
           <div class="left-side">
             <div class="header-image">
-              <a href="single-company-profile.html"
-                ><img src="/assets/images/company-logo-03a.png" alt=""
-              /></a>
+              <a href="single-company-profile.html">
+                <img src="/assets/images/{{ jobData.company_logo }}" alt="" />
+              </a>              
             </div>
             <div class="header-details">
-              <h3>Restaurant General Manager</h3>
+              <h3>{{ jobData.job_name }}</h3>
               <h5>About the Employer</h5>
               <ul>
                 <li>
                   <a href="single-company-profile.html"
-                    ><i class="icon-material-outline-business"></i> King</a
+                    ><i class="icon-material-outline-business"></i> {{ jobData.company_name }}</a
                   >
                 </li>
-                <li><div class="star-rating" data-rating="4.9"></div></li>
                 <li>
-                  <img class="flag" src="/assets/images/flags/gb.svg" alt="" />
-                  United Kingdom
+                  <div class="star-rating" [attr.data-rating]="jobData.company_rating || 0">
+                    <span class="star" *ngFor="let star of getFilledStars(jobData.company_rating)"></span>
+                    <span class="star empty" *ngFor="let star of getEmptyStars(jobData.company_rating)"></span>
+                  </div>
                 </li>
                 <li>
-                  <div class="verified-badge-with-title">Verified</div>
+                  <img class="flag" src="/assets/images/flags/gb.svg" alt="" />
+                  {{ jobData.company_nationality }}
+                </li>
+                <li>
+                  <div class="verified-badge-with-title" *ngIf="jobData.company_verified">Verified</div>
                 </li>
               </ul>
             </div>
@@ -35,7 +40,7 @@
           <div class="right-side">
             <div class="salary-box">
               <div class="salary-type">Annual Salary</div>
-              <div class="salary-amount">$35k - $38k</div>
+              <div class="salary-amount">${{ jobData.min_salary }}k - ${{ jobData.max_salary }}k</div>
             </div>
           </div>
         </div>

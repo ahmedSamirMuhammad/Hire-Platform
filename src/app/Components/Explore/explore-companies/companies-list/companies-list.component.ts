@@ -16,4 +16,12 @@ export class CompaniesListComponent {
   redirectToProfile(id: any) {
     this.router.navigate(['company-profile', id]);
   }
+
+  getFilledStars(rating: number): number[] {
+    return Array(Math.floor(rating)).fill(0);
+  }
+
+  getEmptyStars(rating: number): number[] {
+    return Array(5 - Math.floor(rating)).fill(0);
+  }
 }

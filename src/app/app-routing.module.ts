@@ -51,10 +51,20 @@ const routes: Routes = [
     canActivate : [AuthGuard]
 
   },
-  {
-    path: 'explore-companies',
-    component: ExploreCompaniesComponent,
-  },
+//  <!-- explore-companies routes / Start -->
+
+  { path: "explore-companies", redirectTo: "explore-companies/1", pathMatch: "full" },
+  { path: "explore-companies/:page",
+   component: ExploreCompaniesComponent },
+
+//  <!-- explore-companies routes / End -->
+
+//  <!-- explore-jobs routes / Start -->
+   { path: "explore-jobs", redirectTo: "explore-jobs/1", pathMatch: "full" },
+   { path: "explore-jobs/:page",
+    component: ExploreJobsComponent },
+
+//  <!-- explore-jobs routes / End -->
   {
     path: 'company-profile/:id',
     component: CompanyProfileComponent,
@@ -67,11 +77,11 @@ const routes: Routes = [
     path: 'user-profile',
     component: UserProfileComponent ,
   },
-  {
-    path: 'explore-jobs',
-    component: ExploreJobsComponent,
+  // {
+  //   path: 'explore-jobs',
+  //   component: ExploreJobsComponent,
  
-  },
+  // },
   {
     path: 'employee-signup',
     component: EmployeeSignupComponent,
