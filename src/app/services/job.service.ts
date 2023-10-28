@@ -22,6 +22,10 @@ export class JobService {
     const apiUrl = `${environment.API_URL}/jobs?page=${page}`;
     return this.httpClient.get(apiUrl, {headers: this.getHeaders()});
   }
+  applyJobFilter(page: number,params): Observable<any> {
+    const apiUrl = `${environment.API_URL}/jobs/apply?page=${page}`;
+    return this.httpClient.get(apiUrl, { params });
+  }
 
   getJobByID(id: number): Observable<any> {
     const apiUrl = `${environment.API_URL}/job-profile/${id}`;
