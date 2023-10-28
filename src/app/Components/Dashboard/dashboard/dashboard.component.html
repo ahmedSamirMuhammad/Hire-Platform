@@ -1,2 +1,3 @@
-<app-company-dashboard *ngIf="userType==='cmp'"></app-company-dashboard>
-<app-employee-dashboard *ngIf="userType==='emp'"></app-employee-dashboard>
+<ng-container *ngIf="renderComponent">
+<router-outlet></router-outlet>
+</ng-container>

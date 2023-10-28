@@ -1,0 +1,59 @@
+.pagiPre:before {
+    content: "\e910";
+}
+.pagiNex:before {
+    content: "\e912";
+}
+
+.pagiButtons {
+    display: flex;
+    margin: 0;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.12);
+    height: 48px;
+    padding: 6px;
+}
+.paginationBtn:hover, .pagiPre:hover {
+    background-color: #66676b;
+    color: #fff;
+	}
+.paginationBtn:hover, .pagiNex:hover {
+    background-color: #66676b;
+    color: #fff;
+}
+.paginationBtn, .pagiPre, .pagiNex{
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 18px;
+    background-color: #f0f0f0;
+    color: #808080;
+    display: inline-block;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: "Feather-Icons";
+    flex: 1;
+    min-width: 36px;
+    max-width: 36px;
+    transition: 0.3s;
+}
+.pagiButtons input,
+.pagiButtons .pagiText {
+    outline: 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    width: 50px;
+    height: 36px;
+    color: #808080;
+    line-height: 36px;
+    margin: 0 !important;
+    padding: 0 5px;
+    border: none;
+    box-shadow: none;
+    display: inline-block;
+    flex-grow: 1;
+    box-shadow: none !important;
+}

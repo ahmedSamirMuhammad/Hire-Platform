@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
+import { initSynchronousFactory } from './init-synchronous.factory';
 
 
 
@@ -18,14 +19,13 @@ import { ContactUsComponent } from './Components/contact-us/contact-us.component
 import { JobProfileComponent } from './Components/Profiles/job-profile/job-profile/job-profile.component';
 import { ExploreCompaniesComponent } from './Components/Explore/explore-companies/explore-companies/explore-companies.component';
 import { BookmarksComponent } from './Components/Dashboard/employee-dashboard/bookmarks/bookmarks.component';
-import { ReviewsComponent } from './Components/Dashboard/employee-dashboard/reviews/reviews.component';
+import { ReviewsComponent } from './Components/Dashboard/reviews/reviews.component';
 import { MessagesComponent } from './Components/Dashboard/messages/messages.component';
 import { ManageJobsComponent } from './Components/Dashboard/company-dashboard/manage-jobs/manage-jobs.component';
 import { ManageCandidatesComponent } from './Components/Dashboard/company-dashboard/manage-candidates/manage-candidates.component';
 import { PostJobComponent } from './Components/Dashboard/company-dashboard/post-job/post-job.component';
 import { SidebarComponent } from './Components/Dashboard/sidebar/sidebar.component';
 import { SummaryComponent } from './Components/Dashboard/summary/summary.component';
-import { CompanyDashboardComponent } from './Components/Dashboard/company-dashboard/company-dashboard.component';
 import { JobComponent } from './Components/Dashboard/company-dashboard/job/job.component';
 import { LettersListComponent } from './Components/Explore/explore-companies/letters-list/letters-list.component';
 import { CompaniesListComponent } from './Components/Explore/explore-companies/companies-list/companies-list.component';
@@ -36,7 +36,6 @@ import { CompanyOpenjobsComponent } from './Components/Profiles/company-profile/
 import { CompanyReviewsComponent } from './Components/Profiles/company-profile/company-reviews/company-reviews.component';
 import { CompanySidebarComponent } from './Components/Profiles/company-profile/company-sidebar/company-sidebar.component';
 import { DashboardComponent } from './Components/Dashboard/dashboard/dashboard.component';
-import { EmployeeDashboardComponent } from './Components/Dashboard/employee-dashboard/employee-dashboard.component';
 import { ProfileSettingComponent } from './Components/Dashboard/profile-setting/profile-setting.component';
 import { DashboardFooterComponent } from './Components/Dashboard/company-dashboard/dashboard-footer/dashboard-footer.component';
 import { CandidateComponent } from './Components/Dashboard/company-dashboard/candidate/candidate.component';
@@ -59,7 +58,8 @@ import { CompanySignupComponent } from './Components/Authentications/signup/comp
 import { LoginComponent } from './Components/Authentications/login/login.component';
 import { ForgetPasswordComponent } from './Components/Authentications/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Components/Authentications/reset-password/reset-password.component';
-    
+import { PaginationComponent } from './Components/pagination/pagination.component';
+
 
 @NgModule({
   declarations: [
@@ -84,12 +84,8 @@ import { ResetPasswordComponent } from './Components/Authentications/reset-passw
     CitiesComponent,
     PaymentPlansComponent,
     IndexComponent,
-
-
-    CompanyDashboardComponent,
     JobComponent,
     DashboardComponent,
-    EmployeeDashboardComponent,
     ProfileSettingComponent,
     DashboardFooterComponent,
     CandidateComponent,
@@ -112,10 +108,15 @@ import { ResetPasswordComponent } from './Components/Authentications/reset-passw
     LoginComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-       
-   ],
+    PaginationComponent,
+
+	],
+
   imports: [BrowserModule, AppRoutingModule, NgbModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule,ToastrModule, ToastrModule.forRoot(),FormsModule],
-  providers: [],
-  bootstrap: [AppComponent],
+	providers: [
+
+  ],
+	bootstrap: [AppComponent],
+
 })
 export class AppModule {}
