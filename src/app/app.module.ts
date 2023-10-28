@@ -54,15 +54,14 @@ import { IndexComponent } from './Components/Home/index/index.component';
 import { UserProfileComponent } from './Components/Profiles/user-profile/user-profile.component';
 import { EmployeeSignupComponent } from './Components/Authentications/signup/employee-signup/employee-signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { CompanySignupComponent } from './Components/Authentications/signup/company-signup/company-signup.component';
-import { LoginComponent } from './Components/Authentications/login/login.component';
+
 import { ForgetPasswordComponent } from './Components/Authentications/forget-password/forget-password.component';
 import { ResetPasswordComponent } from './Components/Authentications/reset-password/reset-password.component';
     
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CompanySettingsComponent } from './Components/Dashboard/company-dashboard/company-settings/company-settings.component';
+import { LoginComponent } from './Components/Authentications/login/login.component';
 
 
 @NgModule({
@@ -116,26 +115,25 @@ import { CompanySettingsComponent } from './Components/Dashboard/company-dashboa
     LoginComponent,
     ForgetPasswordComponent,
     ResetPasswordComponent,
-       
-   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule,ReactiveFormsModule,HttpClientModule,BrowserAnimationsModule,ToastrModule, ToastrModule.forRoot(),FormsModule],
     CandidateComponent,
     CompanySettingsComponent,
-    
+       
+   ],
+  imports: [
+    BrowserModule
+    , AppRoutingModule, 
+    NgbModule
+    ,ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule, 
+    ToastrModule.forRoot(),
+    FormsModule],
+   
   
 
     
-   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FormsModule
-    
-
-  ],
+   
   providers: [],
   bootstrap: [AppComponent],
 })

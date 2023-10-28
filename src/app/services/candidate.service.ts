@@ -8,14 +8,23 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 export class CandidateService {
 
   constructor(private httpClient :HttpClient) { }
+  getHeaders() {
+		const token = localStorage.getItem("token");
+		return new HttpHeaders({
+			authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		});
+	}
 
   candidatesApi:string = 'http://localhost:8000/api/candidates';
 
   httpHeaders = new HttpHeaders().set('content-Type','application/json');
 
-  getAllCandidates(headers:any):Observable<any>{
+  getAllCandidates():Observable<any>{
     
-    return this.httpClient.get(this.candidatesApi);
+    return this.httpClient.get(this.candidatesApi , {
+			headers: this.getHeaders(),
+		});
   }
 
 

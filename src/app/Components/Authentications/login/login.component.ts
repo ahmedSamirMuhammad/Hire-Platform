@@ -71,6 +71,7 @@ export class LoginComponent {
                 this.name = this.data.data.name;
                 localStorage.setItem('token', this.token);
                 localStorage.setItem('name', this.name);
+                localStorage.setItem('role', 'emp');
                 this.router.navigate(['/']);
                 this.toastr.success(JSON.stringify(this.data.msg), JSON.stringify(this.data.status), {
                   timeOut: 2000,
@@ -94,6 +95,8 @@ export class LoginComponent {
               if (this.data.status === 200) {
                 this.token = this.data.data.token;
                 localStorage.setItem('token', this.token);
+                localStorage.setItem('role', 'cmp');
+
                 this.router.navigate(['/']);
                 this.toastr.success(JSON.stringify(this.data.msg), JSON.stringify(this.data.status), {
                   timeOut: 2000,

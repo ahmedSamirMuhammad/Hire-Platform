@@ -15,12 +15,10 @@ export class ManageJobsComponent {
   }
   jobs:any = [];
   ngOnInit():void{
-    const headers = new HttpHeaders({
-      'Authorization': '4|8QGwgrSAETNQodopxnoffbBEVOWaGiP3G01aysXS5b78b5a5'
-    });
     
-    this.jobCrud.getAllJobs({ headers }).subscribe( (res)=>{
-      this.jobs = res;
+    
+    this.jobCrud.getAllJobs().subscribe( (res)=>{
+      this.jobs = res.data;
       console.log(this.jobs);
       })
       

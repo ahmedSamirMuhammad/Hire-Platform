@@ -11,16 +11,15 @@ export class ManageCandidatesComponent {
   constructor(private candidateCrud:CandidateService){
 
   }
-  candidates:any = [];
+  candidates:any[] = [];
   ngOnInit():void{
-    const headers = new HttpHeaders({
-      'Authorization': '4|8QGwgrSAETNQodopxnoffbBEVOWaGiP3G01aysXS5b78b5a5'
-    });
+
     
-    this.candidateCrud.getAllCandidates({ headers }).subscribe( (res)=>{
-      this.candidates = res;
+    this.candidateCrud.getAllCandidates().subscribe( (res)=>{
+      this.candidates = res.data;
       console.log(this.candidates);
       })
       
   }
+
 }

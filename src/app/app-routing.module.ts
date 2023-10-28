@@ -25,7 +25,7 @@ import { ResetPasswordComponent } from './Components/Authentications/reset-passw
 import { ManageCandidatesComponent } from './Components/Dashboard/company-dashboard/manage-candidates/manage-candidates.component';
 import { ManageJobsComponent } from './Components/Dashboard/company-dashboard/manage-jobs/manage-jobs.component';
 import { PostJobComponent } from './Components/Dashboard/company-dashboard/post-job/post-job.component';
-import { ProfileSettingComponent } from './Components/Dashboard/profile-setting/profile-setting.component';
+import { CompanySettingsComponent } from './Components/Dashboard/company-dashboard/company-settings/company-settings.component';
 
 const routes: Routes = [
   {
@@ -47,7 +47,6 @@ const routes: Routes = [
 	component: DashboardComponent,
 	children: [
 			{ path: "", redirectTo: "summary", pathMatch: "full" },
-			{ path: "settings", component: ProfileSettingComponent },
 			{ path: 'messages', component: MessagesComponent},
 			{ path: 'summary', component: SummaryComponent},
 			{ path: 'bookmarks', component: BookmarksComponent},
@@ -98,7 +97,22 @@ const routes: Routes = [
   {
     path: 'reset-password',
     component: ResetPasswordComponent ,
-  }
+  },
+  {
+    path: 'dashboard/jobs',
+    component: ManageJobsComponent ,
+  },
+  {
+    path: 'dashboard/candidates',
+    component: ManageCandidatesComponent ,
+  },
+  {
+    path: 'dashboard/postJob',
+    component: PostJobComponent ,
+  },
+  { path: 'dashboard/user-settings', component: ProfileSettingComponent },
+  { path: 'dashboard/company-settings', component: CompanySettingsComponent },
+  
 ];
 
 @NgModule({

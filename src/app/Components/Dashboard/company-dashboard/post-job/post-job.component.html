@@ -52,15 +52,17 @@
                   <div class="col-xl-4">
                     <div class="submit-field">
                       <h5>Job Type</h5>
-                      <select
+                      <select 
                         formControlName="type"
                         class="selectpicker with-border"
                         data-size="7"
                         title="Select Job Type"
                       >
-                        <option>Full Time</option>
-                        <option>Part Time</option>
-                        <option>Internship</option>
+                        <option value="full_time">Full Time</option>
+                        <option value="part_time">Part Time</option>
+                        <option value="internship">Internship</option>
+
+                        
                       </select>
                     </div>
                   </div>
@@ -69,14 +71,14 @@
                     <div class="submit-field">
                       <h5>Job Category</h5>
                       <select
-                        formControlName="category"
+                      *ngFor="let category of categories" 
+                        formControlName="category_id"
                         class="selectpicker with-border"
                         data-size="7"
                         title="Select Category"
                         required
                       >
-                        <option>IT and Computers</option>
-                        <option>Accounting and Finance</option>
+                      <option value="{{ category.id }}">{{ category.name }}</option>
                       </select>
                     </div>
                   </div>

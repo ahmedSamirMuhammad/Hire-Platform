@@ -9,18 +9,33 @@ export class JobCrudService {
 
   constructor(private httpClient :HttpClient) { }
 
-  jobApi:string = 'http://localhost:8000/api/jobs';
+  jobApi:string = 'http://localhost:8000/api/getAllJobs';
 
   httpHeaders = new HttpHeaders().set('content-Type','application/json');
 
-  getAllJobs(headers:any):Observable<any>{
+
+  getHeaders() {
+		const token = localStorage.getItem("token");
+		return new HttpHeaders({
+			authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		});
+	}
+
+  getAllJobs():Observable<any>{
     
-    return this.httpClient.get(this.jobApi);
+    
+    return this.httpClient.get(this.jobApi , {
+			headers: this.getHeaders(),
+		});
   }
 
   addJob(data:any):Observable<any>{
     let APIUrl = this.jobApi;
-    return this.httpClient.post(APIUrl,data).pipe(catchError(this.handelError));
+    return this.httpClient.post(APIUrl,data,{
+			headers: this.getHeaders(),
+		}
+    ).pipe(catchError(this.handelError));
   }
 
 
@@ -64,4 +79,7 @@ export class JobCrudService {
     }
     return throwError(errMsg); 
   }
+
+
+  
 }

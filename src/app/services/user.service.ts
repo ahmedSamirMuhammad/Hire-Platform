@@ -14,11 +14,19 @@ export class UserService {
 	httpHeaders = new HttpHeaders().set('content-Type','application/json');
   
 	
-  
+	getHeaders() {
+		const token = localStorage.getItem("token");
+		return new HttpHeaders({
+			authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		});
+	}
   
 	getUserData():Observable<any>{
 	  let APIUrl = `${this.userApi}`;
-	  return this.httpClient.get(APIUrl,{headers:this.httpHeaders})
+	  return this.httpClient.get(APIUrl,{
+		headers: this.getHeaders(),
+	})
 	  .pipe(map(
 		(res:any)=>{
 		  return res || {};
@@ -30,15 +38,19 @@ export class UserService {
   
 	updateUserData(data:any):Observable<any>{
 	  let APIUrl = `${this.userApi}`;
-	  return this.httpClient.put(APIUrl,data,{headers:this.httpHeaders})
+	  return this.httpClient.put(APIUrl,data,{
+		headers: this.getHeaders(),
+	})
 	  .pipe(
 		catchError(this.handelError)
 		);
 	}
   
-	deleteJob():Observable<any>{
+	deleteUser():Observable<any>{
 	  let APIUrl = `${this.userApi}`;
-	  return this.httpClient.delete(APIUrl,{headers:this.httpHeaders})
+	  return this.httpClient.delete(APIUrl,{
+		headers: this.getHeaders(),
+	})
 	  .pipe(
 		catchError(this.handelError)
 		);

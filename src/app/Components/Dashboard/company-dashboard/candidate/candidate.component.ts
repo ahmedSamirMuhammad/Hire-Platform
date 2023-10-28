@@ -8,11 +8,15 @@ import{HttpHeaders} from'@angular/common/http'
   styleUrls: ['./candidate.component.scss']
 })
 export class CandidateComponent {
-  @Input() candidate :any;
+  @Input() candidate: any;
+
   constructor(private candidateCrud : CandidateService){
 
   }
-
+ ngOnInit(){
+  console.log(`from child  ${this.candidate}`);
+  
+}
   delete(id:any){
     this.candidateCrud.deleteCandidate(id).subscribe( res=>{
       console.log('deleted');

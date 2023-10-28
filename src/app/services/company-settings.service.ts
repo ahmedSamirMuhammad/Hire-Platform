@@ -8,6 +8,13 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 export class CompanySettingsService {
 
   constructor(private httpClient :HttpClient) { }
+  getHeaders() {
+	const token = localStorage.getItem("token");
+	return new HttpHeaders({
+		authorization: `Bearer ${token}`,
+		"Content-Type": "application/json",
+	});
+}
 
   cmpApi:string = 'http://localhost:8000/api/companySettings';
 
@@ -15,7 +22,9 @@ export class CompanySettingsService {
 
   getCmpData():Observable<any>{
 	  let APIUrl = `${this.cmpApi}`;
-	  return this.httpClient.get(APIUrl,{headers:this.httpHeaders})
+	  return this.httpClient.get(APIUrl,{
+		headers: this.getHeaders(),
+	})
 	  .pipe(map(
 		(res:any)=>{
 		  return res || {};
@@ -27,7 +36,9 @@ export class CompanySettingsService {
 
   updateCmpData(data:any):Observable<any>{
 	  let APIUrl = `${this.cmpApi}`;
-	  return this.httpClient.put(APIUrl,data,{headers:this.httpHeaders})
+	  return this.httpClient.put(APIUrl,data,{
+		headers: this.getHeaders(),
+	})
 	  .pipe(
 		catchError(this.handelError)
 		);
