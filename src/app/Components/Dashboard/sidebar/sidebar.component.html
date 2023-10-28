@@ -23,7 +23,7 @@
 							<a><i class="icon-material-outline-question-answer"></i>
 								Messages <span class="nav-tag">2</span></a>
 						</li>
-						<li routerLink="/dashboard/bookmarks" routerLinkActive="active" *ngIf="userType=='employee'">
+						<li routerLink="/dashboard/bookmarks" routerLinkActive="active" *ngIf="storedRole=='emp'">
 							<a><i class="icon-material-outline-star-border"></i>
 								Bookmarks</a>
 						</li>
@@ -38,7 +38,7 @@
 								Jobs</a>
 							<ul>
 								<li>
-									<a  routerLink="/dashboard/jobs">Manage Jobs
+									<a routerLink="/dashboard/jobs">Manage Jobs
 										<span class="nav-tag">3</span></a>
 								</li>
 								<li>
@@ -51,18 +51,21 @@
 						</li>
 					</ul>
 
-          <ul data-submenu-title="Account">
+					<ul data-submenu-title="Account">
 
 
 
-            <li><a [routerLink]="storedRole === 'emp' ? '/dashboard/user-settings' : '/dashboard/company-settings'"><i class="icon-material-outline-settings"></i> Settings</a></li>
-            <li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i> Logout</a></li>
-          </ul>
+						<li><a
+								[routerLink]="storedRole === 'emp' ? '/dashboard/user-settings' : '/dashboard/company-settings'"><i
+									class="icon-material-outline-settings"></i> Settings</a></li>
+						<li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i>
+								Logout</a></li>
+					</ul>
 
-        </div>
-      </div>
-      <!-- sideBar / End -->
+				</div>
+			</div>
+			<!-- sideBar / End -->
 
-    </div>
-  </div>
+		</div>
+	</div>
 </div>

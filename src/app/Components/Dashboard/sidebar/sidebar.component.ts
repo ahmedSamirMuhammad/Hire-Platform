@@ -7,4 +7,5 @@ import { Component } from "@angular/core";
 })
 export class SidebarComponent {
 	storedRole: string = localStorage.getItem("role");
+	// storedRole: string = 'emp';
 }

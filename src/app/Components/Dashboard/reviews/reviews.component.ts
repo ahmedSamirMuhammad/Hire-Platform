@@ -12,7 +12,7 @@ import { BehaviorSubject } from "rxjs";
 })
 export class ReviewsComponent {
 	reviews;
-	userType = "company";
+	userType = "cmp";
 	paginationData: BehaviorSubject<any> = new BehaviorSubject({});
 	constructor(
 		private dashboardHttpService: DashboardHttpService,
@@ -20,7 +20,7 @@ export class ReviewsComponent {
 		private activatedRoute: ActivatedRoute
 	) {}
 	ngOnInit() {
-		this.userType = localStorage.getItem('user_type');
+		this.userType = localStorage.getItem('role');
 		this.getReviews();
 		// console.log($('#small-dialog-1'));
 	}

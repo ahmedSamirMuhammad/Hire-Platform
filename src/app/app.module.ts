@@ -1,6 +1,6 @@
+import { SidebarComponent } from "./Components/Dashboard/sidebar/sidebar.component";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./Components/includes/header/header.component";
@@ -22,7 +22,7 @@ import { MessagesComponent } from "./Components/Dashboard/messages/messages.comp
 import { ManageJobsComponent } from "./Components/Dashboard/company-dashboard/manage-jobs/manage-jobs.component";
 import { ManageCandidatesComponent } from "./Components/Dashboard/company-dashboard/manage-candidates/manage-candidates.component";
 import { PostJobComponent } from "./Components/Dashboard/company-dashboard/post-job/post-job.component";
-import { SidebarComponent } from "./Components/Dashboard/sidebar/sidebar.component";
+
 import { SummaryComponent } from "./Components/Dashboard/summary/summary.component";
 import { JobComponent } from "./Components/Dashboard/company-dashboard/job/job.component";
 import { LettersListComponent } from "./Components/Explore/explore-companies/letters-list/letters-list.component";
@@ -65,6 +65,7 @@ import { ResetPasswordComponent } from "./Components/Authentications/reset-passw
 		HeaderComponent,
 		FooterComponent,
 
+		SidebarComponent,
 		Error404Component,
 		ContactUsComponent,
 		JobProfileComponent,
@@ -75,7 +76,6 @@ import { ResetPasswordComponent } from "./Components/Authentications/reset-passw
 		ManageJobsComponent,
 		ManageCandidatesComponent,
 		PostJobComponent,
-		SidebarComponent,
 		SummaryComponent,
 		JobCategoriesComponent,
 		JobsComponent,
@@ -106,6 +106,8 @@ import { ResetPasswordComponent } from "./Components/Authentications/reset-passw
 		LoginComponent,
 		ForgetPasswordComponent,
 		ResetPasswordComponent,
+		PaginationComponent,
+		CompanySettingsComponent
 	],
 	imports: [
 		BrowserModule,
