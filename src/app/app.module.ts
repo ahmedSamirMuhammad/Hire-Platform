@@ -41,13 +41,24 @@ import { JobDescriptionComponent } from './Components/Profiles/job-profile/job-d
 import { JobSidebarComponent } from './Components/Profiles/job-profile/job-sidebar/job-sidebar.component';
 import { ExploreJobsComponent } from './Components/Explore/explore-jobs/explore-jobs/explore-jobs.component';
 import { MatchedJobsComponent } from './Components/Explore/explore-jobs/matched-jobs/matched-jobs.component';
+////////////////////////Home /////////////////////////////////////////////////////////////////////////
+// import { JobCategoriesComponent } from './Components/Home/job-categories/job-categories.component';
+// import { JobsComponent } from './Components/Home/jobs/jobs.component';
+// import { CitiesComponent } from './Components/Home/cities/cities.component';
+// import { PaymentPlansComponent } from './Components/Home/payment-plans/payment-plans.component';
 
-import { JobCategoriesComponent } from './Components/Home/job-categories/job-categories.component';
-import { JobsComponent } from './Components/Home/jobs/jobs.component';
-import { CitiesComponent } from './Components/Home/cities/cities.component';
-import { PaymentPlansComponent } from './Components/Home/payment-plans/payment-plans.component';
-import { IndexComponent } from './Components/Home/index/index.component';
-import { UserProfileComponent } from './Components/Profiles/user-profile/user-profile.component';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////// profile component////////////////////////////////////////////////
+// import { UserProfileComponent } from './Components/Profiles/user-profile/user-profile.component';
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+import { HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { SearchResultsComponent } from './Components/search-results/search-results.component';
+import { IndexModule } from './Components/Home/index/index.module';
+import { UserProfileModule } from './Components/Profiles/user-profile/user-profile.module';
+
 
 
 
@@ -71,11 +82,11 @@ import { UserProfileComponent } from './Components/Profiles/user-profile/user-pr
     PostJobComponent,
     SidebarComponent,
     SummaryComponent,
-    JobCategoriesComponent,
-    JobsComponent,
-    CitiesComponent,
-    PaymentPlansComponent,
-    IndexComponent,
+    // JobCategoriesComponent,
+    // JobsComponent,
+    // CitiesComponent,
+    // PaymentPlansComponent,
+
 
 
     CompanyDashboardComponent,
@@ -98,9 +109,11 @@ import { UserProfileComponent } from './Components/Profiles/user-profile/user-pr
     JobSidebarComponent,
     ExploreJobsComponent,
     MatchedJobsComponent,
-    UserProfileComponent,
+    // UserProfileComponent,
+    SearchResultsComponent,
+
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, NgbModule , HttpClientModule, FormsModule , IndexModule , UserProfileModule],
   providers: [],
   bootstrap: [AppComponent],
 })
