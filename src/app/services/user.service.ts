@@ -1,14 +1,18 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, catchError, map, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
 	providedIn: "root",
 })
 export class UserService {
-	userType: string = "";
-	api = "http://127.0.0.1:8000/api";
-	constructor(private http: HttpClient) {}
+	constructor(private httpClient :HttpClient) { }
+
+	userApi:string = 'http://localhost:8000/api/userSettings';
+
+	httpHeaders = new HttpHeaders().set('content-Type','application/json');
+
+
 	getHeaders() {
 		const token = localStorage.getItem("token");
 		return new HttpHeaders({
@@ -16,21 +20,53 @@ export class UserService {
 			"Content-Type": "application/json",
 		});
 	}
-	getUserType() {
-		const token = localStorage.getItem("token");
-		const headers = new HttpHeaders()
-			.set("Content-Type", "application/json")
-			.set("Authorization", `Bearer ${token}`);
-		this.http
-			.post(`${this.api}/get-user-type`,'', { headers })
-			.subscribe((response: any) => {
-				if (response.status === 200) {
-					this.userType = response.data.type;
-					console.log(response);
-				} else {
-					console.error(response.message);
-				}
-			});
-		return this.userType;
+
+	getUserData():Observable<any>{
+	  let APIUrl = `${this.userApi}`;
+	  return this.httpClient.get(APIUrl,{
+		headers: this.getHeaders(),
+	})
+	  .pipe(map(
+		(res:any)=>{
+		  return res || {};
+		}
+		),
+		catchError(this.handelError)
+		);
 	}
+
+	updateUserData(data:any):Observable<any>{
+	  let APIUrl = `${this.userApi}`;
+	  return this.httpClient.put(APIUrl,data,{
+		headers: this.getHeaders(),
+	})
+	  .pipe(
+		catchError(this.handelError)
+		);
+	}
+
+	deleteUser():Observable<any>{
+	  let APIUrl = `${this.userApi}`;
+	  return this.httpClient.delete(APIUrl,{
+		headers: this.getHeaders(),
+	})
+	  .pipe(
+		catchError(this.handelError)
+		);
+	}
+
+
+
+
+	handelError(error:HttpErrorResponse){
+	  let errMsg = '';
+	  if(error.error instanceof ErrorEvent){
+		errMsg = error.error.message;
+	  }else{
+		errMsg = `Error Code :  ${error.status}`;
+	  }
+	  return throwError(errMsg);
+	}
+
+
 }

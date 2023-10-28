@@ -55,81 +55,70 @@ export class LoginComponent {
 
 	selectedAccountType: string = "company"; // Default to 'company' if none selected
 
-	submit(): void {
-		if (this.form.valid) {
-			if (this.selectedAccountType === "employee") {
-				this.dataService.EmployeeLogin(this.form.value).subscribe(
-					(res) => {
-						this.data = res;
-						if (this.data.status === 200) {
-							this.token = this.data.data.token;
-							this.name = this.data.data.name;
-							localStorage.setItem("token", this.token);
-							localStorage.setItem("name", this.name);
-							localStorage.setItem("user_type",'employee')
-							this.router.navigate(["/"]);
-							this.toastr.success(
-								JSON.stringify(this.data.msg),
-								JSON.stringify(this.data.status),
-								{
-									timeOut: 2000,
-									progressBar: true,
-								}
-							);
-						}
-					},
-					(error) => {
-						// Handle error here
-						this.toastr.error(
-							"Error with your credentials",
-							"401",
-							{
-								timeOut: 5000,
-								progressBar: true,
-							}
-						);
-					}
-				);
-			} else if (this.selectedAccountType === "company") {
-				this.dataService.CompanyLogin(this.form.value).subscribe(
-					(res) => {
-						this.data = res;
-						if (this.data.status === 200) {
-							this.token = this.data.data.token;
-							localStorage.setItem("token", this.token);
-							localStorage.setItem("user_type",'company')
+  submit(): void {
+    if (this.form.valid) {
+      if (this.selectedAccountType === 'employee') {
+        this.dataService.EmployeeLogin(this.form.value)
+          .subscribe(
+            (res) => {
+              this.data = res;
+              if (this.data.status === 200) {
+                this.token = this.data.data.token;
+                this.name = this.data.data.name;
+                localStorage.setItem('token', this.token);
+                localStorage.setItem('name', this.name);
+                localStorage.setItem('role', 'emp');
+                this.router.navigate(['/']);
+                this.toastr.success(JSON.stringify(this.data.msg), JSON.stringify(this.data.status), {
+                  timeOut: 2000,
+                  progressBar: true,
+                });
+              }
+            },
+            (error) => {
+              // Handle error here
+              this.toastr.error('Error with your credentials', '401', {
+                timeOut: 5000,
+                progressBar: true,
+              });
+            }
+          );
+      } else if (this.selectedAccountType === 'company') {
+        this.dataService.CompanyLogin(this.form.value)
+          .subscribe(
+            (res) => {
+              this.data = res;
+              if (this.data.status === 200) {
+                this.token = this.data.data.token;
+                localStorage.setItem('token', this.token);
+                localStorage.setItem('role', 'cmp');
 
-							this.router.navigate(["/"]);
-							this.toastr.success(
-								JSON.stringify(this.data.msg),
-								JSON.stringify(this.data.status),
-								{
-									timeOut: 2000,
-									progressBar: true,
-								}
-							);
-						}
-					},
-					(error) => {
-						// Handle error here
-						this.toastr.error(
-							"Error with your credentials",
-							"401",
-							{
-								timeOut: 5000,
-								progressBar: true,
-							}
-						);
-					}
-				);
-			}
-		} else {
-			this.toastr.error("Email and Password", "Invalid Form", {
-				timeOut: 2000,
-				progressBar: true,
-			});
-		}
-	}
+                this.router.navigate(['/']);
+                this.toastr.success(JSON.stringify(this.data.msg), JSON.stringify(this.data.status), {
+                  timeOut: 2000,
+                  progressBar: true,
+                });
+              }
+            },
+            (error) => {
+              // Handle error here
+              this.toastr.error('Error with your credentials', '401', {
+                timeOut: 5000,
+                progressBar: true,
+              });
+            }
+          );
+      }
+    } else {
+      this.toastr.error('Email and Password', 'Invalid Form', {
+        timeOut: 2000,
+        progressBar: true,
+      });
+    }
+  }
+
+
+
 
 	// loginGoogle(): void {
 	//   this.dataService.loginWithGoogle().subscribe(
