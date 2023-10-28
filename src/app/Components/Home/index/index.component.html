@@ -5,7 +5,7 @@
     <!-- add class "disable-gradient" to enable consistent background overlay -->
     <div class="intro-banner" data-background-image="../../../../assets/images/home-background.jpg">
         <div class="container">
-            
+
             <!-- Intro Headline -->
             <div class="row">
                 <div class="col-md-12">
@@ -18,54 +18,56 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Search Bar -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="intro-banner-search-form margin-top-95">
-    
-                        <!-- Search Field -->
-                        <div class="intro-search-field with-autocomplete">
-                            <label for="autocomplete-input" class="field-title ripple-effect">Where?</label>
-                            <div class="input-with-icon">
-                                <input id="autocomplete-input" type="text" placeholder="Online Job">
-                                <i class="icon-material-outline-location-on"></i>
-                            </div>
-                        </div>
-    
-                        <!-- Search Field -->
-                        <div class="intro-search-field">
-                            <label for ="intro-keywords" class="field-title ripple-effect">What job you want?</label>
-                            <input id="intro-keywords" type="text" placeholder="Job Title or Keywords">
-                        </div>
-    
-                        <!-- Button -->
-                        <div class="intro-search-button">
-                            <button class="button ripple-effect" onclick="window.location.href='jobs-list-layout-full-page-map.html'">Search</button>
+                  <div class="intro-banner-search-form margin-top-95">
+                    <!-- Search Field -->
+                    <div class="intro-search-field with-autocomplete">
+                        <label for="autocomplete-input" class="field-title ripple-effect">Where?</label>
+                        <div class="input-with-icon">
+                            <input id="autocomplete-input" type="text" placeholder="Online Job" [(ngModel)]="location">
+                            <i class="icon-material-outline-location-on"></i>
                         </div>
                     </div>
+
+                    <!-- Search Field -->
+                    <div class="intro-search-field">
+                        <label for="intro-keywords" class="field-title ripple-effect">What job do you want?</label>
+                        <input id="intro-keywords" type="text" placeholder="Job Title or Keywords" [(ngModel)]="query">
+                    </div>
+
+                    <!-- Button -->
+                    <div class="intro-search-button">
+                        <button class="button ripple-effect" (click)="search()"  >Search</button>
+                    </div>
+                </div>
+
+
                 </div>
             </div>
-    
+
             <!-- Stats -->
             <div class="row">
                 <div class="col-md-12">
                     <ul class="intro-stats margin-top-45 hide-under-992px">
                         <li>
-                            <strong class="counter">1,586</strong>
+                            <strong class="counter">{{numberOfJobs}}</strong>
                             <span>Jobs Posted</span>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
-    
+
         </div>
     </div>
+
 
 <app-job-categories></app-job-categories>
 <app-jobs></app-jobs>
 <app-cities></app-cities>
-<app-payment-plans></app-payment-plans> 
+<app-payment-plans></app-payment-plans>
 
 

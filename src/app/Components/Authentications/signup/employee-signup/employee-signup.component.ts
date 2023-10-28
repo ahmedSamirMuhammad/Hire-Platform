@@ -47,8 +47,8 @@ export class EmployeeSignupComponent {
     return null;
   };
 
-   
-         
+
+
   submit(): void {
     if (this.form.valid) {
       this.dataService.SignupUser(this.form.value)
@@ -81,5 +81,5 @@ export class EmployeeSignupComponent {
         });
     }
   }
-  
+
 }
