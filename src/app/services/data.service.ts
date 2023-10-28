@@ -18,7 +18,7 @@ export class DataService {
   }
 
   SignupCompany(data){
-    return this.http.post('http://127.0.0.1:8000/api/company-register',data)
+	  return this.http.post('http://127.0.0.1:8000/api/company-register', data)
   }
 
   EmployeeLogin(data){
@@ -31,7 +31,7 @@ export class DataService {
   }
 
   loginWithGoogle(){
-    return this.http.get('http://127.0.0.1:8000/api/auth/google/redirect'); 
+    return this.http.get('http://127.0.0.1:8000/api/auth/google/redirect');
    }
 
 
@@ -59,5 +59,5 @@ export class DataService {
 
    }
 
-   
+
 }

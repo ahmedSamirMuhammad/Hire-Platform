@@ -5,7 +5,7 @@
     <!-- Details -->
     <div class="job-listing-description">
       <h3 class="job-listing-title">
-        <a href="#">Frontend React Developer</a>
+        <a href="#">{{ job['title'] }}</a>
 
         <span *ngIf="isexpired" class="dashboard-status-button red"
           >Expired</span
@@ -21,8 +21,7 @@
       <div class="job-listing-footer">
         <ul>
           <li>
-            <i class="icon-material-outline-date-range"></i> Posted on 10 July,
-            2018
+            <i class="icon-material-outline-date-range"></i> Posted on {{ job['created_at'] }}
           </li>
           <li>
             <i class="icon-material-outline-date-range"></i> Expiring on 10
