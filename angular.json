@@ -28,7 +28,8 @@
               "src/styles.css",
               "src/assets/css/style.css",
               "src/assets/css/colors/blue.css",
-              "src/assets/css/invoice.css"
+              "src/assets/css/invoice.css" ,
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",

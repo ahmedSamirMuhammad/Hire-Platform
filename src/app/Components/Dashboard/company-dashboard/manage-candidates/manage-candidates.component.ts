@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CandidateService } from 'src/app/services/candidate.service';
+import{HttpHeaders} from'@angular/common/http'
 
 @Component({
   selector: 'app-manage-candidates',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./manage-candidates.component.scss']
 })
 export class ManageCandidatesComponent {
-  candidates : any[] = [ 1,2,3];
+  constructor(private candidateCrud:CandidateService){
+
+  }
+  candidates:any[] = [];
+  ngOnInit():void{
+
+    
+    this.candidateCrud.getAllCandidates().subscribe( (res)=>{
+      this.candidates = res.data;
+      console.log(this.candidates);
+      })
+      
+  }
+
 }

@@ -1,6 +1,3 @@
-
-
-
 <header id="header-container" class="fullwidth">
 
   <!-- Header -->
@@ -12,7 +9,7 @@
 
         <!-- Logo -->
         <div id="logo">
-          <a routerLink="/"><img class="logo-img"  src="../../../../assets/images/logo.png" alt=""></a>
+          <a routerLink="/"><img class="logo-img" src="../../../../assets/images/logo.png" alt=""></a>
         </div>
 
         <!-- Main Navigation -->
@@ -34,9 +31,9 @@
               </ul>
             </li>
 
-            <li><a href="#">Dashboard</a>
+            <li><a routerLink="/dashboard">Dashboard</a>
               <ul class="dropdown-nav">
-                <li><a routerLink="">Dashboard</a></li>
+                <li><a routerLink="/dashboard">Dashboard</a></li>
                 <li><a routerLink="">Messages</a></li>
                 <li><a routerLink="">Bookmarks</a></li>
                 <li><a routerLink="">Reviews</a></li>
@@ -165,7 +162,7 @@
                     <!-- Notification -->
                     <li class="notifications-not-read">
                       <a routerLink="">
-                        <span class="notification-avatar status-online"><img src="../../../../assets/images/user-avatar-small-03.jpg"
+                        <span class="notification-avatar status-online"><img src="images/user-avatar-small-03.jpg"
                             alt=""></span>
                         <div class="notification-text">
                           <strong>David Peterson</strong>
@@ -179,7 +176,7 @@
                     <!-- Notification -->
                     <li class="notifications-not-read">
                       <a routerLink="">
-                        <span class="notification-avatar status-offline"><img src="../../../../assets/images/user-avatar-small-02.jpg"
+                        <span class="notification-avatar status-offline"><img src="images/user-avatar-small-02.jpg"
                             alt=""></span>
                         <div class="notification-text">
                           <strong>Sindy Forest</strong>
@@ -193,7 +190,7 @@
                     <!-- Notification -->
                     <li class="notifications-not-read">
                       <a routerLink="">
-                        <span class="notification-avatar status-online"><img src="../../../../assets/images/user-avatar-placeholder.png"
+                        <span class="notification-avatar status-online"><img src="images/user-avatar-placeholder.png"
                             alt=""></span>
                         <div class="notification-text">
                           <strong>Marcin Kowalski</strong>
@@ -206,8 +203,7 @@
                 </div>
               </div>
 
-              <a routerLink=""
-                class="header-notifications-button ripple-effect button-sliding-icon">View All Messages<i
+              <a routerLink="" class="header-notifications-button ripple-effect button-sliding-icon">View All Messages<i
                   class="icon-material-outline-arrow-right-alt"></i></a>
             </div>
           </div>
@@ -222,7 +218,8 @@
           <div class="header-notifications user-menu">
             <div class="header-notifications-trigger">
               <a routerLink="">
-                <div class="user-avatar status-online"><img src="../../../../assets/images/user-avatar-small-01.jpg" alt=""></div>
+                <div class="user-avatar status-online"><img src=""
+                    alt=""></div>
               </a>
             </div>
 
@@ -234,9 +231,10 @@
 
                 <!-- User Name / Avatar -->
                 <div class="user-details">
-                  <div class="user-avatar status-online"><img src="../../../../assets/images/user-avatar-small-01.jpg" alt=""></div>
+                  <div class="user-avatar status-online"><img src=""
+                      alt=""></div>
                   <div class="user-name">
-                    Tom Smith <span>Engineer</span>
+                    {{ name }} <span>Engineer</span>
                   </div>
                 </div>
 
@@ -252,8 +250,10 @@
               <ul class="user-menu-small-nav">
                 <li><a routerLink=""><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
                 <li><a routerLink=""><i class="icon-material-outline-settings"></i> Settings</a></li>
-                <li><a routerLink=""><i class="icon-material-outline-power-settings-new"></i> Logout</a>
+                <li><a href="/login" a (click)="logout()"><i class="icon-material-outline-power-settings-new"></i> Logout</a>
                 </li>
+
+
               </ul>
 
             </div>

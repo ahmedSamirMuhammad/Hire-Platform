@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class ExploreJobsComponent {
   jobs_array: Array<any> = [
     {
+      id: 1,
       logo: '/assets/images/company-logo-01.png',
       title: 'Bilingual Event Support Specialist',
       company_name: 'Hexagon',
@@ -16,6 +17,7 @@ export class ExploreJobsComponent {
       date: '12 August 2022',
     },
     {
+      id: 2,
       logo: '/assets/images/company-logo-placeholder.png',
       title: 'Competition Law Officer',
       company_name: 'Laxo',
@@ -24,6 +26,7 @@ export class ExploreJobsComponent {
       date: '20 May 2023',
     },
     {
+      id: 3,
       logo: '/assets/images/company-logo-02.png',
       title: 'Barista and Cashier',
       company_name: 'Coffee',
@@ -32,6 +35,7 @@ export class ExploreJobsComponent {
       date: '02 November 2023',
     },
     {
+      id: 4,
       logo: '/assets/images/company-logo-03.png',
       title: 'Restaurant General Manager',
       company_name: 'King',
@@ -40,6 +44,7 @@ export class ExploreJobsComponent {
       date: '30 January 2023',
     },
     {
+      id: 5,
       logo: '/assets/images/company-logo-04.png',
       title: 'Administrative Assistant',
       company_name: 'Mates',
