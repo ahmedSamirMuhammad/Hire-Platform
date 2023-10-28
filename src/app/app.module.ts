@@ -43,10 +43,9 @@ import { JobSidebarComponent } from "./Components/Profiles/job-profile/job-sideb
 import { ExploreJobsComponent } from "./Components/Explore/explore-jobs/explore-jobs/explore-jobs.component";
 import { MatchedJobsComponent } from "./Components/Explore/explore-jobs/matched-jobs/matched-jobs.component";
 
-// import { JobCategoriesComponent } from "./Components/Home/job-categories/job-categories.component";
 import { JobsComponent } from "./Components/Home/jobs/jobs.component";
 import { CitiesComponent } from "./Components/Home/cities/cities.component";
-// import { PaymentPlansComponent } from "./Components/Home/payment-plans/payment-plans.component";
+
 import { IndexComponent } from "./Components/Home/index/index.component";
 import { UserProfileComponent } from "./Components/Profiles/user-profile/user-profile.component";
 import { EmployeeSignupComponent } from "./Components/Authentications/signup/employee-signup/employee-signup.component";
@@ -69,11 +68,9 @@ import { UserProfileModule } from './Components/Profiles/user-profile/user-profi
 
 @NgModule({
 	declarations: [
-		AppComponent,
-		HeaderComponent,
-		FooterComponent,
-
-    // SignupComponent,
+	AppComponent,
+	HeaderComponent,
+	FooterComponent,
     Error404Component,
     ContactUsComponent,
     JobProfileComponent,
@@ -86,16 +83,11 @@ import { UserProfileModule } from './Components/Profiles/user-profile/user-profi
     PostJobComponent,
     SidebarComponent,
     SummaryComponent,
-    // JobCategoriesComponent,
-    JobsComponent,
-    CitiesComponent,
-    // PaymentPlansComponent,
-    IndexComponent,
+
 
 
 
     JobComponent,
-    // DashboardComponent,
 
     ProfileSettingComponent,
     DashboardFooterComponent,
@@ -113,7 +105,6 @@ import { UserProfileModule } from './Components/Profiles/user-profile/user-profi
     JobSidebarComponent,
     ExploreJobsComponent,
     MatchedJobsComponent,
-    UserProfileComponent,
 	SearchResultsComponent,
 	EmployeeSignupComponent,
 	CompanySignupComponent,

@@ -51,7 +51,7 @@ export class ResetPasswordComponent {
      } )
   }
 
-    
+
 
   submit(): void {
     if (this.form.valid) {
