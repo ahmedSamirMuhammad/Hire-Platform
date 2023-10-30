@@ -33,7 +33,7 @@ import { CompanyAboutComponent } from "./Components/Profiles/company-profile/com
 import { CompanyOpenjobsComponent } from "./Components/Profiles/company-profile/company-openjobs/company-openjobs.component";
 import { CompanyReviewsComponent } from "./Components/Profiles/company-profile/company-reviews/company-reviews.component";
 import { CompanySidebarComponent } from "./Components/Profiles/company-profile/company-sidebar/company-sidebar.component";
-// import { DashboardComponent } from "./Components/Dashboard/dashboard/dashboard.component";
+import { DashboardComponent } from "./Components/Dashboard/dashboard/dashboard.component";
 import { ProfileSettingComponent } from "./Components/Dashboard/profile-setting/profile-setting.component";
 import { DashboardFooterComponent } from "./Components/Dashboard/company-dashboard/dashboard-footer/dashboard-footer.component";
 import { CandidateComponent } from "./Components/Dashboard/company-dashboard/candidate/candidate.component";
@@ -42,7 +42,6 @@ import { JobDescriptionComponent } from "./Components/Profiles/job-profile/job-d
 import { JobSidebarComponent } from "./Components/Profiles/job-profile/job-sidebar/job-sidebar.component";
 import { ExploreJobsComponent } from "./Components/Explore/explore-jobs/explore-jobs/explore-jobs.component";
 import { MatchedJobsComponent } from "./Components/Explore/explore-jobs/matched-jobs/matched-jobs.component";
-
 
 import { EmployeeSignupComponent } from "./Components/Authentications/signup/employee-signup/employee-signup.component";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -54,76 +53,71 @@ import { LoginComponent } from "./Components/Authentications/login/login.compone
 import { ForgetPasswordComponent } from "./Components/Authentications/forget-password/forget-password.component";
 import { ResetPasswordComponent } from "./Components/Authentications/reset-password/reset-password.component";
 
-
-
-import { SearchResultsComponent } from './Components/search-results/search-results.component';
-import { IndexModule } from './Components/Home/index/index.module';
-import { UserProfileModule } from './Components/Profiles/user-profile/user-profile.module';
-
-
+import { SearchResultsComponent } from "./Components/search-results/search-results.component";
+import { IndexModule } from "./Components/Home/index/index.module";
+import { UserProfileModule } from "./Components/Profiles/user-profile/user-profile.module";
 
 @NgModule({
 	declarations: [
-	AppComponent,
-	HeaderComponent,
-	FooterComponent,
-    Error404Component,
-    ContactUsComponent,
-    JobProfileComponent,
-    ExploreCompaniesComponent,
-    BookmarksComponent,
-    ReviewsComponent,
-    MessagesComponent,
-    ManageJobsComponent,
-    ManageCandidatesComponent,
-    PostJobComponent,
-    SidebarComponent,
-    SummaryComponent,
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		Error404Component,
+		ContactUsComponent,
+		JobProfileComponent,
+		ExploreCompaniesComponent,
+		BookmarksComponent,
+		ReviewsComponent,
+		MessagesComponent,
+		ManageJobsComponent,
+		ManageCandidatesComponent,
+		PostJobComponent,
+		SidebarComponent,
+		SummaryComponent,
 
+		JobComponent,
 
+		ProfileSettingComponent,
+		DashboardFooterComponent,
+		CandidateComponent,
+		LettersListComponent,
+		CompaniesListComponent,
+		CompanyProfileComponent,
+		CompanyTitlebarComponent,
+		CompanyAboutComponent,
+		CompanyOpenjobsComponent,
+		CompanyReviewsComponent,
+		CompanySidebarComponent,
+		JobTitlebarComponent,
+		JobDescriptionComponent,
+		JobSidebarComponent,
+		ExploreJobsComponent,
+		MatchedJobsComponent,
+		SearchResultsComponent,
+		EmployeeSignupComponent,
+		CompanySignupComponent,
+		LoginComponent,
+		ForgetPasswordComponent,
+		ResetPasswordComponent,
+		PaginationComponent,
+		CompanySettingsComponent,
+		DashboardComponent,
+	],
 
-
-    JobComponent,
-
-    ProfileSettingComponent,
-    DashboardFooterComponent,
-    CandidateComponent,
-    LettersListComponent,
-    CompaniesListComponent,
-    CompanyProfileComponent,
-    CompanyTitlebarComponent,
-    CompanyAboutComponent,
-    CompanyOpenjobsComponent,
-    CompanyReviewsComponent,
-    CompanySidebarComponent,
-    JobTitlebarComponent,
-    JobDescriptionComponent,
-    JobSidebarComponent,
-    ExploreJobsComponent,
-    MatchedJobsComponent,
-	SearchResultsComponent,
-	EmployeeSignupComponent,
-	CompanySignupComponent,
-	LoginComponent,
-	ForgetPasswordComponent,
-	ResetPasswordComponent,
-	PaginationComponent,
-	CompanySettingsComponent
-  ],
-
-  imports: [
-	BrowserModule,
-	AppRoutingModule,
-	NgbModule,
-	ReactiveFormsModule,
-	HttpClientModule,
-	BrowserAnimationsModule,
-	ToastrModule,
-	ToastrModule.forRoot(),
-	FormsModule,
-	IndexModule , UserProfileModule
-],
-  providers: [],
-  bootstrap: [AppComponent],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		NgbModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+		BrowserAnimationsModule,
+		ToastrModule,
+		ToastrModule.forRoot(),
+		FormsModule,
+		IndexModule,
+		UserProfileModule,
+	],
+	providers: [],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}
