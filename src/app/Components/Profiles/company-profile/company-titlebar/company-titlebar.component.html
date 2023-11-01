@@ -11,9 +11,9 @@
               <h3>{{ company_data.name }} <span>{{ company_data.title }} </span></h3>
               <ul>
                 <li>
-                  <div class="star-rating" [attr.data-rating]="company_data.rating || 0">
-                    <!-- <span class="star" *ngFor="let star of getFilledStars(company_data.rating)"></span>
-                    <span class="star empty" *ngFor="let star of getEmptyStars(company_data.rating)"></span> -->
+                  <div class="star-rating1" [attr.data-rating]="company_data.rating || 0">
+                    <span class="star" *ngFor="let star of getFilledStars(company_data.rating)"></span>
+                    <span class="star empty" *ngFor="let star of getEmptyStars(company_data.rating)"></span>
                   </div>
                 </li>
                 <li>

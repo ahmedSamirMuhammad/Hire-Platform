@@ -1,6 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Observable, catchError, map, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError, map, throwError } from "rxjs";
+import {
+	HttpClient,
+	HttpErrorResponse,
+	HttpHeaders,
+} from "@angular/common/http";
 
 @Injectable({
 	providedIn: "root",
@@ -11,7 +15,7 @@ export class UserService {
 // ******
 // All Apis 
 
-	userApi:string = 'http://localhost:8000/api/userSettings';
+	userApi: string = "http://localhost:8000/api/userSettings";
 
 	SkillsApi:string = 'http://localhost:8000/api/getAllSkills';
 
@@ -61,24 +65,22 @@ export class UserService {
 		);
 	}
 
-	updateUserData(data:any):Observable<any>{
-	  let APIUrl = `${this.userApi}`;
-	  return this.httpClient.put(APIUrl,data,{
-		headers: this.getHeaders(),
-	})
-	  .pipe(
-		catchError(this.handelError)
-		);
+	updateUserData(data: any): Observable<any> {
+		let APIUrl = `${this.userApi}`;
+		return this.httpClient
+			.put(APIUrl, data, {
+				headers: this.getHeaders(),
+			})
+			.pipe(catchError(this.handelError));
 	}
 
-	deleteUser():Observable<any>{
-	  let APIUrl = `${this.userApi}`;
-	  return this.httpClient.delete(APIUrl,{
-		headers: this.getHeaders(),
-	})
-	  .pipe(
-		catchError(this.handelError)
-		);
+	deleteUser(): Observable<any> {
+		let APIUrl = `${this.userApi}`;
+		return this.httpClient
+			.delete(APIUrl, {
+				headers: this.getHeaders(),
+			})
+			.pipe(catchError(this.handelError));
 	}
 
 //end user data methods 

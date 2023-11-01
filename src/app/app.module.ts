@@ -56,6 +56,9 @@ import { ResetPasswordComponent } from "./Components/Authentications/reset-passw
 import { SearchResultsComponent } from "./Components/search-results/search-results.component";
 import { IndexModule } from "./Components/Home/index/index.module";
 import { UserProfileModule } from "./Components/Profiles/user-profile/user-profile.module";
+import { ModalComponent } from './Components/modal/modal.component';
+import { EditReviewsModalContentComponent } from './Components/Dashboard/reviews/edit-reviews-modal-content/edit-reviews-modal-content.component';
+import { RatingStarsComponent } from './Components/rating-stars/rating-stars.component';
 
 @NgModule({
 	declarations: [
@@ -102,6 +105,9 @@ import { UserProfileModule } from "./Components/Profiles/user-profile/user-profi
 		PaginationComponent,
 		CompanySettingsComponent,
 		DashboardComponent,
+  ModalComponent,
+  EditReviewsModalContentComponent,
+  RatingStarsComponent,
 	],
 
 	imports: [
@@ -117,7 +123,7 @@ import { UserProfileModule } from "./Components/Profiles/user-profile/user-profi
 		IndexModule,
 		UserProfileModule,
 	],
-	providers: [],
+	providers: [AuthGuard],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}

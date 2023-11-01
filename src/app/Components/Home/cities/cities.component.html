@@ -10,16 +10,61 @@
 				</div>
 			</div>
 
-			<div class="col-xl-3 col-md-6" *ngFor="let city of cities">
+			<div class="col-xl-3 col-md-6">
 				<!-- Photo Box -->
-				<a href="jobs-list-layout-1.html" class="photo-box" data-background-image="../../../assets/images/featured-city-01.jpg">
+				<a href="jobs-list-layout-1.html" class="photo-box"
+					data-background-image="../../../assets/images/featured-city-01.jpg"
+					style="background-image:url(../../../../assets/images/featured-city-01.jpg) !important; ">
 					<div class="photo-box-content">
-						<h3>{{city.location}}</h3>
-						<span>{{city.number_of_jobs}}</span>
+
+						<h3>{{cities[0].location}}</h3>
+						<span>{{cities[0].number_of_jobs}}</span>
 					</div>
 				</a>
+
 			</div>
+			<div class="col-xl-3 col-md-6">
+				<!-- Photo Box -->
+				<a href="jobs-list-layout-1.html" class="photo-box"
+					data-background-image="../../../assets/images/featured-city-02.jpg"
+					style="background-image:url(../../../../assets/images/featured-city-02.jpg) !important; ">
+					<div class="photo-box-content">
+
+						<h3>{{cities[1].location}}</h3>
+						<span>{{cities[1].number_of_jobs}}</span>
+					</div>
+				</a>
+
+			</div>
+			<div class="col-xl-3 col-md-6">
+				<!-- Photo Box -->
+				<a href="jobs-list-layout-1.html" class="photo-box"
+					data-background-image="../../../assets/images/featured-city-03.jpg"
+					style="background-image:url(../../../../assets/images/featured-city-01.jpg) !important; ">
+					<div class="photo-box-content">
+
+						<h3>{{cities[2].location}}</h3>
+						<span>{{cities[2].number_of_jobs}}</span>
+					</div>
+				</a>
+
+			</div>
+			<div class="col-xl-3 col-md-6">
+				<!-- Photo Box -->
+				<a href="jobs-list-layout-1.html" class="photo-box"
+					data-background-image="../../../assets/images/featured-city-04.jpg"
+					style="background-image:url(../../../../assets/images/featured-city-01.jpg) !important; ">
+					<div class="photo-box-content">
+
+						<h3>{{cities[3].location}}</h3>
+						<span>{{cities[3].number_of_jobs}}</span>
+					</div>
+				</a>
+
+			</div>
+
 		</div>
+
 	</div>
 </div>
 <!-- Features Cities / End -->
