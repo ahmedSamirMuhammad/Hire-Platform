@@ -34,17 +34,24 @@
 					</ul>
 					<ul data-submenu-title="Organize and Manage">
 						<li>
-							<a href="#"><i class="icon-material-outline-business-center"></i>
+							<a><i class="icon-material-outline-business-center"></i>
 								Jobs</a>
 							<ul>
-								<li>
+								<li *ngIf="storedRole=='emp'">
+									<a routerLink="/dashboard/jobs">Applied Jobs
+										<span class="nav-tag">3</span></a>
+								</li>
+
+								<li *ngIf="storedRole=='cmp'">
 									<a routerLink="/dashboard/jobs">Manage Jobs
 										<span class="nav-tag">3</span></a>
 								</li>
-								<li>
+
+								<li  *ngIf="storedRole=='cmp'">
 									<a routerLink="/dashboard/candidates">Manage Candidates</a>
 								</li>
-								<li>
+
+								<li  *ngIf="storedRole=='cmp'">
 									<a routerLink="/dashboard/postJob">Post a Job</a>
 								</li>
 							</ul>

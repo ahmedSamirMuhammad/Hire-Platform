@@ -14,6 +14,8 @@ export class ManageJobsComponent {
 
   }
   jobs:any = [];
+	storedRole: string = localStorage.getItem("role");
+
   ngOnInit():void{
     
     

@@ -6,14 +6,24 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 	providedIn: "root",
 })
 export class UserService {
-	constructor(private httpClient :HttpClient) { }
+
+
+// ******
+// All Apis 
 
 	userApi:string = 'http://localhost:8000/api/userSettings';
 
-	httpHeaders = new HttpHeaders().set('content-Type','application/json');
+	SkillsApi:string = 'http://localhost:8000/api/getAllSkills';
 
+	userSkills:string = 'http://localhost:8000/api/getUserSkills';
 
-	getHeaders() {
+	userSocials:string = 'http://localhost:8000/api/socials';
+// ****
+
+	constructor(private httpClient: HttpClient) {}
+//common methods 
+// ***************
+  getHeaders() {
 		const token = localStorage.getItem("token");
 		return new HttpHeaders({
 			authorization: `Bearer ${token}`,
@@ -21,6 +31,22 @@ export class UserService {
 		});
 	}
 
+	
+	handelError(error:HttpErrorResponse){
+		let errMsg = '';
+		if(error.error instanceof ErrorEvent){
+		  errMsg = error.error.message;
+		}else{
+		  errMsg = `Error Code :  ${error.status}`;
+		}
+		return throwError(errMsg);
+	  }
+
+//end common methods 
+// ***************
+
+//user Data methods 
+// ***************
 	getUserData():Observable<any>{
 	  let APIUrl = `${this.userApi}`;
 	  return this.httpClient.get(APIUrl,{
@@ -55,18 +81,60 @@ export class UserService {
 		);
 	}
 
+//end user data methods 
+// ***************
+	
 
-
-
-	handelError(error:HttpErrorResponse){
-	  let errMsg = '';
-	  if(error.error instanceof ErrorEvent){
-		errMsg = error.error.message;
-	  }else{
-		errMsg = `Error Code :  ${error.status}`;
+//Skills methods 
+// ***************
+	getAllSkills():Observable<any>{
+		let APIUrl = `${this.SkillsApi}`;
+		return this.httpClient.get(APIUrl,{
+		  headers: this.getHeaders(),
+	  })
+		.pipe(map(
+		  (res:any)=>{
+			return res || {};
+		  }
+		  ),
+		  catchError(this.handelError)
+		  );
 	  }
-	  return throwError(errMsg);
-	}
+  
+	  getUserSkills():Observable<any>{
+		let APIUrl = `${this.userSkills}`;
+		return this.httpClient.get(APIUrl,{
+		  headers: this.getHeaders(),
+	  })
+		.pipe(map(
+		  (res:any)=>{
+			return res || {};
+		  }
+		  ),
+		  catchError(this.handelError)
+		  );
+	  }
+
+// end Skills methods 
+// ***************
+
+
+//Socials methods 
+// ***************
+
+	  getUserSocials():Observable<any>{
+		let APIUrl = `${this.userSocials}`;
+		return this.httpClient.get(APIUrl,{
+		  headers: this.getHeaders(),
+	  })
+		.pipe(map(
+		  (res:any)=>{
+			return res || {};
+		  }
+		  ),
+		  catchError(this.handelError)
+		  );
+	  }
 
 
 }
