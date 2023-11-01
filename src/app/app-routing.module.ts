@@ -30,6 +30,9 @@ import { HeaderComponent } from "./Components/includes/header/header.component";
 
 import {SearchResultsComponent} from './Components/search-results/search-results.component';
 
+//adding payment routing
+import { PaymentPlansComponent } from "./Components/payment/payment-plans/payment-plans.component";
+import { CheckoutComponent } from "./Components/payment/checkout/checkout.component";
 const routes: Routes = [
   {
     path: '',
@@ -127,6 +130,16 @@ const routes: Routes = [
   {
     path: 'search-results',
     component: SearchResultsComponent,
+  },
+
+  //adding payment routing
+  {
+    path: 'payment',
+    component: PaymentPlansComponent,
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
   }
 ];
 

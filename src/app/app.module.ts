@@ -59,6 +59,9 @@ import { UserProfileModule } from "./Components/Profiles/user-profile/user-profi
 import { ModalComponent } from './Components/modal/modal.component';
 import { EditReviewsModalContentComponent } from './Components/Dashboard/reviews/edit-reviews-modal-content/edit-reviews-modal-content.component';
 import { RatingStarsComponent } from './Components/rating-stars/rating-stars.component';
+import { PaymentPlansComponent } from './Components/payment/payment-plans/payment-plans.component';
+import { CheckoutComponent } from './Components/payment/checkout/checkout.component';
+
 
 @NgModule({
 	declarations: [
@@ -108,6 +111,9 @@ import { RatingStarsComponent } from './Components/rating-stars/rating-stars.com
   ModalComponent,
   EditReviewsModalContentComponent,
   RatingStarsComponent,
+  PaymentPlansComponent,
+  CheckoutComponent,
+
 	],
 
 	imports: [
