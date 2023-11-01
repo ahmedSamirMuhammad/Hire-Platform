@@ -26,7 +26,7 @@ import { ManageCandidatesComponent } from './Components/Dashboard/company-dashbo
 import { ManageJobsComponent } from './Components/Dashboard/company-dashboard/manage-jobs/manage-jobs.component';
 import { PostJobComponent } from './Components/Dashboard/company-dashboard/post-job/post-job.component';
 import { CompanySettingsComponent } from './Components/Dashboard/company-dashboard/company-settings/company-settings.component';
-
+import { HeaderComponent } from "./Components/includes/header/header.component";
 
 import {SearchResultsComponent} from './Components/search-results/search-results.component';
 
@@ -34,6 +34,11 @@ const routes: Routes = [
   {
     path: '',
     loadChildren:()=>import('./Components/Home/index/index.module').then(m=>m.IndexModule)
+  },
+  {
+    path: 'header',
+    component: HeaderComponent,
+    canActivate: [AuthGuard]
   },
 
 	{
@@ -46,11 +51,11 @@ const routes: Routes = [
 	},
 	{
 		path: "dashboard",
-		component: SummaryComponent,
+		component: DashboardComponent,
 		children: [
 			{ path: "", redirectTo: "summary", pathMatch: "full" },
-			{ path: "messages", component: MessagesComponent },
 			{ path: "summary", component: SummaryComponent },
+			{ path: "messages", component: MessagesComponent },
 			{ path: "bookmarks", redirectTo: "bookmarks/1", pathMatch: "full" },
 			{ path: "bookmarks/:page", component: BookmarksComponent },
 			{ path: "reviews", redirectTo: "reviews/1", pathMatch: "full" },
@@ -80,6 +85,7 @@ const routes: Routes = [
     path: 'job-profile/:id',
     component: JobProfileComponent,
   },
+
   {
     path: 'employee-signup',
     component: EmployeeSignupComponent,

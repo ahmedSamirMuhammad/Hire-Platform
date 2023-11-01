@@ -11,8 +11,6 @@ export class JobSidebarComponent {
   @Input() jobData: any;
   @Output() toggleBookmark = new EventEmitter<void>();
 
-
-
   constructor(private applyToJobService: ApplyToJobService, private jobService: JobService, private toastr: ToastrService) {}
 
   applyForJob(jobId: string) {

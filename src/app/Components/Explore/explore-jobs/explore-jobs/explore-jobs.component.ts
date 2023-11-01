@@ -9,9 +9,9 @@ import { map, catchError } from "rxjs/operators";
 import { ActivatedRoute } from "@angular/router"; 
 
 @Component({
-  selector: 'app-explore-jobs',
-  templateUrl: './explore-jobs.component.html',
-  styleUrls: ['./explore-jobs.component.scss'],
+	selector: "app-explore-jobs",
+	templateUrl: "./explore-jobs.component.html",
+	styleUrls: ["./explore-jobs.component.scss"],
 })
 export class ExploreJobsComponent implements OnInit{
   paginationData: BehaviorSubject<any> = new BehaviorSubject({});
@@ -37,7 +37,7 @@ export class ExploreJobsComponent implements OnInit{
       max_salary:[''],
       type: [],
     });
-    
+
     this.categories = this.catService.getCategories().pipe(
       map((response: any) => {
         if (response.status === 202) {
@@ -57,25 +57,10 @@ export class ExploreJobsComponent implements OnInit{
     });
   }
 
-  ngOnInit() {
-    const page = this.activatedRoute.snapshot.params["page"];
-
-    //<!---------- calling the function "getCategories" from "category" service / Start -------------->
+	ngOnInit() {
+		const page = this.activatedRoute.snapshot.params["page"];
 
 
-
-
-    // this.catService.getCategories().subscribe(
-    //   (response: any) => {
-    //     console.log(this.categories);
-    //     this.categories = response.data.map((category: any) => category.name);
-    //     console.log(this.categories);
-    //   },
-    //   (error: any) => {
-    //     console.error('Error fetching categories', error);
-    //   }
-    // );
-    //<!-------- calling the function "getCategories" from "category" service  / End ---------------->
 
     this.loadAllJobs(page);
   }
@@ -103,69 +88,77 @@ export class ExploreJobsComponent implements OnInit{
   //<!-------- calling the function "getJobs" from "job" service  / End ---------------->
 
 
-  filter() {
-    const filterData = this.filterForm.value;
-    console.log('Filter Data:', filterData);
-    const selectedTypes = [];
-  
-    if (filterData.full_time) selectedTypes.push('full_time');
-    if (filterData.part_time) selectedTypes.push('part_time');
-    if (filterData.contract) selectedTypes.push('contract');
-    if (filterData.temporary) selectedTypes.push('temporary');
-    if (filterData.internship) selectedTypes.push('internship');
-  
-    // Assign the selected types as an array to the "type" property
-    filterData['type[]'] = selectedTypes;
-  
-    // Remove individual type properties from the filterData
-    delete filterData.full_time;
-    delete filterData.part_time;
-    delete filterData.contract;
-    delete filterData.temporary;
-    delete filterData.internship;
-  
-    filterData.type = selectedTypes;
-  
-    const params = new HttpParams({ fromObject: filterData });
-  
-    // Make the API call to get filtered jobs
-    this.httpClient.get('http://127.0.0.1:8000/api/jobs/apply', { params })
-      .subscribe((response: any) => {
-        console.log('Filter Data:', response);
-  
-        // Check if the 'data' field in the response is an array
-        if (Array.isArray(response.data)) {
-          // If it's an array, update jobs_array with the new filtered data
-          this.jobs_array = response.data;
-        } else {
-          console.error('Received data is not an array.');
-        }
-      });
-  }
-  
+	filter() {
+		const filterData = this.filterForm.value;
+		console.log("Filter Data:", filterData);
+		const selectedTypes = [];
 
-  toggleBookmark(jobId: number) {
-    // Send a request to toggle the job bookmark
-    this.jobService.JobBookmark(jobId).subscribe(
-      (response) => {
-        // Handle success response here
-        if (response.msg === 'Job bookmarked successfully' || response.msg === 'Job unbookmarked successfully') {
-          // Find the job in open_jobs_list array and update its is_bookmarked property
-          const job = this.jobs_array.find((j) => j.id === jobId);
-          if (job) {
-            job.is_bookmarked = !job.is_bookmarked;
-          }
-        } else {
-          // Handle other possible responses or show an error message
-        }
-      },
-      (error) => {
-        // Handle error response here
-        console.error('Error toggling job bookmark', error);
-      }
-    );
-  }
+		if (filterData.full_time) selectedTypes.push("full_time");
+		if (filterData.part_time) selectedTypes.push("part_time");
+		if (filterData.contract) selectedTypes.push("contract");
+		if (filterData.temporary) selectedTypes.push("temporary");
+		if (filterData.internship) selectedTypes.push("internship");
 
+		// Assign the selected types as an array to the "type" property
+		filterData["type[]"] = selectedTypes;
+
+		// Remove individual type properties from the filterData
+		delete filterData.full_time;
+		delete filterData.part_time;
+		delete filterData.contract;
+		delete filterData.temporary;
+		delete filterData.internship;
+
+		filterData.type = selectedTypes;
+
+		// Make the API call to get filtered jobs
+		const params = new HttpParams({ fromObject: filterData });
+		const page = this.activatedRoute.snapshot.params["page"];
+		this.jobService.applyJobFilter(page, params).subscribe(
+			(response: any) => {
+				console.log("Filter Data:", response);
+				if (Array.isArray(response.data.data)) {
+					// If it's an array, update jobs_array with the new filtered data
+				this.jobs_array = response.data.data;
+				} else {
+					console.error("Received data is not an array.");
+				}
+				this.paginationData.next({
+					current_page: response.data.current_page,
+					last_page: response.data.last_page,
+				});
+				// Check if the 'data' field in the response is an array
+
+			},
+			(error: any) => {
+				console.error("Error fetching jobs", error);
+			});
+	}
+
+	toggleBookmark(jobId: number) {
+		// Send a request to toggle the job bookmark
+		this.jobService.JobBookmark(jobId).subscribe(
+			(response) => {
+				// Handle success response here
+				if (
+					response.msg === "Job bookmarked successfully" ||
+					response.msg === "Job unbookmarked successfully"
+				) {
+					// Find the job in open_jobs_list array and update its is_bookmarked property
+					const job = this.jobs_array.find((j) => j.id === jobId);
+					if (job) {
+						job.is_bookmarked = !job.is_bookmarked;
+					}
+				} else {
+					// Handle other possible responses or show an error message
+				}
+			},
+			(error) => {
+				// Handle error response here
+				console.error("Error toggling job bookmark", error);
+			}
+		);
+	}
 
     //<!---------- calling the function "resetFilters" / Start -------------->
   resetFilters() {

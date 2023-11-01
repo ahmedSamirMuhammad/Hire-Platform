@@ -10,8 +10,6 @@ export class JobDescriptionComponent implements OnInit{
 
   mapUrl: string;
 
-  constructor() {}
-
   ngOnInit() {
     this.loadMicrosoftMaps().then(() => {
       this.getCoordinatesForCity(this.jobData.job_location).then(([latitude, longitude]) => {
