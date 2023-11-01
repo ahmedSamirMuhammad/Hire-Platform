@@ -1,16 +1,15 @@
-import { Component } from "@angular/core";
+import { Component /*, ViewChild, ElementRef */} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { TimeService } from "src/app/services/time.service";
 import { DashboardHttpService } from "src/app/services/dashboard-http.service";
 import { BehaviorSubject } from "rxjs";
-
-
 @Component({
 	selector: "app-reviews",
 	templateUrl: "./reviews.component.html",
 	styleUrls: ["./reviews.component.scss"],
 })
 export class ReviewsComponent {
+	// @ViewChild("btnReview") btnReview: ElementRef;
 	reviews;
 	userType = "cmp";
 	paginationData: BehaviorSubject<any> = new BehaviorSubject({});
@@ -20,10 +19,14 @@ export class ReviewsComponent {
 		private activatedRoute: ActivatedRoute
 	) {}
 	ngOnInit() {
-		this.userType = localStorage.getItem('role');
+		this.userType = localStorage.getItem("role");
 		this.getReviews();
-		// console.log($('#small-dialog-1'));
 	}
+
+	// triggerClick() {
+	// (this.btnReview.nativeElement as HTMLButtonElement).click();
+	// }
+
 	getReviews() {
 		/*
 		current_page
@@ -40,8 +43,8 @@ export class ReviewsComponent {
 						);
 						return review;
 					});
-					this.paginationData.next( {
-						current_page:response.data.current_page,
+					this.paginationData.next({
+						current_page: response.data.current_page,
 						last_page: response.data.last_page,
 					});
 				} else {
@@ -49,4 +52,5 @@ export class ReviewsComponent {
 				}
 			});
 	}
+
 }

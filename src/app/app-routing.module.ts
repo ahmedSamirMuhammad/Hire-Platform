@@ -51,11 +51,11 @@ const routes: Routes = [
 	},
 	{
 		path: "dashboard",
-		component: SummaryComponent,
+		component: DashboardComponent,
 		children: [
 			{ path: "", redirectTo: "summary", pathMatch: "full" },
-			{ path: "messages", component: MessagesComponent },
 			{ path: "summary", component: SummaryComponent },
+			{ path: "messages", component: MessagesComponent },
 			{ path: "bookmarks", redirectTo: "bookmarks/1", pathMatch: "full" },
 			{ path: "bookmarks/:page", component: BookmarksComponent },
 			{ path: "reviews", redirectTo: "reviews/1", pathMatch: "full" },

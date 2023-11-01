@@ -1,0 +1,7 @@
+<div #modal class="modal">
+	<div class="modal-background" (click)="closeModal()"></div>
+	<div class="modal-content {{contentStyle}}">
+		<span class="close" (click)="closeModal()">&times;</span>
+		<app-edit-reviews-modal-content *ngIf="content=='dashboard-reviewEdit-form'"></app-edit-reviews-modal-content>
+	</div>
+</div>
