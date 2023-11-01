@@ -22,7 +22,7 @@
                   >
                 </li>
                 <li>
-                  <div class="star-rating" [attr.data-rating]="jobData.company_rating || 0">
+                  <div class="star-rating1" [attr.data-rating]="jobData.company_rating || 0">
                     <span class="star" *ngFor="let star of getFilledStars(jobData.company_rating)"></span>
                     <span class="star empty" *ngFor="let star of getEmptyStars(jobData.company_rating)"></span>
                   </div>
@@ -39,8 +39,8 @@
           </div>
           <div class="right-side">
             <div class="salary-box">
-              <div class="salary-type">Annual Salary</div>
-              <div class="salary-amount">${{ jobData.min_salary }}k - ${{ jobData.max_salary }}k</div>
+              <div class="salary-type">Monthly Salary</div>
+              <div class="salary-amount">${{ jobData.min_salary }} - ${{ jobData.max_salary }}</div>
             </div>
           </div>
         </div>

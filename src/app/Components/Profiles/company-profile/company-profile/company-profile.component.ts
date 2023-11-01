@@ -3,13 +3,15 @@ import { CompanyService } from 'src/app/services/company.service';
 import { JobService } from 'src/app/services/job.service';
 import { ReviewService } from 'src/app/services/review.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from "ngx-toastr";
+
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
   styleUrls: ['./company-profile.component.scss'],
 })
 export class CompanyProfileComponent implements OnInit{
-
+  userType = "cmp";
   company_data: Array<any> = [];
   open_jobs_list: Array<any> = [];
   company_reviews: Array<any> = [];
@@ -21,11 +23,13 @@ export class CompanyProfileComponent implements OnInit{
     comment: '',
   };
 
-  constructor(private companyService: CompanyService, private jobService: JobService, private route: ActivatedRoute, private reviewService: ReviewService) {}
+  constructor(private companyService: CompanyService, private jobService: JobService, private route: ActivatedRoute, private reviewService: ReviewService, private toastr: ToastrService) {}
 
 
   //<!---------- calling the function "getCompanyByID" from "company" service / Start -------------->
   ngOnInit() {
+    // get the role of the current user
+    this.userType = localStorage.getItem('role');
     // get the company ID from the route
     this.companyId = +this.route.snapshot.paramMap.get('id');
 
@@ -52,10 +56,14 @@ export class CompanyProfileComponent implements OnInit{
     // Send the review data to the service
     this.reviewService.addReview(companyId, this.reviewData).subscribe(
       (response) => {
-        // Handle success response here
-        // console.log('Review added successfully', response);
-        alert('Review added successfully!');
-        
+        this.toastr.success(
+          'Review added successfully',
+          '200',
+          {
+              timeOut: 2000,
+              progressBar: true,
+          }
+      );
         // Clear the reviewData object for a new review
         this.reviewData = {
           rating: '',
@@ -65,8 +73,14 @@ export class CompanyProfileComponent implements OnInit{
         };
       },
       (error) => {
-        // Handle error response here
-        console.error('Error adding review', error);
+        this.toastr.error(
+          "You've already reviewed this company before",
+          '401',
+          {
+              timeOut: 2000,
+              progressBar: true,
+          }
+      );
       }
     );
   }
@@ -82,14 +96,28 @@ export class CompanyProfileComponent implements OnInit{
           const job = this.open_jobs_list.find((j) => j.id === jobId);
           if (job) {
             job.is_bookmarked = !job.is_bookmarked;
+            this.toastr.success(
+              response.msg,
+              '200',
+              {
+                  timeOut: 2000,
+                  progressBar: true,
+              }
+          );
           }
         } else {
           // Handle other possible responses or show an error message
         }
       },
       (error) => {
-        // Handle error response here
-        console.error('Error toggling job bookmark', error);
+        this.toastr.error(
+          "Error occurred while bookmarking job",
+          '401',
+          {
+              timeOut: 2000,
+              progressBar: true,
+          }
+      );
       }
     );
   }

@@ -22,11 +22,11 @@
         <div class="listings-container compact-list-layout">
           <!-- Job Listing -->
 
-          <!-- Company-Openjob Component / Start--> 
-          <a *ngFor="let open_job of open_jobs_list" href="javascript:;" class="job-listing">
-            <app-company-openjobs [open_job]="open_job" (toggleBookmark)="toggleBookmark(companyId, open_job.id)"></app-company-openjobs>
-          </a>
-          <!-- Company-Openjob Component / End--> 
+          <!-- Company-Openjob Component / Start-->
+          <div *ngFor="let open_job of open_jobs_list" class="job-listing">
+            <app-company-openjobs [open_job]="open_job" [userType]="userType" (toggleBookmark)="toggleBookmark(companyId, open_job.id)"></app-company-openjobs>
+          </div>
+          <!-- Company-Openjob Component / End-->
         </div>
       </div>
       <!-- Boxed List / End -->
@@ -44,7 +44,7 @@
           <!-- Company-reviews Component / End-->
         </ul>
 
-        <div class="centered-button margin-top-35">
+        <div *ngIf="userType=='emp'" class="centered-button margin-top-35">
           <a
             href="#small-dialog"
             class="popup-with-zoom-anim button button-sliding-icon"
@@ -59,7 +59,7 @@
     <div class="col-xl-4 col-lg-4">
       <div class="sidebar-container">
         <!-- Company-sidebar Component / Start-->
-        <app-company-sidebar></app-company-sidebar>
+        <app-company-sidebar [company_data]="company_data"></app-company-sidebar>
         <!-- Company-sidebar Component / End-->
       </div>
     </div>
@@ -111,7 +111,7 @@
               <div class="col-xl-12">
                 <div class="input-with-icon-left" data-tippy-placement="bottom">
                   <i class="icon-material-outline-account-circle"></i>
-                  <input type="text" [(ngModel)]="reviewData.name" name="name" id="name" placeholder="First and Last Name" />
+                  <input type="text" [(ngModel)]="reviewData.name" name="name" id="name" placeholder="Enter Your Name" />
                 </div>
               </div>
 
@@ -123,7 +123,7 @@
               </div>
             </div>
 
-            <textarea class="with-border" [(ngModel)]="reviewData.comment" name="comment" id="comment" cols="7" required></textarea>
+            <textarea class="with-border" [(ngModel)]="reviewData.comment" name="comment" id="comment" cols="7" required placeholder="Type your opinion"></textarea>
           </form>
 
           <!-- Button -->

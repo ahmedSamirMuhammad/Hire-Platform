@@ -22,7 +22,12 @@
           <li>
             <i class="icon-material-outline-local-atm"></i>
             <span>Salary</span>
-            <h5>${{ jobData.min_salary }}k - ${{ jobData.max_salary }}k</h5>
+            <h5>${{ jobData.min_salary }} - ${{ jobData.max_salary }}</h5>
+          </li>
+          <li>
+            <i class="bi bi-person-lines-fill"></i>
+            <span>Experience</span>
+            <h5>{{ jobData.job_experience }} Years</h5>
           </li>
           <li>
             <i class="icon-material-outline-access-time"></i>
@@ -39,7 +44,7 @@
     <h3>Bookmark or Share</h3>
 
     <!-- Bookmark Button -->
-    <button class="bookmark-button margin-bottom-25" [ngClass]="{'bookmarked': jobData.job_bookmarked}" (click)="onToggleBookmark()">
+    <button class="bookmark-button margin-bottom-25" [ngClass]="{'bookmarked': jobData.job_bookmarked}" (click)="onToggleBookmark()"> 
       <span class="bookmark-icon"></span>
       <span class="bookmark-text">Bookmark</span>
       <span class="bookmarked-text">Bookmarked</span>

@@ -4,9 +4,9 @@ import { CategoryService } from 'src/app/services/category.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { environment } from 'src/environments';
-import { BehaviorSubject } from "rxjs";
-import { ActivatedRoute } from "@angular/router";
-
+import { BehaviorSubject, Observable} from "rxjs";
+import { map, catchError } from "rxjs/operators";
+import { ActivatedRoute } from "@angular/router"; 
 
 @Component({
   selector: 'app-explore-jobs',
@@ -16,7 +16,7 @@ import { ActivatedRoute } from "@angular/router";
 export class ExploreJobsComponent implements OnInit{
   paginationData: BehaviorSubject<any> = new BehaviorSubject({});
   filterForm: FormGroup;
-  categories: Array<any> = [];
+  categories: Observable<string[]>;
   jobs_array: Array<any> = [];
 
 
@@ -37,44 +37,47 @@ export class ExploreJobsComponent implements OnInit{
       max_salary:[''],
       type: [],
     });
- 
+    
+    this.categories = this.catService.getCategories().pipe(
+      map((response: any) => {
+        if (response.status === 202) {
+          return response.data.map((category: any) => category.name);
+        } else {
+          throw new Error('Error fetching categories: Unexpected response status');
+        }
+      }),
+      catchError((error: any) => {
+        console.error('Error fetching categories', error);
+        throw error;
+      })
+    );
+  
+    this.categories.subscribe((categories: string[]) => {
+      console.log(categories); // Log categories here
+    });
   }
 
   ngOnInit() {
     const page = this.activatedRoute.snapshot.params["page"];
 
     //<!---------- calling the function "getCategories" from "category" service / Start -------------->
-    this.catService.getCategories().subscribe(
-      (response: any) => {
-        if (response.status === 202) {
-          this.categories = response.data.map((category: any) => category.name);
-        } else {
-          console.error('Error fetching categories: Unexpected response status');
-        }
-      },
-      (error: any) => {
-        console.error('Error fetching categories', error);
-      }
-    );
+
+
+
+
+    // this.catService.getCategories().subscribe(
+    //   (response: any) => {
+    //     console.log(this.categories);
+    //     this.categories = response.data.map((category: any) => category.name);
+    //     console.log(this.categories);
+    //   },
+    //   (error: any) => {
+    //     console.error('Error fetching categories', error);
+    //   }
+    // );
     //<!-------- calling the function "getCategories" from "category" service  / End ---------------->
 
-
-    //<!---------- calling the function "getJobs" from "job" service / Start -------------->
-    this.jobService.getJobs(page).subscribe(
-      (response: any) => {
-        this.jobs_array = response.data.data;
-
-        this.paginationData.next( {
-          current_page:response.data.current_page,
-          last_page: response.data.last_page,
-      });
-      },
-      (error: any) => {
-        console.error('Error fetching jobs', error);
-      }
-    );
-    //<!-------- calling the function "getJobs" from "job" service  / End ---------------->
-
+    this.loadAllJobs(page);
   }
 
   updateTypeSelection(event: Event, typeName: string) {
@@ -82,6 +85,23 @@ export class ExploreJobsComponent implements OnInit{
     this.filterForm.get(typeName)?.setValue(isChecked);
   }
   
+  //<!---------- calling the function "getJobs" from "job" service / Start -------------->
+  loadAllJobs(page: number) {
+    this.jobService.getJobs(page).subscribe(
+      (response: any) => {
+        this.jobs_array = response.data.data;
+        this.paginationData.next({
+          current_page: response.data.current_page,
+          last_page: response.data.last_page,
+        });
+      },
+      (error: any) => {
+        console.error('Error fetching jobs', error);
+      }
+    );
+  }
+  //<!-------- calling the function "getJobs" from "job" service  / End ---------------->
+
 
   filter() {
     const filterData = this.filterForm.value;
@@ -147,54 +167,14 @@ export class ExploreJobsComponent implements OnInit{
   }
 
 
-  // onSortChange(event: Event) {
-  //   const selectedSort = (event.target as HTMLSelectElement).value;
+    //<!---------- calling the function "resetFilters" / Start -------------->
+  resetFilters() {
+    // Reset the form to its initial state
+    this.filterForm.reset();
 
-  //   // Make the API call to get sorted jobs based on the selected criteria
-  //   this.httpClient
-  //     .get(`http://127.0.0.1:8000/api/jobs/sort?sort=${selectedSort}`)
-  //     .subscribe((response: any) => {
-  //       console.log('Sorted Jobs Data:', response);
-
-  //       // Check if the 'data' field in the response is an array
-  //       if (Array.isArray(response.data)) {
-  //         // If it's an array, update jobs_array with the new sorted data
-  //         this.jobs_array = response.data;
-  //         console.log(this.jobs_array);
-  //       } else {
-  //         console.error('Received data is not an array.');
-  //       }
-  //     });
-  // }
-
-
-    //<!---------- calling the function "listNewJobs" / Start -------------->
-    // listNewJobs() {
-    //   const apiUrl = `${environment.API_URL}/jobs/apply`;
-    //   const filterData = this.filterForm.value;
-    
-    //   // Calculate the timestamp for a certain date (e.g., one week ago)
-    //   const oneWeekAgo = new Date();
-    //   oneWeekAgo.setDate(oneWeekAgo.getDate() - 7); // Adjust the date range as needed
-    
-    //   // Add the created_at filter with the timestamp of one week ago
-    //   filterData.created_at = oneWeekAgo.toISOString();
-    
-    //   this.httpClient
-    //     .get(apiUrl, { params: filterData })
-    //     .subscribe((data: any) => {
-    //       console.log('New Jobs Data:', data);
-    
-    //       // Update your job listings with the new data.
-    //       if (Array.isArray(data)) {
-    //         // Ensure that data is an array before updating the jobs_array.
-    //         this.jobs_array = data;
-    //       } else {
-    //         console.error('Received data is not an array.');
-    //       }
-    //     });
-    // }
-    
-
-    //<!-------- calling the function "listNewJobs"  / End ---------------->
+    // Fetch all jobs again with the current page number
+    const page = this.activatedRoute.snapshot.params["page"];
+    this.loadAllJobs(page);
+  }
+    //<!-------- calling the function "resetFilters"  / End ---------------->
 }

@@ -81,10 +81,6 @@ const routes: Routes = [
     component: JobProfileComponent,
   },
   {
-    path: 'user-profile',
-    component: UserProfileComponent ,
-  },
-  {
     path: 'employee-signup',
     component: EmployeeSignupComponent,
   },

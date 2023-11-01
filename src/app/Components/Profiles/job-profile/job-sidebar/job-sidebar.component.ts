@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ApplyToJobService } from 'src/app/services/apply-to-job.service';
-
+import { JobService } from 'src/app/services/job.service';
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: 'app-job-sidebar',
   templateUrl: './job-sidebar.component.html',
@@ -11,17 +12,30 @@ export class JobSidebarComponent {
   @Output() toggleBookmark = new EventEmitter<void>();
 
 
-  constructor(private applyToJobService: ApplyToJobService) {}
+
+  constructor(private applyToJobService: ApplyToJobService, private jobService: JobService, private toastr: ToastrService) {}
 
   applyForJob(jobId: string) {
     this.applyToJobService.applyForJob(jobId).subscribe(
       (response) => {
-        // Handle a successful response, e.g., show a success message.
-        console.log('Application sent successfully', response);
+        this.toastr.success(
+          "Application sent successfully",
+          '200',
+          {
+              timeOut: 2000,
+              progressBar: true,
+          }
+      );
       },
       (error) => {
-        // Handle any errors, e.g., show an error message.
-        console.error('Error applying for the job', error);
+        this.toastr.error(
+          "You've applied for this job before",
+          '401',
+          {
+              timeOut: 2000,
+              progressBar: true,
+          }
+      );
       }
     );
   }
@@ -30,4 +44,5 @@ export class JobSidebarComponent {
     // Emit an event to notify the parent component to toggle the bookmark
     this.toggleBookmark.emit();
   }
+  
 }

@@ -5,7 +5,7 @@
       {{ review.title }} <span> {{ review.user_id }}</span>
     </h4>
     <div class="item-details margin-top-10">
-      <div class="star-rating" [attr.data-rating]="review.rating || 0">
+      <div class="star-rating1" [attr.data-rating]="review.rating || 0">
         <span class="star" *ngFor="let star of getFilledStars(review.rating)"></span>
         <span class="star empty" *ngFor="let star of getEmptyStars(review.rating)"></span>
       </div>

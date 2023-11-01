@@ -1,12 +1,12 @@
 <!-- Job Listing Details -->
-<a
+<a 
   href="javascript:;"
   class="job-listing-details"
   (click)="redirectToProfile(matched_job.job_id)"
 >
   <!-- Logo -->
   <div class="job-listing-company-logo">
-    <img [src]="matched_job.company_logo" alt="" />
+    <img [src]="'/assets/images/' + matched_job.company_logo" alt=""/>
   </div>
 
   <!-- Details -->
@@ -34,6 +34,14 @@
           {{ matched_job.job_type }}
         </li>
         <li>
+          <i class="bi bi-person-lines-fill"></i>
+          {{ matched_job.job_experience }} years
+        </li>
+        <li>
+          <i class="bi bi-coin"></i>
+          {{ matched_job.min_salary }} - {{ matched_job.max_salary }}
+        </li>
+        <li>
           <i class="icon-material-outline-access-time"></i>
           {{ matched_job.job_date }}
         </li>
@@ -42,7 +50,6 @@
   </div>
 
   <!-- Bookmark -->
-  <!-- <span class="bookmark-icon" [ngClass]="{'bookmarked': matched_job.is_bookmarked}"></span> -->
-  <span class="bookmark-icon" [ngClass]="{'bookmarked': matched_job.job_bookmarked}" (click)="onToggleBookmark(matched_job.job_id)"></span>
-
-<!-- </a> -->
+</a>
+<span  class="bookmark-icon" [ngClass]="{'bookmarked': matched_job.job_bookmarked}"
+(click)="onToggleBookmark($event, matched_job.job_id)"></span>

@@ -29,7 +29,7 @@
             <h3>Category</h3>
             <select formControlName="category_name">
               <option value="" disabled selected>Select a Category</option>
-              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+              <option *ngFor="let category of (categories | async)" [value]="category">{{ category }}</option>
             </select>
           </div>
           
@@ -95,27 +95,22 @@
             </div>
           </div>
 
-
           <!-- Salary -->
           <div class="sidebar-widget">
-            <div class="margin-top-55"></div>
-          
             <!-- Min Salary Input -->
-            <label for="minSalary">Min Salary:</label>
-            <input type="number" id="minSalary" formControlName="min_salary">
+            <label for="">Min Salary:</label>
+            <input type="number" id="" formControlName="min_salary">
           
             <!-- Max Salary Input -->
             <label for="maxSalary">Max Salary:</label>
             <input type="number" id="maxSalary" formControlName="max_salary">
-          
-            <!-- Range Slider (optional) -->
-            <!-- Note: You can choose to keep or remove the range slider based on your preference -->
-            <!-- <input class="range-slider" type="text" value="" data-slider-currency="$" data-slider-min="1500"
-              data-slider-max="15000" data-slider-step="100" data-slider-value="[1500,15000]" /> -->
           </div>
         </div>
-        <input type="submit" class="btn btn-primary" value="Apply Filters">
-      </form>
+        <div class="button-container d-flex justify-content-between">
+          <input type="submit" class="btn btn-primary margin-bottom-0" value="Apply Filters">
+          <a href="javascript:;" class="button gray ripple-effect-dark" (click)="resetFilters()">Reset Filters</a>
+        </div>
+      </form> 
     </div>
     <div class="col-xl-9 col-lg-8 content-left-offset">
 
