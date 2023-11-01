@@ -71,14 +71,14 @@
                     <div class="submit-field">
                       <h5>Job Category</h5>
                       <select
-                      *ngFor="let category of categories" 
+                    
                         formControlName="category_id"
-                        class="selectpicker with-border"
+                        class="with-border"
                         data-size="7"
                         title="Select Category"
                         required
                       >
-                      <option value="{{ category.id }}">{{ category.name }}</option>
+                      <option  *ngFor="let category of categories"  value="{{ category.id }}">{{ category.name }}</option>
                       </select>
                     </div>
                   </div>
