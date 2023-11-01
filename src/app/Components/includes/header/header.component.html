@@ -31,8 +31,8 @@
               </ul>
             </li>
 
-            <li><a routerLink="/dashboard">Dashboard</a>
-              <ul class="dropdown-nav">
+            <li><a routerLink="/dashboard"  *ngIf="token">Dashboard</a>
+              <ul class="dropdown-nav" >
                 <li><a routerLink="/dashboard">Dashboard</a></li>
                 <li><a routerLink="">Messages</a></li>
                 <li><a routerLink="">Bookmarks</a></li>
@@ -49,8 +49,8 @@
               </ul>
             </li>
 
-            <li class="nav-header" routerLink=""><a>Register</a></li>
-            <li class="nav-header" routerLink=""><a>Login</a></li>
+            <li class="nav-header" *ngIf="!token" routerLink=""><a >Register</a></li>
+            <li class="nav-header" *ngIf="!token" routerLink="login"><a >Login</a></li>
 
 
 
@@ -64,7 +64,7 @@
 
 
       <!-- Right Side Content / End -->
-      <div class="right-side">
+      <div class="right-side" *ngIf="token">
 
         <!--  User Notifications -->
         <div class="header-widget hide-on-mobile">
@@ -81,7 +81,7 @@
             <div class="header-notifications-dropdown">
 
               <div class="header-notifications-headline">
-                <h4>Notifications</h4>
+                <h4 >Notifications</h4>
                 <button class="mark-as-read ripple-effect-dark" title="Mark all as read" data-tippy-placement="left">
                   <i class="icon-feather-check-square"></i>
                 </button>
@@ -147,9 +147,9 @@
             </div>
 
             <!-- Dropdown -->
-            <div class="header-notifications-dropdown">
+            <div class="header-notifications-dropdown" >
 
-              <div class="header-notifications-headline">
+              <div class="header-notifications-headline" >
                 <h4>Messages</h4>
                 <button class="mark-as-read ripple-effect-dark" title="Mark all as read" data-tippy-placement="left">
                   <i class="icon-feather-check-square"></i>
@@ -162,8 +162,8 @@
                     <!-- Notification -->
                     <li class="notifications-not-read">
                       <a routerLink="">
-                        <span class="notification-avatar status-online"><img src="images/user-avatar-small-03.jpg"
-                            alt=""></span>
+                        <span class="notification-avatar status-online"><img src="assets/images/user-avatar-small-03.jpg"
+                            alt="avatar"></span>
                         <div class="notification-text">
                           <strong>David Peterson</strong>
                           <p class="notification-msg-text">Thanks for reaching out. I'm quite busy right now on many...
@@ -224,7 +224,7 @@
             </div>
 
             <!-- Dropdown -->
-            <div class="header-notifications-dropdown">
+            <div class="header-notifications-dropdown" >
 
               <!-- User Status -->
               <div class="user-status">
@@ -232,7 +232,7 @@
                 <!-- User Name / Avatar -->
                 <div class="user-details">
                   <div class="user-avatar status-online"><img src=""
-                      alt=""></div>
+                      alt="avatar"></div>
                   <div class="user-name">
                     {{ name }} <span>Engineer</span>
                   </div>

@@ -61,7 +61,6 @@ import { IndexModule } from './Components/Home/index/index.module';
 import { UserProfileModule } from './Components/Profiles/user-profile/user-profile.module';
 
 
-
 @NgModule({
 	declarations: [
 	AppComponent,
@@ -123,7 +122,7 @@ import { UserProfileModule } from './Components/Profiles/user-profile/user-profi
 	FormsModule,
 	IndexModule , UserProfileModule
 ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
