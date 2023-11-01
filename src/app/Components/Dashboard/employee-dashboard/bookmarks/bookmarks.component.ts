@@ -2,7 +2,8 @@ import { Component } from "@angular/core";
 import { DashboardHttpService } from "src/app/services/dashboard-http.service";
 import { BehaviorSubject } from "rxjs";
 import { TimeService } from "src/app/services/time.service";
-import { ActivatedRoute,Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
 	selector: "app-bookmarks",
@@ -18,14 +19,12 @@ export class BookmarksComponent {
 		private time: TimeService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
+		private toastr: ToastrService
 	) {}
 	ngOnInit() {
-
 		this.getBookmarks();
-
 	}
-	getBookmarks(
-	) {
+	getBookmarks() {
 		const page = this.activatedRoute.snapshot.params["page"];
 		this.dashboardHttpService
 			.getBookmarks(page)
@@ -37,8 +36,8 @@ export class BookmarksComponent {
 						);
 						return bookmark;
 					});
-					this.paginationData.next( {
-						current_page:response.data.current_page,
+					this.paginationData.next({
+						current_page: response.data.current_page,
 						last_page: response.data.last_page,
 					});
 				} else {
@@ -50,16 +49,27 @@ export class BookmarksComponent {
 		this.dashboardHttpService
 			.deleteBookmark(jobId)
 			.subscribe((response: any) => {
-				console.log(response)
+				console.log(response);
 				if (response.status === 200) {
 					this.redirectTo(this.router.url);
+					this.toastr.success(
+						'The bookmark was deleted successfully',
+						'200',
+						{
+							timeOut: 2000,
+							progressBar: true,
+						}
+					);
 				} else {
 					console.error(response.message);
 				}
 			});
 	}
 	redirectTo(uri: string) {
-		this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => { this.router.navigate([uri]) });
+		this.router
+			.navigateByUrl("/", { skipLocationChange: true })
+			.then(() => {
+				this.router.navigate([uri]);
+			});
 	}
-
 }
