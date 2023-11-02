@@ -59,7 +59,7 @@ export class ExploreJobsComponent implements OnInit {
         //  console.log(this.queryStringService.parse(params));
         // this.filterInputs = filterInputs;
         // console.log(this.filterInputs);
-        
+
         const filterInputs = this.queryStringService.parse(params);
         console.log(filterInputs);
 
@@ -153,14 +153,14 @@ export class ExploreJobsComponent implements OnInit {
 		delete filterData.internship;
 
 		filterData.type = selectedTypes;
-        
+
         return filterData;
     }
 
     goFilter(){
         const filterData = this.initFilter();
 
-        
+
 
 		// Make the API call to get filtered jobs
 		const params = new HttpParams({ fromObject: filterData });

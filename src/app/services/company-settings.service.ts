@@ -17,6 +17,8 @@ export class CompanySettingsService {
 }
 
   cmpApi:string = 'http://localhost:8000/api/companySettings';
+  cmpSocial:string = 'http://localhost:8000/api/cmpSocials';
+
 
   httpHeaders = new HttpHeaders().set('content-Type','application/json');
 
@@ -52,6 +54,20 @@ export class CompanySettingsService {
 		);
 	}
   
+	getUserSocials():Observable<any>{
+		let APIUrl = `${this.cmpSocial}`;
+		return this.httpClient.get(APIUrl,{
+		  headers: this.getHeaders(),
+	  })
+		.pipe(map(
+		  (res:any)=>{
+			return res || {};
+		  }
+		  ),
+		  catchError(this.handelError)
+		  );
+	  }
+
 
   handelError(error:HttpErrorResponse){
     let errMsg = '';

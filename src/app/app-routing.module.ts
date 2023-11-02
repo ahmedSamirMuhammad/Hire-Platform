@@ -26,14 +26,22 @@ import { ManageCandidatesComponent } from './Components/Dashboard/company-dashbo
 import { ManageJobsComponent } from './Components/Dashboard/company-dashboard/manage-jobs/manage-jobs.component';
 import { PostJobComponent } from './Components/Dashboard/company-dashboard/post-job/post-job.component';
 import { CompanySettingsComponent } from './Components/Dashboard/company-dashboard/company-settings/company-settings.component';
-
+import { HeaderComponent } from "./Components/includes/header/header.component";
 
 import {SearchResultsComponent} from './Components/search-results/search-results.component';
 
+//adding payment routing
+import { PaymentPlansComponent } from "./Components/payment/payment-plans/payment-plans.component";
+import { CheckoutComponent } from "./Components/payment/checkout/checkout.component";
 const routes: Routes = [
   {
     path: '',
     loadChildren:()=>import('./Components/Home/index/index.module').then(m=>m.IndexModule)
+  },
+  {
+    path: 'header',
+    component: HeaderComponent,
+    canActivate: [AuthGuard]
   },
 
 	{
@@ -123,6 +131,16 @@ const routes: Routes = [
   {
     path: 'search-results',
     component: SearchResultsComponent,
+  },
+
+  //adding payment routing
+  {
+    path: 'payment',
+    component: PaymentPlansComponent,
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
   }
 ];
 

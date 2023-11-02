@@ -25,4 +25,4 @@
 </div>
 
 <!-- Bookmark -->
-<span class="bookmark-icon" [ngClass]="{'bookmarked': open_job.is_bookmarked}" (click)="onToggleBookmark()"></span>
+  <span *ngIf="userType=='emp'" class="bookmark-icon" [ngClass]="{'bookmarked': open_job.is_bookmarked}" (click)="onToggleBookmark()"></span>

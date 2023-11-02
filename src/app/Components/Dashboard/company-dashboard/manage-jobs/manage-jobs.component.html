@@ -7,7 +7,8 @@
           <div class="dashboard-content-inner">
             <!-- Dashboard Headline -->
             <div class="dashboard-headline">
-              <h3>Manage Jobs</h3>
+              <h3  *ngIf="storedRole=='cmp'">Manage Jobs</h3>
+              <h3  *ngIf="storedRole=='emp'">Applied Jobs</h3>
       
               <!-- Breadcrumbs -->
               <nav id="breadcrumbs" class="dark">

@@ -10,12 +10,11 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ['./job-profile.component.scss']
 })
 export class JobProfileComponent implements OnInit{
- 
+
   jobData: any = {};
-  jobId: number; 
+  jobId: number;
 
   constructor(private companyService: CompanyService, private jobService: JobService, private route: ActivatedRoute, private toastr: ToastrService) {}
-
 
   //<!---------- calling the function "getJobByID" from "job" service / Start -------------->
   ngOnInit() {
@@ -47,7 +46,7 @@ export class JobProfileComponent implements OnInit{
             timeOut: 2000,
             progressBar: true,
           });
-        } 
+        }
       },
       error: (error) => {
         this.toastr.error('Error toggling job bookmark', '401', {

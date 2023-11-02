@@ -1,4 +1,3 @@
-
 <!-- Wrapper -->
 <!-- <div id="wrapper"> -->
 <!-- Titlebar
@@ -38,66 +37,95 @@
 				<div class="contact-address">
 					<ul>
 						<li class="contact-address-headline">Our Office</li>
-						<li>425 Berry Street, CA 93584</li>
-						<li>Phone (123) 123-456</li>
-						<li><a href="#">mail@example.com</a></li>
+						<li>20 {{ officeLocation }}, EG 12055</li>
+						<li>Phone (20) 112-3456789</li>
+						<li><a href="#">ITI@example.com</a></li>
 						<li>
 							<div class="freelancer-socials">
 								<ul>
-									<li><a href="#" title="Dribbble" data-tippy-placement="top"><i class="icon-brand-dribbble"></i></a></li>
-									<li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-									<li><a href="#" title="Behance" data-tippy-placement="top"><i class="icon-brand-behance"></i></a></li>
-									<li><a href="#" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
-								
+									<li><a href="javascript:;" title="Dribbble" data-tippy-placement="top"><i class="icon-brand-dribbble"></i></a></li>
+									<li><a href="javascript:;" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+									<li><a href="javascript:;" title="Behance" data-tippy-placement="top"><i class="icon-brand-behance"></i></a></li>
+									<li><a href="javascript:;" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
 								</ul>
 							</div>
 						</li>
 					</ul>
-
-				</div>
+				</div> 
 				<div id="single-job-map-container">
-					<div id="singleListingMap" data-latitude="37.777842" data-longitude="-122.391805" data-map-icon="im im-icon-Hamburger"></div>
-					<a href="#" id="streetView">Street View</a>
+					<div id="myMap" style="height: 350px;"></div>
 				</div>
 			</div>
 		</div>
 
 		<div class="col-xl-8 col-lg-8 offset-xl-2 offset-lg-2">
-
-			<section id="contact" class="margin-bottom-60">
+			<section id="" class="margin-bottom-60">
 				<h3 class="headline margin-top-15 margin-bottom-35">Any questions? Feel free to contact us!</h3>
-
-				<form method="post" name="contactform" id="contactform" autocomplete="on">
+		
+				<form [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="input-with-icon-left">
-								<input class="with-border" name="name" type="text" id="name" placeholder="Your Name" required="required" />
+								<input class="with-border" type="text" id="name" placeholder="Your Name" formControlName="name" />
 								<i class="icon-material-outline-account-circle"></i>
 							</div>
+							<div
+								id="nameHelp"
+								*ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.hasError('required')"
+								class="form-text text-danger"
+							>
+								This field is required
+							</div>
 						</div>
-
+		
 						<div class="col-md-6">
 							<div class="input-with-icon-left">
-								<input class="with-border" name="email" type="email" id="email" placeholder="Email Address" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" required="required" />
+								<input class="with-border" type="email" id="email" placeholder="Email Address" formControlName="email" />
 								<i class="icon-material-outline-email"></i>
+							</div>
+							<div
+								id="emailHelp"
+								*ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('required')"
+								class="form-text text-danger"
+							>
+								This field is required
+							</div>
+							<div
+								id="emailHelp"
+								*ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('email')"
+								class="form-text text-danger"
+							>
+								This field must have a valid email format
 							</div>
 						</div>
 					</div>
-
+		
 					<div class="input-with-icon-left">
-						<input class="with-border" name="subject" type="text" id="subject" placeholder="Subject" required="required" />
+						<input class="with-border" type="text" id="subject" placeholder="Subject" formControlName="subject" />
 						<i class="icon-material-outline-assignment"></i>
+						<div
+							id="subjectHelp"
+							*ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.hasError('required')"
+							class="form-text text-danger"
+						>
+							This field is required
+						</div>
 					</div>
-
+					
 					<div>
-						<textarea class="with-border" name="comments" cols="40" rows="5" id="comments" placeholder="Message" spellcheck="true" required="required"></textarea>
+						<textarea class="with-border" cols="40" rows="5" id="comments" placeholder="Message" formControlName="comments"></textarea>
+						<div
+							id="commentsHelp"
+							*ngIf="contactForm.get('comments')?.touched && contactForm.get('comments')?.hasError('required')"
+							class="form-text text-danger"
+						>
+							This field is required
+						</div>
 					</div>
-
+					
 					<input type="submit" class="submit button margin-top-15" id="submit" value="Submit Message" />
-
 				</form>
 			</section>
-
 		</div>
 
 	</div>

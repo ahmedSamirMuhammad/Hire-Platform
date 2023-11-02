@@ -18,8 +18,9 @@ export class MatchedJobsComponent {
     this.router.navigate(['job-profile', id]);
   }
 
-  onToggleBookmark(jobId: number) {
+  onToggleBookmark(event: Event, jobId: number) {
     // Emit an event to notify the parent component to toggle the bookmark
+    event.stopPropagation();
     this.toggleBookmark.emit();
   }
 }

@@ -1,0 +1,38 @@
+<label class="payment-method">
+  <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio"
+      (click)="paywithstripe()">
+  <span>stripe</span>
+  </label>
+<div class="container">
+<form *ngIf="paywithstripegate" [formGroup]="paywithstripegateform" (ngSubmit)="onSubmitStripe()"
+  name="frm-billing">
+  <p class="row-in-form">
+      <label for="phone">Card Number<span>*</span></label>
+      <input type="text" formControlName="number" value="4242 4242 4242 4242">
+  </p>
+  <p class="row-in-form">
+      <label for="phone">Expirition Month<span>*</span></label>
+      <input type="text" formControlName="expired_month" value="12">
+  </p>
+  <p class="row-in-form">
+      <label for="add">Expirition Year</label>
+      <input type="text" formControlName="expired_year" value="34">
+  </p>
+  <p class="row-in-form">
+      <label for="add">Cvv_no</label>
+      <input type="text" formControlName="cvc" value="34">
+  </p>
+  <p class="row-in-form">
+      <label for="add">Amount</label>
+      <input type="text" formControlName="amount" value="50">
+  </p>
+  <p class="row-in-form">
+      <label for="add">Description</label>
+      <input type="text" formControlName="description" value="this is the user one">
+  </p>
+  <p class="row-in-form">
+      <input value="Pay Now With Stripe" type="submit" class="btn btn-medium"
+          style="background-color: #ff2832;color: white;font-weight: bold;">
+  </p>
+</form>
+</div>
