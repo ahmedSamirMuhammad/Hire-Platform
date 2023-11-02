@@ -20,70 +20,42 @@ export class ExploreJobsComponent implements OnInit {
 	jobs_array: Array<any> = [];
 
 
+  constructor(private catService: CategoryService, private jobService: JobService, private httpClient: HttpClient,
+    private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute) {
+    this.filterForm = this.formBuilder.group({
+      location: [''],
+      category_name: [''],
+      categories: [[]],
+      experience: [''],
+      sort: [''],
+      full_time: false,
+      part_time: false,
+      contract: false,
+      temporary: false,
+      internship: false,
+      min_salary:[''],
+      max_salary:[''],
+      type: [],
+    });
 
-	constructor(
-		private catService: CategoryService,
-		private jobService: JobService,
-		private httpClient: HttpClient,
-		private formBuilder: FormBuilder,
-		private activatedRoute: ActivatedRoute,
-		private queryStringService: QueryStringService,
-        private router: Router
-	) {
-		this.filterForm = this.formBuilder.group({
-			location: [''],
-			category_name: [''],
-			categories: [[]],
-			experience: [''],
-			sort: [''],
-			full_time: false,
-			part_time: false,
-			contract: false,
-			temporary: false,
-			internship: false,
-			min_salary: [''],
-			max_salary: [''],
-			type: [],
-		});
-	}
-
-    ngAfterViewInit() {
-        const page = this.activatedRoute.snapshot.params['page'];
-		const params = this.activatedRoute.snapshot.params['params'];
-
-        // console.log(params);
-
-        if(params == '-'){
-            this.loadAllJobs(page);
-        }else{
-        //  console.log(this.queryStringService.parse(params));
-        // this.filterInputs = filterInputs;
-        // console.log(this.filterInputs);
-        
-        const filterInputs = this.queryStringService.parse(params);
-        console.log(filterInputs);
-
-
-        this.filterForm.setValue({
-            location: filterInputs["location"],
-            category_name: filterInputs["category_name"],
-            categories:  [[]],
-            experience: filterInputs["experience"],
-            sort: filterInputs["sort"],
-            min_salary: filterInputs["min_salary"],
-            max_salary: filterInputs["max_salary"],
-            type: filterInputs["type"],
-            full_time: false,
-			part_time: false,
-			contract: false,
-			temporary: false,
-			internship: false,
-        });
-
-        this.filter();
+    this.categories = this.catService.getCategories().pipe(
+      map((response: any) => {
+        if (response.status === 202) {
+          return response.data.map((category: any) => category.name);
+        } else {
+          throw new Error('Error fetching categories: Unexpected response status');
         }
-    }
-
+      }),
+      catchError((error: any) => {
+        console.error('Error fetching categories', error);
+        throw error;
+      })
+    );
+  
+    this.categories.subscribe((categories: string[]) => {
+      console.log(categories); // Log categories here
+    });
+  }
 
 	ngOnInit() {
 
@@ -153,41 +125,6 @@ export class ExploreJobsComponent implements OnInit {
 		delete filterData.internship;
 
 		filterData.type = selectedTypes;
-        
-        return filterData;
-    }
-
-    goFilter(){
-        const filterData = this.initFilter();
-
-        
-
-		// Make the API call to get filtered jobs
-		const params = new HttpParams({ fromObject: filterData });
-		const page = this.activatedRoute.snapshot.params['page'];
-        const params2 = {};
-
-
-        params2['location'] = params.getAll('location')[0];
-        params2['category_name'] = params.getAll('category_name')[0];
-        params2['experience'] = params.getAll('experience')[0];
-        params2['sort'] = params.getAll('sort')[0];
-        params2['min_salary'] = params.getAll('min_salary')[0];
-        params2['max_salary'] = params.getAll('max_salary')[0];
-        params2['type'] = params.getAll('type');
-
-        // console.log(params2);
-
-        const stringifiedParams =  this.queryStringService.stringify(params2);
-        this.redirectTo(`/explore-jobs/${stringifiedParams}/1`);
-
-        console.log(`/explore-jobs/${stringifiedParams}/1`);
-        console.log(this.router.url);
-
-    }
-
-	filter() {
-        const filterData = this.initFilter();
 
 		// Make the API call to get filtered jobs
 		const params = new HttpParams({ fromObject: filterData });
