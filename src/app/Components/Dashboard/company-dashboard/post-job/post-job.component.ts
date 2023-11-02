@@ -1,8 +1,10 @@
 import { Component, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { JobCrudService } from 'src/app/services/job-crud.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from "ngx-toastr";
+
 
 @Component({
   selector: 'app-post-job',
@@ -18,27 +20,62 @@ export class PostJobComponent {
     private router: Router,
     private ngZone: NgZone,
     private jobCrud: JobCrudService,
-    private http: HttpClient
+    private http: HttpClient,
+		private toastr: ToastrService
+
   ) {
     this.jobForm = this.formBuilder.group({
-      name: [''],
-      type: [''],
-      category_id: [''],
-      location: [''],
-      max_salary: [''],
+      name: ['', [Validators.required , Validators.minLength(2)]],
+      type: ['' , Validators.required],
+      category_id: ['' , Validators.required],
+      location: ['' ,Validators.required],
+      max_salary: ['' , ],
       min_salary: [''],
-      about: [''],
+      about: ['' , Validators.required],
       logo: [''],
     });
   }
 
   onSubmit() {
-    this.jobCrud.addJob(this.jobForm.value).subscribe(() => {
-      console.log('added successfully');
-      this.router.navigate(['/dashboard/jobs']);
-    }, (err) => {
-      //   console.log(err);
-    });
+
+    if(this.jobForm.valid) {
+
+      this.jobCrud.addJob(this.jobForm.value).subscribe((res) => {
+        console.log('added successfully');
+        
+            if (res.status === 200) {
+              this.router.navigate(["/dashboard/jobs"]);
+              this.toastr.success(
+                JSON.stringify("added successfully"),
+                JSON.stringify(res.status),
+                {
+                  timeOut: 2000,
+                  progressBar: true,
+                }
+              );
+            }
+  
+          (error) => {
+            // Handle error here
+            this.toastr.error("Error with your credentials", "401", {
+              timeOut: 5000,
+              progressBar: true,
+            });
+          }
+        
+      }, );
+    }
+    else{
+      this.toastr.error(
+        JSON.stringify("invalid data"),
+        JSON.stringify(403),
+        {
+          timeOut: 2000,
+          progressBar: true,
+        }
+      );
+
+    }
   }
 
   ngOnInit() {

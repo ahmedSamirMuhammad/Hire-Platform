@@ -74,6 +74,8 @@
 														formControlName="first_name"
 													/>
 												</div>
+												<p  style="color: red;" *ngIf="userForm.controls['first_name'].errors?.['required']">its required field</p>
+												<p  style="color: red;" *ngIf="userForm.controls['first_name'].errors?.['minlength']">min value is two characters</p>
 											</div>
 
 											<div class="col-xl-6">
@@ -85,6 +87,10 @@
 														formControlName="last_name"
 													/>
 												</div>
+
+												<p style="color: red;" *ngIf="userForm.controls['last_name'].errors?.['required']">its required field</p>
+												<p style="color: red;" *ngIf="userForm.controls['last_name'].errors?.['minlength']">min value is two characters</p>
+
 											</div>
 
 											<div class="col-xl-6">
@@ -96,6 +102,21 @@
 														formControlName="email"
 													/>
 												</div>
+
+												<p  style="color: red;" *ngIf="userForm.controls['email'].errors?.['required']">its required field</p>
+												<p  style="color: red;" *ngIf="userForm.controls['email'].errors?.['email']">invalid email</p>
+												
+											</div>
+											<div class="col-xl-6">
+												<div class="submit-field">
+													<h5>Mobile Number</h5>
+													<input
+														type="number"
+														class="with-border"
+														formControlName="mobile_number"
+													/>
+												</div>
+
 											</div>
 										</div>
 									</div>
@@ -129,7 +150,6 @@
 														formControlName="title"
 														type="text"
 														class="with-border"
-														placeholder="Enter Your Title "
 													/>
 												</div>
 											</div>
@@ -140,10 +160,9 @@
 
 													<!-- select Nationality  -->
 													<select
-														class="selectpicker with-border"
+														class=""
 														data-size="7"
 														title="Select Job Type"
-														data-live-search="true"
 														formControlName="nationality"
 													>
 														<option value="AR">
@@ -394,7 +413,7 @@
 														</option>
 														<option
 															value="US"
-															selected
+															
 														>
 															United States
 														</option>
@@ -418,8 +437,7 @@
 											</div>
 
 											
-											<div class="d-flex justify-content-center align-items-center "
-												style="flex-wrap: wrap;">
+										
 												<div class="col-xl-6">
 													<div class="submit-field">
 														<h5>
@@ -431,33 +449,36 @@
 															Skills
 														</h5>
 
-														<!-- select Nationality  -->
 														<select
-															class="selectpicker  with-border"
-															data-size="7"
-															title="Select Skills"
-															data-live-search="true"
-															formControlName="skills"
-															multiple
+														class=""
+														data-size="7"
+														title="Select user skills"
+														data-live-search="true"
+														formControlName="skills"
 														>
 															<option
-																value="{{
-																	skill.id
-																}}"
-																*ngFor="
-																	let skill of AllSkills
-																"
+															value="{{
+																skill.id
+															}}"
+															*ngFor="
+																let skill of AllSkills
+															"
+
 															>
 																{{ skill.name }}
-																<!-- Assuming skill has a 'name' property -->
 															</option>
-														</select>
-													</div>
-												</div>
+																	
+															</select>
 
-												<div class="col-xl-6">
+													</div>
+												
+												</div>
+												<div class="col-xl-6" style="display: flex;
+												justify-content: start;
+												align-items: center;">
 													<!-- Skills List -->
-													<div class="keywords-container"  style="margin: auto;">
+													<div class="submit-field">
+													
 														<div class="keywords-list">
 															<span
 																*ngFor="
@@ -477,10 +498,11 @@
 																>
 															</span>
 														</div>
-														<div class="clearfix"></div>
+														
+													
 													</div>
 												</div>
-											</div>
+											
 
 											<div class="col-xl-12"
 												style="margin-top: 35px;">
@@ -507,7 +529,6 @@
 																<input
 																	type="text"
 																	class="with-border"
-																	placeholder="Github Account Link"
 																	formControlName="github_account"
 																/>
 															</div>
@@ -529,7 +550,6 @@
 																<input
 																	type="text"
 																	class="with-border"
-																	placeholder="Twitter Account Link"
 																	formControlName="twitter_account"
 																/>
 															</div>
@@ -551,7 +571,6 @@
 																<input
 																	type="text"
 																	class="with-border"
-																	placeholder="Linkedin Account Link"
 														
 																	formControlName="linkedin_account"
 																/>
@@ -598,7 +617,7 @@
 											<input
 												type="password"
 												class="with-border"
-												required
+												
 												formControlName="password"
 											/>
 										</div>
@@ -610,7 +629,7 @@
 											<input
 												type="password"
 												class="with-border"
-												required
+												
 												formControlName="new_password"
 											/>
 										</div>
@@ -673,23 +692,7 @@
 										</div>
 									</div>
 
-									<div class="col-xl-12">
-										<div class="checkbox">
-											<input
-												type="checkbox"
-												id="two-step"
-												checked
-												name="two-way"
-											/>
-											<label for="two-step"
-												><span
-													class="checkbox-icon"
-												></span>
-												Enable Two-Step Verification via
-												Email</label
-											>
-										</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -701,6 +704,7 @@
 							type="submit"
 							value="Save Changes"
 							class="button ripple-effect big margin-top-30"
+							
 						/>
 					</div>
 				</form>

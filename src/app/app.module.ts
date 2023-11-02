@@ -61,6 +61,7 @@ import { EditReviewsModalContentComponent } from './Components/Dashboard/reviews
 import { RatingStarsComponent } from './Components/rating-stars/rating-stars.component';
 import { PaymentPlansComponent } from './Components/payment/payment-plans/payment-plans.component';
 import { CheckoutComponent } from './Components/payment/checkout/checkout.component';
+import { EditJobComponent } from './Components/Dashboard/company-dashboard/edit-job/edit-job.component';
 
 
 @NgModule({
@@ -113,6 +114,7 @@ import { CheckoutComponent } from './Components/payment/checkout/checkout.compon
   RatingStarsComponent,
   PaymentPlansComponent,
   CheckoutComponent,
+  EditJobComponent,
 
 	],
 

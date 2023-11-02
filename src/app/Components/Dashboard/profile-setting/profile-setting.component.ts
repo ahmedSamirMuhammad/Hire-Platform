@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
-import { NgZone } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { JobCrudService } from 'src/app/services/job-crud.service';
+import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
 
 
@@ -20,7 +18,6 @@ export class ProfileSettingComponent {
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
-    private ngZone: NgZone,
     private userService: UserService,
     private toastr: ToastrService
   ) {
@@ -31,11 +28,11 @@ export class ProfileSettingComponent {
       })
 
     this.userForm = this.formBuilder.group({
-      first_name: [""],
-      last_name: [""],
-      email: [""],
+      first_name:['', [Validators.required , Validators.minLength(2)]],
+      last_name: ['', [Validators.required , Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
       cv: [""],
-      mobile_number: [""],
+      mobile_number: [''],
       title: [""],
       nationality: [""],
       about: [""],
@@ -48,7 +45,7 @@ export class ProfileSettingComponent {
       linkedin_account: [""],
       github_account: [""],
     });
-  
+ 
     this.userService.getUserData().subscribe((res) => {
       this.userForm.patchValue({
         first_name: res["first_name"],
@@ -102,33 +99,48 @@ export class ProfileSettingComponent {
 
   onSubmit() {
 		console.log("hi");
+    console.log(this.userForm);
+    
+    if(this.userForm.valid) {
 
-		this.userService.updateUserData(this.userForm.value).subscribe(
-			(res) => {
-				this.data = res;
-				//  console.log('edited successfully');
-				//  this.router.navigate(['/dashboard/jobs']);
+      this.userService.updateUserData(this.userForm.value).subscribe(
+        (res) => {
+          this.data = res;
+          //  console.log('edited successfully');
+          //  this.router.navigate(['/dashboard/jobs']);
+  
+          if (this.data.status === 200) {
+            this.router.navigate(["/dashboard/jobs"]);
+            this.toastr.success(
+              JSON.stringify(this.data.msg),
+              JSON.stringify(this.data.status),
+              {
+                timeOut: 2000,
+                progressBar: true,
+              }
+            );
+          }
+        },
+        (error) => {
+          // Handle error here
+          this.toastr.error("Error with your credentials", "401", {
+            timeOut: 5000,
+            progressBar: true,
+          });
+        }
+      );
+    }
+    else{
+      this.toastr.error(
+        JSON.stringify("invalid data"),
+        JSON.stringify(403),
+        {
+          timeOut: 2000,
+          progressBar: true,
+        }
+      );
 
-				if (this.data.status === 200) {
-					this.router.navigate(["/dashboard/jobs"]);
-					this.toastr.success(
-						JSON.stringify(this.data.msg),
-						JSON.stringify(this.data.status),
-						{
-							timeOut: 2000,
-							progressBar: true,
-						}
-					);
-				}
-			},
-			(error) => {
-				// Handle error here
-				this.toastr.error("Error with your credentials", "401", {
-					timeOut: 5000,
-					progressBar: true,
-				});
-			}
-		);
+    }
 	}
 
   removeSkill(){

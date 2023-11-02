@@ -31,9 +31,16 @@
                     </h3>
                   </div>
                   <!-- add all jobs  -->
-                  <div class="content">
+                  <div *ngIf="storedRole=='cmp'" class="content">
                     <ul class="dashboard-box-list">
                         <li *ngFor="let job of jobs">
+                            <app-job [job]="job" ></app-job>
+                        </li>
+                    </ul>
+                  </div>
+                  <div *ngIf="storedRole=='emp'" class="content">
+                    <ul class="dashboard-box-list">
+                        <li *ngFor="let job of getUserAppliedJobs">
                             <app-job [job]="job" ></app-job>
                         </li>
                     </ul>

@@ -43,10 +43,13 @@
                       <input
                         formControlName="name"
                         type="text"
-                        class="with-border"
-                        required
+                        class=""
+                        
                       />
                     </div>
+
+                      <p  style="color: red;" *ngIf="jobForm.controls['name'].touched && jobForm.controls['name'].errors?.['required']">its required field</p>
+                      <p  style="color: red;" *ngIf="jobForm.controls['name'].touched && jobForm.controls['name'].errors?.['minlength']">min value is two characters</p>
                   </div>
 
                   <div class="col-xl-4">
@@ -54,7 +57,7 @@
                       <h5>Job Type</h5>
                       <select 
                         formControlName="type"
-                        class="selectpicker with-border"
+                        class=""
                         data-size="7"
                         title="Select Job Type"
                       >
@@ -65,22 +68,27 @@
                         
                       </select>
                     </div>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['type'].touched && jobForm.controls['type'].errors?.['required']">its required field</p>
                   </div>
 
                   <div class="col-xl-4">
                     <div class="submit-field">
                       <h5>Job Category</h5>
                       <select
-                      *ngFor="let category of categories" 
+                      
                         formControlName="category_id"
-                        class="selectpicker with-border"
+                        class=""
                         data-size="7"
                         title="Select Category"
-                        required
+                        
                       >
-                      <option value="{{ category.id }}">{{ category.name }}</option>
+                      <option  *ngFor="let category of categories"  value="{{ category.id }}">{{ category.name }}</option>
                       </select>
                     </div>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['category_id'].touched && jobForm.controls['category_id'].errors?.['required']">its required field</p>
+
                   </div>
 
                   <div class="col-xl-6">
@@ -94,12 +102,15 @@
                             class="with-border"
                             type="text"
                             placeholder="Type Address"
-                            required
+                            
                           />
                         </div>
                         <i class="icon-material-outline-location-on"></i>
                       </div>
                     </div>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['location'].touched && jobForm.controls['location'].errors?.['required']">its required field</p>
+
                   </div>
 
                   <div class="col-xl-6">
@@ -140,8 +151,11 @@
                         cols="30"
                         rows="5"
                         class="with-border"
-                        required
+                        
                       ></textarea>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['about'].touched &&jobForm.controls['about'].errors?.['required']">its required field</p>
+
                       <div class="uploadButton margin-top-30">
                         <input
                           formControlName="logo"
@@ -162,11 +176,12 @@
                         >
                       </div>
                     </div>
+
                   </div>
                 </div>
                 <div class="col-xl-12">
                   <!-- <a href="#" class="button ripple-effect big margin-top-30" -->
-                  <i class="icon-feather-plus"></i>
+                 
 
                   <input
                     type="submit"
