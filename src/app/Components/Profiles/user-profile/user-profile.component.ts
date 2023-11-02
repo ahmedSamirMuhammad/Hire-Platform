@@ -27,7 +27,7 @@ export class UserProfileComponent implements OnInit {
       this.getProfile().subscribe(
         (response) => {
           this.profileData = response.data; // to access the data property
-
+			console.log(this.profileData.history);
         },
         (error) => {
           console.error(error);

@@ -2,31 +2,31 @@
 
 <!-- Page Content
 ================================================== -->
-<div class="container">
+<div class="container" id="wrapper">
 	<div class="row">
 
 		<div class="col-xl-9 col-lg-8 content-left-offset">
 
-			<h3 class="page-title">Search Results</h3>
+			<h3 class="page-title" style="font-weight: 400; ">Search Results</h3>
 
 
 
-			<div class="listings-container compact-list-layout margin-top-35">
+			<div class="listings-container compact-list-layout margin-top-35" >
 
 				<!-- Job Listing -->
-				<a href="single-job-page.html" class="job-listing"  *ngFor="let searchResult of searchResults">
+				<a *ngFor="let searchResult of searchResults" (click)="navigateToJobProfile(searchResult.id)" class="job-listing" >
 
 					<!-- Job Listing Details -->
 					<div class="job-listing-details" >
 
 						<!-- Logo -->
 						<div class="job-listing-company-logo">
-							<img src="images/company-logo-01.png" alt="">
+							<img src="../../../assets/images/company-logo-01.png" alt="">
 						</div>
 
 						<!-- Details -->
 						<div class="job-listing-description">
-							<h3 class="job-listing-title">{{searchResult.name}}</h3>
+							<h3 class="job-listing-title" style="text-transform: capitalize;">{{searchResult.name}}</h3>
 							<!-- Job Listing Footer -->
 							<div class="job-listing-footer">
 								<ul>
@@ -37,11 +37,6 @@
 								</ul>
 							</div>
 						</div>
-
-
-
-
-
 
 					</div>
 				</a>

@@ -16,13 +16,13 @@
 				<nav id="navigation">
 					<ul id="responsive">
 
-						<li class="nav-header"><a routerLink="/">Home</a>
+						<li class="nav-heade " style="font-weight: 400; font-size: larger;"><a routerLink="/">Home</a>
 
 						</li>
 
 
 
-						<li><a href="#" class="current">Find Work</a>
+						<li style="font-weight: 400; font-size: larger;"><a href="#" class="current" >Find Work</a>
 							<ul class="dropdown-nav">
 								<li><a routerLink="explore-jobs">Explore job</a>
 								</li>
@@ -31,29 +31,30 @@
 							</ul>
 						</li>
 
-            <li><a routerLink="/dashboard"  *ngIf="token">Dashboard</a>
+            <li style="font-weight: 400; font-size: larger;"><a routerLink="/dashboard"  *ngIf="token">Dashboard</a>
               <ul class="dropdown-nav" >
                 <li><a routerLink="/dashboard">Dashboard</a></li>
-                <li><a routerLink="">Messages</a></li>
-                <li><a routerLink="">Bookmarks</a></li>
-                <li><a routerLink="">Reviews</a></li>
-                <li><a routerLink="">Jobs</a>
+                <li><a routerLink="/dashboard/messages">Messages</a></li>
+                <li><a routerLink="/dashboard/bookmarks">Bookmarks</a></li>
+                <li><a routerLink="/dashboard/reviews">Reviews</a></li>
+                <li><a routerLink="/dashboard/jobs">Jobs</a>
                   <ul class="dropdown-nav">
-                    <li><a routerLink="">Manage Jobs</a></li>
-                    <li><a routerLink="">Manage Candidates</a></li>
-                    <li><a routerLink="">Post a Job</a></li>
+                    <li><a routerLink="/dashboard/jobs">Manage Jobs</a></li>
+                    <li><a routerLink="dashboard/candidates">Manage Candidates</a></li>
+                    <li><a routerLink="dashboard/postJob">Post a Job</a></li>
                   </ul>
                 </li>
 
-								<li><a routerLink="">Settings</a></li>
+								<li><a [routerLink]="storedRole === 'emp' ? '/dashboard/user-settings' : '/dashboard/company-settings'">Settings</a></li>
 							</ul>
 						</li>
 
-            <li class="nav-header" *ngIf="!token" routerLink=""><a >Register</a></li>
-            <li class="nav-header" *ngIf="!token" routerLink="login"><a >Login</a></li>
+            <li style="font-weight: 400; font-size:larger;" class="nav-header" *ngIf="!token" routerLink="employee-signup"><a >Register</a></li>
+            <li style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="!token" routerLink="login"><a >Login</a></li>
+			<li  style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="token"><a routerLink="payment">Payment</a>
+            </li>
 
-
-            <li class="nav-header"><a routerLink="contact-us">Contact</a>
+            <li  style="font-weight: 400; font-size: larger;" class="nav-header"><a routerLink="contact-us">Contact</a>
             </li>
           </ul>
         </nav>
@@ -101,7 +102,7 @@
 										  </a>
 										</li>
 									  </ul>
-									  
+
 								</div>
 							</div>
 

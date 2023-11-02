@@ -140,7 +140,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-  }
+  },
+//   {
+//     path: '**',
+//     component: Error404Component,
+//   }
 ];
 
 @NgModule({

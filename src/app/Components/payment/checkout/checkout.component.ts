@@ -15,4 +15,5 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
     this.selectedFeature = this.paymentService.getSelectedFeauture();
   }
+
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
 declare var Microsoft: any;
 
 @Component({
@@ -13,6 +14,8 @@ declare var Microsoft: any;
 export class ContactUsComponent {
   contactForm: FormGroup;
   officeLocation:string= 'Tahrir Square';
+  //admin info property
+  adminData: any
 
   constructor(private httpClient: HttpClient, private formBuilder: FormBuilder, private toastr: ToastrService) {
     this.contactForm = this.formBuilder.group({
@@ -33,6 +36,21 @@ export class ContactUsComponent {
     }).catch(error => {
       console.error('Error loading Microsoft Maps:', error);
     });
+
+
+	//admin info
+	this.AdminInfo().subscribe(
+		(response: any) => {
+			this.adminData = response.data[0]; // Access the first (and only) admin user
+			console.log(this.adminData);
+		  },
+		  (error) => {
+			console.error(error);
+		  }
+	  );
+
+
+
   }
 
   submitContactForm() {
@@ -62,7 +80,7 @@ export class ContactUsComponent {
   initializeMap(latitude: number, longitude: number) {
     const mapOptions = {
       center: new Microsoft.Maps.Location(latitude, longitude),
-      zoom: 15, 
+      zoom: 15,
     };
 
     const map = new Microsoft.Maps.Map(document.getElementById('myMap'), mapOptions);
@@ -112,4 +130,8 @@ export class ContactUsComponent {
       }
     });
   }
+  AdminInfo(){
+	return this.httpClient.get('http://127.0.0.1:8000/api/admin-info');
+  }
+
 }
