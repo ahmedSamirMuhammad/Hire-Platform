@@ -6,9 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
 
 @Component({
-  selector: 'app-company-profile',
-  templateUrl: './company-profile.component.html',
-  styleUrls: ['./company-profile.component.scss'],
+	selector: "app-company-profile",
+	templateUrl: "./company-profile.component.html",
+	styleUrls: ["./company-profile.component.scss"],
 })
 export class CompanyProfileComponent implements OnInit{
   userType = "cmp";
@@ -33,37 +33,32 @@ export class CompanyProfileComponent implements OnInit{
     // get the company ID from the route
     this.companyId = +this.route.snapshot.paramMap.get('id');
 
-    // fetch company details by ID
-    this.companyService.getCompanyByID(this.companyId).subscribe(
-      (response: any) => {
-        // assign data to variables
-        this.company_data = response.data;
-        this.open_jobs_list = response.data.open_jobs;
-        this.company_reviews = response.data.reviews;
-      },
-      (error: any) => {
-        console.error('Error fetching company data', error);
-      }
-    );
-    //<!-------- calling the function "getCompanyByID" from "company" service  / End ---------------->
-  }
+		// fetch company details by ID
+		this.companyService.getCompanyByID(this.companyId).subscribe(
+			(response: any) => {
+				// assign data to variables
+				this.company_data = response.data;
+				this.open_jobs_list = response.data.open_jobs;
+				this.company_reviews = response.data.reviews;
+			},
+			(error: any) => {
+				console.error("Error fetching company data", error);
+			}
+		);
+		//<!-------- calling the function "getCompanyByID" from "company" service  / End ---------------->
+	}
 
-
-  onSubmit() {
-    // Ensure that the company ID is set correctly
-    const companyId = this.companyId.toString();
+	onSubmit() {
+		// Ensure that the company ID is set correctly
+		const companyId = this.companyId.toString();
 
     // Send the review data to the service
     this.reviewService.addReview(companyId, this.reviewData).subscribe(
       (response) => {
-        this.toastr.success(
-          'Review added successfully',
-          '200',
-          {
-              timeOut: 2000,
-              progressBar: true,
-          }
-      );
+        // Handle success response here
+        // console.log('Review added successfully', response);
+        alert('Review added successfully!');
+
         // Clear the reviewData object for a new review
         this.reviewData = {
           rating: '',
@@ -73,14 +68,8 @@ export class CompanyProfileComponent implements OnInit{
         };
       },
       (error) => {
-        this.toastr.error(
-          "You've already reviewed this company before",
-          '401',
-          {
-              timeOut: 2000,
-              progressBar: true,
-          }
-      );
+        // Handle error response here
+        console.error('Error adding review', error);
       }
     );
   }

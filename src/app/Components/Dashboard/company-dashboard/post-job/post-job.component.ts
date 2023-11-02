@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { JobCrudService } from 'src/app/services/job-crud.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-post-job',
@@ -18,7 +20,9 @@ export class PostJobComponent {
     private router: Router,
     private ngZone: NgZone,
     private jobCrud: JobCrudService,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastr: ToastrService,
+
   ) {
     this.jobForm = this.formBuilder.group({
       name: [''],
@@ -37,7 +41,12 @@ export class PostJobComponent {
       console.log('added successfully');
       this.router.navigate(['/dashboard/jobs']);
     }, (err) => {
-      //   console.log(err);
+      this.toastr.error('You need to pay to increase your job posting allowance.', '403', {
+        timeOut: 5000,
+        progressBar: true,
+        positionClass: 'toast-top-full-width'
+
+      });
     });
   }
 

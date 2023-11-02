@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments';
 import { Observable } from 'rxjs';
 
@@ -22,7 +22,7 @@ export class JobService {
     const apiUrl = `${environment.API_URL}/jobs?page=${page}`;
     return this.httpClient.get(apiUrl, {headers: this.getHeaders()});
   }
-  applyJobFilter(page: number,params): Observable<any> {
+  applyJobFilter(page: number,params: HttpParams): Observable<any> {
     const apiUrl = `${environment.API_URL}/jobs/apply?page=${page}`;
     return this.httpClient.get(apiUrl, { params });
   }

@@ -76,508 +76,325 @@
 												</div>
 											</div>
 
-											<div class="col-xl-6">
-												<div class="submit-field">
-													<h5>Last Name</h5>
-													<input
-														type="text"
-														class="with-border"
-														formControlName="last_name"
-													/>
+                      <div class="col-xl-6">
+                        <div class="submit-field">
+                          <h5>Last Name</h5>
+                          <input type="text" class="with-border" />
+                        </div>
+                      </div>
+
+                      <!-- Account Type -->
+                      <!-- <div class="col-xl-6">
+                        <div class="submit-field">
+                          <h5>Account Type</h5>
+                          <div class="account-type">
+                            <div>
+                                <input
+                                  type="radio"
+                                  name="account-type-radio"
+                                  id="employee-radio"
+                                  class="account-type-radio"
+
+                                />
+                                <label (click)="setUserType('emp')"
+                                for="employee-radio" class="ripple-effect-dark">
+                                  <i class="icon-material-outline-account-circle"></i>
+                                  Employee
+                                </label>
+                              </div>
+
+
+                            <div>
+                              <input
+                                type="radio"
+                                name="account-type-radio"
+                                id="company-radio"
+                                class="account-type-radio"
+                              />
+                              <label
+
+                                for="company-radio"
+                                class="ripple-effect-dark"
+                                ><i
+                                  class="icon-material-outline-business-center"
+                                ></i>
+                                Company</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>  -->
+
+                      <div class="col-xl-6">
+                        <div class="submit-field">
+                          <h5>Email</h5>
+                          <input type="text" class="with-border"
+                          formControlName="email"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Box -->
+
+          <div class="col-xl-12">
+            <div class="dashboard-box">
+              <!-- Headline -->
+              <div class="headline">
+                <h3><i class="icon-material-outline-face"></i> My User Profile</h3>
+              </div>
+
+              <div class="content">
+                <ul class="fields-ul">
+                  <li>
+                    <!--this Row(Skills & Attachments)Appears For Employees Only  -->
+                    <div class="row">
+                      <!-- skills Input  -->
+                      <div class="col-xl-6">
+                        <div class="submit-field">
+                          <h5>
+                            Skills
+                            <i
+                              class="help-icon"
+                              data-tippy-placement="right"
+                              title="Add up to 10 skills"
+                            ></i>
+                          </h5>
+
+                          <!-- Skills List -->
+                          <div class="keywords-container">
+                            <div class="keyword-input-container">
+                              <input
+                                #keywordInput
+                                type="text"
+                                class="keyword-input with-border"
+                                placeholder="e.g. Angular, Laravel"
+                                formControlName="skills[]"
+
+                              />
+                              <button
+                                (click)="addToSkillsArr(keywordInput.value)"
+                                class="keyword-input-button ripple-effect"
+                              >
+                                <i class="icon-material-outline-add"></i>
+                              </button>
+                            </div>
+                            <div class="keywords-list">
+                              <!-- list all skills  -->
+                              <span
+                                *ngFor="let skill of skillsArr"
+                                class="keyword"
+                              >
+                                <span
+                                  (click)="
+                                    removeFromSkillsArr(
+                                      skillTxt.innerText,
+                                      keywordInput
+                                    )
+                                  "
+                                  class="skill-remove"
+                                ></span>
+                                <span #skillTxt class="skill-text">{{
+                                  skill
+                                }}</span>
+                              </span>
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Attachments Input -->
+                      <div class="col-xl-6">
+                        <div class="submit-field">
+                          <h5>Attachments</h5>
+
+												<div class="attachments-container margin-top-0 margin-bottom-0">
+													<div class="attachment-box ripple-effect">
+														<span>Cover Letter</span>
+														<i>PDF</i>
+														<button class="remove-attachment" data-tippy-placement="top"
+															title="Remove"></button>
+													</div>
+													<div class="attachment-box ripple-effect">
+														<span>Contract</span>
+														<i>DOCX</i>
+														<button class="remove-attachment" data-tippy-placement="top"
+															title="Remove"></button>
+													</div>
 												</div>
-											</div>
+												<div class="clearfix"></div>
 
-											<div class="col-xl-6">
-												<div class="submit-field">
-													<h5>Email</h5>
-													<input
-														type="text"
-														class="with-border"
-														formControlName="email"
-													/>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                          <!-- Upload Button -->
+                          <div class="uploadButton margin-top-0">
+                            <input
+                              class="uploadButton-input"
+                              type="file"
+                              accept="image/*, application/pdf"
+                              id="upload"
+                              multiple
 
-					<!-- Dashboard Box -->
+                               formControlName="attachments[]"
 
-					<div class="col-xl-12">
-						<div class="dashboard-box">
-							<!-- Headline -->
-							<div class="headline">
-								<h3>
-									<i class="icon-material-outline-face"></i>
-									My User Profile
-								</h3>
-							</div>
+                            />
+                            <label
+                              class="uploadButton-button ripple-effect"
+                              for="upload"
+                              >Upload Files</label
+                            >
+                            <span class="uploadButton-file-name"
+                              >Maximum file size: 10 MB</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <!--  Title & Nationality Inputs  -->
+                    <div class="row">
+                      <div class="col-xl-6">
+                        <div class="submit-field">
+                          <h5 >Position</h5>
+                          <!-- <h5 *ngIf="userType == 'cmp'">Field</h5> -->
+                          <input
+                            type="text"
+                            class="with-border"
+                            placeholder="iOS Expert + Node Dev"
+                            name="position | field"
 
-							<div class="content">
-								<ul class="fields-ul">
-									<li>
-										<!--  Title & Nationality Inputs  -->
-										<div class="row">
-											<div class="col-xl-6">
-												<div class="submit-field">
-													<h5>Title</h5>
-													<!-- <h5 *ngIf="userType == 'cmp'">Field</h5> -->
-													<input
-														formControlName="title"
-														type="text"
-														class="with-border"
-														placeholder="Enter Your Title "
-													/>
-												</div>
-											</div>
+                          />
+                        </div>
+                      </div>
 
 											<div class="col-xl-6">
 												<div class="submit-field">
 													<h5>Nationality</h5>
 
-													<!-- select Nationality  -->
-													<select
-														class="selectpicker with-border"
-														data-size="7"
-														title="Select Job Type"
-														data-live-search="true"
-														formControlName="nationality"
-													>
-														<option value="AR">
-															Argentina
-														</option>
-														<option value="AM">
-															Armenia
-														</option>
-														<option value="AW">
-															Aruba
-														</option>
-														<option value="AU">
-															Australia
-														</option>
-														<option value="AT">
-															Austria
-														</option>
-														<option value="AZ">
-															Azerbaijan
-														</option>
-														<option value="BS">
-															Bahamas
-														</option>
-														<option value="BH">
-															Bahrain
-														</option>
-														<option value="BD">
-															Bangladesh
-														</option>
-														<option value="BB">
-															Barbados
-														</option>
-														<option value="BY">
-															Belarus
-														</option>
-														<option value="BE">
-															Belgium
-														</option>
-														<option value="BZ">
-															Belize
-														</option>
-														<option value="BJ">
-															Benin
-														</option>
-														<option value="BM">
-															Bermuda
-														</option>
-														<option value="BT">
-															Bhutan
-														</option>
-														<option value="BG">
-															Bulgaria
-														</option>
-														<option value="BF">
-															Burkina Faso
-														</option>
-														<option value="BI">
-															Burundi
-														</option>
-														<option value="KH">
-															Cambodia
-														</option>
-														<option value="CM">
-															Cameroon
-														</option>
-														<option value="CA">
-															Canada
-														</option>
-														<option value="CV">
-															Cape Verde
-														</option>
-														<option value="KY">
-															Cayman Islands
-														</option>
-														<option value="CO">
-															Colombia
-														</option>
-														<option value="KM">
-															Comoros
-														</option>
-														<option value="CG">
-															Congo
-														</option>
-														<option value="CK">
-															Cook Islands
-														</option>
-														<option value="CR">
-															Costa Rica
-														</option>
-														<option value="CI">
-															Côte d'Ivoire
-														</option>
-														<option value="HR">
-															Croatia
-														</option>
-														<option value="CU">
-															Cuba
-														</option>
-														<option value="CW">
-															Curaçao
-														</option>
-														<option value="CY">
-															Cyprus
-														</option>
-														<option value="CZ">
-															Czech Republic
-														</option>
-														<option value="DK">
-															Denmark
-														</option>
-														<option value="DJ">
-															Djibouti
-														</option>
-														<option value="DM">
-															Dominica
-														</option>
-														<option value="DO">
-															Dominican Republic
-														</option>
-														<option value="EC">
-															Ecuador
-														</option>
-														<option value="EG">
-															Egypt
-														</option>
-														<option value="GP">
-															Guadeloupe
-														</option>
-														<option value="GU">
-															Guam
-														</option>
-														<option value="GT">
-															Guatemala
-														</option>
-														<option value="GG">
-															Guernsey
-														</option>
-														<option value="GN">
-															Guinea
-														</option>
-														<option value="GW">
-															Guinea-Bissau
-														</option>
-														<option value="GY">
-															Guyana
-														</option>
-														<option value="HT">
-															Haiti
-														</option>
-														<option value="HN">
-															Honduras
-														</option>
-														<option value="HK">
-															Hong Kong
-														</option>
-														<option value="HU">
-															Hungary
-														</option>
-														<option value="IS">
-															Iceland
-														</option>
-														<option value="IN">
-															India
-														</option>
-														<option value="ID">
-															Indonesia
-														</option>
-														<option value="NO">
-															Norway
-														</option>
-														<option value="OM">
-															Oman
-														</option>
-														<option value="PK">
-															Pakistan
-														</option>
-														<option value="PW">
-															Palau
-														</option>
-														<option value="PA">
-															Panama
-														</option>
-														<option value="PG">
-															Papua New Guinea
-														</option>
-														<option value="PY">
-															Paraguay
-														</option>
-														<option value="PE">
-															Peru
-														</option>
-														<option value="PH">
-															Philippines
-														</option>
-														<option value="PN">
-															Pitcairn
-														</option>
-														<option value="PL">
-															Poland
-														</option>
-														<option value="PT">
-															Portugal
-														</option>
-														<option value="PR">
-															Puerto Rico
-														</option>
-														<option value="QA">
-															Qatar
-														</option>
-														<option value="RE">
-															Réunion
-														</option>
-														<option value="RO">
-															Romania
-														</option>
-														<option value="RU">
-															Russian Federation
-														</option>
-														<option value="RW">
-															Rwanda
-														</option>
-														<option value="SZ">
-															Swaziland
-														</option>
-														<option value="SE">
-															Sweden
-														</option>
-														<option value="CH">
-															Switzerland
-														</option>
-														<option value="TR">
-															Turkey
-														</option>
-														<option value="TM">
-															Turkmenistan
-														</option>
-														<option value="TV">
-															Tuvalu
-														</option>
-														<option value="UG">
-															Uganda
-														</option>
-														<option value="UA">
-															Ukraine
-														</option>
-														<option value="GB">
-															United Kingdom
-														</option>
-														<option
-															value="US"
-															selected
-														>
-															United States
-														</option>
-														<option value="UY">
-															Uruguay
-														</option>
-														<option value="UZ">
-															Uzbekistan
-														</option>
-														<option value="YE">
-															Yemen
-														</option>
-														<option value="ZM">
-															Zambia
-														</option>
-														<option value="ZW">
-															Zimbabwe
-														</option>
-													</select>
-												</div>
-											</div>
+                          <!-- select Nationality  -->
+                          <select
 
-											
-											<div class="d-flex justify-content-center align-items-center "
-												style="flex-wrap: wrap;">
-												<div class="col-xl-6">
-													<div class="submit-field">
-														<h5>
-															<i
-																class="help-icon"
-																data-tippy-placement="right"
-																title="Add up to 10 skills"
-															></i>
-															Skills
-														</h5>
+                            class="selectpicker with-border"
+                            data-size="7"
+                            title="Select Job Type"
+                            data-live-search="true"
+                             formControlName="nationality"
 
-														<!-- select Nationality  -->
-														<select
-															class="selectpicker  with-border"
-															data-size="7"
-															title="Select Skills"
-															data-live-search="true"
-															formControlName="skills"
-															multiple
-														>
-															<option
-																value="{{
-																	skill.id
-																}}"
-																*ngFor="
-																	let skill of AllSkills
-																"
-															>
-																{{ skill.name }}
-																<!-- Assuming skill has a 'name' property -->
-															</option>
-														</select>
-													</div>
-												</div>
+                          >
+                            <option value="AR">Argentina</option>
+                            <option value="AM">Armenia</option>
+                            <option value="AW">Aruba</option>
+                            <option value="AU">Australia</option>
+                            <option value="AT">Austria</option>
+                            <option value="AZ">Azerbaijan</option>
+                            <option value="BS">Bahamas</option>
+                            <option value="BH">Bahrain</option>
+                            <option value="BD">Bangladesh</option>
+                            <option value="BB">Barbados</option>
+                            <option value="BY">Belarus</option>
+                            <option value="BE">Belgium</option>
+                            <option value="BZ">Belize</option>
+                            <option value="BJ">Benin</option>
+                            <option value="BM">Bermuda</option>
+                            <option value="BT">Bhutan</option>
+                            <option value="BG">Bulgaria</option>
+                            <option value="BF">Burkina Faso</option>
+                            <option value="BI">Burundi</option>
+                            <option value="KH">Cambodia</option>
+                            <option value="CM">Cameroon</option>
+                            <option value="CA">Canada</option>
+                            <option value="CV">Cape Verde</option>
+                            <option value="KY">Cayman Islands</option>
+                            <option value="CO">Colombia</option>
+                            <option value="KM">Comoros</option>
+                            <option value="CG">Congo</option>
+                            <option value="CK">Cook Islands</option>
+                            <option value="CR">Costa Rica</option>
+                            <option value="CI">Côte d'Ivoire</option>
+                            <option value="HR">Croatia</option>
+                            <option value="CU">Cuba</option>
+                            <option value="CW">Curaçao</option>
+                            <option value="CY">Cyprus</option>
+                            <option value="CZ">Czech Republic</option>
+                            <option value="DK">Denmark</option>
+                            <option value="DJ">Djibouti</option>
+                            <option value="DM">Dominica</option>
+                            <option value="DO">Dominican Republic</option>
+                            <option value="EC">Ecuador</option>
+                            <option value="EG">Egypt</option>
+                            <option value="GP">Guadeloupe</option>
+                            <option value="GU">Guam</option>
+                            <option value="GT">Guatemala</option>
+                            <option value="GG">Guernsey</option>
+                            <option value="GN">Guinea</option>
+                            <option value="GW">Guinea-Bissau</option>
+                            <option value="GY">Guyana</option>
+                            <option value="HT">Haiti</option>
+                            <option value="HN">Honduras</option>
+                            <option value="HK">Hong Kong</option>
+                            <option value="HU">Hungary</option>
+                            <option value="IS">Iceland</option>
+                            <option value="IN">India</option>
+                            <option value="ID">Indonesia</option>
+                            <option value="NO">Norway</option>
+                            <option value="OM">Oman</option>
+                            <option value="PK">Pakistan</option>
+                            <option value="PW">Palau</option>
+                            <option value="PA">Panama</option>
+                            <option value="PG">Papua New Guinea</option>
+                            <option value="PY">Paraguay</option>
+                            <option value="PE">Peru</option>
+                            <option value="PH">Philippines</option>
+                            <option value="PN">Pitcairn</option>
+                            <option value="PL">Poland</option>
+                            <option value="PT">Portugal</option>
+                            <option value="PR">Puerto Rico</option>
+                            <option value="QA">Qatar</option>
+                            <option value="RE">Réunion</option>
+                            <option value="RO">Romania</option>
+                            <option value="RU">Russian Federation</option>
+                            <option value="RW">Rwanda</option>
+                            <option value="SZ">Swaziland</option>
+                            <option value="SE">Sweden</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="TR">Turkey</option>
+                            <option value="TM">Turkmenistan</option>
+                            <option value="TV">Tuvalu</option>
+                            <option value="UG">Uganda</option>
+                            <option value="UA">Ukraine</option>
+                            <option value="GB">United Kingdom</option>
+                            <option value="US" selected>United States</option>
+                            <option value="UY">Uruguay</option>
+                            <option value="UZ">Uzbekistan</option>
+                            <option value="YE">Yemen</option>
+                            <option value="ZM">Zambia</option>
+                            <option value="ZW">Zimbabwe</option>
+                          </select>
+                        </div>
+                      </div>
 
-												<div class="col-xl-6">
-													<!-- Skills List -->
-													<div class="keywords-container"  style="margin: auto;">
-														<div class="keywords-list">
-															<span
-																*ngFor="
-																	let userSkill of userSkills
-																"
-																class="keyword"
-															>
-																<span
-																(click)="removeSkill()"
-																	class="skill-remove"
-																></span>
-																<span
-																	class="skill-text"
-																	>{{
-																		userSkill.name
-																	}}</span
-																>
-															</span>
-														</div>
-														<div class="clearfix"></div>
-													</div>
-												</div>
-											</div>
+                      <div class="col-xl-12">
+                        <div class="submit-field">
+                          <h5>Introduce Yourself</h5>
+                          <textarea
+                            cols="30"
+                            rows="5"
+                            class="with-border"
+                            formControlName="about"
 
-											<div class="col-xl-12"
-												style="margin-top: 35px;">
-												<div class="submit-field">
-													<h5>Social Profiles</h5>
-													<div
-														class="freelancer-socials margin-top-25"
-													>
-														<ul class="row">
-															<div
-																class="col-12 col-md-4"
-															>
-																<li>
-																	<a
-																		href="#"
-																		title="Github"
-																		data-tippy-placement="top"
-																	>
-																		<i
-																			class="icon-brand-github"
-																		></i>
-																	</a>
-																</li>
-																<input
-																	type="text"
-																	class="with-border"
-																	placeholder="Github Account Link"
-																	formControlName="github_account"
-																/>
-															</div>
-
-															<div
-																class="col-12 col-md-4"
-															>
-																<li>
-																	<a
-																		href="#"
-																		title="Twitter"
-																		data-tippy-placement="top"
-																	>
-																		<i
-																			class="icon-brand-twitter"
-																		></i>
-																	</a>
-																</li>
-																<input
-																	type="text"
-																	class="with-border"
-																	placeholder="Twitter Account Link"
-																	formControlName="twitter_account"
-																/>
-															</div>
-
-															<div
-																class="col-12 col-md-4"
-															>
-																<li>
-																	<a
-																		href="#"
-																		title="Linkedin"
-																		data-tippy-placement="top"
-																	>
-																		<i
-																			class="icon-brand-linkedin"
-																		></i>
-																	</a>
-																</li>
-																<input
-																	type="text"
-																	class="with-border"
-																	placeholder="Linkedin Account Link"
-														
-																	formControlName="linkedin_account"
-																/>
-															</div>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="col-xl-12">
-												<div class="submit-field">
-													<h5>Introduce Yourself</h5>
-													<textarea
-														cols="30"
-														rows="5"
-														class="with-border"
-														formControlName="about"
-													>
-													</textarea>
-												</div>
+                          >
+                          </textarea>
 											</div>
 										</div>
-									</li>
-								</ul>
-							</div>
+									</div>
+								</li>
+							</ul>
 						</div>
 					</div>
+				</div>
 
 					<!-- Passwords Dashboard Box -->
 					<div class="col-xl-12">
@@ -590,124 +407,87 @@
 								</h3>
 							</div>
 
-							<div class="content with-padding">
-								<div class="row">
-									<div class="col-xl-4">
-										<div class="submit-field">
-											<h5>Current Password</h5>
-											<input
-												type="password"
-												class="with-border"
-												required
-												formControlName="password"
-											/>
-										</div>
-									</div>
+              <div class="content with-padding">
+                <div class="row">
+                  <div class="col-xl-4">
+                    <div class="submit-field">
+                      <h5>Current Password</h5>
+                      <input
+                        type="password"
+                        class="with-border"
+                        required
+                        formControlName="password"
 
-									<div class="col-xl-4">
-										<div class="submit-field">
-											<h5>New Password</h5>
-											<input
-												type="password"
-												class="with-border"
-												required
-												formControlName="new_password"
-											/>
-										</div>
-									</div>
+                      />
+                    </div>
+                  </div>
 
-									<div class="col-xl-4">
-										<div class="submit-field">
-											<div class="form-outline mb-4">
-												<label
-													class="form-label"
-													for="form3Example4cdg"
-													>Repeat your password</label
-												>
-												<input
-													type="password"
-													id="form3Example4cdg"
-													class="form-control form-control-lg"
-													formControlName="confirmedPass"
-												/>
+                  <div class="col-xl-4">
+                    <div class="submit-field">
+                      <h5>New Password</h5>
+                      <input
+                        #newPass
+                        type="password"
+                        class="with-border"
+                        required
+                        name="pass"
 
-												<span
-													class="text-danger"
-													*ngIf="
-														userForm.get(
-															'new_password'
-														)?.valid &&
-														userForm.get(
-															'confirmedPass'
-														)?.dirty &&
-														userForm.get(
-															'new_password'
-														)?.value !==
-															userForm.get(
-																'confirmedPass'
-															)?.value
-													"
-												>
-													Password and Confirm
-													Password must match
-												</span>
-												<div
-													id="name_input_help"
-													*ngIf="
-														userForm.controls[
-															'confirmedPass'
-														].touched &&
-														userForm.controls[
-															'confirmedPass'
-														].invalid
-													"
-													class="form-text text-danger"
-												>
-													<small
-														*ngIf="userForm.controls['confirmedPass'].errors?.['required']"
-														>The password is
-														required</small
-													>
-												</div>
-											</div>
-										</div>
-									</div>
+                      />
+                    </div>
+                  </div>
 
-									<div class="col-xl-12">
-										<div class="checkbox">
-											<input
-												type="checkbox"
-												id="two-step"
-												checked
-												name="two-way"
-											/>
-											<label for="two-step"
-												><span
-													class="checkbox-icon"
-												></span>
-												Enable Two-Step Verification via
-												Email</label
-											>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+                  <div class="col-xl-4">
+                    <div class="submit-field">
+                      <h5>Repeat New Password</h5>
+                      <input
+                        #repeatedNewPass
+                        type="password"
+                        class="with-border"
+                        name="pass"
 
-					<!-- Button -->
-					<div class="col-xl-12">
-						<input
-							type="submit"
-							value="Save Changes"
-							class="button ripple-effect big margin-top-30"
-						/>
-					</div>
-				</form>
-			</div>
-		</div>
+                        (change)="
+                          CheckNewPass(newPass.value, repeatedNewPass.value)
+                        "
+                      />
+                      <p class="repErrorMsg" *ngIf="notMatched">
+                        not matched passwords !
+                      </p>
+                    </div>
+                  </div>
 
-		<!-- Row / End -->
+                  <div class="col-xl-12">
+                    <div class="checkbox">
+                      <input
+                        type="checkbox"
+                        id="two-step"
+                        checked
+                        name="two-way"
+
+                      />
+                      <label for="two-step"
+                        ><span class="checkbox-icon"></span> Enable Two-Step
+                        Verification via Email</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button -->
+          <div class="col-xl-12">
+            <input
+              type="submit"
+              value="Save Changes"
+              class="button ripple-effect big margin-top-30"
+            />
+          </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Row / End -->
 
 		<!-- Footer -->
 		<app-dashboard-footer></app-dashboard-footer>
