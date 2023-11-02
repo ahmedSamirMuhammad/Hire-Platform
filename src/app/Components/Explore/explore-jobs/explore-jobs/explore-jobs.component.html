@@ -29,7 +29,7 @@
             <h3>Category</h3>
             <select formControlName="category_name">
               <option value="" disabled selected>Select a Category</option>
-              <option *ngFor="let category of (categories | async)" [value]="category">{{ category }}</option>
+              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
             </select>
           </div>
 
