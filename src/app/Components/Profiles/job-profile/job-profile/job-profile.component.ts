@@ -11,7 +11,7 @@ import { ToastrService } from "ngx-toastr";
 })
 export class JobProfileComponent implements OnInit{
  
-  jobData: Array<any> = [];
+  jobData: any = {};
   jobId: number; 
 
   constructor(private companyService: CompanyService, private jobService: JobService, private route: ActivatedRoute, private toastr: ToastrService) {}
@@ -42,9 +42,7 @@ export class JobProfileComponent implements OnInit{
         // Handle success response here
         if (response.msg === 'Job bookmarked successfully' || response.msg === 'Job unbookmarked successfully') {
 
-          const job = this.jobData.find((j) => j.id === jobId);
-          job.job_bookmarked = !job.job_bookmarked;
-
+          this.jobData.job_bookmarked = !this.jobData.job_bookmarked;
           this.toastr.success(response.msg, '200', {
             timeOut: 2000,
             progressBar: true,
