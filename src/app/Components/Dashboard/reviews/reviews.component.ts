@@ -10,8 +10,14 @@ import { BehaviorSubject } from "rxjs";
 })
 export class ReviewsComponent {
 	// @ViewChild("btnReview") btnReview: ElementRef;
+	editReviewParams = {
+		id: '',
+		getReviews: () => { }
+
+	};
+	modalOnInit;
 	reviews;
-	userType = "cmp";
+	userType = "";
 	paginationData: BehaviorSubject<any> = new BehaviorSubject({});
 	constructor(
 		private dashboardHttpService: DashboardHttpService,
@@ -21,13 +27,17 @@ export class ReviewsComponent {
 	ngOnInit() {
 		this.userType = localStorage.getItem("role");
 		this.getReviews();
-	}
 
+	}
+	setEditReviewId(id) {
+		this.editReviewParams.id = id;
+		this.editReviewParams.getReviews = this.getReviews;
+
+	}
 	// triggerClick() {
 	// (this.btnReview.nativeElement as HTMLButtonElement).click();
 	// }
-
-	getReviews() {
+	getReviews=()=> {
 		/*
 		current_page
 		last_page
@@ -51,6 +61,15 @@ export class ReviewsComponent {
 					console.error(response.message);
 				}
 			});
+	}
+deleteReview(id) {
+		this.dashboardHttpService.deleteReview(id).subscribe((response: any) => {
+			if (response.status === 200) {
+				this.getReviews();
+			} else {
+				console.error(response.message);
+			}
+		});
 	}
 
 }

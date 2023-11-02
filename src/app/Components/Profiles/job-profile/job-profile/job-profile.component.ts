@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
 import { JobService } from 'src/app/services/job.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-job-profile',
@@ -10,10 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class JobProfileComponent implements OnInit{
  
-  jobData: Array<any> = [];
+  jobData: any = {};
   jobId: number; 
 
-  constructor(private companyService: CompanyService, private jobService: JobService, private route: ActivatedRoute) {}
+  constructor(private companyService: CompanyService, private jobService: JobService, private route: ActivatedRoute, private toastr: ToastrService) {}
 
 
   //<!---------- calling the function "getJobByID" from "job" service / Start -------------->
@@ -34,32 +35,27 @@ export class JobProfileComponent implements OnInit{
   }
   //<!-------- calling the function "getJobByID" from "job" service  / End ---------------->
 
-
-
-
+  //<!---------- calling the function "JobBookmark" from "job" service / Start -------------->
   toggleBookmark(jobId: number) {
-    // Send a request to toggle the job bookmark
-    this.jobService.JobBookmark(jobId).subscribe(
-      (response) => {
+    this.jobService.JobBookmark(jobId).subscribe({
+      next: (response) => {
         // Handle success response here
         if (response.msg === 'Job bookmarked successfully' || response.msg === 'Job unbookmarked successfully') {
-          // Find the job in open_jobs_list array and update its is_bookmarked property
-          const job = this.jobData.find((j) => j.id === jobId);
-          if (job) {
-            job.job_bookmarked = !job.job_bookmarked;
-          }
-        } else {
-          // Handle other possible responses or show an error message
-        }
+
+          this.jobData.job_bookmarked = !this.jobData.job_bookmarked;
+          this.toastr.success(response.msg, '200', {
+            timeOut: 2000,
+            progressBar: true,
+          });
+        } 
       },
-      (error) => {
-        // Handle error response here
-        console.error('Error toggling job bookmark', error);
-      }
-    );
+      error: (error) => {
+        this.toastr.error('Error toggling job bookmark', '401', {
+          timeOut: 2000,
+          progressBar: true,
+        });
+      },
+    });
   }
-  
-
-
-
+  //<!---------- calling the function "JobBookmark" from "job" service / End -------------->
 }
