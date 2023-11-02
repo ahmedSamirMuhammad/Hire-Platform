@@ -1,4 +1,5 @@
-<app-modal #myModal [content]="'dashboard-reviewEdit-form'" [contentStyle]="'col-12 col-md-6 col-xl-4'"></app-modal>
+<app-modal #myModal [content]="'dashboard-reviewEdit-form'" [contentStyle]="'col-12 col-md-6 col-xl-4'"
+	[params]="editReviewParams"></app-modal>
 
 <router-outlet>
 
@@ -37,38 +38,49 @@
 
 
 
-									<li *ngFor="let review of reviews">
-										<div class="boxed-list-item">
-											<!-- Content -->
-											<div class="item-content">
-												<div class="d-flex">
-													<div>
-														<a href="#" class="reviews-company-logo">
-															<img src="{{review.logo}}" alt="">
-														</a>
-													</div>
-													<div>
-														<h4>{{review.title}}</h4>
-														<div class="item-details margin-top-10">
-															<div class="detail-item"><i
-																	class="icon-material-outline-business"></i>
-																{{review.company_name}}</div>
-															<div class="detail-item"><i
-																	class="icon-material-outline-access-time"></i>{{review.created_at}}
-															</div>
-															<app-rating-stars [rating]="review.rating"></app-rating-stars>
-														</div>
-													</div>
+								<li *ngFor="let review of reviews">
+									<div class="boxed-list-item">
+										<!-- Content -->
+										<div class="item-content">
+											<div class="d-flex">
+												<div>
+													<a href="#" class="reviews-company-logo">
+														<img src="{{review.logo}}" alt="">
+													</a>
 												</div>
-												<div class="item-description">
-													<p>{{review.comment}}</p>
+												<div>
+													<h4>{{review.title}}</h4>
+													<div class="item-details margin-top-10">
+														<div *ngIf="userType=='cmp'" class="detail-item">
+															<i class="icon-material-outline-business"></i>
+															{{review.company_name}}
+														</div>
+														<div *ngIf="userType=='emp'" class="detail-item">
+															<i class="icon-material-outline-person-pin"></i>
+															{{review.user_name}}
+														</div>
+														<div class="detail-item"><i
+																class="icon-material-outline-access-time"></i>{{review.created_at}}
+														</div>
+														<app-rating-stars [rating]="review.rating"></app-rating-stars>
+													</div>
 												</div>
 											</div>
+											<div class="item-description">
+												<p>{{review.comment}}</p>
+											</div>
 										</div>
-										<a (click)="myModal.openModal()"
-											class="popup-with-zoom-anim button gray ripple-effect margin-top-5 margin-bottom-10"><i
-												class="icon-feather-edit"></i> Edit Review</a>
-									</li>
+									</div>
+									<a *ngIf="userType=='emp'" (click)="setEditReviewId(review.id)"
+										(click)="myModal.openModal()"
+										class="popup-with-zoom-anim button gray ripple-effect margin-top-5 margin-bottom-10"><i
+											class="icon-feather-edit"></i> Edit Review</a>
+									<div class="buttons-to-right single-right-button" (click)="deleteReview(review.id)">
+										<a href="" class="button red ripple-effect ico" data-tippy-placement="left"
+											data-tippy="" data-original-title="Remove" onclick="return false"><i
+												class="icon-feather-trash-2"></i></a>
+									</div>
+								</li>
 
 							</ul>
 						</div>
@@ -118,5 +130,3 @@
 	</div>
 	<!-- Dashboard Content / End -->
 </div>
-
-

@@ -16,19 +16,39 @@ export class DashboardHttpService {
 		});
 	}
 	getSummary(): Observable<any> {
-		return this.http.get(`${this.api}/dashboard-home`, {headers: this.getHeaders()});
+		return this.http.get(`${this.api}/dashboard-home`, {
+			headers: this.getHeaders(),
+		});
 	}
-	getReviews(page): Observable<any>  {
-		return this.http.get(`${this.api}/dashboard-reviews?page=${page}`, {headers: this.getHeaders()});
-
+	getReviews(page): Observable<any> {
+		return this.http.get(`${this.api}/dashboard-reviews?page=${page}`, {
+			headers: this.getHeaders(),
+		});
 	}
-	getBookmarks(page): Observable<any>  {
-		return this.http.get(`${this.api}/dashboard-bookmarks?page=${page}`, {headers: this.getHeaders()});
-
+	getBookmarks(page): Observable<any> {
+		return this.http.get(`${this.api}/dashboard-bookmarks?page=${page}`, {
+			headers: this.getHeaders(),
+		});
 	}
 	deleteBookmark(jobId) {
-		return this.http.delete(`${this.api}/dashboard-bookmarks/${jobId}`, {headers: this.getHeaders()});
-
+		return this.http.delete(`${this.api}/dashboard-bookmarks/${jobId}`, {
+			headers: this.getHeaders(),
+		});
+	}
+	getReview(id: string): Observable<any> {
+		return this.http.get(`${this.api}/dashboard-reviews/${id}`, {
+			headers: this.getHeaders(),
+		});
+	}
+	editReview(id,data: any) {
+		return this.http.put(`${this.api}/dashboard-reviews/${id}`, data, {
+			headers: this.getHeaders(),
+		})
+	}
+	deleteReview(id) {
+		return this.http.delete(`${this.api}/dashboard-reviews/${id}`, {
+			headers: this.getHeaders(),
+		});
 	}
 
 }

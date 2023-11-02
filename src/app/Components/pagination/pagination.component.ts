@@ -66,6 +66,7 @@ export class PaginationComponent {
 			.then(() => {
 				this.router.navigate([this.next_page]); // navigate to same route
 			});
+			console.log(this.next_page);
 	}
 	prevPage() {
 		this.router

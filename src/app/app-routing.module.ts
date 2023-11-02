@@ -75,10 +75,18 @@ const routes: Routes = [
 
 //  <!-- explore-companies routes / End -->
 
+
 //  <!-- explore-jobs routes / Start -->
-   { path: "explore-jobs", redirectTo: "explore-jobs/1", pathMatch: "full" },
-   { path: "explore-jobs/:page",
-    component: ExploreJobsComponent },
+  //  { path: "explore-jobs", redirectTo: "explore-jobs/1", pathMatch: "full" },
+  //  { path: "explore-jobs/:page",
+  //   component: ExploreJobsComponent },
+
+//  <!-- explore-jobs routes / End -->
+
+//  <!-- explore-jobs routes / Start -->
+{ path: "explore-jobs", redirectTo: "explore-jobs/-/1", pathMatch: "full" },
+{ path: "explore-jobs/:params/:page",
+ component: ExploreJobsComponent },
 
 //  <!-- explore-jobs routes / End -->
   {
@@ -147,7 +155,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-  }
+  },
+//   {
+//     path: '**',
+//     component: Error404Component,
+//   }
 ];
 
 @NgModule({

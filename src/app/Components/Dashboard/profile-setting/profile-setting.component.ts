@@ -146,9 +146,9 @@ export class ProfileSettingComponent {
   removeSkill(){
 
   }
-  
 
-  
+
+
 
 
 

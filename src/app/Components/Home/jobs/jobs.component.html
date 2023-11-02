@@ -7,7 +7,7 @@
 				<!-- Section Headline -->
 				<div class="section-headline margin-top-0 margin-bottom-35">
 					<h3>Featured Jobs</h3>
-					<a href="jobs-list-layout-full-page-map.html" class="headline-link">Browse All Jobs</a>
+					<a routerLink="explore-jobs"   class="headline-link">Browse All Jobs</a>
 				</div>
 
 				<!-- Jobs Container -->
@@ -24,17 +24,17 @@
 
 							<!-- Logo -->
 							<div class="job-listing-company-logo">
-								<img src="assets/images/company-logo-03.png" alt="">
+								<img src="assets/images/company-logo-02.png" alt="">
 							</div>
 
 							<!-- Details -->
 							<div class="job-listing-description">
-								<h3 class="job-listing-title">{{job.name}}</h3>
+								<h3  class="job-listing-title">{{job.name}}</h3>
 
 								<!-- Job Listing Footer -->
 								<div class="job-listing-footer">
-									<ul>
-										<li><i class="icon-material-outline-business"></i> {{job.companyName}}<div class="verified-badge" title="Verified Employer" data-tippy-placement="top"></div></li>
+									<ul >
+										<li ><i class="icon-material-outline-business"></i> {{job.companyName}}<div class="verified-badge" title="Verified Employer" data-tippy-placement="top"></div></li>
 										<li><i class="icon-material-outline-location-on"></i> {{job.location}}</li>
 										<li><i class="icon-material-outline-business-center"></i> {{job.type}}</li>
 										<li><i class="icon-material-outline-access-time"></i> {{job.postJob}}</li>

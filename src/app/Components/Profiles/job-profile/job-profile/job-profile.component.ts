@@ -10,12 +10,11 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ['./job-profile.component.scss']
 })
 export class JobProfileComponent implements OnInit{
- 
-  jobData: Array<any> = [];
-  jobId: number; 
+
+  jobData: any = {};
+  jobId: number;
 
   constructor(private companyService: CompanyService, private jobService: JobService, private route: ActivatedRoute, private toastr: ToastrService) {}
-
 
   //<!---------- calling the function "getJobByID" from "job" service / Start -------------->
   ngOnInit() {
@@ -42,14 +41,12 @@ export class JobProfileComponent implements OnInit{
         // Handle success response here
         if (response.msg === 'Job bookmarked successfully' || response.msg === 'Job unbookmarked successfully') {
 
-          const job = this.jobData.find((j) => j.id === jobId);
-          job.job_bookmarked = !job.job_bookmarked;
-
+          this.jobData.job_bookmarked = !this.jobData.job_bookmarked;
           this.toastr.success(response.msg, '200', {
             timeOut: 2000,
             progressBar: true,
           });
-        } 
+        }
       },
       error: (error) => {
         this.toastr.error('Error toggling job bookmark', '401', {
