@@ -13,6 +13,9 @@ export class DataService {
 
   constructor(private http:HttpClient) { }
 
+  httpHeaders = new HttpHeaders().set('content-Type','application/json');
+
+
   SignupUser(data){
     return this.http.post('http://127.0.0.1:8000/api/employee-register',data)
   }
@@ -58,6 +61,19 @@ export class DataService {
     return this.http.post('http://127.0.0.1:8000/api/company/reset-password',data)
 
    }
+
+   getHeaders() {
+		const token = localStorage.getItem("token");
+		return new HttpHeaders({
+			authorization: `Bearer ${token}`,
+			"Content-Type": "application/json",
+		});
+	}
+
+   stripe(stripeaccount: any) {
+    console.log('callled')
+    return this.http.post<any>(`http://localhost:8000/api/stripe`, stripeaccount , {headers: this.getHeaders()});
+  }
 
 
 }
