@@ -9,6 +9,7 @@ import { NotificationService } from 'src/app/notification.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+	storedRole: string = localStorage.getItem("role");
   name: string | null = null;
   token: string = '';
   notifications: any[] = [];
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnInit {
 
   loadNotifications() {
     this.notificationService.getNotifications().subscribe((data: any) => {
-      this.notifications = data.data; 
+      this.notifications = data.data;
       console.log(this.notifications)
 
     });
@@ -36,5 +37,5 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login'])
   }
 
-  
+
 }

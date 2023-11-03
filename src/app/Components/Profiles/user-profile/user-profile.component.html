@@ -3,7 +3,7 @@
 
 <!-- Wrapper -->
 <!-- <div id="wrapper"> -->
-  <div class="single-page-header freelancer-header" data-background-image="../../../../assets/images/single-freelancer.jpg">
+  <div class="single-page-header freelancer-header" data-background-image="../../../../assets/images/profile1.jpg">
     <div class="container">
         <div class="row" *ngIf="profileData">
             <div class="col-md-12">
@@ -11,12 +11,13 @@
                     <div class="left-side">
                         <div class="header-image freelancer-avatar"><img src="../../../../assets/images/user-avatar-big-02.jpg" alt=""></div>
                         <div class="header-details">
-                            <h3>{{profileData.first_name}} {{profileData.last_name}}<span>{{profileData.title}}</span></h3>
-                            <ul>
+                            <h3 style="font-weight: 500 !important; text-transform: capitalize;">{{profileData.first_name}} {{profileData.last_name}}<span>{{profileData.title}}</span></h3>
 
-                                <li><img class="flag" src="../../../../assets/images/flags/ad.svg" alt="">{{profileData.nationality}}</li>
-                                <li><div class="verified-badge-with-title">{{profileData.verifived}}</div></li>
-                            </ul>
+							<ul>
+
+								<li><img class="flag" src="../../../assets/images/flags/de.svg" alt=""> {{profileData.nationality}}</li>
+								<li><div class="verified-badge-with-title">Verified</div></li>
+							</ul>
                         </div>
                     </div>
                 </div>
@@ -24,6 +25,14 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 <!-- Page Content
 ================================================== -->
@@ -35,8 +44,8 @@
 
             <!-- Page Content -->
             <div class="single-page-section">
-                <h3 class="margin-bottom-25">About Me</h3>
-                <p>{{profileData.aboat}}</p>
+                <h3 class="margin-bottom-25" style="font-weight:500 !important;">About Me</h3>
+                <p style="text-transform: capitalize; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{profileData.aboat}}</p>
 
 
             </div>
@@ -48,28 +57,30 @@
             <!-- Boxed List -->
             <div class="boxed-list margin-bottom-60">
                 <div class="boxed-list-headline">
-                    <h3><i class="icon-material-outline-business"></i> Employment History</h3>
+                    <h3 style="font-weight: 600 ;"><i class="icon-material-outline-business"></i> Employment History</h3>
                 </div>
                 <ul class="boxed-list-ul">
-                    <li>
-                        <div class="boxed-list-item">
+                    <li *ngFor="let data of profileData.history">
+                        <div class="boxed-list-item" >
                             <!-- Avatar -->
                             <div class="item-image">
-                                <img src="images/browse-companies-03.png" alt="">
+                                <img src="../../../../assets/images/browse-companies-03.png" alt="">
                             </div>
 
                             <!-- Content -->
-                            <div class="item-content" *ngFor="let data of profileData.history">
-                                <h4>{{data.job_name}}</h4>
+                            <div class="item-content">
+                                <h4 style="text-transform: capitalize;">{{data.job_name}}</h4>
                                 <div class="item-details margin-top-7">
                                     <div class="detail-item"><a href="#"><i class="icon-material-outline-business"></i> {{data.company_name}}</a></div>
                                     <div class="detail-item"><i class="icon-material-outline-date-range"></i> {{data.date_from}}</div>
                                 </div>
-                                <div class="item-description">
-                                    <p>{{data.description}}</p>
+                                <div class="item-description ">
+                                    <p >{{data.description}}</p>
                                 </div>
                             </div>
                         </div>
+
+
                     </li>
 
                 </ul>
@@ -91,22 +102,20 @@
                 <!-- Widget -->
                 <div class="sidebar-widget">
                     <h3 class="head-widget">Social Profiles</h3>
-                    <div class="freelancer-socials margin-top-25">
-                        <ul>
-                            <li><a href="#" title="Dribbble" data-tippy-placement="top"><i class="icon-brand-dribbble"></i></a></li>
-                            <li><a href="#" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-                            <li><a href="#" title="Behance" data-tippy-placement="top"><i class="icon-brand-behance"></i></a></li>
-                            <li><a href="#" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
-
-                        </ul>
-                    </div>
+					<div class="freelancer-socials margin-top-25">
+						<ul>
+							<li><a href="{{profileData.social_link[0].github}}" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
+							<li><a href="{{profileData.social_link[0].twitter}}" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+							<li><a href="{{profileData.social_link[0].linkedin}}" title="linkedin" data-tippy-placement="top"><i class="icon-brand-linkedin"></i></a></li>
+						</ul>
+					</div>
                 </div>
 
                 <!-- Widget -->
                 <div class="sidebar-widget" >
                     <h3 class="head-widget">Skills</h3>
-                    <div class="task-tags"  *ngFor=" let data of profileData.skill_name">
-                        <span id="skill-specific">{{data.skill_name}}</span>
+                    <div class="task-tags" >
+                        <span id="skill-specific"  *ngFor=" let data of profileData.skill_name">{{data.skill_name}}</span>
                     </div>
                 </div>
 

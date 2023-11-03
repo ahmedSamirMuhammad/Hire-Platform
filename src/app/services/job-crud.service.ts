@@ -41,7 +41,9 @@ export class JobCrudService {
 
   getJob(id:any):Observable<any>{
     let APIUrl = `${this.jobApi}/${id}`;
-    return this.httpClient.get(APIUrl,{headers:this.httpHeaders})
+    return this.httpClient.get(APIUrl,{
+			headers: this.getHeaders(),
+		})
     .pipe(map(
       (res:any)=>{
         return res || {};
@@ -53,7 +55,9 @@ export class JobCrudService {
 
   updateJob(id:any , data:any):Observable<any>{
     let APIUrl = `${this.jobApi}/${id}`;
-    return this.httpClient.put(APIUrl,data,{headers:this.httpHeaders})
+    return this.httpClient.put(APIUrl,data,{
+			headers: this.getHeaders(),
+		})
     .pipe(
       catchError(this.handelError)
       );
@@ -61,7 +65,9 @@ export class JobCrudService {
 
   deleteJob(id:any):Observable<any>{
     let APIUrl = `${this.jobApi}/${id}`;
-    return this.httpClient.delete(APIUrl,{headers:this.httpHeaders})
+    return this.httpClient.delete(APIUrl,{
+			headers: this.getHeaders(),
+		})
     .pipe(
       catchError(this.handelError)
       );

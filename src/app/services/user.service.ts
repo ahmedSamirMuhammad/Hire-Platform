@@ -22,6 +22,8 @@ export class UserService {
 	userSkills:string = 'http://localhost:8000/api/getUserSkills';
 
 	userSocials:string = 'http://localhost:8000/api/socials';
+
+	userAppliedJobs:string = 'http://localhost:8000/api/userAppliedJobs';
 // ****
 
 	constructor(private httpClient: HttpClient) {}
@@ -105,6 +107,19 @@ export class UserService {
   
 	  getUserSkills():Observable<any>{
 		let APIUrl = `${this.userSkills}`;
+		return this.httpClient.get(APIUrl,{
+		  headers: this.getHeaders(),
+	  })
+		.pipe(map(
+		  (res:any)=>{
+			return res || {};
+		  }
+		  ),
+		  catchError(this.handelError)
+		  );
+	  }
+	  getUserAppliedJobs():Observable<any>{
+		let APIUrl = `${this.userAppliedJobs}`;
 		return this.httpClient.get(APIUrl,{
 		  headers: this.getHeaders(),
 	  })

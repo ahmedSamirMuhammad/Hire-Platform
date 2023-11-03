@@ -18,6 +18,7 @@ export class CandidateComponent {
   
 }
   delete(id:any){
+    const jobId = 2; 
     this.candidateCrud.deleteCandidate(id).subscribe( res=>{
       console.log('deleted');
       

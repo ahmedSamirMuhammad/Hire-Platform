@@ -31,7 +31,9 @@ export class CandidateService {
 
   deleteCandidate(id:any):Observable<any>{
     let APIUrl = `${this.candidatesApi}/${id}`;
-    return this.httpClient.delete(APIUrl,{headers:this.httpHeaders})
+    return this.httpClient.delete(APIUrl,{
+			headers: this.getHeaders(),
+		})
     .pipe(
       catchError(this.handelError)
       );

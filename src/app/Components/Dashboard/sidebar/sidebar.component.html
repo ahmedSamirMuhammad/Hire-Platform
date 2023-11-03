@@ -32,11 +32,7 @@
 								Reviews</a>
 						</li>
 					</ul>
-					<ul data-submenu-title="Organize and Manage">
-						<li>
-							<a ><i class="icon-material-outline-business-center"></i>
-								Jobs</a>
-							<ul>
+					<ul data-submenu-title="Jobs">
 								<li *ngIf="storedRole=='emp'">
 									<a routerLink="/dashboard/jobs">Applied Jobs
 										<span class="nav-tag">3</span></a>
@@ -44,7 +40,7 @@
 
 								<li *ngIf="storedRole=='cmp'">
 									<a routerLink="/dashboard/jobs">Manage Jobs
-										<span class="nav-tag">3</span></a>
+										<span class="nav-tag">{{ jobs.length }}</span></a>
 								</li>
 
 								<li  *ngIf="storedRole=='cmp'">
@@ -54,8 +50,8 @@
 								<li  *ngIf="storedRole=='cmp'">
 									<a routerLink="/dashboard/postJob">Post a Job</a>
 								</li>
-							</ul>
-						</li>
+						
+						
 					</ul>
 
 					<ul data-submenu-title="Account">

@@ -5,27 +5,23 @@
     <!-- Details -->
     <div class="job-listing-description">
       <h3 class="job-listing-title">
-        <a href="#">{{ job['title'] }}</a>
+        <a href="#">{{ job['name'] }}</a>
 
-        <span *ngIf="isexpired" class="dashboard-status-button red"
+        <!-- <span *ngIf="isexpired" class="dashboard-status-button red"
           >Expired</span
         >
         <span *ngIf="isApproved" class="dashboard-status-button yellow"
           >Expiring</span
         > 
      
-        <span *ngIf="isPending"   class="dashboard-status-button green">Pending Approval</span>
+        <span *ngIf="isPending"   class="dashboard-status-button green">Pending Approval</span> -->
       </h3>
 
       <!-- Job Listing Footer -->
       <div class="job-listing-footer">
         <ul>
-          <li>
+          <li  *ngIf="storedRole=='cmp'">
             <i class="icon-material-outline-date-range"></i> Posted on {{ job['created_at'] }}
-          </li>
-          <li>
-            <i class="icon-material-outline-date-range"></i> Expiring on 10
-            August, 2018
           </li>
         </ul>
       </div>
@@ -35,22 +31,27 @@
 
 <!-- Buttons -->
 <div class="buttons-to-right always-visible">
-  <a href="dashboard-manage-candidates.html" class="button ripple-effect"
+  <a *ngIf="storedRole=='cmp'" routerLink="/dashboard/candidates" class="button ripple-effect"
     ><i class="icon-material-outline-supervisor-account"></i> Manage Candidates
-    <span class="button-info">0</span></a
+    </a
   >
   <a
-    href="#"
+  *ngIf="storedRole=='cmp'"
+  [routerLink]="['/dashboard/editJob', job.id]"
     class="button gray ripple-effect ico"
     title="Edit"
     data-tippy-placement="top"
     ><i class="icon-feather-edit"></i
   ></a>
+
+  <!-- <a [routerLink]="['/edit-job', job.id || 0]">Edit Job</a> -->
+
   <a
-    href="#"
+  *ngIf="storedRole=='cmp'"
     class="button gray ripple-effect ico"
     title="Remove"
     data-tippy-placement="top"
+    (click)="deleteJob(job.id)"
     ><i class="icon-feather-trash-2"></i
   ></a>
 </div>

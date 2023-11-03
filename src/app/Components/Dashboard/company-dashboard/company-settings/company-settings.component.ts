@@ -4,6 +4,7 @@ import { ReactiveFormsModule, Validators } from "@angular/forms";
 import { NgZone } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
 
+
 import { ActivatedRoute, Router } from "@angular/router";
 import { JobCrudService } from "src/app/services/job-crud.service";
 import { FormGroup, FormBuilder } from "@angular/forms";
@@ -26,9 +27,9 @@ export class CompanySettingsComponent {
 		
 	
 		this.cmpForm = this.formBuilder.group({
-		  first_name: [""],
-		  last_name: [""],
-		  email: [""],
+			first_name:['', [Validators.required , Validators.minLength(2)]],
+			last_name: ['', [Validators.required , Validators.minLength(2)]],
+			email: ['', [Validators.required, Validators.email]],
 		  company_name:[""],
 		  title: [""],
 		  location: [""],
@@ -38,10 +39,9 @@ export class CompanySettingsComponent {
 		  password: [""],
 		  new_password: [""],
 		  confirmedPass: [""],
-		  twitter_account: [""],
+		//   twitter_account: [""],
 		  linkedin_account: [""],
-		  github_account: [""],
-		  mobile_number:[""]
+		  
 		});
 	  
 		this.cmpService.getCmpData().subscribe((res) => {
@@ -55,23 +55,14 @@ export class CompanySettingsComponent {
 			nationality :res["nationality"],
 			about: res["about"],
 			logo: res["avatar"],
-			mobile_number:res["mobile_number"]
+			mobile_number:res["mobile_number"],
+			linkedin_account: res["linkedin_account"],
+
 			
-			// twitter_account: res["twitter_account"],
-			// linkedin_account: res["linkedin_account"],
-			// github_account: res["github_account"],
 		  });
 		});
 	
-		this.cmpService.getUserSocials().subscribe( (res)=>{
-		  const data = res[0];
-		  this.cmpForm.patchValue({
-			twitter_account: data["twitter_account"],
-			linkedin_account: data["linkedin_account"],
-			github_account: data["github_account"],
-		  
-		  })
-	  })
+		
 	}
 	  
 	
@@ -84,33 +75,47 @@ export class CompanySettingsComponent {
 	
 	  onSubmit() {
 			console.log("hi");
-	
-			this.cmpService.updateCmpData(this.cmpForm.value).subscribe(
-				(res) => {
-					this.data = res;
-					//  console.log('edited successfully');
-					//  this.router.navigate(['/dashboard/jobs']);
-	
-					if (this.data.status === 200) {
-						this.router.navigate(["/dashboard/jobs"]);
-						this.toastr.success(
-							JSON.stringify(this.data.msg),
-							JSON.stringify(this.data.status),
-							{
-								timeOut: 2000,
-								progressBar: true,
-							}
-						);
+
+			if(this.cmpForm.valid) {
+
+				this.cmpService.updateCmpData(this.cmpForm.value).subscribe(
+					(res) => {
+						this.data = res;
+						//  console.log('edited successfully');
+						//  this.router.navigate(['/dashboard/jobs']);
+		
+						if (this.data.status === 200) {
+							this.router.navigate(["/dashboard/jobs"]);
+							this.toastr.success(
+								JSON.stringify(this.data.msg),
+								JSON.stringify(this.data.status),
+								{
+									timeOut: 2000,
+									progressBar: true,
+								}
+							);
+						}
+					},
+					(error) => {
+						// Handle error here
+						this.toastr.error("Error with your credentials", "401", {
+							timeOut: 5000,
+							progressBar: true,
+						});
 					}
-				},
-				(error) => {
-					// Handle error here
-					this.toastr.error("Error with your credentials", "401", {
-						timeOut: 5000,
-						progressBar: true,
-					});
-				}
-			);
+				);
+			}
+			else{
+				this.toastr.error(
+				  JSON.stringify("invalid data"),
+				  JSON.stringify(403),
+				  {
+					timeOut: 2000,
+					progressBar: true,
+				  }
+				);
+		  
+			  }
 		}
 	
 	  removeSkill(){

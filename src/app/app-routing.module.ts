@@ -34,6 +34,7 @@ import {SearchResultsComponent} from './Components/search-results/search-results
 //adding payment routing
 import { PaymentPlansComponent } from "./Components/payment/payment-plans/payment-plans.component";
 import { CheckoutComponent } from "./Components/payment/checkout/checkout.component";
+import { EditJobComponent } from "./Components/Dashboard/company-dashboard/edit-job/edit-job.component";
 const routes: Routes = [
   {
     path: '',
@@ -157,8 +158,14 @@ const routes: Routes = [
     path: 'dashboard/postJob',
     component: PostJobComponent ,
   },
-  { path: 'dashboard/user-settings', component: ProfileSettingComponent },
-  { path: 'dashboard/company-settings', component: CompanySettingsComponent },
+  { path: 'dashboard/user-settings', 
+  component: ProfileSettingComponent },
+
+  { path: 'dashboard/company-settings',
+   component: CompanySettingsComponent },
+
+  { path: 'dashboard/editJob/:id',
+   component: EditJobComponent },
 
   {
     path: 'search-results',
@@ -173,7 +180,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-  }
+  },
+//   {
+//     path: '**',
+//     component: Error404Component,
+//   }
 ];
 
 @NgModule({

@@ -38,20 +38,20 @@
 					<ul>
 						<li class="contact-address-headline">Our Office</li>
 						<li>20 {{ officeLocation }}, EG 12055</li>
-						<li>Phone (20) 112-3456789</li>
-						<li><a href="#">ITI@example.com</a></li>
+						<li>Phone (20) {{adminData.mobile_number}}</li>
+						<li><a href="#">{{adminData.email}}</a></li>
 						<li>
 							<div class="freelancer-socials">
 								<ul>
-									<li><a href="javascript:;" title="Dribbble" data-tippy-placement="top"><i class="icon-brand-dribbble"></i></a></li>
-									<li><a href="javascript:;" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-									<li><a href="javascript:;" title="Behance" data-tippy-placement="top"><i class="icon-brand-behance"></i></a></li>
-									<li><a href="javascript:;" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
+									<li><a href="{{ adminData.socials[0]?.github_account }}" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
+									<li><a href="{{ adminData.socials[0]?.linkedin_account }}" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin"></i></a></li>
+									<li><a href="{{ adminData.socials[0]?.twitter_account }}" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+
 								</ul>
 							</div>
 						</li>
 					</ul>
-				</div> 
+				</div>
 				<div id="single-job-map-container">
 					<div id="myMap" style="height: 350px;"></div>
 				</div>
@@ -61,7 +61,7 @@
 		<div class="col-xl-8 col-lg-8 offset-xl-2 offset-lg-2">
 			<section id="" class="margin-bottom-60">
 				<h3 class="headline margin-top-15 margin-bottom-35">Any questions? Feel free to contact us!</h3>
-		
+
 				<form [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
 					<div class="row">
 						<div class="col-md-6">
@@ -77,7 +77,7 @@
 								This field is required
 							</div>
 						</div>
-		
+
 						<div class="col-md-6">
 							<div class="input-with-icon-left">
 								<input class="with-border" type="email" id="email" placeholder="Email Address" formControlName="email" />
@@ -99,7 +99,7 @@
 							</div>
 						</div>
 					</div>
-		
+
 					<div class="input-with-icon-left">
 						<input class="with-border" type="text" id="subject" placeholder="Subject" formControlName="subject" />
 						<i class="icon-material-outline-assignment"></i>
@@ -111,7 +111,7 @@
 							This field is required
 						</div>
 					</div>
-					
+
 					<div>
 						<textarea class="with-border" cols="40" rows="5" id="comments" placeholder="Message" formControlName="comments"></textarea>
 						<div
@@ -122,7 +122,7 @@
 							This field is required
 						</div>
 					</div>
-					
+
 					<input type="submit" class="submit button margin-top-15" id="submit" value="Submit Message" />
 				</form>
 			</section>

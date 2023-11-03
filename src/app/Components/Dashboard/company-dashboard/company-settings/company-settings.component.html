@@ -2,7 +2,7 @@
 	<!-- Dashboard Sidebar-->
 	<app-sidebar></app-sidebar>
 
-	<!-- Dashboard Content  -->
+	<!-- Dashboard Content -->
 	<div class="dashboard-content-container" data-simplebar>
 		<div class="dashboard-content-inner">
 			<!-- Dashboard Headline -->
@@ -77,6 +77,19 @@
 														formControlName="first_name"
 													/>
 												</div>
+
+												<p
+													style="color: red"
+													*ngIf="cmpForm.controls['first_name'].errors?.['required']"
+												>
+													its required field
+												</p>
+												<p
+													style="color: red"
+													*ngIf="cmpForm.controls['first_name'].errors?.['minlength']"
+												>
+													min value is two characters
+												</p>
 											</div>
 
 											<div class="col-xl-6">
@@ -88,6 +101,19 @@
 														formControlName="last_name"
 													/>
 												</div>
+
+												<p
+													style="color: red"
+													*ngIf="cmpForm.controls['last_name'].errors?.['required']"
+												>
+													its required field
+												</p>
+												<p
+													style="color: red"
+													*ngIf="cmpForm.controls['last_name'].errors?.['minlength']"
+												>
+													min value is two characters
+												</p>
 											</div>
 
 											<div class="col-xl-6">
@@ -131,9 +157,8 @@
 
 							<div class="content">
 								<ul class="fields-ul">
-									
 									<li>
-										<!--  Title & Nationality Inputs  -->
+										<!-- Title & Nationality Inputs -->
 										<div class="row">
 											<div class="col-xl-6">
 												<div class="submit-field">
@@ -152,7 +177,7 @@
 												<div class="submit-field">
 													<h5>Nationality</h5>
 
-													<!-- select Nationality  -->
+													<!-- select Nationality -->
 													<select
 														class="selectpicker with-border"
 														data-size="7"
@@ -430,15 +455,10 @@
 													</select>
 												</div>
 											</div>
-
-
 										</div>
 
-									
-									<!-- phone & company name  -->
+										<!-- phone & company name -->
 
-
-									
 										<div class="row">
 											<div class="col-xl-6">
 												<div class="submit-field">
@@ -466,82 +486,35 @@
 												</div>
 											</div>
 
-											
-											<div class="col-xl-12"
-												style="margin-top: 35px;">
+											<div
+												class="col-xl-12"
+												style="margin-top: 35px"
+											>
 												<div class="submit-field">
-													<h5>Social Profiles</h5>
+													
+													<h3>
+														<a
+														href="#"
+														title="Linkedin"
+														data-tippy-placement="top"
+														class="me-2"
+													>
+														<i
+															class="icon-brand-linkedin"
+														></i>
+													</a>
+														Linkedin Profile</h3>
 													<div
 														class="freelancer-socials margin-top-25"
 													>
-														<ul class="row">
-															<div
-																class="col-12 col-md-4"
-															>
-																<li>
-																	<a
-																		href="#"
-																		title="Github"
-																		data-tippy-placement="top"
-																	>
-																		<i
-																			class="icon-brand-github"
-																		></i>
-																	</a>
-																</li>
-																<input
-																	type="text"
-																	class="with-border"
-																	placeholder="Github Account Link"
-																	formControlName="github_account"
-																/>
-															</div>
-
-															<div
-																class="col-12 col-md-4"
-															>
-																<li>
-																	<a
-																		href="#"
-																		title="Twitter"
-																		data-tippy-placement="top"
-																	>
-																		<i
-																			class="icon-brand-twitter"
-																		></i>
-																	</a>
-																</li>
-																<input
-																	type="text"
-																	class="with-border"
-																	placeholder="Twitter Account Link"
-																	formControlName="twitter_account"
-																/>
-															</div>
-
-															<div
-																class="col-12 col-md-4"
-															>
-																<li>
-																	<a
-																		href="#"
-																		title="Linkedin"
-																		data-tippy-placement="top"
-																	>
-																		<i
-																			class="icon-brand-linkedin"
-																		></i>
-																	</a>
-																</li>
-																<input
-																	type="text"
-																	class="with-border"
-																	placeholder="Linkedin Account Link"
-														
-																	formControlName="linkedin_account"
-																/>
-															</div>
-														</ul>
+														<div>
+															<input
+																type="text"
+																class="with-border"
+																placeholder="Linkedin Account Link"
+																formControlName="linkedin_account"
+															/>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -554,12 +527,10 @@
 														rows="5"
 														class="with-border"
 														formControlName="about"
-													>
-													</textarea>
+													></textarea>
 												</div>
 											</div>
 										</div>
-
 									</li>
 								</ul>
 							</div>
@@ -585,7 +556,6 @@
 											<input
 												type="password"
 												class="with-border"
-												required
 												formControlName="password"
 											/>
 										</div>
@@ -598,7 +568,6 @@
 												#newPass
 												type="password"
 												class="with-border"
-												required
 												formControlName="new_password"
 											/>
 										</div>
@@ -654,8 +623,7 @@
 													<small
 														*ngIf="cmpForm.controls['confirmedPass'].errors?.['required']"
 														>The password is
-														required</small
-													>
+													</small>
 												</div>
 											</div>
 										</div>
@@ -678,7 +646,7 @@
 			<!-- Row / End -->
 
 			<!-- Footer -->
-			<app-dashboard-footer></app-dashboard-footer>
+			<!-- <app-dashboard-footer></app-dashboard-footer> -->
 			<!-- Footer / End -->
 		</div>
 	</div>

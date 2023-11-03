@@ -1,7 +1,9 @@
 import { Component ,NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router , ActivatedRoute } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { JobCrudService } from 'src/app/services/job-crud.service';
+import { UserService } from 'src/app/services/user.service';
+
 // import { FormGroup , FormBuilder } from '@angular/forms';
 
 @Component({
@@ -10,10 +12,14 @@ import { JobCrudService } from 'src/app/services/job-crud.service';
   styleUrls: ['./manage-jobs.component.scss']
 })
 export class ManageJobsComponent {
-  constructor(private jobCrud:JobCrudService){
+  constructor(private jobCrud:JobCrudService,
+      private userService:UserService
+
+    ){
 
   }
   jobs:any = [];
+  getUserAppliedJobs:any = [];
 	storedRole: string = localStorage.getItem("role");
 
   ngOnInit():void{
@@ -24,6 +30,13 @@ export class ManageJobsComponent {
       console.log(this.jobs);
       })
       
+    this.userService.getUserAppliedJobs().subscribe( (res)=>{
+      this.getUserAppliedJobs = res.data;
+      console.log(this.getUserAppliedJobs);
+      })
+      
   }
+
+  
   
 }

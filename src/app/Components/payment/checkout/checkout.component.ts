@@ -25,14 +25,14 @@ export class CheckoutComponent implements OnInit {
      public fb: FormBuilder,
     private router:Router ,
     private paymentService:PaymentService ,
-    private data: DataService , 
+    private data: DataService ,
     private toastr: ToastrService,
 
   ) {}
   ngOnInit(): void {
     this.selectedFeature = this.paymentService.getSelectedFeauture();
    }
-   
+
   paywithstripegateform = this.fb.group({
     number: new FormControl('4242 4242 4242 4242'),
     expired_month: new FormControl('12'),
@@ -49,7 +49,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmitStripe(): void {
-   
+
       const strpie: any = new FormData();
       strpie.append(
         'number',
@@ -72,7 +72,7 @@ export class CheckoutComponent implements OnInit {
         'description',
         this.paywithstripegateform.controls['description']?.value
       );
-     
+
       strpie.append(
         'amount',
         this.paywithstripegateform.controls['amount']?.value
@@ -90,7 +90,7 @@ export class CheckoutComponent implements OnInit {
 
         },
       });
-    
+
   }
 
 }

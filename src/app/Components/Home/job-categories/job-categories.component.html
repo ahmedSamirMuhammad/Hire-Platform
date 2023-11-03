@@ -12,15 +12,98 @@
 				<div class="categories-container">
 
 					<!-- Category Box -->
-					<a href="jobs-grid-layout-full-page.html" class="category-box" *ngFor="let category of categories">
+					<a href="jobs-grid-layout-full-page.html" class="category-box" >
 						<div class="category-box-icon">
 							<i class="icon-line-awesome-file-code-o"></i>
 						</div>
-						<div class="category-box-counter">{{category.number_of_jobs}}</div>
+						<div class="category-box-counter">{{categories[0].number_of_jobs}}</div>
 						<div class="category-box-content">
-							<h3>{{category.name}}</h3>
-							<div *ngFor="let job of category.jobs">
-               <p>{{job.title}}</p>
+							<h3>{{categories[0].name}}</h3>
+								<p>Software Engineer, Web / Mobile Developer & More</p>
+						</div>
+					</a>
+
+					<a href="jobs-grid-layout-full-page.html" class="category-box" >
+						<div class="category-box-icon">
+							<i class="icon-line-awesome-cloud-upload"></i>
+						</div>
+						<div class="category-box-counter">{{categories[1].number_of_jobs}}</div>
+						<div class="category-box-content">
+							<h3>{{categories[1].name}}</h3>
+							<div class="d-flex ">
+								<p>Data Specialist / Scientist, Data Analyst & More</p>
+              </div>
+						</div>
+					</a>
+					<a href="jobs-grid-layout-full-page.html" class="category-box" >
+						<div class="category-box-icon">
+							<i class="icon-line-awesome-pencil"></i>
+						</div>
+						<div class="category-box-counter">{{categories[2].number_of_jobs}}</div>
+						<div class="category-box-content">
+							<h3>{{categories[2].name}}</h3>
+							<div class="d-flex ">
+								<p>Creative Director, Web Designer & More</p>
+              </div>
+						</div>
+					</a>
+					<a href="jobs-grid-layout-full-page.html" class="category-box" >
+						<div class="category-box-icon">
+							<i class="icon-line-awesome-suitcase"></i>
+						</div>
+						<div class="category-box-counter">{{categories[3].number_of_jobs}}</div>
+						<div class="category-box-content">
+							<h3>{{categories[3].name}}</h3>
+							<div class="d-flex ">
+								<p>Darketing Analyst, Social Profile Admin & More</p>
+              </div>
+						</div>
+					</a>
+					<a href="jobs-grid-layout-full-page.html" class="category-box" >
+						<div class="category-box-icon">
+							<i class="icon-line-awesome-pie-chart"></i>
+						</div>
+						<div class="category-box-counter">{{categories[4].number_of_jobs}}</div>
+						<div class="category-box-content">
+							<h3>{{categories[4].name}}</h3>
+							<div class="d-flex ">
+								<p>Advisor, Coach, Education Coordinator & More</p>
+              </div>
+						</div>
+					</a>
+					<a href="jobs-grid-layout-full-page.html" class="category-box" >
+						<div class="category-box-icon">
+							<i class="icon-line-awesome-image"></i>
+						</div>
+						<div class="category-box-counter">{{categories[5].number_of_jobs}}</div>
+						<div class="category-box-content">
+							<h3>{{categories[5].name}}</h3>
+							<div class="d-flex ">
+								<p>Data Specialist / Scientist, Data Analyst & More</p>
+              </div>
+						</div>
+					</a>
+					<a href="jobs-grid-layout-full-page.html" class="category-box" >
+						<div class="category-box-icon">
+							<i class="icon-line-awesome-bullhorn"></i>
+						</div>
+						<div class="category-box-counter">{{categories[6].number_of_jobs}}</div>
+						<div class="category-box-content">
+							<h3>{{categories[6].name}}</h3>
+							<div class="d-flex ">
+								<p>Auditor, Accountant, Fnancial Analyst & More</p>
+              </div>
+						</div>
+					</a>
+					<a href="jobs-grid-layout-full-page.html" class="category-box" >
+						<div class="category-box-icon">
+							<i class="icon-line-awesome-graduation-cap"></i>
+						</div>
+						<div class="category-box-counter">{{categories[7].number_of_jobs}}</div>
+						<div class="category-box-content">
+							<h3>{{categories[7].name}}</h3>
+							<div class="d-flex ">
+								<p>Copywriter, Creative Writer, Translator & More</p>
               </div>
 						</div>
 					</a>

@@ -24,7 +24,9 @@ export class SearchResultsComponent implements OnInit {
       console.log(this.searchResults);
     });
   }
-
+  navigateToJobProfile(id: number) {
+    this.router.navigate([`/job-profile/${id}`]);
+  }
 
 
 }
