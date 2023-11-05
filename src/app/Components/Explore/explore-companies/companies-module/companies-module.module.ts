@@ -7,6 +7,7 @@ import { LettersListComponent } from '../letters-list/letters-list.component';
 import { CompaniesListComponent } from '../companies-list/companies-list.component';
 import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 // import { PaginationComponent } from 'src/app/Components/pagination/pagination.component';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CompaniesModuleRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class CompaniesModuleModule { }

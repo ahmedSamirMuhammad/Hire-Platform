@@ -44,7 +44,7 @@
           <!-- Company-reviews Component / End-->
         </ul>
 
-        <div *ngIf="userType=='emp'" class="centered-button margin-top-35">
+        <div *ngIf="userType=='emp'" class="centered-button margin-top-35"> 
           <a
             href="#small-dialog"
             class="popup-with-zoom-anim button button-sliding-icon"
@@ -83,7 +83,7 @@
       <div class="popup-tab-content" id="tab">
         <!-- Welcome Text -->
         <div class="welcome-text">
-          <h3>What is it like to work at Acodia?</h3>
+          <h3>What is it like to work at {{ company_data.name }}?</h3>
 
           <!-- Form -->
 
@@ -92,16 +92,16 @@
             <div class="clearfix"></div>
             <div class="leave-rating-container">
               <div class="leave-rating margin-bottom-5">
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-1" value="1" required />
-                <label for="rating-1" class="icon-material-outline-star"></label>
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-2" value="2" required />
-                <label for="rating-2" class="icon-material-outline-star"></label>
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-3" value="3" required />
-                <label for="rating-3" class="icon-material-outline-star"></label>
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-4" value="4" required />
-                <label for="rating-4" class="icon-material-outline-star"></label>
                 <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-5" value="5" required />
                 <label for="rating-5" class="icon-material-outline-star"></label>
+                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-4" value="4" required />
+                <label for="rating-4" class="icon-material-outline-star"></label>
+                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-3" value="3" required />
+                <label for="rating-3" class="icon-material-outline-star"></label>
+                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-2" value="2" required />
+                <label for="rating-2" class="icon-material-outline-star"></label>
+                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-1" value="1" required />
+                <label for="rating-1" class="icon-material-outline-star"></label>
               </div>
             </div>
             <div class="clearfix"></div>

@@ -51,16 +51,8 @@ const routes: Routes = [
 	},
 	{
 		path: "dashboard",
-		component: DashboardComponent,
-		children: [
-			{ path: "", redirectTo: "summary", pathMatch: "full" },
-			{ path: "summary", component: SummaryComponent },
-			{ path: "messages", component: MessagesComponent },
-			{ path: "bookmarks", redirectTo: "bookmarks/1", pathMatch: "full" },
-			{ path: "bookmarks/:page", component: BookmarksComponent },
-			{ path: "reviews", redirectTo: "reviews/1", pathMatch: "full" },
-			{ path: "reviews/:page", component: ReviewsComponent },
-		],
+		loadChildren:()=>import('./Components/Dashboard/dashboard/dashboard.module').then(mod=>mod.DashboardModule),
+		
 		canActivate: [AuthGuard],
 	},
 

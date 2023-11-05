@@ -17,18 +17,27 @@
 					<div class="leave-rating1">
 						<input type="radio" id="rating1" (click)="rate(5)" name="rating">
 						<label #rating5 for="rating1" class="icon-material-outline-star"></label>
-						<input type="radio" id="rating2"  (click)="rate(4)" name="rating">
+						<input type="radio" id="rating2" (click)="rate(4)" name="rating">
 						<label #rating4 for="rating2" class="icon-material-outline-star"></label>
-						<input type="radio" id="rating3"  (click)="rate(3)" name="rating">
+						<input type="radio" id="rating3" (click)="rate(3)" name="rating">
 						<label #rating3 for="rating3" class="icon-material-outline-star"></label>
 						<input type="radio" id="rating4" (click)="rate(2)" name="rating">
 						<label #rating2 for="rating4" class="icon-material-outline-star"></label>
-						<input type="radio" id="rating5"  (click)="rate(1)" name="rating">
+						<input type="radio" id="rating5" (click)="rate(1)" name="rating">
 						<label #rating1 for="rating5" class="icon-material-outline-star"></label>
 					</div>
 				</div>
 			</div>
-			<div class="clearfix"></div>
+			<div class="err" *ngIf="reviewForm.get('rating').hasError('required')">
+				Rating is required.
+			</div>
+			<div class="err" *ngIf="reviewForm.get('rating').hasError('min')">
+				Rating must be at least 1.
+			</div>
+			<div class="err" *ngIf="reviewForm.get('rating').hasError('max')">
+				Rating must be at most 5.
+			</div>
+			<div class="err" class="clearfix"></div>
 			<!-- Leave Rating / End-->
 
 		</div>
@@ -42,13 +51,18 @@
 				<i class="icon-material-outline-rate-review"></i>
 				<input type="text" class="input-text with-border" formControlName="title" id="reviewtitle"
 					placeholder="Review Title" required="">
+				<div class="err" *ngIf="reviewForm.get('title').hasError('required')">
+					Title is required.
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<textarea class="with-border" placeholder="Review" formControlName="comment" id="message" cols="7"
 		required=""></textarea>
-
+	<div class="err" *ngIf="reviewForm.get('comment').hasError('required')">
+		Comment is required.
+	</div>
 
 
 	<!-- Button -->

@@ -35,9 +35,6 @@
 						</div>
 						<div class="content">
 							<ul class="dashboard-box-list">
-
-
-
 								<li *ngFor="let review of reviews">
 									<div class="boxed-list-item">
 										<!-- Content -->
@@ -51,13 +48,16 @@
 												<div>
 													<h4>{{review.title}}</h4>
 													<div class="item-details margin-top-10">
-														<div *ngIf="userType=='cmp'" class="detail-item">
-															<i class="icon-material-outline-business"></i>
-															{{review.company_name}}
-														</div>
 														<div *ngIf="userType=='emp'" class="detail-item">
-															<i class="icon-material-outline-person-pin"></i>
-															{{review.user_name}}
+															<a routerLink="/company-profile/{{review.company_id}}">
+																<i class="icon-material-outline-business"></i>
+																{{review.company_name}}
+															</a>
+														</div>
+														<div *ngIf="userType=='cmp'" class="detail-item">
+															<a routerLink="/user-profile/{{review.user_id}}">
+																<i class="icon-material-outline-person-pin"></i>
+																{{review.user_name}}</a>
 														</div>
 														<div class="detail-item"><i
 																class="icon-material-outline-access-time"></i>{{review.created_at}}
@@ -71,8 +71,10 @@
 											</div>
 										</div>
 									</div>
-									<a *ngIf="userType=='emp'" (click)="setEditReviewId(review.id)"
-										(click)="myModal.openModal()"
+									<a *ngIf="userType=='emp'"
+										(click)="setEditReviewId(review.id)"
+										(click)="myModal.initModal()"
+
 										class="popup-with-zoom-anim button gray ripple-effect margin-top-5 margin-bottom-10"><i
 											class="icon-feather-edit"></i> Edit Review</a>
 									<div class="buttons-to-right single-right-button" (click)="deleteReview(review.id)">

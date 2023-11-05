@@ -56,6 +56,10 @@ export class ReviewsComponent {
 					this.paginationData.next({
 						current_page: response.data.current_page,
 						last_page: response.data.last_page,
+						onturn: this.getReviews,
+						url: `/dashboard/reviews/1`,
+						allowOnTurn: true,
+						disable: false,
 					});
 				} else {
 					console.error(response.message);

@@ -15,16 +15,22 @@ export class ExploreCompaniesComponent implements OnInit{
   constructor(private companyService: CompanyService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    const page = this.activatedRoute.snapshot.params["page"];
+    this.getAllCompanies();
+  }
 
-    //<!---------- calling the function "getCompanies" from "company" service / Start -------------->
+  //<!---------- calling the function "getCompanies" from "company" service / Start -------------->
+  getAllCompanies = () => {
+    const page = this.activatedRoute.snapshot.params["page"];
     this.companyService.getCompanies(page).subscribe(
       (response: any) => {
         this.company_list = response.data.data;
-        
         this.paginationData.next( {
-          current_page:response.data.current_page,
-          last_page: response.data.last_page,
+          current_page: response.data.current_page,
+					last_page: response.data.last_page,
+          onturn: this.getAllCompanies,
+					url: `/explore-companies/1`,
+          allowOnTurn: true,
+					disable: false,
       });
       },
       (error: any) => {
@@ -32,5 +38,5 @@ export class ExploreCompaniesComponent implements OnInit{
       }
     );
   }
-      //<!-------- calling the function "getCompanies" from "company" service  / End ---------------->
+  //<!-------- calling the function "getCompanies" from "company" service  / End ---------------->
 }
