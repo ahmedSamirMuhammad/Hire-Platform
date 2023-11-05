@@ -38,35 +38,35 @@
 					  <label for="employer-radio" class="ripple-effect-dark"><i class="icon-material-outline-business-center"></i> Company</label>
 					</div>
 				  </div>
-				  
-					
+
+
 				<!-- Form -->
 				<form [formGroup]="form" (submit)="submit()">
 					<div class="input-with-icon-left">
 					  <i class="icon-material-baseline-mail-outline"></i>
 					  <input type="text" class="input-text with-border" formControlName="email" name="email" id="emailaddress" placeholder="Email Address" required/>
-					  <div id="email_input_help" *ngIf="form.get('email').touched && form.get('email').hasError('required')" class="form-text text-danger">
+					  <div id="email_input_help" *ngIf="form.get('email').touched && form.get('email').hasError('required')" class="form-text err">
 						The Email is required
 					  </div>
-					  <div id="email_input_help" *ngIf="form.get('email').hasError('email')" class="form-text text-danger">
+					  <div  id="email_input_help" *ngIf="form.get('email').hasError('email')" class="form-text err">
 						Invalid Email Format
 					  </div>
 					</div>
-				  
+
 					<div class="input-with-icon-left">
 					  <i class="icon-material-outline-lock"></i>
 					  <input type="password" class="input-text with-border" formControlName="password" id="password" placeholder="Password" name="password" required/>
-					  <div id="password_input_help" *ngIf="form.get('password').touched && form.get('password').hasError('required')" class="form-text text-danger">
+					  <div  id="password_input_help"  *ngIf="form.get('password').touched && form.get('password').hasError('required')" class="form-text err">
 						The password is required
 					  </div>
 					</div>
 					<a routerLink="/forget-password" class="forgot-password">Forgot Password?</a>
 					<button class="button full-width button-sliding-icon ripple-effect margin-top-10" type="submit">Log In <i class="icon-material-outline-arrow-right-alt"></i></button>
 				  </form>
-				  
-				
+
+
 				<!-- Button -->
-				
+
 				<!-- Social Login -->
 				<div class="social-login-separator"><span>or</span></div>
 				<div class="social-login-buttons">

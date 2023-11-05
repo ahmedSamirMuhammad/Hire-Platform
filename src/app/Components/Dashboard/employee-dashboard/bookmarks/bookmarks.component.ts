@@ -24,7 +24,7 @@ export class BookmarksComponent {
 	ngOnInit() {
 		this.getBookmarks();
 	}
-	getBookmarks() {
+	getBookmarks=()=> {
 		const page = this.activatedRoute.snapshot.params["page"];
 		this.dashboardHttpService
 			.getBookmarks(page)
@@ -39,6 +39,10 @@ export class BookmarksComponent {
 					this.paginationData.next({
 						current_page: response.data.current_page,
 						last_page: response.data.last_page,
+						onturn: this.getBookmarks,
+						url: `/dashboard/bookmarks/1`,
+						allowOnTurn: true,
+						disable: false,
 					});
 				} else {
 					console.error(response.message);
