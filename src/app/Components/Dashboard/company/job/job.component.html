@@ -31,13 +31,13 @@
 
 <!-- Buttons -->
 <div class="buttons-to-right always-visible">
-  <a *ngIf="storedRole=='cmp'" routerLink="/dashboard/candidates" class="button ripple-effect"
+  <a *ngIf="storedRole=='cmp'" routerLink="/company/dashboard/candidates" class="button ripple-effect"
     ><i class="icon-material-outline-supervisor-account"></i> Manage Candidates
     </a
   >
   <a
   *ngIf="storedRole=='cmp'"
-  [routerLink]="['/dashboard/editJob', job.id]"
+  [routerLink]="['/company/dashboard/editJob', job.id]"
     class="button gray ripple-effect ico"
     title="Edit"
     data-tippy-placement="top"

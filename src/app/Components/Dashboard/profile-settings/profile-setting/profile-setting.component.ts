@@ -27,6 +27,12 @@ export class ProfileSettingComponent {
       console.log(this.AllSkills);
       })
 
+      this.userService.getUserSkills().subscribe( (res)=>{
+        this.userSkills = res;
+        // console.log(this.userSkills);
+        })
+    
+
     this.userForm = this.formBuilder.group({
       first_name:['', [Validators.required , Validators.minLength(2)]],
       last_name: ['', [Validators.required , Validators.minLength(2)]],
@@ -80,16 +86,8 @@ export class ProfileSettingComponent {
    userSkills : any[];
    
 	ngOnInit(): void {
-   this.userService.getAllSkills().subscribe( (res)=>{
-    this.AllSkills = res;
-    console.log(this.AllSkills);
-    })
-    
-   this.userService.getUserSkills().subscribe( (res)=>{
-    this.userSkills = res;
-    // console.log(this.userSkills);
-    })
-
+   
+  
    
     
   }
@@ -110,7 +108,7 @@ export class ProfileSettingComponent {
           //  this.router.navigate(['/dashboard/jobs']);
   
           if (this.data.status === 200) {
-            this.router.navigate(["/dashboard/jobs"]);
+            this.router.navigate(["/dashboard/summary"]);
             this.toastr.success(
               JSON.stringify(this.data.msg),
               JSON.stringify(this.data.status),
@@ -143,8 +141,18 @@ export class ProfileSettingComponent {
     }
 	}
 
-  removeSkill(){
-
+  removeSkill(id:any){
+    this.userService.removeSkill(id).subscribe( (res=>{
+      console.log('deleted' );
+      const currentScrollPosition = window.scrollY;
+      console.log(currentScrollPosition);
+      
+      this.router.navigate(['/dashboard/user-settings'])
+        // Scroll back to the previous position after the route is reloaded
+        // window.scrollTo(0,currentScrollPosition);
+      
+      
+    }))
   }
 
 

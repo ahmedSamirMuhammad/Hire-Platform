@@ -21,6 +21,8 @@ export class UserService {
 
 	userSkills:string = 'http://localhost:8000/api/getUserSkills';
 
+	removeSkillApi:string = 'http://localhost:8000/api/destroySkill';
+
 	userSocials:string = 'http://localhost:8000/api/socials';
 
 	userAppliedJobs:string = 'http://localhost:8000/api/userAppliedJobs';
@@ -118,6 +120,27 @@ export class UserService {
 		  catchError(this.handelError)
 		  );
 	  }
+
+
+	  removeSkill(id:any):Observable<any>{
+		let APIUrl = `${this.removeSkillApi}/${id}`;
+		return this.httpClient.delete(APIUrl,{
+		  headers: this.getHeaders(),
+	  })
+		.pipe(map(
+		  (res:any)=>{
+			return res || {};
+		  }
+		  ),
+		  catchError(this.handelError)
+		  );
+	  }
+
+
+	  // end Skills methods 
+	  // ***************
+
+	  //Applied jobs
 	  getUserAppliedJobs():Observable<any>{
 		let APIUrl = `${this.userAppliedJobs}`;
 		return this.httpClient.get(APIUrl,{
@@ -131,9 +154,10 @@ export class UserService {
 		  catchError(this.handelError)
 		  );
 	  }
+	  
 
-// end Skills methods 
-// ***************
+	 
+
 
 
 //Socials methods 

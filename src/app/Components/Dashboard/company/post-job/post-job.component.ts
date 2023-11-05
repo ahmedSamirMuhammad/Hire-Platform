@@ -33,6 +33,7 @@ export class PostJobComponent {
       min_salary: [''],
       about: ['' , Validators.required],
       logo: [''],
+      experience: [''],
     });
   }
 
@@ -44,7 +45,7 @@ export class PostJobComponent {
         console.log('added successfully');
         
             if (res.status === 200) {
-              this.router.navigate(["/dashboard/jobs"]);
+              this.router.navigate(["/company/dashboard/jobs"]);
               this.toastr.success(
                 JSON.stringify("added successfully"),
                 JSON.stringify(res.status),

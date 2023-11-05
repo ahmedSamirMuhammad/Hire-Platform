@@ -157,7 +157,7 @@
 
 													<!-- select Nationality  -->
 													<select
-														class=""
+														class="selectpicker"
 														data-size="7"
 														title="Select Job Type"
 														formControlName="nationality"
@@ -446,13 +446,8 @@
 															Skills
 														</h5>
 
-														<select
-														class=""
-														data-size="7"
-														title="Select user skills"
-														data-live-search="true"
-														formControlName="skills"
-														>
+														<select class="selectpicker" multiple
+															formControlName="skills">
 															<option
 															value="{{
 																skill.id
@@ -465,7 +460,7 @@
 																{{ skill.name }}
 															</option>
 																	
-															</select>
+														</select>
 
 													</div>
 												
@@ -484,7 +479,7 @@
 																class="keyword"
 															>
 																<span
-																(click)="removeSkill()"
+																(click)="removeSkill(userSkill.id)"
 																	class="skill-remove"
 																></span>
 																<span
@@ -690,14 +685,8 @@
 							</div>
 						</div>
 
-						<!-- Button -->
-						<div class="col-xl-12">
-							<input
-								type="submit"
-								value="Save Changes"
-								class="button ripple-effect big margin-top-30"
-							/>
-						</div>
+						
+						
 					</div>
 					<!-- Button -->
 					<div class="col-xl-12">

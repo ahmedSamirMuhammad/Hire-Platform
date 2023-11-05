@@ -33,7 +33,8 @@ export class JobComponent {
 
     this.jobCrud.deleteJob(id).subscribe((res) => {
       console.log('deleted successfully');
-      this.router.navigate(["/dashboard/jobs"]);
+      // this.router.navigate(["/dashboard/jobs"]);
+      window.location.reload();
       this.toastr.success(
         JSON.stringify("Deleted successfully"),
         JSON.stringify(res.status),

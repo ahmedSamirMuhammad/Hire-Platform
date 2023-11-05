@@ -3,6 +3,7 @@ import { Router , ActivatedRoute } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { JobCrudService } from 'src/app/services/job-crud.service';
 import { UserService } from 'src/app/services/user.service';
+import { TimeService } from "src/app/services/time.service";
 
 // import { FormGroup , FormBuilder } from '@angular/forms';
 
@@ -13,7 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ManageJobsComponent {
   constructor(private jobCrud:JobCrudService,
-      private userService:UserService
+      private userService:UserService,
+      private time: TimeService
 
     ){
 
@@ -27,6 +29,12 @@ export class ManageJobsComponent {
     
     this.jobCrud.getAllJobs().subscribe( (res)=>{
       this.jobs = res.data;
+      this.jobs = res.data.map((job) => {
+        job.created_at = this.time.timeAgo(
+          job.created_at
+        );
+        return job;
+      });
       console.log(this.jobs);
       })
       
