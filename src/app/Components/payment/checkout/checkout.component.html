@@ -1,38 +1,102 @@
-<label class="payment-method">
-  <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio"
-      (click)="paywithstripe()">
-  <span>stripe</span>
-  </label>
-<div class="container">
-<form *ngIf="paywithstripegate" [formGroup]="paywithstripegateform" (ngSubmit)="onSubmitStripe()"
-  name="frm-billing">
-  <p class="row-in-form">
-      <label for="phone">Card Number<span>*</span></label>
-      <input type="text" formControlName="number" value="4242 4242 4242 4242">
-  </p>
-  <p class="row-in-form">
-      <label for="phone">Expirition Month<span>*</span></label>
-      <input type="text" formControlName="expired_month" value="12">
-  </p>
-  <p class="row-in-form">
-      <label for="add">Expirition Year</label>
-      <input type="text" formControlName="expired_year" value="34">
-  </p>
-  <p class="row-in-form">
-      <label for="add">Cvv_no</label>
-      <input type="text" formControlName="cvc" value="34">
-  </p>
-  <p class="row-in-form">
-      <label for="add">Amount</label>
-      <input type="text" formControlName="amount" value="50">
-  </p>
-  <p class="row-in-form">
-      <label for="add">Description</label>
-      <input type="text" formControlName="description" value="this is the user one">
-  </p>
-  <p class="row-in-form">
-      <input value="Pay Now With Stripe" type="submit" class="btn btn-medium"
-          style="background-color: #ff2832;color: white;font-weight: bold;">
-  </p>
-</form>
+<!--UI-->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Checkout</h2>
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Payment</a></li>
+						<li>Checkout</li>
+					</ul>
+				</nav>
+
+			</div>
+			<!-- //add payment -->
+
+		</div>
+	</div>
 </div>
+
+
+<!--Content -->
+<div class="container ">
+	<div class="row">
+		<div class="col-xl-9 col-lg-8 content-right-offset">
+
+			<!--Ahmed khamiis -->
+			<div class="stripe payment">
+				<label class="payment-method">
+					<input name="payment-method" id="payment-method-paypal" value="paypal" type="radio"
+						(click)="paywithstripe()">
+					<span>stripe</span>
+				</label>
+					<p class="regular-price-tag ">You will be redirected to Stripe to complete payment</p>
+			</div>
+
+
+				<!-- Billing Cycle Radios (Mariam) -->
+<!-- <div class="billing-cycle margin-bottom-25 ">
+
+	<div class="radio">
+	  <input id="payment-method-paypal" type="radio"  name="payment-method" value="paypal"   (click)="paywithstripe()">
+	  <label for="payment-method-paypal" class="payment-method" >
+		  <span class="radio-label"></span>
+		  Stripe
+		  <span class="billing-cycle-details">
+			  <span class="regular-price-tag"> You will be redirected to Stripe to complete payment.</span>
+
+		  </span>
+	  </label>
+  </div>
+  </div> -->
+
+			  <div class="container form-checkout payment">
+			  <form *ngIf="paywithstripegate" [formGroup]="paywithstripegateform" (ngSubmit)="onSubmitStripe()"
+				name="frm-billing" >
+				<p class="row-in-form ">
+					<label for="phone" style="font-weight: 600 !important;">Card Number<span>*</span></label>
+					<input type="text" formControlName="number" value="4242 4242 4242 4242">
+				</p>
+				<!-- //date -->
+				<div class="formRow ">
+					<p class="row-in-form" >
+						<label for="phone"  style="font-weight: 600 !important;">Expirition Month<span>*</span></label>
+						<input type="text" formControlName="expired_month" value="12">
+					</p>
+					<p class="row-in-form">
+						<label for="add"  style="font-weight: 600 !important;">Expirition Year</label>
+						<input type="text" formControlName="expired_year" value="34">
+					</p>
+				</div>
+				<div class="formRow">
+					<p class="row-in-form">
+						<label for="add"  style="font-weight: 600 !important;">Cvv_no</label>
+						<input type="text" formControlName="cvc" value="34">
+					</p>
+					<p class="row-in-form">
+						<label for="add"  style="font-weight: 600 !important;">Amount</label>
+						<input type="text" formControlName="amount" value="50">
+					</p>
+				</div>
+
+				<p class="row-in-form">
+					<label for="add"  style="font-weight: 600 !important;">Description</label>
+					<input type="text" formControlName="description" value="this is the user one">
+				</p>
+				<p class="row-in-form">
+					<input value="Proceed Payment" type="submit" class="button big ripple-effect  "
+						>
+				</p>
+			  </form>
+			  </div>
+<!--End Ahmed khamiss-->
+
+</div>
+</div>
+</div>
+
+
+

@@ -1,12 +1,12 @@
 <div class="dashboard-container">
     <app-sidebar></app-sidebar>
-  
+
     <div class="dashboard-content-container" data-simplebar>
       <div class="dashboard-content-inner">
         <!-- Dashboard Headline -->
         <div class="dashboard-headline">
           <h3>Post a Job</h3>
-  
+
           <!-- Breadcrumbs -->
           <nav id="breadcrumbs" class="dark">
             <ul>
@@ -16,7 +16,7 @@
             </ul>
           </nav>
         </div>
-  
+
         <!-- Row -->
         <div class="row">
           <!-- Dashboard Box -->
@@ -28,7 +28,7 @@
                   <i class="icon-feather-folder-plus"></i> Job Submission Form
                 </h3>
               </div>
-  
+
               <div class="content with-padding padding-bottom-10">
                 <form
                   [formGroup]="jobForm"
@@ -48,11 +48,11 @@
                         />
                       </div>
                     </div>
-  
+
                     <div class="col-xl-4">
                       <div class="submit-field">
                         <h5>Job Type</h5>
-                        <select 
+                        <select
                           formControlName="type"
                           class="with-border"
                           data-size="7"
@@ -61,12 +61,12 @@
                           <option  [attr.selected]="job.type === 'full_time' ? 'selected' : null"  value="full_time">Full Time</option>
                           <option  [attr.selected]=" job.type === 'part_time' ? 'selected' : null"  value="part_time">Part Time</option>
                           <option  [attr.selected]="job.type === 'Internship' ? 'selected' : null"  value="internship">Internship</option>
-  
-                          
+
+
                         </select>
                       </div>
                     </div>
-  
+
                     <div class="col-xl-4">
                       <div class="submit-field">
                         <h5>Job Category</h5>
@@ -82,7 +82,7 @@
                         </select>
                       </div>
                     </div>
-  
+
                     <div class="col-xl-6">
                       <div class="submit-field">
                         <h5>Location</h5>
@@ -101,7 +101,7 @@
                         </div>
                       </div>
                     </div>
-  
+
                     <div class="col-xl-6">
                       <div class="submit-field">
                         <h5>Salary</h5>
@@ -131,7 +131,7 @@
                         </div>
                       </div>
                     </div>
-  
+
                     <div class="col-xl-12">
                       <div class="submit-field">
                         <h5>Job Description</h5>
@@ -166,8 +166,8 @@
                   </div>
                   <div class="col-xl-12">
                     <!-- <a href="#" class="button ripple-effect big margin-top-30" -->
-            
-  
+
+
                     <input
                       type="submit"
                       value="Post"
@@ -179,13 +179,12 @@
             </div>
           </div>
         </div>
-  
+
         <!-- Row / End -->
-  
+
         <!-- footer  -->
         <app-dashboard-footer></app-dashboard-footer>
       </div>
     </div>
     <!-- Dashboard Content / End -->
   </div>
-  

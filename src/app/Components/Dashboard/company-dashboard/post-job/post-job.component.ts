@@ -4,7 +4,8 @@ import { JobCrudService } from 'src/app/services/job-crud.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from "ngx-toastr";
-
+//spinner
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-post-job',
@@ -13,7 +14,7 @@ import { ToastrService } from "ngx-toastr";
 })
 export class PostJobComponent {
   jobForm: FormGroup;
-  categories: any[] = []; // Declare the 'categories' property 
+  categories: any[] = []; // Declare the 'categories' property
 
   constructor(
     public formBuilder: FormBuilder,
@@ -21,7 +22,8 @@ export class PostJobComponent {
     private ngZone: NgZone,
     private jobCrud: JobCrudService,
     private http: HttpClient,
-		private toastr: ToastrService
+	private toastr: ToastrService,
+	private spinner:NgxSpinnerService
 
   ) {
     this.jobForm = this.formBuilder.group({
@@ -42,7 +44,7 @@ export class PostJobComponent {
 
       this.jobCrud.addJob(this.jobForm.value).subscribe((res) => {
         console.log('added successfully');
-        
+
             if (res.status === 200) {
               this.router.navigate(["/dashboard/jobs"]);
               this.toastr.success(
@@ -54,7 +56,7 @@ export class PostJobComponent {
                 }
               );
             }
-  
+
           (error) => {
             // Handle error here
             this.toastr.error("Error with your credentials", "401", {
@@ -62,7 +64,7 @@ export class PostJobComponent {
               progressBar: true,
             });
           }
-        
+
       }, );
     }
     else{
@@ -84,13 +86,24 @@ export class PostJobComponent {
 
   fetchCategories() {
     const apiUrl = `http://localhost:8000/api/Home/categories`;
+	this.spinner.show();
     this.http.get(apiUrl).subscribe(
+
       (response: any) => {
         this.categories = response.data;
+		setTimeout(() => {
+			/** spinner ends after 1 seconds */
+			this.spinner.hide();
+		  }, 1000);
       },
       (error) => {
         console.error('Failed to fetch categories:', error);
+		setTimeout(() => {
+			/** spinner ends after 1 seconds */
+			this.spinner.hide();
+		  }, 1000);
       }
     );
+
   }
 }

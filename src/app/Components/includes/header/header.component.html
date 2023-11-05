@@ -35,9 +35,9 @@
               <ul class="dropdown-nav" >
                 <li><a routerLink="/dashboard">Dashboard</a></li>
                 <li><a routerLink="/dashboard/messages">Messages</a></li>
-                <li><a routerLink="/dashboard/bookmarks">Bookmarks</a></li>
+                <li *ngIf="storedRole==='emp'"><a routerLink="/dashboard/bookmarks">Bookmarks</a></li>
                 <li><a routerLink="/dashboard/reviews">Reviews</a></li>
-                <li><a routerLink="/dashboard/jobs">Jobs</a>
+                <li *ngIf="storedRole==='cmp'"><a routerLink="/dashboard/jobs">Jobs</a>
                   <ul class="dropdown-nav">
                     <li><a routerLink="/dashboard/jobs">Manage Jobs</a></li>
                     <li><a routerLink="dashboard/candidates">Manage Candidates</a></li>

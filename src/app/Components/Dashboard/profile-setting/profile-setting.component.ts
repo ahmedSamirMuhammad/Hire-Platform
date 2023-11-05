@@ -3,6 +3,8 @@ import { UserService } from 'src/app/services/user.service';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
+//spinner
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -19,13 +21,11 @@ export class ProfileSettingComponent {
     public formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+	private spinner:NgxSpinnerService
   ) {
 
-    this.userService.getAllSkills().subscribe( (res)=>{
-      this.AllSkills = res;
-      console.log(this.AllSkills);
-      })
+
 
     this.userForm = this.formBuilder.group({
       first_name:['', [Validators.required , Validators.minLength(2)]],
@@ -45,53 +45,18 @@ export class ProfileSettingComponent {
       linkedin_account: [""],
       github_account: [""],
     });
- 
-    this.userService.getUserData().subscribe((res) => {
-      this.userForm.patchValue({
-        first_name: res["first_name"],
-        last_name: res["last_name"],
-        email: res["email"],
-        title: res["title"],
-        cv: res["cv"],
-        mobile_number: res["mobile_number"],
-        nationality: res["nationality"],
-        about: res["about"],
-        avatar: res["avatar"],
-        skills: res["skills"],
-        // twitter_account: res["twitter_account"],
-        // linkedin_account: res["linkedin_account"],
-        // github_account: res["github_account"],
-      });
-    });
 
-    this.userService.getUserSocials().subscribe( (res)=>{
-      const data = res[0];
-      this.userForm.patchValue({
-        twitter_account: data["twitter_account"],
-        linkedin_account: data["linkedin_account"],
-        github_account: data["github_account"],
-      
-      })
-  })
 }
-  
+
 
    AllSkills :any[];
    userSkills : any[];
-   
-	ngOnInit(): void {
-   this.userService.getAllSkills().subscribe( (res)=>{
-    this.AllSkills = res;
-    console.log(this.AllSkills);
-    })
-    
-   this.userService.getUserSkills().subscribe( (res)=>{
-    this.userSkills = res;
-    // console.log(this.userSkills);
-    })
 
-   
-    
+	ngOnInit(): void {
+  this.loadData();
+
+
+
   }
 
 
@@ -100,7 +65,7 @@ export class ProfileSettingComponent {
   onSubmit() {
 		console.log("hi");
     console.log(this.userForm);
-    
+
     if(this.userForm.valid) {
 
       this.userService.updateUserData(this.userForm.value).subscribe(
@@ -108,7 +73,7 @@ export class ProfileSettingComponent {
           this.data = res;
           //  console.log('edited successfully');
           //  this.router.navigate(['/dashboard/jobs']);
-  
+
           if (this.data.status === 200) {
             this.router.navigate(["/dashboard/jobs"]);
             this.toastr.success(
@@ -148,7 +113,58 @@ export class ProfileSettingComponent {
   }
 
 
+  loadData(){
+	this.spinner.show();
+	this.userService.getAllSkills().subscribe( (res)=>{
+		this.AllSkills = res;
+		console.log(this.AllSkills);
+		setTimeout(() => {
+			/** spinner ends after 1 seconds */
+			this.spinner.hide();
+		  }, 1000);
 
+		})
+
+		this.userService.getUserData().subscribe((res) => {
+			this.userForm.patchValue({
+			  first_name: res["first_name"],
+			  last_name: res["last_name"],
+			  email: res["email"],
+			  title: res["title"],
+			  cv: res["cv"],
+			  mobile_number: res["mobile_number"],
+			  nationality: res["nationality"],
+			  about: res["about"],
+			  avatar: res["avatar"],
+			  skills: res["skills"],
+			  // twitter_account: res["twitter_account"],
+			  // linkedin_account: res["linkedin_account"],
+			  // github_account: res["github_account"],
+			});
+			setTimeout(() => {
+				/** spinner ends after 1 seconds */
+				this.spinner.hide();
+			  }, 1000);
+
+		  });
+
+
+		  this.userService.getUserSocials().subscribe( (res)=>{
+			const data = res[0];
+			this.userForm.patchValue({
+			  twitter_account: data["twitter_account"],
+			  linkedin_account: data["linkedin_account"],
+			  github_account: data["github_account"],
+
+			})
+			setTimeout(() => {
+				/** spinner ends after 5 seconds */
+				this.spinner.hide();
+			  }, 1000);
+
+		})
+
+  }
 
 
 

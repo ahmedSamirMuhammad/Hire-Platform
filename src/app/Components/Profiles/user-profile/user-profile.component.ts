@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserProfileComponent implements OnInit {
   userId: number =0;
+  socials :any;
   API_URL = `${environment.API_URL}/profile`;
 
   profileData: any;
@@ -27,7 +28,9 @@ export class UserProfileComponent implements OnInit {
       this.getProfile().subscribe(
         (response) => {
           this.profileData = response.data; // to access the data property
-			console.log(this.profileData.history);
+		  this.socials =this.profileData.social_link;
+		  console.log(this.profileData.social_link);
+			console.log(this.socials);
         },
         (error) => {
           console.error(error);

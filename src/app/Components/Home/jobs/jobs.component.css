@@ -5,4 +5,12 @@
 }
 .job-listing-description li {
   text-transform: capitalize;
+}
+
+.head-jobs {
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  font-size: 30px;
+  color: #333;
 }/*# sourceMappingURL=jobs.component.css.map */

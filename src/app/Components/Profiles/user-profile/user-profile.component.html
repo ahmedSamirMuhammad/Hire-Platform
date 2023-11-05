@@ -16,7 +16,8 @@
 							<ul>
 
 								<li><img class="flag" src="../../../assets/images/flags/de.svg" alt=""> {{profileData.nationality}}</li>
-								<li><div class="verified-badge-with-title">Verified</div></li>
+
+								<li><div class="verified-badge-with-title" *ngIf="profileData.verafied">Verified</div></li>
 							</ul>
                         </div>
                     </div>
@@ -104,9 +105,9 @@
                     <h3 class="head-widget">Social Profiles</h3>
 					<div class="freelancer-socials margin-top-25">
 						<ul>
-							<li><a href="{{profileData.social_link[0].github}}" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
-							<li><a href="{{profileData.social_link[0].twitter}}" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-							<li><a href="{{profileData.social_link[0].linkedin}}" title="linkedin" data-tippy-placement="top"><i class="icon-brand-linkedin"></i></a></li>
+							<li><a href="{{socials[0].github}}" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
+							<li><a href="{{socials[0].twitter}}" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+							<li><a href="{{socials[0].linkedin}}" title="linkedin" data-tippy-placement="top"><i class="icon-brand-linkedin"></i></a></li>
 						</ul>
 					</div>
                 </div>

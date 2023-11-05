@@ -6,7 +6,7 @@
 
 				<!-- Section Headline -->
 				<div class="section-headline margin-top-0 margin-bottom-35">
-					<h3>Featured Jobs</h3>
+					<h5 class="head-jobs">Featured Jobs</h5>
 					<a routerLink="explore-jobs"   class="headline-link">Browse All Jobs</a>
 				</div>
 
@@ -17,7 +17,7 @@
 
 
 					<!-- Job Listing -->
-					<a href="single-job-page.html" class="job-listing with-apply-button"  *ngFor="let job of jobs">
+					<a  class="job-listing with-apply-button"  *ngFor="let job of jobs"  (click)="navigateToJobProfile(job.id)">
 
 						<!-- Job Listing Details -->
 						<div class="job-listing-details">

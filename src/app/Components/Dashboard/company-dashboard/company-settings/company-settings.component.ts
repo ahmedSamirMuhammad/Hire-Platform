@@ -9,6 +9,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { JobCrudService } from "src/app/services/job-crud.service";
 import { FormGroup, FormBuilder } from "@angular/forms";
 
+//spinner
+import { NgxSpinnerService } from "ngx-spinner";
+
 @Component({
 	selector: "app-company-settings",
 	templateUrl: "./company-settings.component.html",
@@ -21,11 +24,12 @@ export class CompanySettingsComponent {
 		private router: Router,
 		private ngZone: NgZone,
 		private cmpService: CompanySettingsService,
-		private toastr: ToastrService
+		private toastr: ToastrService,
+		private spinner:NgxSpinnerService
 	  ) {
-	
-		
-	
+
+
+
 		this.cmpForm = this.formBuilder.group({
 			first_name:['', [Validators.required , Validators.minLength(2)]],
 			last_name: ['', [Validators.required , Validators.minLength(2)]],
@@ -41,38 +45,22 @@ export class CompanySettingsComponent {
 		  confirmedPass: [""],
 		//   twitter_account: [""],
 		  linkedin_account: [""],
-		  
-		});
-	  
-		this.cmpService.getCmpData().subscribe((res) => {
-		  this.cmpForm.patchValue({
-			first_name: res["first_name"],
-			last_name: res["last_name"],
-			email: res["email"],
-			company_name:res["company_name"],
-			title: res["title"],
-			location :res["location"],
-			nationality :res["nationality"],
-			about: res["about"],
-			logo: res["avatar"],
-			mobile_number:res["mobile_number"],
-			linkedin_account: res["linkedin_account"],
 
-			
-		  });
 		});
-	
-		
+
+
+
+
 	}
-	  
-	
+
+
 		ngOnInit(): void {
-		
+			this.loadData();
 	  }
-	
-	
+
+
 		data: any;
-	
+
 	  onSubmit() {
 			console.log("hi");
 
@@ -83,7 +71,7 @@ export class CompanySettingsComponent {
 						this.data = res;
 						//  console.log('edited successfully');
 						//  this.router.navigate(['/dashboard/jobs']);
-		
+
 						if (this.data.status === 200) {
 							this.router.navigate(["/dashboard/jobs"]);
 							this.toastr.success(
@@ -94,7 +82,11 @@ export class CompanySettingsComponent {
 									progressBar: true,
 								}
 							);
+
 						}
+
+
+
 					},
 					(error) => {
 						// Handle error here
@@ -102,7 +94,10 @@ export class CompanySettingsComponent {
 							timeOut: 5000,
 							progressBar: true,
 						});
+
 					}
+
+
 				);
 			}
 			else{
@@ -114,14 +109,46 @@ export class CompanySettingsComponent {
 					progressBar: true,
 				  }
 				);
-		  
+
+
 			  }
+
 		}
-	
+
 	  removeSkill(){
-	
+
 	  }
-	  
-	
-	  
+
+
+
+	  loadData(){
+				//spinner
+				this.spinner.show();
+				this.cmpService.getCmpData().subscribe((res) => {
+
+				  this.cmpForm.patchValue({
+					first_name: res["first_name"],
+					last_name: res["last_name"],
+					email: res["email"],
+					company_name:res["company_name"],
+					title: res["title"],
+					location :res["location"],
+					nationality :res["nationality"],
+					about: res["about"],
+					logo: res["avatar"],
+					mobile_number:res["mobile_number"],
+					linkedin_account: res["linkedin_account"],
+
+
+				  });
+				  setTimeout(() => {
+					/** spinner ends after 5 seconds */
+					this.spinner.hide();
+				  }, 1000);
+
+				});
+
+	  }
+
+
 }

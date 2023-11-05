@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"job-categories.component.css"}
+{"version":3,"sources":["job-categories.component.scss","job-categories.component.css"],"names":[],"mappings":"AAAA;EACC,yBAAA;EACA,kBAAA;EACA,gBAAA;EACA,eAAA;EACA,WAAA;ACCD","file":"job-categories.component.css"}

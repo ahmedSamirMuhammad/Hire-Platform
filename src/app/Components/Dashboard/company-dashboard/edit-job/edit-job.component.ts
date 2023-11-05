@@ -14,7 +14,7 @@ import { ToastrService } from "ngx-toastr";
 export class EditJobComponent {
 
   jobForm: FormGroup;
-  categories: any[] = []; // Declare the 'categories' property 
+  categories: any[] = []; // Declare the 'categories' property
    id:any;
    job:any;
   constructor(
@@ -28,7 +28,7 @@ export class EditJobComponent {
   ) {
 
     this.id = this.route.snapshot.paramMap.get('id');
-   
+
     this.jobForm = this.formBuilder.group({
       name: [''],
       type: [''],
@@ -39,10 +39,10 @@ export class EditJobComponent {
       about: [''],
       logo: [''],
     });
-  
+
     console.log(this.id);
-    
-	  
+
+
 		this.jobCrud.getJob(this.id).subscribe((res) => {
       this.job= res.data;
       const data = res.data;
@@ -57,7 +57,7 @@ export class EditJobComponent {
         logo: data['logo'],
 		  });
 		});
-	
+
   }
 
   onSubmit() {
@@ -97,5 +97,5 @@ export class EditJobComponent {
     );
   }
 
-  
+
 }

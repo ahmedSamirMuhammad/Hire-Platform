@@ -1,0 +1,43 @@
+
+#titlebar{
+	margin-bottom: 15px;
+
+}
+.form-checkout{
+	box-shadow: 0px 0px 19px -6px rgba(0,0,0,0.13);
+
+	form{
+		margin-top: 20px;
+		padding:0 20px;
+		.formRow{
+			display:flex;
+			justify-content: space-between;
+			.row-in-form{
+				width:45%;
+
+			}
+		}
+	}
+}
+.stripe{
+
+	padding:10px;
+	height:90px;
+	margin-bottom:5px;
+	.payment-method{
+		padding:0;
+		display:flex;
+
+		input{
+			margin-top: 7px;
+			margin-bottom: 2px;
+		}
+		span{
+			margin-left: 5px;
+			font-size: 20px;
+
+
+		}
+	}
+
+}

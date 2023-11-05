@@ -22,7 +22,7 @@
   z-index: 99999999;
   position: fixed;
   left: 50%;
-  top: 20%;
+  top: 0;
   transform: translateX(-50%);
   background-color: #fefefe;
   margin: 5% auto;

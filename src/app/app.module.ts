@@ -62,8 +62,13 @@ import { RatingStarsComponent } from './Components/rating-stars/rating-stars.com
 import { PaymentPlansComponent } from './Components/payment/payment-plans/payment-plans.component';
 import { CheckoutComponent } from './Components/payment/checkout/checkout.component';
 import { EditJobComponent } from './Components/Dashboard/company-dashboard/edit-job/edit-job.component';
-
-
+//spinner
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { CommonModule } from '@angular/common'; // Add this import
+interface NgxSpinnerConfig {
+	type?: string;
+  }
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -130,8 +135,14 @@ import { EditJobComponent } from './Components/Dashboard/company-dashboard/edit-
 		FormsModule,
 		IndexModule,
 		UserProfileModule,
+		//spinner
+		NgxSpinnerModule,
+		NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+		CommonModule,
 	],
+
 	providers: [AuthGuard],
 	bootstrap: [AppComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

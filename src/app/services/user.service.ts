@@ -13,7 +13,7 @@ export class UserService {
 
 
 // ******
-// All Apis 
+// All Apis
 
 	userApi: string = "http://localhost:8000/api/userSettings";
 
@@ -27,7 +27,7 @@ export class UserService {
 // ****
 
 	constructor(private httpClient: HttpClient) {}
-//common methods 
+//common methods
 // ***************
   getHeaders() {
 		const token = localStorage.getItem("token");
@@ -37,7 +37,7 @@ export class UserService {
 		});
 	}
 
-	
+
 	handelError(error:HttpErrorResponse){
 		let errMsg = '';
 		if(error.error instanceof ErrorEvent){
@@ -48,10 +48,10 @@ export class UserService {
 		return throwError(errMsg);
 	  }
 
-//end common methods 
+//end common methods
 // ***************
 
-//user Data methods 
+//user Data methods
 // ***************
 	getUserData():Observable<any>{
 	  let APIUrl = `${this.userApi}`;
@@ -85,11 +85,11 @@ export class UserService {
 			.pipe(catchError(this.handelError));
 	}
 
-//end user data methods 
+//end user data methods
 // ***************
-	
 
-//Skills methods 
+
+//Skills methods
 // ***************
 	getAllSkills():Observable<any>{
 		let APIUrl = `${this.SkillsApi}`;
@@ -104,7 +104,7 @@ export class UserService {
 		  catchError(this.handelError)
 		  );
 	  }
-  
+
 	  getUserSkills():Observable<any>{
 		let APIUrl = `${this.userSkills}`;
 		return this.httpClient.get(APIUrl,{
@@ -132,11 +132,11 @@ export class UserService {
 		  );
 	  }
 
-// end Skills methods 
+// end Skills methods
 // ***************
 
 
-//Socials methods 
+//Socials methods
 // ***************
 
 	  getUserSocials():Observable<any>{

@@ -105,7 +105,7 @@
 
 												<p  style="color: red;" *ngIf="userForm.controls['email'].errors?.['required']">its required field</p>
 												<p  style="color: red;" *ngIf="userForm.controls['email'].errors?.['email']">invalid email</p>
-												
+
 											</div>
 											<div class="col-xl-6">
 												<div class="submit-field">
@@ -410,7 +410,7 @@
 														</option>
 														<option
 															value="US"
-															
+
 														>
 															United States
 														</option>
@@ -433,8 +433,8 @@
 												</div>
 											</div>
 
-											
-										
+
+
 												<div class="col-xl-6">
 													<div class="submit-field">
 														<h5>
@@ -452,6 +452,7 @@
 														title="Select user skills"
 														data-live-search="true"
 														formControlName="skills"
+
 														>
 															<option
 															value="{{
@@ -464,18 +465,18 @@
 															>
 																{{ skill.name }}
 															</option>
-																	
+
 															</select>
 
 													</div>
-												
+
 												</div>
 												<div class="col-xl-6" style="display: flex;
 												justify-content: start;
 												align-items: center;">
 													<!-- Skills List -->
 													<div class="submit-field">
-													
+
 														<div class="keywords-list">
 															<span
 																*ngFor="
@@ -495,11 +496,11 @@
 																>
 															</span>
 														</div>
-														
-													
+
+
 													</div>
 												</div>
-											
+
 
 											<div class="col-xl-12"
 												style="margin-top: 35px;">
@@ -568,7 +569,7 @@
 																<input
 																	type="text"
 																	class="with-border"
-														
+
 																	formControlName="linkedin_account"
 																/>
 															</div>
@@ -699,15 +700,7 @@
 							/>
 						</div>
 					</div>
-					<!-- Button -->
-					<div class="col-xl-12">
-						<input
-							type="submit"
-							value="Save Changes"
-							class="button ripple-effect big margin-top-30"
-							
-						/>
-					</div>
+
 				</form>
 			</div>
 		</div>
