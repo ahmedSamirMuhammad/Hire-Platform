@@ -8,7 +8,7 @@
         <div class="single-page-header-inner">
           <div class="left-side">
             <div class="header-image">
-              <a href="single-company-profile.html">
+              <a>
                 <img src="/assets/images/{{ jobData.company_logo }}" alt="" />
               </a>              
             </div>
@@ -17,7 +17,7 @@
               <h5>About the Employer</h5>
               <ul>
                 <li>
-                  <a href="single-company-profile.html"
+                  <a href="/company-profile/{{ jobData.company_id }}"
                     ><i class="icon-material-outline-business"></i> {{ jobData.company_name }}</a
                   >
                 </li>
@@ -28,7 +28,7 @@
                   </div>
                 </li>
                 <li>
-                  <img class="flag" src="/assets/images/flags/gb.svg" alt="" />
+                  <img class="flag" [src]="'/assets/images/flags/' + jobData.company_nationality + '.svg'" alt="" />
                   {{ jobData.company_nationality }}
                 </li>
                 <li>

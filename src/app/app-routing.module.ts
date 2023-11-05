@@ -5,6 +5,7 @@ import { ExploreCompaniesComponent } from "./Components/Explore/explore-companie
 import { CompanyProfileComponent } from "./Components/Profiles/company-profile/company-profile/company-profile.component";
 import { JobProfileComponent } from "./Components/Profiles/job-profile/job-profile/job-profile.component";
 import { ExploreJobsComponent } from "./Components/Explore/explore-jobs/explore-jobs/explore-jobs.component";
+import { MatchedJobsComponent } from "./Components/Explore/explore-jobs/matched-jobs/matched-jobs.component";
 // import { IndexComponent } from "./Components/Home/index/index.component";
 import { ContactUsComponent } from "./Components/contact-us/contact-us.component";
 import { Error404Component } from "./Components/ErrorComponents/error404/error404.component";
@@ -59,36 +60,60 @@ const routes: Routes = [
 		
 		canActivate: [AuthGuard],
 	},
+
 //  <!-- explore-companies routes / Start -->
-
-  { path: "explore-companies", redirectTo: "explore-companies/1", pathMatch: "full" },
-  { path: "explore-companies/:page",
-   component: ExploreCompaniesComponent },
-
+{ path: "explore-companies", redirectTo: "explore-companies/1", pathMatch: "full" },
+{
+  path: 'explore-companies/:page',
+  component: ExploreCompaniesComponent,
+  children: [
+    {
+      path: '',
+      loadChildren: () => import('./Components/Explore/explore-companies/companies-module/companies-module.module').then((m) => m.CompaniesModuleModule),
+    },
+  ],
+},
 //  <!-- explore-companies routes / End -->
-
-
-//  <!-- explore-jobs routes / Start -->
-  //  { path: "explore-jobs", redirectTo: "explore-jobs/1", pathMatch: "full" },
-  //  { path: "explore-jobs/:page",
-  //   component: ExploreJobsComponent },
-
-//  <!-- explore-jobs routes / End -->
 
 //  <!-- explore-jobs routes / Start -->
 { path: "explore-jobs", redirectTo: "explore-jobs/-/1", pathMatch: "full" },
-{ path: "explore-jobs/:params/:page",
- component: ExploreJobsComponent },
-
+{
+  path: 'explore-jobs/:params/:page',
+  component: ExploreJobsComponent,
+  children: [
+    {
+      path: '',
+      loadChildren: () => import('./Components/Explore/explore-jobs/jobs-module/jobs-module.module').then((m) => m.JobsModuleModule),
+    },
+  ],
+},
 //  <!-- explore-jobs routes / End -->
-  {
-    path: 'company-profile/:id',
-    component: CompanyProfileComponent,
-  },
-  {
-    path: 'job-profile/:id',
-    component: JobProfileComponent,
-  },
+
+//  <!-- company-profile routes / Start -->
+{
+  path: 'company-profile/:id',
+  component: CompanyProfileComponent,
+  children: [
+    {
+      path: '',
+      loadChildren: () => import('./Components/Profiles/company-profile/company-module/company-module.module').then((m) => m.CompanyModuleModule),
+    },
+  ],
+},
+//  <!-- company-profile routes / End -->
+
+//  <!-- job-profile routes / Start -->
+{
+  path: 'job-profile/:id',
+  component: JobProfileComponent,
+  children: [
+    {
+      path: '',
+      loadChildren: () => import('./Components/Profiles/job-profile/job-module/job-module.module').then((m) => m.JobModuleModule),
+    },
+  ],
+},
+//  <!-- job-profile routes / End -->
 
   {
     path: 'employee-signup',

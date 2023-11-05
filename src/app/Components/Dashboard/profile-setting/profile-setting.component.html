@@ -614,7 +614,6 @@
 											<input
 												type="password"
 												class="with-border"
-												
 												formControlName="password"
 											/>
 										</div>
@@ -624,39 +623,82 @@
 										<div class="submit-field">
 											<h5>New Password</h5>
 											<input
+												#newPass
 												type="password"
 												class="with-border"
-												
 												formControlName="new_password"
 											/>
 										</div>
 									</div>
 
-                  <div class="col-xl-4">
-                    <div class="submit-field">
-                      <h5>Repeat New Password</h5>
-                      <input
-                        #repeatedNewPass
-                        type="password"
-                        class="with-border"
-                        name="pass"
+									<div class="col-xl-4">
+										<div class="submit-field">
+											<div class="form-outline mb-4">
+												<label
+													class="form-label"
+													for="form3Example4cdg"
+													>Repeat your password</label
+												>
+												<input
+													type="password"
+													id="form3Example4cdg"
+													class="form-control form-control-lg"
+													formControlName="confirmedPass"
+												/>
 
-                        (change)="
-                          CheckNewPass(newPass.value, repeatedNewPass.value)
-                        "
-                      />
-                      <p class="repErrorMsg" *ngIf="notMatched">
-                        not matched passwords !
-                      </p>
-                    </div>
-                  </div>
-
-									
+												<span
+													class="text-danger"
+													*ngIf="
+														userForm.get(
+															'new_password'
+														)?.valid &&
+														userForm.get(
+															'confirmedPass'
+														)?.dirty &&
+														userForm.get(
+															'new_password'
+														)?.value !==
+														userForm.get(
+																'confirmedPass'
+															)?.value
+													"
+												>
+													Password and Confirm
+													Password must match
+												</span>
+												<div
+													id="name_input_help"
+													*ngIf="
+													userForm.controls[
+															'confirmedPass'
+														].touched &&
+														userForm.controls[
+															'confirmedPass'
+														].invalid
+													"
+													class="form-text text-danger"
+												>
+													<small
+														*ngIf="userForm.controls['confirmedPass'].errors?.['required']"
+														>The password is
+													</small>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
+						<!-- Button -->
+						<div class="col-xl-12">
+							<input
+								type="submit"
+								value="Save Changes"
+								class="button ripple-effect big margin-top-30"
+							/>
+						</div>
+					</div>
 					<!-- Button -->
 					<div class="col-xl-12">
 						<input
