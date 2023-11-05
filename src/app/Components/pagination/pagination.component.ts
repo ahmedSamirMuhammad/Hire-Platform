@@ -33,8 +33,7 @@ export class PaginationComponent {
 
 	ngOnInit() {
 		this.form = this.formBuilder.group({
-			email: ["", [Validators.required, Validators.email]],
-			password: ["", [Validators.required]],
+			page:""
 		});
 		this.listenParentDataChanges();
 	}
