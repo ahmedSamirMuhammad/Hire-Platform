@@ -1,5 +1,5 @@
 <div class="sidebar-container">
-  <a href="javascript:;" class="apply-now-button" (click)="applyForJob(jobData.job_id)">
+  <a *ngIf="userType=='emp'" href="javascript:;" class="apply-now-button" (click)="applyForJob(jobData.job_id)">
     Apply Now <i class="icon-material-outline-arrow-right-alt"></i>
   </a>
 

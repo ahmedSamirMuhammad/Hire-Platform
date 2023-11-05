@@ -62,6 +62,10 @@ import { RatingStarsComponent } from './Components/rating-stars/rating-stars.com
 import { PaymentPlansComponent } from './Components/payment/payment-plans/payment-plans.component';
 import { CheckoutComponent } from './Components/payment/checkout/checkout.component';
 import { EditJobComponent } from './Components/Dashboard/company-dashboard/edit-job/edit-job.component';
+import { JobModuleModule } from "./Components/Profiles/job-profile/job-module/job-module.module";
+import { CompanyModuleModule } from "./Components/Profiles/company-profile/company-module/company-module.module";
+import { JobsModuleModule } from "./Components/Explore/explore-jobs/jobs-module/jobs-module.module";
+import { CompaniesModuleModule } from "./Components/Explore/explore-companies/companies-module/companies-module.module";
 
 
 @NgModule({
@@ -130,6 +134,10 @@ import { EditJobComponent } from './Components/Dashboard/company-dashboard/edit-
 		FormsModule,
 		IndexModule,
 		UserProfileModule,
+		JobModuleModule,
+		CompanyModuleModule,
+		JobsModuleModule,
+		CompaniesModuleModule,
 	],
 	providers: [AuthGuard],
 	bootstrap: [AppComponent],
