@@ -6,6 +6,7 @@ import { ExploreJobsComponent } from '../explore-jobs/explore-jobs.component';
 import { MatchedJobsComponent } from '../matched-jobs/matched-jobs.component';
 import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 // import { PaginationComponent } from 'src/app/Components/pagination/pagination.component';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     JobsModuleRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class JobsModuleModule { }

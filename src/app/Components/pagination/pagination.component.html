@@ -1,7 +1,7 @@
 <form class="container d-flex justify-content-around" *ngIf="paginationData" [formGroup]="form">
 	<div class="pagiButtons">
 		<div class="pagiPre"  (click)="prevPage()" (click)="prevPage()"></div>
-		<input type="text" (keyup.enter)="goTo()" value="{{current_page}}" [(ngModel)]="page" >
+		<input type="text" (keyup.enter)="goTo()" value="{{current_page}}" [(ngModel)]="page">
 		<div class="pagiText">/</div>
 		<div class="pagiText">{{last_page}}</div>
 		<div class="pagiNex" (click)="nextPage()"  (click)="nextPage()"></div>

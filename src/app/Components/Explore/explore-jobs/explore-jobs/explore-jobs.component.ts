@@ -50,10 +50,10 @@ export class ExploreJobsComponent implements OnInit {
 	ngAfterViewInit() {
 		const page = this.activatedRoute.snapshot.params["page"];
 		const params = this.activatedRoute.snapshot.params["params"];
-
+		
 
 		if (params == "-") {
-			this.loadAllJobs(page);
+			this.loadAllJobs();
 		} else {
 			//  console.log(this.queryStringService.parse(params));
 			// this.filterInputs = filterInputs;
@@ -106,14 +106,18 @@ export class ExploreJobsComponent implements OnInit {
 	}
 
 	//<!---------- calling the function "getJobs" from "job" service / Start -------------->
-	loadAllJobs(page: number) {
+	loadAllJobs = () => {
+		const page = this.activatedRoute.snapshot.params["page"];
 		this.jobService.getJobs(page).subscribe(
 			(response: any) => {
+				console.log(page);
 				this.jobs_array = response.data.data;
 				this.paginationData.next({
 					current_page: response.data.current_page,
 					last_page: response.data.last_page,
+					onturn: this.loadAllJobs,
 					url: `/explore-jobs/-/1`,
+					allowOnTurn: true,
 					disable: false,
 				});
 			},
@@ -179,7 +183,7 @@ export class ExploreJobsComponent implements OnInit {
 		const stringifiedParams = this.initQueryString();
 
 		if (!this.queryStringService.isFilled(stringifiedParams)) {
-			this.loadAllJobs(1);
+			this.loadAllJobs();
 			return;
 		}
 		this.jobService.applyJobFilter(page, params).subscribe(
@@ -240,7 +244,7 @@ export class ExploreJobsComponent implements OnInit {
 		this.filterForm.reset();
 		// Fetch all jobs again with the current page number
 		const page = this.activatedRoute.snapshot.params["page"];
-		this.loadAllJobs(page);
+		this.loadAllJobs();
 	}
 	//<!-------- calling the function "resetFilters"  / End ---------------->
 }
