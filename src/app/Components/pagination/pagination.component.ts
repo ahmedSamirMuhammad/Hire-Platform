@@ -1,12 +1,9 @@
 import { Component, Input } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
-import { Router, NavigationEnd } from "@angular/router";
+import { Router } from "@angular/router";
 import {
 	FormBuilder,
-	FormGroup,
-	Validators,
-	ValidatorFn,
-	AbstractControl,
+	FormGroup
 } from "@angular/forms";
 @Component({
 	selector: "app-pagination",
@@ -34,7 +31,7 @@ export class PaginationComponent {
 	ngOnInit() {
 		this.form = this.formBuilder.group({
 			page:""
-		});
+		});3
 		this.listenParentDataChanges();
 	}
 	listenParentDataChanges() {
