@@ -20,14 +20,13 @@ export class ModalComponent {
 	@ViewChild("modal") modal: ElementRef;
 	isOpen = false;
 	constructor() {}
-	openModal() {
+	openModal =()=> {
 		this.isOpen = true;
 		this.modal.nativeElement.classList.toggle('open');
-		this.initModal();
 	}
 	ngAfterViewInit() {
 	}
-	initModal() {
+	initModal=()=> { 
 		if (this.content === 'dashboard-reviewEdit-form') {
 			this.editReviewsModalContentComponent.getReview();
 		}

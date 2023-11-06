@@ -5,12 +5,12 @@
       {{ review.title }} <span> {{ review.user_name }}</span>
     </h4>
     <div class="item-details margin-top-10">
-      <div class="star-rating1" [attr.data-rating]="review.rating || 0">
+      <div class="star-rating1 margin-right-10" [attr.data-rating]="review.rating || 0">
         <span class="star" *ngFor="let star of getFilledStars(review.rating)"></span>
         <span class="star empty" *ngFor="let star of getEmptyStars(review.rating)"></span>
       </div>
       <div class="detail-item">
-        <i class="icon-material-outline-date-range"></i> {{ review.date }}
+        <i class="icon-material-outline-access-time"></i> {{ review.date }}
       </div>
     </div>
     <div class="item-description">

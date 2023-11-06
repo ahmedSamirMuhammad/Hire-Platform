@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ApplyToJobService } from 'src/app/services/apply-to-job.service';
 import { JobService } from 'src/app/services/job.service';
 import { ToastrService } from "ngx-toastr";
+
 @Component({
   selector: 'app-job-sidebar',
   templateUrl: './job-sidebar.component.html',
@@ -10,8 +11,14 @@ import { ToastrService } from "ngx-toastr";
 export class JobSidebarComponent {
   @Input() jobData: any;
   @Output() toggleBookmark = new EventEmitter<void>();
+  userType = "cmp";
 
   constructor(private applyToJobService: ApplyToJobService, private jobService: JobService, private toastr: ToastrService) {}
+
+  ngOnInit(){
+    // get the role of the current user
+    this.userType = localStorage.getItem('role');
+  }
 
   applyForJob(jobId: string) {
     this.applyToJobService.applyForJob(jobId).subscribe(

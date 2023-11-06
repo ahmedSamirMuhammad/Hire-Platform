@@ -58,7 +58,11 @@ export class JobCrudService {
     return this.httpClient.put(APIUrl,data,{
 			headers: this.getHeaders(),
 		})
-    .pipe(
+    .pipe(map(
+      (res:any)=>{
+        return res || {};
+      } 
+      ),
       catchError(this.handelError)
       );
   }

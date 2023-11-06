@@ -24,6 +24,7 @@ import { ForgetPasswordComponent } from './Components/Authentications/forget-pas
 import { ResetPasswordComponent } from './Components/Authentications/reset-password/reset-password.component';
 import { ReviewsComponent } from "./Components/Dashboard/reviews/reviews.component";
 
+
 import { HeaderComponent } from "./Components/includes/header/header.component";
 
 import {SearchResultsComponent} from './Components/search-results/search-results.component';
@@ -53,16 +54,8 @@ const routes: Routes = [
 	},
 	{
 		path: "dashboard",
-		component: DashboardComponent,
-		children: [
-			{ path: "", redirectTo: "summary", pathMatch: "full" },
-			{ path: "summary", component: SummaryComponent },
-			{ path: "messages", component: MessagesComponent },
-			{ path: "bookmarks", redirectTo: "bookmarks/1", pathMatch: "full" },
-			{ path: "bookmarks/:page", component: BookmarksComponent },
-			{ path: "reviews", redirectTo: "reviews/1", pathMatch: "full" },
-			{ path: "reviews/:page", component: ReviewsComponent },
-		],
+		loadChildren:()=>import('./Components/Dashboard/dashboard/dashboard.module').then(mod=>mod.DashboardModule),
+
 		canActivate: [AuthGuard],
 	},
 
@@ -143,26 +136,6 @@ const routes: Routes = [
     path: 'reset-password',
     component: ResetPasswordComponent ,
   },
-//   {
-//     path: 'dashboard/jobs',
-//     component: ManageJobsComponent ,
-//   },
-//   {
-//     path: 'dashboard/candidates',
-//     component: ManageCandidatesComponent ,
-//   },
-//   {
-//     path: 'dashboard/postJob',
-//     component: PostJobComponent ,
-//   },
-
-
-//   { path: 'dashboard/company-settings',
-//    component: CompanySettingsComponent },
-
-//   { path: 'dashboard/editJob/:id',
-//    component: EditJobComponent },
-
   {
     path: 'search-results',
     component: SearchResultsComponent,
@@ -177,6 +150,17 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
   },
+  {
+    path : 'company' , loadChildren:()=>import('./Components/Dashboard/company/company.module')
+    .then(mod=>mod.CompanyModule)
+  },
+  {
+    path : 'profileSettings' , loadChildren:()=>import('./Components/Dashboard/profile-settings/profile-settings.module')
+    .then(mod=>mod.ProfileSettingsModule)
+  }
+
+
+
 //   {
 //     path: '**',
 //     component: Error404Component,

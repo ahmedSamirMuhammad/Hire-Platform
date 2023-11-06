@@ -66,4 +66,15 @@ export class QueryStringService {
 		}
 		return queryString;
 	}
+	isFilled(params:any) {
+		if (typeof params === 'string') params = this.parse(params);
+		for (let key in params) {
+			if (params[key] != '') {
+				return true;
+			}
+		}
+		return false;
+
+	}
+
 }

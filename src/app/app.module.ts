@@ -23,6 +23,7 @@ import { MessagesComponent } from "./Components/Dashboard/messages/messages.comp
 
 import { SummaryComponent } from "./Components/Dashboard/summary/summary.component";
 import { JobComponent } from "./Components/Dashboard/company/job/job.component";
+
 // import { LettersListComponent } from "./Components/Explore/explore-companies/letters-list/letters-list.component";
 // import { CompaniesListComponent } from "./Components/Explore/explore-companies/companies-list/companies-list.component";
 // import { CompanyProfileComponent } from "./Components/Profiles/company-profile/company-profile/company-profile.component";
@@ -33,8 +34,10 @@ import { JobComponent } from "./Components/Dashboard/company/job/job.component";
 // import { CompanySidebarComponent } from "./Components/Profiles/company-profile/company-sidebar/company-sidebar.component";
 import { DashboardComponent } from "./Components/Dashboard/dashboard/dashboard.component";
 import { ProfileSettingComponent } from "./Components/Dashboard/profile-settings/profile-setting/profile-setting.component";
+
 import { DashboardFooterComponent } from "./Components/Dashboard/company-dashboard/dashboard-footer/dashboard-footer.component";
 import { CandidateComponent } from "./Components/Dashboard/company/candidate/candidate.component";
+
 // import { JobTitlebarComponent } from "./Components/Profiles/job-profile/job-titlebar/job-titlebar.component";
 // import { JobDescriptionComponent } from "./Components/Profiles/job-profile/job-description/job-description.component";
 // import { JobSidebarComponent } from "./Components/Profiles/job-profile/job-sidebar/job-sidebar.component";
@@ -109,6 +112,7 @@ interface NgxSpinnerConfig {
 		LoginComponent,
 		ForgetPasswordComponent,
 		ResetPasswordComponent,
+		// PaginationComponent,
 		// PaginationComponent,
 		CompanySettingsComponent,
 		DashboardComponent,

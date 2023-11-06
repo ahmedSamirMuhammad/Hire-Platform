@@ -1,7 +1,7 @@
 import { Component ,Input,ViewChild,
 	ElementRef,} from "@angular/core";
 import { DashboardHttpService } from "src/app/services/dashboard-http.service";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder,Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 @Component({
 	selector: "app-edit-reviews-modal-content",
@@ -13,6 +13,7 @@ export class EditReviewsModalContentComponent {
 	@Input() params:any;
 	@Input() modalOnInit: any;
 	@Input() closeModal: any;
+	@Input() openModal: any;
 	company_name;
 	@ViewChild("rating1") rating1: ElementRef;
 	@ViewChild("rating2") rating2: ElementRef;
@@ -29,17 +30,24 @@ export class EditReviewsModalContentComponent {
 
 	) {
 		this.reviewForm = this.formBuilder.group({
-			id: [""],
-			rating: [""],
+			id: ["",Validators.required],
+			rating: [null,[Validators.required, Validators.min(1), Validators.max(5)]],
 			title: [""],
-			comment: [""],
+			comment: ["",Validators.required],
 		});
 
 	}
 	ngOnInit() {
 	}
 	getReview() {
+		this.reviewForm.setValue({
+				id:'',
+				rating: '',
+				title: '',
+				comment: '',
+			});
 		this.dashboardHttpService.getReview(this.params.id).subscribe((res) => {
+			console.log(res)
 			const data = res.data;
 			(this[`rating${data["rating"]}`].nativeElement as HTMLButtonElement).click();
 			this.company_name = data['company_name'];
@@ -49,6 +57,7 @@ export class EditReviewsModalContentComponent {
 				title: data["title"],
 				comment: data["comment"],
 			});
+		this.openModal();
 		});
 	}
 	rate(rating) {
@@ -59,9 +68,7 @@ export class EditReviewsModalContentComponent {
 		// Ensure that the company ID is set correctly
 		this.dashboardHttpService.editReview(this.params.id,this.reviewForm.value).subscribe(
 			(res: any) => {
-				console.log(res)
 				const data = res.data;
-
 				this.params.getReviews();
 				if (res.status === 200) {
 					this.toastr.success(

@@ -23,6 +23,8 @@ export class UserService {
 
 	removeSkillApi:string = 'http://localhost:8000/api/destroySkill';
 
+	removeSkillApi:string = 'http://localhost:8000/api/destroySkill';
+
 	userSocials:string = 'http://localhost:8000/api/socials';
 
 	userAppliedJobs:string = 'http://localhost:8000/api/userAppliedJobs';

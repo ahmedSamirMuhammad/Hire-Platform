@@ -34,21 +34,21 @@
 					</ul>
 					<ul data-submenu-title="Jobs">
 								<li *ngIf="storedRole=='emp'">
-									<a routerLink="/dashboard/jobs">Applied Jobs
+									<a routerLink="/company/dashboard/jobs">Applied Jobs
 										<span class="nav-tag">3</span></a>
 								</li>
 
 								<li *ngIf="storedRole=='cmp'">
-									<a routerLink="/dashboard/jobs">Manage Jobs
+									<a routerLink="/company/dashboard/jobs">Manage Jobs
 										<span class="nav-tag">{{ jobs.length }}</span></a>
 								</li>
 
 								<li  *ngIf="storedRole=='cmp'">
-									<a routerLink="/dashboard/candidates">Manage Candidates</a>
+									<a routerLink="/company/dashboard/candidates">Manage Candidates</a>
 								</li>
 
 								<li  *ngIf="storedRole=='cmp'">
-									<a routerLink="/dashboard/postJob">Post a Job</a>
+									<a routerLink="/company/dashboard/postJob">Post a Job</a>
 								</li>
 						
 						
@@ -59,7 +59,7 @@
 
 
 						<li><a
-								[routerLink]="storedRole === 'emp' ? '/dashboard/user-settings' : '/dashboard/company-settings'"><i
+								[routerLink]="storedRole === 'emp' ? '/profileSettings/dashboard/user-settings' : '/company/dashboard/company-settings'"><i
 									class="icon-material-outline-settings"></i> Settings</a></li>
 						<li><a href="index-logged-out.html"><i class="icon-material-outline-power-settings-new"></i>
 								Logout</a></li>

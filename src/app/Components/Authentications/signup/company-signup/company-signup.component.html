@@ -1,7 +1,7 @@
- 
-    
-      
-    
+
+
+
+
  <div id="titlebar" class="gradient">
 	<div class="container">
 		<div class="row">
@@ -21,7 +21,7 @@
 	</div>
 </div>
 
- 
+
 
 
 
@@ -66,7 +66,7 @@
 								<div id="name_input_help" *ngIf="
                   form.controls['first_name'].touched &&
                   form.controls['first_name'].invalid
-                  " class="text-danger">
+                  " class="err">
 									<small *ngIf="form.controls['first_name'].errors?.['required']">FirstName is required</small>
 									<small *ngIf="form.controls['first_name'].errors?.['minlength']">
 										Minimum length is 3 characters.
@@ -86,7 +86,7 @@
 									<div id="name_input_help" *ngIf="
                   form.controls['last_name'].touched &&
                   form.controls['last_name'].invalid
-                  " class="text-danger">
+                  " class="err">
 									<small *ngIf="form.controls['last_name'].errors?.['required']">LastName is required
 										is required</small>
 										<small *ngIf="form.controls['last_name'].errors?.['minlength']">
@@ -108,15 +108,15 @@
 						<div id="name_input_help" *ngIf="
                   form.controls['company_name'].touched &&
                   form.controls['company_name'].invalid
-                  " class="text-danger">
+                  " class="err">
 									<small *ngIf="form.controls['company_name'].errors?.['required']">company_name is required</small>
 									<small *ngIf="form.controls['company_name'].errors?.['minlength']">
 										Minimum length is 3 characters.
 									  </small>
-								   
+
 								</div>
 							</div>
- 
+
 
 					<div class="input-with-icon-left">
 						<i class="icon-material-baseline-mail-outline"></i>
@@ -130,7 +130,7 @@
                   form.controls['email'].touched &&
                   form.controls['email'].invalid
                   "
-                  class="form-text text-danger"
+                  class="form-text err"
                 >
                   <small *ngIf="form.controls['email'].errors?.['required']"
                     >The Email is required</small
@@ -138,7 +138,7 @@
                   <small *ngIf="form.controls['email'].errors?.['email']"
                     >Invalid Email Format</small
                   >
-                  
+
                 </div>
 					</div>
 
@@ -154,7 +154,7 @@
 							form.controls['password'].touched &&
 							form.controls['password'].invalid
 							"
-							class="form-text text-danger"
+							class="form-text err"
 						  >
 							<small *ngIf="form.controls['password'].errors?.['required']"
 							  >The password is required</small
@@ -162,9 +162,9 @@
 							<small *ngIf="form.controls['password'].errors?.['minlength']">
 								Minimum length is 8 characters.
 							  </small>
-							 
-						  
-							
+
+
+
 						  </div>
 					</div>
 
@@ -174,7 +174,7 @@
 							name="password-repeat-register" id="password-repeat-register" placeholder="Repeat Password"
 							required />
 
-							<span class="text-danger" 
+							<span class="err"
                   *ngIf="form.get('password')?.valid && form.get('password_confirmation')?.dirty && (form.get('password')?.value !== form.get('password_confirmation')?.value)">
                     Password and Confirm Password must match
               </span>
@@ -184,7 +184,7 @@
                   form.controls['password_confirmation'].touched &&
                   form.controls['password_confirmation'].invalid
                   "
-                  class="form-text text-danger"
+                  class="form-text err"
                 >
                   <small *ngIf="form.controls['password_confirmation'].errors?.['required']"
                     >The password is required</small
@@ -212,5 +212,4 @@
 		</div>
 	</div>
 </div>
- 	
- 
+

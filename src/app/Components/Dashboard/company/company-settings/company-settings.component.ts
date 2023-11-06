@@ -72,7 +72,7 @@ export class CompanySettingsComponent {
 						//  this.router.navigate(['/dashboard/jobs']);
 
 						if (this.data.status === 200) {
-							this.router.navigate(["/dashboard/jobs"]);
+							this.router.navigate(["/company/dashboard/jobs"]);
 							this.toastr.success(
 								JSON.stringify(this.data.msg),
 								JSON.stringify(this.data.status),

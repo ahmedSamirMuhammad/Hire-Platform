@@ -1,33 +1,38 @@
 import { Component, Input } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
-import { Router, ActivatedRoute } from "@angular/router";
-
+import { Router } from "@angular/router";
+import {
+	FormBuilder,
+	FormGroup
+} from "@angular/forms";
 @Component({
 	selector: "app-pagination",
 	templateUrl: "./pagination.component.html",
 	styleUrls: ["./pagination.component.scss"],
 })
 export class PaginationComponent {
+	form: FormGroup;
 	last_page;
 	current_page;
 	next_page;
 	previous_page;
 	route;
 	page;
+	onturn;
+	allowOnTurn;
 	@Input() paginationData: BehaviorSubject<any>;
 	paginationData$;
 	ngUnsubscribe: any = new Subject();
 
-	constructor(
-		private router: Router,
-	) {}
+	constructor(private router: Router,
+		private formBuilder: FormBuilder,
+	) { }
 
 	ngOnInit() {
+		this.form = this.formBuilder.group({
+			page:""
+		});3
 		this.listenParentDataChanges();
-		let url: any = this.router.url;
-		url = url.split("/").slice(0, -1);
-		url = url.join("/");
-		this.route = url;
 	}
 	listenParentDataChanges() {
 		if (this.paginationData) {
@@ -38,53 +43,55 @@ export class PaginationComponent {
 			});
 		}
 	}
-	initPagination(paginationData) {
-		if (
-			paginationData.current_page > paginationData.last_page &&
-			+paginationData.current_page
-		) {
-			this.router.navigateByUrl(this.route);
-		}
-
-		this.previous_page = `${this.route}/${this.clamp(
+	initPagination(paginationData: any) {
+		if (typeof paginationData.url == "undefined") return;
+		if (paginationData.disable) return;
+		let url: any = paginationData.url;
+		url = url.split("/").slice(0, -1);
+		url = url.join("/");
+		this.route = url;
+		this.previous_page = this.clamp(
 			paginationData.current_page - 1,
 			1,
 			paginationData.last_page
-		)}`;
-		this.next_page = `${this.route}/${this.clamp(
+		);
+		this.next_page = this.clamp(
 			paginationData.current_page + 1,
 			1,
 			paginationData.last_page
-		)}`;
+		);
 		this.last_page = paginationData.last_page;
 		this.current_page = paginationData.current_page;
+		this.onturn = paginationData.onturn;
+		this.allowOnTurn = paginationData.allowOnTurn;
 	}
 
 	nextPage() {
-		this.router
-			.navigateByUrl("/", { skipLocationChange: true })
-			.then(() => {
-				this.router.navigate([this.next_page]); // navigate to same route
-			});
-			console.log(this.next_page);
+		// this.router
+		// 	.navigateByUrl("/", { skipLocationChange: true })
+		// 	.then(() => {
+		// 		this.router.navigate(); // navigate to same route
+		// 	});
+		if (this.next_page === this.current_page) return;
+		const nextPage = `${this.route}/${this.next_page}`;
+		this.router.navigate([nextPage]);
+		if (this.onturn) this.onturn();
+
 	}
 	prevPage() {
-		this.router
-			.navigateByUrl("/", { skipLocationChange: true })
-			.then(() => {
-				this.router.navigate([this.previous_page]); // navigate to same route
-			});
+		if (this.previous_page === this.current_page) return;
+		const prevPage = `${this.route}/${this.previous_page}`;
+		this.router.navigate([prevPage]);
+		if (this.onturn) this.onturn();
+	}
+	goTo() {
+		let pageNumber = this.clamp(this.page, 1, this.last_page);
+		let page = `${this.route}/${pageNumber}`;
+		this.router.navigate([page]);
+		this.current_page = pageNumber;
+		if (this.onturn) this.onturn();
 	}
 	clamp(value, min, max) {
 		return Math.min(Math.max(value, min), max);
-	}
-	goTo() {
-		this.router
-			.navigateByUrl("/", { skipLocationChange: true })
-			.then(() => {
-				this.router.navigate([
-					`${this.route}/${this.clamp(this.page, 1, this.last_page)}`,
-				]); // navigate to same route
-			});
 	}
 }

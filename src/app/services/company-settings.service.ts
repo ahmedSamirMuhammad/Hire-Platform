@@ -54,19 +54,19 @@ export class CompanySettingsService {
 		);
 	}
   
-	getUserSocials():Observable<any>{
-		let APIUrl = `${this.cmpSocial}`;
-		return this.httpClient.get(APIUrl,{
-		  headers: this.getHeaders(),
-	  })
-		.pipe(map(
-		  (res:any)=>{
-			return res || {};
-		  }
-		  ),
-		  catchError(this.handelError)
-		  );
-	  }
+	// getUserSocials():Observable<any>{
+	// 	let APIUrl = `${this.cmpSocial}`;
+	// 	return this.httpClient.get(APIUrl,{
+	// 	  headers: this.getHeaders(),
+	//   })
+	// 	.pipe(map(
+	// 	  (res:any)=>{
+	// 		return res || {};
+	// 	  }
+	// 	  ),
+	// 	  catchError(this.handelError)
+	// 	  );
+	//   }
 
 
   handelError(error:HttpErrorResponse){

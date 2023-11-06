@@ -22,9 +22,9 @@
 
 
 
-						<li style="font-weight: 400; font-size: larger;"><a href="#" class="current" >Find Work</a>
+						<li style="font-weight: 400; font-size: larger;"><a href="#" class="current">Find Work</a>
 							<ul class="dropdown-nav">
-								<li><a routerLink="explore-jobs">Explore job</a>
+								<li><a routerLink="explore-jobs" (click)="goExploreJob()">Explore job</a>
 								</li>
 								<li><a routerLink="explore-companies">Explore Company</a>
 								</li>
@@ -45,28 +45,34 @@
                   </ul>
                 </li>
 
-								<li><a [routerLink]="storedRole === 'emp' ? '/dashboard/user-settings' : '/dashboard/company-settings'">Settings</a></li>
+								<li><a
+										[routerLink]="storedRole === 'emp' ? '/dashboard/user-settings' : '/dashboard/company-settings'">Settings</a>
+								</li>
 							</ul>
 						</li>
 
-            <li style="font-weight: 400; font-size:larger;" class="nav-header" *ngIf="!token" routerLink="employee-signup"><a >Register</a></li>
-            <li style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="!token" routerLink="login"><a >Login</a></li>
-			<li  style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="token"><a routerLink="payment">Payment</a>
-            </li>
+						<li style="font-weight: 400; font-size:larger;" class="nav-header" *ngIf="!token"
+							routerLink="employee-signup"><a>Register</a></li>
+						<li style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="!token"
+							routerLink="login"><a>Login</a></li>
+						<li style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="token"><a
+								routerLink="payment">Payment</a>
+						</li>
 
-            <li  style="font-weight: 400; font-size: larger;" class="nav-header"><a routerLink="contact-us">Contact</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="clearfix"></div>
-        <!-- Main Navigation / End -->
+						<li style="font-weight: 400; font-size: larger;" class="nav-header"><a
+								routerLink="contact-us">Contact</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
 
 			</div>
 			<!-- Left Side Content / End -->
 
 
-      <!-- Right Side Content / End -->
-      <div class="right-side" *ngIf="token">
+			<!-- Right Side Content / End -->
+			<div class="right-side" *ngIf="token">
 
 				<!--  User Notifications -->
 				<div class="header-widget hide-on-mobile">
@@ -82,26 +88,28 @@
 						<!-- Dropdown -->
 						<div class="header-notifications-dropdown">
 
-              <div class="header-notifications-headline">
-                <h4 >Notifications</h4>
-                <button class="mark-as-read ripple-effect-dark" title="Mark all as read" data-tippy-placement="left">
-                  <i class="icon-feather-check-square"></i>
-                </button>
-              </div>
+							<div class="header-notifications-headline">
+								<h4>Notifications</h4>
+								<button class="mark-as-read ripple-effect-dark" title="Mark all as read"
+									data-tippy-placement="left">
+									<i class="icon-feather-check-square"></i>
+								</button>
+							</div>
 
 							<div class="header-notifications-content">
 								<div class="header-notifications-scroll" data-simplebar>
 									<ul>
 										<li class="notifications-not-read" *ngFor="let notification of notifications">
-										  <a routerLink="">
-											<span class="notification-icon"><i class="icon-material-outline-group"></i></span>
-											<span class="notification-text">
-											  <!-- <strong>{{ notification.user }} applied for a job <span class="color">{{ notification.job }}</span></strong> -->
-											  <strong>{{ notification.data.subject}}</strong>
-											</span>
-										  </a>
+											<a routerLink="">
+												<span class="notification-icon"><i
+														class="icon-material-outline-group"></i></span>
+												<span class="notification-text">
+													<!-- <strong>{{ notification.user }} applied for a job <span class="color">{{ notification.job }}</span></strong> -->
+													<strong>{{ notification.data.subject}}</strong>
+												</span>
+											</a>
 										</li>
-									  </ul>
+									</ul>
 
 								</div>
 							</div>
@@ -116,32 +124,35 @@
 							<a routerLink=""><i class="icon-feather-mail"></i><span>3</span></a>
 						</div>
 
-            <!-- Dropdown -->
-            <div class="header-notifications-dropdown" >
+						<!-- Dropdown -->
+						<div class="header-notifications-dropdown">
 
-              <div class="header-notifications-headline" >
-                <h4>Messages</h4>
-                <button class="mark-as-read ripple-effect-dark" title="Mark all as read" data-tippy-placement="left">
-                  <i class="icon-feather-check-square"></i>
-                </button>
-              </div>
+							<div class="header-notifications-headline">
+								<h4>Messages</h4>
+								<button class="mark-as-read ripple-effect-dark" title="Mark all as read"
+									data-tippy-placement="left">
+									<i class="icon-feather-check-square"></i>
+								</button>
+							</div>
 
-              <div class="header-notifications-content">
-                <div class="header-notifications-scroll" data-simplebar>
-                  <ul>
-                    <!-- Notification -->
-                    <li class="notifications-not-read">
-                      <a routerLink="">
-                        <span class="notification-avatar status-online"><img src="assets/images/user-avatar-small-03.jpg"
-                            alt="avatar"></span>
-                        <div class="notification-text">
-                          <strong>David Peterson</strong>
-                          <p class="notification-msg-text">Thanks for reaching out. I'm quite busy right now on many...
-                          </p>
-                          <span class="color">4 hours ago</span>
-                        </div>
-                      </a>
-                    </li>
+							<div class="header-notifications-content">
+								<div class="header-notifications-scroll" data-simplebar>
+									<ul>
+										<!-- Notification -->
+										<li class="notifications-not-read">
+											<a routerLink="">
+												<span class="notification-avatar status-online"><img
+														src="assets/images/user-avatar-small-03.jpg"
+														alt="avatar"></span>
+												<div class="notification-text">
+													<strong>David Peterson</strong>
+													<p class="notification-msg-text">Thanks for reaching out. I'm quite
+														busy right now on many...
+													</p>
+													<span class="color">4 hours ago</span>
+												</div>
+											</a>
+										</li>
 
 										<!-- Notification -->
 										<li class="notifications-not-read">
@@ -187,7 +198,7 @@
 				<div class="header-widget">
 
 					<!-- Messages -->
-					<div class="header-notifications user-menu">
+					<div #userMenu class="header-notifications user-menu" (click)="open()">
 						<div class="header-notifications-trigger">
 							<a routerLink="">
 								<div class="user-avatar status-online"><img
@@ -195,20 +206,19 @@
 							</a>
 						</div>
 
-            <!-- Dropdown -->
-            <div class="header-notifications-dropdown" >
+						<!-- Dropdown -->
+						<div  class="header-notifications-dropdown">
 
 							<!-- User Status -->
 							<div class="user-status">
 
-                <!-- User Name / Avatar -->
-                <div class="user-details">
-                  <div class="user-avatar status-online"><img src=""
-                      alt="avatar"></div>
-                  <div class="user-name">
-                    {{ name }} <span>Engineer</span>
-                  </div>
-                </div>
+								<!-- User Name / Avatar -->
+								<div class="user-details">
+									<div class="user-avatar status-online"><img src="" alt="avatar"></div>
+									<div class="user-name">
+										{{ name }} <span>Engineer</span>
+									</div>
+								</div>
 
 								<!-- User Status Switcher -->
 								<div class="status-switch" id="snackbar-user-status">
@@ -219,7 +229,7 @@
 								</div>
 							</div>
 
-							<ul class="user-menu-small-nav">
+							<ul  class="user-menu-small-nav">
 								<li><a routerLink=""><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
 								<li><a routerLink=""><i class="icon-material-outline-settings"></i> Settings</a></li>
 								<li><a href="/login" a (click)="logout()"><i
