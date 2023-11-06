@@ -13,12 +13,12 @@ export class ManageCandidatesComponent {
   }
   candidates:any[] = [];
   ngOnInit():void{
-    
+
     this.candidateCrud.getAllCandidates().subscribe( (res)=>{
       this.candidates = res.data;
       console.log(this.candidates);
       })
-      
+
   }
 
 }

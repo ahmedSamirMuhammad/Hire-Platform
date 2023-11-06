@@ -12,7 +12,7 @@ import {
 export class UserService {
 
 
-// ******
+// **
 // All Apis
 
 	userApi: string = "http://localhost:8000/api/userSettings";
@@ -21,14 +21,16 @@ export class UserService {
 
 	userSkills:string = 'http://localhost:8000/api/getUserSkills';
 
+	removeSkillApi:string = 'http://localhost:8000/api/destroySkill';
+
 	userSocials:string = 'http://localhost:8000/api/socials';
 
 	userAppliedJobs:string = 'http://localhost:8000/api/userAppliedJobs';
-// ****
+// **
 
 	constructor(private httpClient: HttpClient) {}
 //common methods
-// ***************
+// *****
   getHeaders() {
 		const token = localStorage.getItem("token");
 		return new HttpHeaders({
@@ -49,10 +51,10 @@ export class UserService {
 	  }
 
 //end common methods
-// ***************
+// *****
 
 //user Data methods
-// ***************
+// *****
 	getUserData():Observable<any>{
 	  let APIUrl = `${this.userApi}`;
 	  return this.httpClient.get(APIUrl,{
@@ -86,11 +88,11 @@ export class UserService {
 	}
 
 //end user data methods
-// ***************
+// *****
 
 
 //Skills methods
-// ***************
+// *****
 	getAllSkills():Observable<any>{
 		let APIUrl = `${this.SkillsApi}`;
 		return this.httpClient.get(APIUrl,{
@@ -118,6 +120,27 @@ export class UserService {
 		  catchError(this.handelError)
 		  );
 	  }
+
+
+	  removeSkill(id:any):Observable<any>{
+		let APIUrl = `${this.removeSkillApi}/${id}`;
+		return this.httpClient.delete(APIUrl,{
+		  headers: this.getHeaders(),
+	  })
+		.pipe(map(
+		  (res:any)=>{
+			return res || {};
+		  }
+		  ),
+		  catchError(this.handelError)
+		  );
+	  }
+
+
+	  // end Skills methods
+	  // *****
+
+	  //Applied jobs
 	  getUserAppliedJobs():Observable<any>{
 		let APIUrl = `${this.userAppliedJobs}`;
 		return this.httpClient.get(APIUrl,{
@@ -132,12 +155,13 @@ export class UserService {
 		  );
 	  }
 
-// end Skills methods
-// ***************
+
+
+
 
 
 //Socials methods
-// ***************
+// *****
 
 	  getUserSocials():Observable<any>{
 		let APIUrl = `${this.userSocials}`;

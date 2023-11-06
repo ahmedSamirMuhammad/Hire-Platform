@@ -8,7 +8,6 @@ import { ToastrService } from "ngx-toastr";
 import { ActivatedRoute, Router } from "@angular/router";
 import { JobCrudService } from "src/app/services/job-crud.service";
 import { FormGroup, FormBuilder } from "@angular/forms";
-
 //spinner
 import { NgxSpinnerService } from "ngx-spinner";
 

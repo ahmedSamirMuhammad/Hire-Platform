@@ -37,14 +37,14 @@
                 (ngSubmit)="onSubmit()"
               >
                 <div class="row">
-                  <div class="col-xl-4">
+                  <div class="col-xl-6">
                     <div class="submit-field">
                       <h5>Job Title</h5>
                       <input
                         formControlName="name"
                         type="text"
                         class=""
-                        
+
                       />
                     </div>
 
@@ -52,10 +52,10 @@
                       <p  style="color: red;" *ngIf="jobForm.controls['name'].touched && jobForm.controls['name'].errors?.['minlength']">min value is two characters</p>
                   </div>
 
-                  <div class="col-xl-4">
+                  <div class="col-xl-6">
                     <div class="submit-field">
                       <h5>Job Type</h5>
-                      <select 
+                      <select
                         formControlName="type"
                         class=""
                         data-size="7"
@@ -64,27 +64,54 @@
                         <option value="full_time">Full Time</option>
                         <option value="part_time">Part Time</option>
                         <option value="internship">Internship</option>
+                        <option value="contract">Contract</option>
+                        <option value="temporary">Temporary</option>
 
-                        
+
                       </select>
                     </div>
 
                     <p  style="color: red;" *ngIf="jobForm.controls['type'].touched && jobForm.controls['type'].errors?.['required']">its required field</p>
                   </div>
 
-                  <div class="col-xl-4">
+                  <div class="col-xl-6">
                     <div class="submit-field">
                       <h5>Job Category</h5>
                       <select
-                      
+
                         formControlName="category_id"
                         class=""
                         data-size="7"
                         title="Select Category"
-                        
+
                       >
                       <option  *ngFor="let category of categories"  value="{{ category.id }}">{{ category.name }}</option>
                       <option  *ngFor="let category of categories"  value="{{ category.id }}">{{ category.name }}</option>
+                      </select>
+                    </div>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['category_id'].touched && jobForm.controls['category_id'].errors?.['required']">its required field</p>
+
+                  </div>
+
+                  <div class="col-xl-6">
+                    <div class="submit-field">
+                      <h5>Needed Experience </h5>
+                      <select
+
+                        formControlName="experience"
+                        class=""
+                        data-size="7"
+                        title="Select Experience"
+
+                      >
+                      <option value="0-1">0-1</option>
+                      <option value="1-3">1-3</option>
+                      <option value="3-6">3-6</option>
+                      <option value="6-10">6-10</option>
+                      <option value="10-15">10-15</option>
+                      <option value="15-20">15-20</option>
+                      <option value="+20">+20</option>
                       </select>
                     </div>
 
@@ -103,7 +130,7 @@
                             class="with-border"
                             type="text"
                             placeholder="Type Address"
-                            
+
                           />
                         </div>
                         <i class="icon-material-outline-location-on"></i>
@@ -152,7 +179,7 @@
                         cols="30"
                         rows="5"
                         class="with-border"
-                        
+
                       ></textarea>
 
                     <p  style="color: red;" *ngIf="jobForm.controls['about'].touched &&jobForm.controls['about'].errors?.['required']">its required field</p>
@@ -182,7 +209,7 @@
                 </div>
                 <div class="col-xl-12">
                   <!-- <a href="#" class="button ripple-effect big margin-top-30" -->
-                 
+
 
                   <input
                     type="submit"
@@ -198,8 +225,7 @@
 
       <!-- Row / End -->
 
-      <!-- footer  -->
-      <app-dashboard-footer></app-dashboard-footer>
+
     </div>
   </div>
   <!-- Dashboard Content / End -->
