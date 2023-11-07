@@ -18,8 +18,7 @@ export class JobCrudService {
 		const token = localStorage.getItem("token");
 		return new HttpHeaders({
 			authorization: `Bearer ${token}`,
-			"Content-Type": "application/json",
-		});
+ 		});
 	}
 
   getAllJobs():Observable<any>{

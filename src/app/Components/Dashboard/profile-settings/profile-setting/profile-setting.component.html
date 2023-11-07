@@ -48,17 +48,22 @@
 											data-tippy-placement="bottom"
 											title="Change Avatar"
 										>
-											<img
-												class="profile-pic"
-												src="../../../../assets/images/user-avatar-big-01.jpg"
-												alt=""
-											/>
+										<img
+										class="profile-pic"
+									src="http://localhost:8000/images/avatars/{{ userForm.get('avatar').value }}"
+											
+									 
+										 
+										alt=""
+									/>
 											<div class="upload-button"></div>
 											<input
 												class="file-upload"
 												type="file"
 												accept="image/*"
 												formControlName="avatar"
+												(change)="selected($event)"
+
 											/>
 										</div>
 									</div>
@@ -691,6 +696,24 @@
 
 
 					</div>
+					<div class="uploadButton margin-top-30">
+                        <input
+                          formControlName="cv"
+                          class="uploadButton-input"
+                          type="file"
+                          accept="image/*, application/pdf"
+                          id="upload"
+                          multiple
+                          (change)="cv($event)"
+
+                        />
+                        <label
+                          class="uploadButton-button ripple-effect"
+                          for="upload"
+                          >upload CV</label
+                        >
+						</div>
+					
 					<!-- Button -->
 					<div class="col-xl-12">
 						<input

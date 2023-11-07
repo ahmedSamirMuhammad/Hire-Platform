@@ -36,8 +36,7 @@ export class UserService {
 		const token = localStorage.getItem("token");
 		return new HttpHeaders({
 			authorization: `Bearer ${token}`,
-			"Content-Type": "application/json",
-		});
+ 		});
 	}
 
 
@@ -73,7 +72,7 @@ export class UserService {
 	updateUserData(data: any): Observable<any> {
 		let APIUrl = `${this.userApi}`;
 		return this.httpClient
-			.put(APIUrl, data, {
+			.post(APIUrl, data, {
 				headers: this.getHeaders(),
 			})
 			.pipe(catchError(this.handelError));

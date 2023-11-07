@@ -2,22 +2,25 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class CompanySettingsService {
 
   constructor(private httpClient :HttpClient) { }
+  
   getHeaders() {
 	const token = localStorage.getItem("token");
+	
 	return new HttpHeaders({
 		authorization: `Bearer ${token}`,
-		"Content-Type": "application/json",
-	});
+ 	});
 }
 
   cmpApi:string = 'http://localhost:8000/api/companySettings';
   cmpSocial:string = 'http://localhost:8000/api/cmpSocials';
+  test:string = 'http://localhost:8000/api/companySettings';
 
 
   httpHeaders = new HttpHeaders().set('content-Type','application/json');
@@ -36,15 +39,14 @@ export class CompanySettingsService {
 		);
 	}
 
-  updateCmpData(data:any):Observable<any>{
-	  let APIUrl = `${this.cmpApi}`;
-	  return this.httpClient.put(APIUrl,data,{
-		headers: this.getHeaders(),
-	})
-	  .pipe(
-		catchError(this.handelError)
-		);
-	}
+
+updateCmpData(data:any):Observable<any>{
+		let APIUrl = this.test;
+		return this.httpClient.post(APIUrl,data,{
+				headers: this.getHeaders(),
+			}
+		).pipe(catchError(this.handelError));
+	  }
   
 	deleteCmp():Observable<any>{
 	  let APIUrl = `${this.cmpApi}`;

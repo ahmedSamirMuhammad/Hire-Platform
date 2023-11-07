@@ -15,8 +15,9 @@ import { NgxSpinnerService } from "ngx-spinner";
   styleUrls: ['./post-job.component.scss']
 })
 export class PostJobComponent {
-	jobForm: FormGroup;
-	categories: any[] = []; // Declare the 'categories' property
+  jobForm: FormGroup;
+  categories: any[] = []; // Declare the 'categories' property 
+  userFormData : FormData
 
 
 	constructor(
@@ -42,44 +43,53 @@ export class PostJobComponent {
 	  });
 	}
 
-	onSubmit() {
+  onSubmit() {
 
-	  if(this.jobForm.valid) {
+    this.userFormData.append('name',this.jobForm.get('name').value)
+    this.userFormData.append('type',this.jobForm.get('type').value)
+    this.userFormData.append('category_id',this.jobForm.get('category_id').value)
+    this.userFormData.append('location',this.jobForm.get('location').value)
+    this.userFormData.append('max_salary',this.jobForm.get('max_salary').value)
+    this.userFormData.append('min_salary',this.jobForm.get('min_salary').value)
+    this.userFormData.append('about',this.jobForm.get('about').value)
+    this.userFormData.append('experience',this.jobForm.get('experience').value)
+    
+    if(this.jobForm.valid) {
 
-		this.jobCrud.addJob(this.jobForm.value).subscribe((res) => {
-		  console.log('added successfully');
-
-			  if (res.status === 200) {
-				this.router.navigate(["/dashboard/jobs"]);
-				this.toastr.success(
-				  JSON.stringify("added successfully"),
-				  JSON.stringify(res.status),
-				  {
-					timeOut: 2000,
-					progressBar: true,
-				  }
-				);
-			  }
-
-			(error) => {
-			  // Handle error here
-			  this.toastr.error("Error with your credentials", "401", {
-				timeOut: 5000,
-				progressBar: true,
-			  });
-			}
-
-		}, );
-	  }
-	  else{
-		this.toastr.error(
-		  JSON.stringify("invalid data"),
-		  JSON.stringify(403),
-		  {
-			timeOut: 2000,
-			progressBar: true,
-		  }
-		);
+      this.jobCrud.addJob(this.userFormData).subscribe((res) => {
+        console.log('added successfully');
+        
+            if (res.status === 200) {
+              this.router.navigate(["/company/dashboard/jobs"]);
+              this.toastr.success(
+                JSON.stringify("added successfully"),
+                JSON.stringify(res.status),
+                {
+                  timeOut: 2000,
+                  progressBar: true,
+                }
+              );
+            }
+  
+          (error) => {
+            // Handle error here
+            this.toastr.error("Error with your credentials", "401", {
+              timeOut: 5000,
+              progressBar: true,
+            });
+          }
+        
+      }, );
+    }
+    else{
+      this.toastr.error(
+        JSON.stringify("invalid data"),
+        JSON.stringify(403),
+        {
+          timeOut: 2000,
+          progressBar: true,
+        }
+      );
 
 	  }
 	}
@@ -110,4 +120,12 @@ export class PostJobComponent {
 	  );
 
 	}
+	selected(event: any) {
+		const selectedFiles = event.target.files[0];
+		this.userFormData = new FormData
+		 this.userFormData.append('logo',selectedFiles)
+	
+		
+	  }
 }
+ 

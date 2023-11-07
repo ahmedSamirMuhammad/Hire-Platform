@@ -1,11 +1,9 @@
-
-
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
-import { NgxSpinnerService } from 'ngx-spinner';
+// import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -17,13 +15,15 @@ export class ProfileSettingComponent {
 	skillsArr: Array<any> = [];
 	userType!: string;
 	userForm: FormGroup;
+  userFormData: FormData
+
 
 	constructor(
 	  public formBuilder: FormBuilder,
 	  private router: Router,
 	  private userService: UserService,
 	  private toastr: ToastrService,
-	  private spinner:NgxSpinnerService
+	  // private spinner:NgxSpinnerService
 	) {
 
 
@@ -46,10 +46,15 @@ export class ProfileSettingComponent {
 		linkedin_account: [""],
 		github_account: [""],
 	  });
-
+    
+    this.userService.getUserSkills().subscribe( (res)=>{
+      this.userSkills = res;
+      // console.log(this.userSkills);
+      })
   }
 
 
+	 
 	 AllSkills :any[];
 	 userSkills : any[];
 
@@ -61,15 +66,33 @@ export class ProfileSettingComponent {
 	}
 
 
-	  data: any;
+ 	  data: any;
 
 	onSubmit() {
+    this.userFormData.append('first_name', this.userForm.get('first_name').value)
+    this.userFormData.append('last_name', this.userForm.get('last_name').value)
+    this.userFormData.append('email', this.userForm.get('email').value)
+    this.userFormData.append('cv', this.userForm.get('cv').value)
+    this.userFormData.append('mobile_number', this.userForm.get('mobile_number').value)
+    this.userFormData.append('title', this.userForm.get('title').value)
+    this.userFormData.append('nationality', this.userForm.get('nationality').value)
+    this.userFormData.append('about', this.userForm.get('about').value)
+    this.userFormData.append('avatar', this.userForm.get('avatar').value)
+    this.userFormData.append('skills', this.userForm.get('skills').value)
+    this.userFormData.append('password', this.userForm.get('password').value)
+    this.userFormData.append('new_password', this.userForm.get('new_password').value)
+    this.userFormData.append('confirmedPass', this.userForm.get('confirmedPass').value)
+    this.userFormData.append('twitter_account', this.userForm.get('twitter_account').value)
+    this.userFormData.append('linkedin_account', this.userForm.get('linkedin_account').value)
+    this.userFormData.append('github_account', this.userForm.get('github_account').value)
+     
+
 		  console.log("hi");
 	  console.log(this.userForm);
 
 	  if(this.userForm.valid) {
 
-		this.userService.updateUserData(this.userForm.value).subscribe(
+		this.userService.updateUserData(this.userFormData).subscribe(
 		  (res) => {
 			this.data = res;
 			//  console.log('edited successfully');
@@ -108,17 +131,18 @@ export class ProfileSettingComponent {
 
 	  }
 	  }
+	  
 
 
 
 	loadData(){
-	  this.spinner.show();
+	  // this.spinner.show();
 	  this.userService.getAllSkills().subscribe( (res)=>{
 		  this.AllSkills = res;
 		  console.log(this.AllSkills);
 		  setTimeout(() => {
 			  /** spinner ends after 1 seconds */
-			  this.spinner.hide();
+			  // this.spinner.hide();
 			}, 1000);
 
 		  })
@@ -141,7 +165,7 @@ export class ProfileSettingComponent {
 			  });
 			  setTimeout(() => {
 				  /** spinner ends after 1 seconds */
-				  this.spinner.hide();
+				  // this.spinner.hide();
 				}, 1000);
 
 			});
@@ -157,7 +181,7 @@ export class ProfileSettingComponent {
 			  })
 			  setTimeout(() => {
 				  /** spinner ends after 5 seconds */
-				  this.spinner.hide();
+				  // this.spinner.hide();
 				}, 1000);
 
 		  })
@@ -180,6 +204,22 @@ export class ProfileSettingComponent {
 		}))
 	  }
 
+    selected(event: any) {
+      const selectedFiles = event.target.files[0];
+      console.log(selectedFiles)
+      this.userFormData = new FormData
+      this.userFormData.append('avatar', selectedFiles)
+  
+  
+    }
 
+    cv(event: any) {
+      const selectedFiles = event.target.files[0];
+      console.log(selectedFiles)
+      this.userFormData = new FormData
+      this.userFormData.append('cv', selectedFiles)
+  
+  
+    }
 
 }
