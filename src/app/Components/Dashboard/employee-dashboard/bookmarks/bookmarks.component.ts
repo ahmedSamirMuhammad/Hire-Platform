@@ -4,7 +4,7 @@ import { BehaviorSubject } from "rxjs";
 import { TimeService } from "src/app/services/time.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
 	selector: "app-bookmarks",
 	templateUrl: "./bookmarks.component.html",
@@ -19,12 +19,14 @@ export class BookmarksComponent {
 		private time: TimeService,
 		private activatedRoute: ActivatedRoute,
 		private router: Router,
-		private toastr: ToastrService
+		private toastr: ToastrService,
+		private spinner:NgxSpinnerService
 	) {}
 	ngOnInit() {
 		this.getBookmarks();
 	}
-	getBookmarks=()=> {
+	getBookmarks = () => {
+		this.spinner.show();
 		const page = this.activatedRoute.snapshot.params["page"];
 		this.dashboardHttpService
 			.getBookmarks(page)
@@ -44,8 +46,10 @@ export class BookmarksComponent {
 						allowOnTurn: true,
 						disable: false,
 					});
+						this.spinner.hide();
 				} else {
 					console.error(response.message);
+					this.spinner.hide();
 				}
 			});
 	}

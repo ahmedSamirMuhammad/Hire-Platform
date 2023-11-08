@@ -3,6 +3,8 @@ import { ActivatedRoute } from "@angular/router";
 import { TimeService } from "src/app/services/time.service";
 import { DashboardHttpService } from "src/app/services/dashboard-http.service";
 import { BehaviorSubject } from "rxjs";
+import { NgxSpinnerService } from "ngx-spinner";
+
 @Component({
 	selector: "app-reviews",
 	templateUrl: "./reviews.component.html",
@@ -22,9 +24,11 @@ export class ReviewsComponent {
 	constructor(
 		private dashboardHttpService: DashboardHttpService,
 		private time: TimeService,
-		private activatedRoute: ActivatedRoute
+		private activatedRoute: ActivatedRoute,
+		private spinner:NgxSpinnerService
 	) {}
 	ngOnInit() {
+
 		this.userType = localStorage.getItem("role");
 		this.getReviews();
 
@@ -37,7 +41,8 @@ export class ReviewsComponent {
 	// triggerClick() {
 	// (this.btnReview.nativeElement as HTMLButtonElement).click();
 	// }
-	getReviews=()=> {
+	getReviews = () => {
+		this.spinner.show();
 		/*
 		current_page
 		last_page
@@ -46,6 +51,8 @@ export class ReviewsComponent {
 		this.dashboardHttpService
 			.getReviews(page)
 			.subscribe((response: any) => {
+
+
 				if (response.status === 200) {
 					this.reviews = response.data.data.map((review) => {
 						review.created_at = this.time.timeAgo(
@@ -61,7 +68,9 @@ export class ReviewsComponent {
 						allowOnTurn: true,
 						disable: false,
 					});
+					this.spinner.hide();
 				} else {
+					this.spinner.hide();
 					console.error(response.message);
 				}
 			});
