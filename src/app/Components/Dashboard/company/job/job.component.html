@@ -12,8 +12,8 @@
         >
         <span *ngIf="isApproved" class="dashboard-status-button yellow"
           >Expiring</span
-        > 
-     
+        >
+
         <span *ngIf="isPending"   class="dashboard-status-button green">Pending Approval</span> -->
       </h3>
 
@@ -30,28 +30,17 @@
 </div>
 
 <!-- Buttons -->
-<div class="buttons-to-right always-visible">
-  <a *ngIf="storedRole=='cmp'" routerLink="/company/dashboard/candidates" class="button ripple-effect"
-    ><i class="icon-material-outline-supervisor-account"></i> Manage Candidates
-    </a
-  >
-  <a
-  *ngIf="storedRole=='cmp'"
-  [routerLink]="['/company/dashboard/editJob', job.id]"
-    class="button gray ripple-effect ico"
-    title="Edit"
-    data-tippy-placement="top"
-    ><i class="icon-feather-edit"></i
-  ></a>
+<div class=" ">
+	<a *ngIf="storedRole=='cmp'" routerLink="/company/dashboard/candidates" class="button ripple-effect">
+	  <i class="icon-material-outline-supervisor-account"></i> Manage Candidates
+	</a>
 
-  <!-- <a [routerLink]="['/edit-job', job.id || 0]">Edit Job</a> -->
+	<a style="margin:0 5px"*ngIf="storedRole=='cmp'" [routerLink]="['/company/dashboard/editJob', job.id]" class="button gray ripple-effect ico" title="Edit" data-tippy-placement="top">
+	  <i class="icon-feather-edit"></i>
+	</a>
 
-  <a
-  *ngIf="storedRole=='cmp'"
-    class="button gray ripple-effect ico"
-    title="Remove"
-    data-tippy-placement="top"
-    (click)="deleteJob(job.id)"
-    ><i class="icon-feather-trash-2"></i
-  ></a>
-</div>
+	<a *ngIf="storedRole=='cmp'" class="button gray ripple-effect ico" title="Remove" data-tippy-placement="top" (click)="deleteJob(job.id)">
+	  <i class="icon-feather-trash-2"></i>
+	</a>
+  </div>
+

@@ -44,11 +44,11 @@
     <h3>Bookmark or Share</h3>
 
     <!-- Bookmark Button -->
-    <button class="bookmark-button margin-bottom-25" [ngClass]="{'bookmarked': jobData.job_bookmarked}" (click)="onToggleBookmark()"> 
+    <button *ngIf="userType=='emp'" class="bookmark-button margin-bottom-25" [ngClass]="{'bookmarked': jobData.job_bookmarked}" (click)="onToggleBookmark()">
       <span class="bookmark-icon"></span>
       <span class="bookmark-text">Bookmark</span>
       <span class="bookmarked-text">Bookmarked</span>
-    </button> 
+    </button>
 
     <!-- Copy URL -->
     <div class="copy-url">

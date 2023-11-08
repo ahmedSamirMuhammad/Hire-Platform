@@ -16,7 +16,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 })
 export class PostJobComponent {
   jobForm: FormGroup;
-  categories: any[] = []; // Declare the 'categories' property 
+  categories: any[] = []; // Declare the 'categories' property
   userFormData : FormData
 
 
@@ -53,12 +53,13 @@ export class PostJobComponent {
     this.userFormData.append('min_salary',this.jobForm.get('min_salary').value)
     this.userFormData.append('about',this.jobForm.get('about').value)
     this.userFormData.append('experience',this.jobForm.get('experience').value)
-    
+
     if(this.jobForm.valid) {
 
       this.jobCrud.addJob(this.userFormData).subscribe((res) => {
+		console.log(this.jobForm);
         console.log('added successfully');
-        
+
             if (res.status === 200) {
               this.router.navigate(["/company/dashboard/jobs"]);
               this.toastr.success(
@@ -70,7 +71,7 @@ export class PostJobComponent {
                 }
               );
             }
-  
+
           (error) => {
             // Handle error here
             this.toastr.error("Error with your credentials", "401", {
@@ -78,7 +79,7 @@ export class PostJobComponent {
               progressBar: true,
             });
           }
-        
+
       }, );
     }
     else{
@@ -124,8 +125,7 @@ export class PostJobComponent {
 		const selectedFiles = event.target.files[0];
 		this.userFormData = new FormData
 		 this.userFormData.append('logo',selectedFiles)
-	
-		
+
+
 	  }
 }
- 
