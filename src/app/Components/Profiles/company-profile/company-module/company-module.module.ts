@@ -10,6 +10,7 @@ import { CompanyReviewsComponent } from '../company-reviews/company-reviews.comp
 import { CompanySidebarComponent } from '../company-sidebar/company-sidebar.component';
 import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 // import { PaginationComponent } from 'src/app/Components/pagination/pagination.component';
 
 
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CompanyModuleRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class CompanyModuleModule { }

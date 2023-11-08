@@ -64,4 +64,11 @@ export class HeaderComponent implements OnInit {
 				this.router.navigate(['/explore-jobs/-/1']); // navigate to same route
 			});
 	}
+	goExploreCompanies() {
+		this.router
+			.navigateByUrl("/", { skipLocationChange: true })
+			.then(() => {
+				this.router.navigate(['/explore-companies/-/1']); // navigate to same route
+			});
+	}
 }

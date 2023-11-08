@@ -60,9 +60,9 @@ const routes: Routes = [
 	},
 
 //  <!-- explore-companies routes / Start -->
-{ path: "explore-companies", redirectTo: "explore-companies/1", pathMatch: "full" },
+{ path: "explore-companies", redirectTo: "explore-companies/-/1", pathMatch: "full" },
 {
-  path: 'explore-companies/:page',
+  path: 'explore-companies/:params/:page',
   component: ExploreCompaniesComponent,
   children: [
     {

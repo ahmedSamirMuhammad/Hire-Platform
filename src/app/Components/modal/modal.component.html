@@ -3,5 +3,6 @@
 	<div class="modal-content {{contentStyle}}">
 		<span class="close" (click)="closeModal()">&times;</span>
 		<app-edit-reviews-modal-content  #DashboardEditReview *ngIf="content=='dashboard-reviewEdit-form'" [params]="params" [closeModal]="closeModal"  [openModal]="openModal"></app-edit-reviews-modal-content>
+		<app-company-reviews-form  *ngIf="content=='companyProfile-reviewAdd-form'" [closeModal]="closeModal"></app-company-reviews-form>
 	</div>
 </div>

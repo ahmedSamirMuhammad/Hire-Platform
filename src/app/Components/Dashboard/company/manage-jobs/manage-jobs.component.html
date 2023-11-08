@@ -1,54 +1,55 @@
 <div class="manage-jobs">
-    <div class="dashboard-container">
+	<div class="dashboard-container">
+		<!-- add sideBar  -->
+		<app-sidebar></app-sidebar>
+		<div class="dashboard-content-container" data-simplebar>
+			<div class="dashboard-content-inner">
+				<!-- Dashboard Headline -->
+				<div class="dashboard-headline">
+					<h3 *ngIf="storedRole == 'cmp'">Manage Jobs</h3>
+					<h3 *ngIf="storedRole == 'emp'">Applied Jobs</h3>
 
-        <!-- add sideBar  -->
-        <app-sidebar></app-sidebar>
-        <div class="dashboard-content-container" data-simplebar>
-          <div class="dashboard-content-inner">
-            <!-- Dashboard Headline -->
-            <div class="dashboard-headline">
-              <h3  *ngIf="storedRole=='cmp'">Manage Jobs</h3>
-              <h3  *ngIf="storedRole=='emp'">Applied Jobs</h3>
-
-              <!-- Breadcrumbs -->
-              <nav id="breadcrumbs" class="dark">
-                <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Dashboard</a></li>
-                  <li>Manage Jobs</li>
-                </ul>
-              </nav>
-            </div>
-            <div class="row">
-              <!-- Dashboard Box -->
-              <div class="col-xl-12">
-                <div class="dashboard-box">
-                  <!-- Headline -->
-                  <div class="headline">
-                    <h3>
-                      <i class="icon-material-outline-business-center"></i>
-                      My Job Listings
-                    </h3>
-                  </div>
-                  <!-- add all jobs  -->
-                  <div *ngIf="storedRole=='cmp'" class="content">
-                    <ul class="dashboard-box-list">
-                        <li *ngFor="let job of jobs">
-                            <app-job [job]="job" ></app-job>
-                        </li>
-                    </ul>
-                  </div>
-                  <div *ngIf="storedRole=='emp'" class="content">
-                    <ul class="dashboard-box-list">
-                        <li *ngFor="let job of getUserAppliedJobs">
-                            <app-job [job]="job" ></app-job>
-                        </li>
-                    </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs" class="dark">
+						<ul>
+							<li><a routerLink="/">Home</a></li>
+							<li><a href="#">Dashboard</a></li>
+							<li>Manage Jobs</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="row">
+					<!-- Dashboard Box -->
+					<div class="col-xl-12">
+						<div class="dashboard-box">
+							<!-- Headline -->
+							<div class="headline">
+								<h3>
+									<i
+										class="icon-material-outline-business-center"
+									></i>
+									My Job Listings
+								</h3>
+							</div>
+							<!-- add all jobs  -->
+							<div *ngIf="storedRole == 'cmp'" class="content">
+								<ul class="dashboard-box-list">
+									<li *ngFor="let job of jobs">
+										<app-job [job]="job"></app-job>
+									</li>
+								</ul>
+							</div>
+							<div *ngIf="storedRole == 'emp'" class="content">
+								<ul class="dashboard-box-list">
+									<li *ngFor="let job of getUserAppliedJobs">
+										<app-job [job]="job"></app-job>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

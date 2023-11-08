@@ -6,71 +6,116 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-
 				<h2>Contact</h2>
 
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs" class="dark">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a routerLink="/">Home</a></li>
 						<li><a href="#">Pages</a></li>
 						<li>Contact</li>
 					</ul>
 				</nav>
-
 			</div>
 		</div>
 	</div>
 </div>
 
-
 <!-- Content
 ================================================== -->
-
 
 <!-- Container -->
 <div class="container">
 	<div class="row">
-
 		<div class="col-xl-12">
 			<div class="contact-location-info margin-bottom-50">
 				<div class="contact-address">
 					<ul>
 						<li class="contact-address-headline">Our Office</li>
 						<li>20 {{ officeLocation }}, EG 12055</li>
-						<li>Phone (20) {{adminData.mobile_number}}</li>
-						<li><a href="#">{{adminData.email}}</a></li>
+						<li>Phone (20) {{ adminData.mobile_number }}</li>
 						<li>
-							<div class="freelancer-socials"> 
+							<a href="#">{{ adminData.email }}</a>
+						</li>
+						<li>
+							<div class="freelancer-socials">
 								<ul>
-									<li><a href="{{ adminData.socials[0]?.github_account }}" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
-									<li><a href="{{ adminData.socials[0]?.linkedin_account }}" title="LinkedIn" data-tippy-placement="top"><i class="icon-brand-linkedin"></i></a></li>
-									<li><a href="{{ adminData.socials[0]?.twitter_account }}" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
+									<li>
+										<a
+											href="{{
+												adminData.socials[0]
+													?.github_account
+											}}"
+											title="GitHub"
+											data-tippy-placement="top"
+											><i class="icon-brand-github"></i
+										></a>
+									</li>
+									<li>
+										<a
+											href="{{
+												adminData.socials[0]
+													?.linkedin_account
+											}}"
+											title="LinkedIn"
+											data-tippy-placement="top"
+											><i class="icon-brand-linkedin"></i
+										></a>
+									</li>
+									<li>
+										<a
+											href="{{
+												adminData.socials[0]
+													?.twitter_account
+											}}"
+											title="Twitter"
+											data-tippy-placement="top"
+											><i class="icon-brand-twitter"></i
+										></a>
+									</li>
 								</ul>
 							</div>
 						</li>
 					</ul>
 				</div>
 				<div id="single-job-map-container">
-					<div id="myMap" style="height: 350px;"></div>
+					<div id="myMap" style="height: 350px"></div>
 				</div>
 			</div>
 		</div>
 
 		<div class="col-xl-8 col-lg-8 offset-xl-2 offset-lg-2">
 			<section id="" class="margin-bottom-60">
-				<h3 class="headline margin-top-15 margin-bottom-35">Any questions? Feel free to contact us!</h3>
+				<h3 class="headline margin-top-15 margin-bottom-35">
+					Any questions? Feel free to contact us!
+				</h3>
 
-				<form [formGroup]="contactForm" (ngSubmit)="submitContactForm()">
+				<form
+					[formGroup]="contactForm"
+					(ngSubmit)="submitContactForm()"
+				>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="input-with-icon-left">
-								<input class="with-border" type="text" id="name" placeholder="Your Name" formControlName="name" />
-								<i class="icon-material-outline-account-circle"></i>
+								<input
+									class="with-border"
+									type="text"
+									id="name"
+									placeholder="Your Name"
+									formControlName="name"
+								/>
+								<i
+									class="icon-material-outline-account-circle"
+								></i>
 							</div>
 							<div
 								id="nameHelp"
-								*ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.hasError('required')"
+								*ngIf="
+									contactForm.get('name')?.touched &&
+									contactForm
+										.get('name')
+										?.hasError('required')
+								"
 								class="form-text text-danger"
 							>
 								This field is required
@@ -79,19 +124,33 @@
 
 						<div class="col-md-6">
 							<div class="input-with-icon-left">
-								<input class="with-border" type="email" id="email" placeholder="Email Address" formControlName="email" />
+								<input
+									class="with-border"
+									type="email"
+									id="email"
+									placeholder="Email Address"
+									formControlName="email"
+								/>
 								<i class="icon-material-outline-email"></i>
 							</div>
 							<div
 								id="emailHelp"
-								*ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('required')"
+								*ngIf="
+									contactForm.get('email')?.touched &&
+									contactForm
+										.get('email')
+										?.hasError('required')
+								"
 								class="form-text text-danger"
 							>
 								This field is required
 							</div>
 							<div
 								id="emailHelp"
-								*ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.hasError('email')"
+								*ngIf="
+									contactForm.get('email')?.touched &&
+									contactForm.get('email')?.hasError('email')
+								"
 								class="form-text text-danger"
 							>
 								This field must have a valid email format
@@ -100,11 +159,20 @@
 					</div>
 
 					<div class="input-with-icon-left">
-						<input class="with-border" type="text" id="subject" placeholder="Subject" formControlName="subject" />
+						<input
+							class="with-border"
+							type="text"
+							id="subject"
+							placeholder="Subject"
+							formControlName="subject"
+						/>
 						<i class="icon-material-outline-assignment"></i>
 						<div
 							id="subjectHelp"
-							*ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.hasError('required')"
+							*ngIf="
+								contactForm.get('subject')?.touched &&
+								contactForm.get('subject')?.hasError('required')
+							"
 							class="form-text text-danger"
 						>
 							This field is required
@@ -112,21 +180,37 @@
 					</div>
 
 					<div>
-						<textarea class="with-border" cols="40" rows="5" id="comments" placeholder="Message" formControlName="comments"></textarea>
+						<textarea
+							class="with-border"
+							cols="40"
+							rows="5"
+							id="comments"
+							placeholder="Message"
+							formControlName="comments"
+						></textarea>
 						<div
 							id="commentsHelp"
-							*ngIf="contactForm.get('comments')?.touched && contactForm.get('comments')?.hasError('required')"
+							*ngIf="
+								contactForm.get('comments')?.touched &&
+								contactForm
+									.get('comments')
+									?.hasError('required')
+							"
 							class="form-text text-danger"
 						>
 							This field is required
 						</div>
 					</div>
 
-					<input type="submit" class="submit button margin-top-15" id="submit" value="Submit Message" />
+					<input
+						type="submit"
+						class="submit button margin-top-15"
+						id="submit"
+						value="Submit Message"
+					/>
 				</form>
 			</section>
 		</div>
-
 	</div>
 </div>
 <!-- Container / End -->

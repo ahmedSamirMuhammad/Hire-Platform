@@ -17,16 +17,13 @@
 					<ul id="responsive">
 
 						<li class="nav-heade " style="font-weight: 400; font-size: larger;"><a routerLink="/">Home</a>
-
 						</li>
 
-
-
-						<li style="font-weight: 400; font-size: larger;"><a href="#" class="current">Find Work</a>
+						<li style="font-weight: 400; font-size: larger;"><a routerLink="explore-jobs" class="current">Find Work</a>
 							<ul class="dropdown-nav">
 								<li><a routerLink="explore-jobs" (click)="goExploreJob()">Explore job</a>
 								</li>
-								<li><a routerLink="explore-companies">Explore Company</a>
+								<li><a routerLink="explore-companies" (click)="goExploreCompanies()">Explore Company</a>
 								</li>
 							</ul>
 						</li>

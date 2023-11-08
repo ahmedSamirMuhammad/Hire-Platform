@@ -51,5 +51,5 @@
 
   <!-- Bookmark -->
 </a>
-<span  class="bookmark-icon" [ngClass]="{'bookmarked': matched_job.job_bookmarked}"
+<span  class="bookmark-icon" [ngClass]="{'bookmarked': matched_job.is_bookmarked}"
 (click)="onToggleBookmark($event, matched_job.job_id)"></span>

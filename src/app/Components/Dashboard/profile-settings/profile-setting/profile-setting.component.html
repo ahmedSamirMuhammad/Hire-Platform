@@ -12,7 +12,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs" class="dark">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a routerLink="/">Home</a></li>
 						<li><a href="#">Dashboard</a></li>
 						<li>Settings</li>
 					</ul>
@@ -48,14 +48,13 @@
 											data-tippy-placement="bottom"
 											title="Change Avatar"
 										>
-										<img
-										class="profile-pic"
-									src="http://localhost:8000/images/avatars/{{ userForm.get('avatar').value }}"
-											
-									 
-										 
-										alt=""
-									/>
+											<img
+												class="profile-pic"
+												src="http://localhost:8000/images/avatars/{{
+													userForm.get('avatar').value
+												}}"
+												alt=""
+											/>
 											<div class="upload-button"></div>
 											<input
 												class="file-upload"
@@ -63,7 +62,6 @@
 												accept="image/*"
 												formControlName="avatar"
 												(change)="selected($event)"
-
 											/>
 										</div>
 									</div>
@@ -79,8 +77,18 @@
 														formControlName="first_name"
 													/>
 												</div>
-												<p  style="color: red;" *ngIf="userForm.controls['first_name'].errors?.['required']">its required field</p>
-												<p  style="color: red;" *ngIf="userForm.controls['first_name'].errors?.['minlength']">min value is two characters</p>
+												<p
+													style="color: red"
+													*ngIf="userForm.controls['first_name'].errors?.['required']"
+												>
+													its required field
+												</p>
+												<p
+													style="color: red"
+													*ngIf="userForm.controls['first_name'].errors?.['minlength']"
+												>
+													min value is two characters
+												</p>
 											</div>
 
 											<div class="col-xl-6">
@@ -93,9 +101,18 @@
 													/>
 												</div>
 
-												<p style="color: red;" *ngIf="userForm.controls['last_name'].errors?.['required']">its required field</p>
-												<p style="color: red;" *ngIf="userForm.controls['last_name'].errors?.['minlength']">min value is two characters</p>
-
+												<p
+													style="color: red"
+													*ngIf="userForm.controls['last_name'].errors?.['required']"
+												>
+													its required field
+												</p>
+												<p
+													style="color: red"
+													*ngIf="userForm.controls['last_name'].errors?.['minlength']"
+												>
+													min value is two characters
+												</p>
 											</div>
 
 											<div class="col-xl-6">
@@ -108,9 +125,18 @@
 													/>
 												</div>
 
-												<p  style="color: red;" *ngIf="userForm.controls['email'].errors?.['required']">its required field</p>
-												<p  style="color: red;" *ngIf="userForm.controls['email'].errors?.['email']">invalid email</p>
-
+												<p
+													style="color: red"
+													*ngIf="userForm.controls['email'].errors?.['required']"
+												>
+													its required field
+												</p>
+												<p
+													style="color: red"
+													*ngIf="userForm.controls['email'].errors?.['email']"
+												>
+													invalid email
+												</p>
 											</div>
 											<div class="col-xl-6">
 												<div class="submit-field">
@@ -121,7 +147,6 @@
 														formControlName="mobile_number"
 													/>
 												</div>
-
 											</div>
 										</div>
 									</div>
@@ -130,14 +155,17 @@
 						</div>
 					</div>
 
-        <!-- Dashboard Box -->
+					<!-- Dashboard Box -->
 
-          <div class="col-xl-12">
-            <div class="dashboard-box">
-              <!-- Headline -->
-              <div class="headline">
-                <h3><i class="icon-material-outline-face"></i> My User Profile</h3>
-              </div>
+					<div class="col-xl-12">
+						<div class="dashboard-box">
+							<!-- Headline -->
+							<div class="headline">
+								<h3>
+									<i class="icon-material-outline-face"></i>
+									My User Profile
+								</h3>
+							</div>
 
 							<div class="content">
 								<ul class="fields-ul">
@@ -163,7 +191,6 @@
 													<!-- select Nationality  -->
 													<select
 														class="selectpicker"
-
 														data-size="7"
 														title="Select Job Type"
 														formControlName="nationality"
@@ -414,10 +441,7 @@
 														<option value="GB">
 															United Kingdom
 														</option>
-														<option
-															value="US"
-
-														>
+														<option value="US">
 															United States
 														</option>
 														<option value="UY">
@@ -439,73 +463,75 @@
 												</div>
 											</div>
 
+											<div class="col-xl-6">
+												<div class="submit-field">
+													<h5>
+														<i
+															class="help-icon"
+															data-tippy-placement="right"
+															title="Add up to 10 skills"
+														></i>
+														Skills
+													</h5>
 
-
-												<div class="col-xl-6">
-													<div class="submit-field">
-														<h5>
-															<i
-																class="help-icon"
-																data-tippy-placement="right"
-																title="Add up to 10 skills"
-															></i>
-															Skills
-														</h5>
-
-														<select class="selectpicker" multiple
-															formControlName="skills">
-
-															<option
+													<select
+														class="selectpicker"
+														multiple
+														formControlName="skills"
+													>
+														<option
 															value="{{
 																skill.id
 															}}"
 															*ngFor="
 																let skill of AllSkills
 															"
-
-															>
-																{{ skill.name }}
-															</option>
-
-														</select>
-
-													</div>
-
+														>
+															{{ skill.name }}
+														</option>
+													</select>
 												</div>
-												<div class="col-xl-6" style="display: flex;
-												justify-content: start;
-												align-items: center;">
-													<!-- Skills List -->
-													<div class="submit-field">
-
-														<div class="keywords-list">
+											</div>
+											<div
+												class="col-xl-6"
+												style="
+													display: flex;
+													justify-content: start;
+													align-items: center;
+												"
+											>
+												<!-- Skills List -->
+												<div class="submit-field">
+													<div class="keywords-list">
+														<span
+															*ngFor="
+																let userSkill of userSkills
+															"
+															class="keyword"
+														>
 															<span
-																*ngFor="
-																	let userSkill of userSkills
+																(click)="
+																	removeSkill(
+																		userSkill.id
+																	)
 																"
-																class="keyword"
+																class="skill-remove"
+															></span>
+															<span
+																class="skill-text"
+																>{{
+																	userSkill.name
+																}}</span
 															>
-																<span
-																(click)="removeSkill(userSkill.id)"
-
-																	class="skill-remove"
-																></span>
-																<span
-																	class="skill-text"
-																	>{{
-																		userSkill.name
-																	}}</span
-																>
-															</span>
-														</div>
-
-
+														</span>
 													</div>
 												</div>
+											</div>
 
-
-											<div class="col-xl-12"
-												style="margin-top: 35px;">
+											<div
+												class="col-xl-12"
+												style="margin-top: 35px"
+											>
 												<div class="submit-field">
 													<h5>Social Profiles</h5>
 													<div
@@ -571,7 +597,6 @@
 																<input
 																	type="text"
 																	class="with-border"
-
 																	formControlName="linkedin_account"
 																/>
 															</div>
@@ -661,7 +686,7 @@
 														userForm.get(
 															'new_password'
 														)?.value !==
-														userForm.get(
+															userForm.get(
 																'confirmedPass'
 															)?.value
 													"
@@ -672,7 +697,7 @@
 												<div
 													id="name_input_help"
 													*ngIf="
-													userForm.controls[
+														userForm.controls[
 															'confirmedPass'
 														].touched &&
 														userForm.controls[
@@ -692,42 +717,37 @@
 								</div>
 							</div>
 						</div>
-
-
-
 					</div>
 					<div class="uploadButton margin-top-30">
-                        <input
-                          formControlName="cv"
-                          class="uploadButton-input"
-                          type="file"
-                          accept="image/*, application/pdf"
-                          id="upload"
-                          multiple
-                          (change)="cv($event)"
+						<input
+							formControlName="cv"
+							class="uploadButton-input"
+							type="file"
+							accept="image/*, application/pdf"
+							id="upload"
+							multiple
+							(change)="cv($event)"
+						/>
+						<label
+							class="uploadButton-button ripple-effect"
+							for="upload"
+							>upload CV</label
+						>
+					</div>
 
-                        />
-                        <label
-                          class="uploadButton-button ripple-effect"
-                          for="upload"
-                          >upload CV</label
-                        >
-						</div>
-					
 					<!-- Button -->
 					<div class="col-xl-12">
 						<input
 							type="submit"
 							value="Save Changes"
 							class="button ripple-effect big margin-top-30"
-
 						/>
 					</div>
 				</form>
 			</div>
 		</div>
 
-      <!-- Row / End -->
+		<!-- Row / End -->
 
 		<!-- Footer -->
 		<app-dashboard-footer></app-dashboard-footer>

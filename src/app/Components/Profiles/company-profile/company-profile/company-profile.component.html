@@ -1,139 +1,102 @@
+<!-- Modal Component / Start-->
+<app-modal
+	#reviewAdd
+	[content]="'companyProfile-reviewAdd-form'"
+	[contentStyle]="'col-12 col-md-6 col-xl-4'"
+	[params]="addReviewParams"
+></app-modal>
+<!-- Modal Component / End-->
+
 <!-- Company-Titlebar Component / Start-->
 <app-company-titlebar [company_data]="company_data"></app-company-titlebar>
 <!-- Company-Titlebar Component / End-->
 
 <!-- Page Content -->
 <div class="container">
-  <div class="row">
-    <!-- Content -->
-    <div class="col-xl-8 col-lg-8 content-right-offset">
-      <!-- Company-About Component / Start -->
-        <app-company-about [company_data]="company_data"></app-company-about>
-      <!-- Company-About Component / End -->
+	<div class="row">
+		<!-- Content -->
+		<div class="col-xl-8 col-lg-8 content-right-offset">
+			<!-- Company-About Component / Start -->
+			<app-company-about
+				[company_data]="company_data"
+			></app-company-about>
+			<!-- Company-About Component / End -->
 
-      <!-- Boxed List -->
-      <div class="boxed-list margin-bottom-60">
-        <div class="boxed-list-headline">
-          <h3>
-            <i class="icon-material-outline-business-center"></i> Open Positions
-          </h3>
-        </div>
+			<!-- Boxed List -->
+			<div class="boxed-list margin-bottom-60">
+				<div class="boxed-list-headline">
+					<h3>
+						<i class="icon-material-outline-business-center"></i>
+						Open Positions
+					</h3>
+				</div>
 
-        <div class="listings-container compact-list-layout">
-          <!-- Job Listing -->
+				<div class="listings-container compact-list-layout">
+					<!-- Job Listing -->
 
-          <!-- Company-Openjob Component / Start-->
-          <div *ngFor="let open_job of open_jobs_list" class="job-listing">
-            <app-company-openjobs [open_job]="open_job" [userType]="userType" (toggleBookmark)="toggleBookmark(companyId, open_job.id)"></app-company-openjobs>
-          </div>
-          <!-- Company-Openjob Component / End-->
-        </div>
-      </div>
-      <!-- Boxed List / End -->
+					<!-- Company-Openjob Component / Start-->
+					<div
+						*ngFor="let open_job of open_jobs_list"
+						class="job-listing"
+					>
+						<app-company-openjobs
+							[open_job]="open_job"
+							[userType]="userType"
+							(toggleBookmark)="
+								toggleBookmark(companyId, open_job.id)
+							"
+						></app-company-openjobs>
+					</div>
+					<!-- Company-Openjob Component / End-->
+				</div>
+			</div>
+			<!-- Boxed List / End -->
 
-      <!-- Boxed List -->
-      <div class="boxed-list margin-bottom-60">
-        <div class="boxed-list-headline">
-          <h3><i class="icon-material-outline-thumb-up"></i> Reviews</h3>
-        </div>
-        <ul class="boxed-list-ul">
-          <!-- Company-reviews Component / Start-->
-          <li *ngFor="let review of company_reviews">
-            <app-company-reviews [review]="review"></app-company-reviews>
-          </li>
-          <!-- Company-reviews Component / End-->
-        </ul>
+			<!-- Boxed List -->
+			<div class="boxed-list margin-bottom-60">
+				<div class="boxed-list-headline">
+					<h3>
+						<i class="icon-material-outline-thumb-up"></i> Reviews
+					</h3>
+				</div>
+				<ul class="boxed-list-ul">
+					<!-- Company-reviews Component / Start-->
+					<li *ngFor="let review of company_reviews">
+						<app-company-reviews
+							[review]="review"
+						></app-company-reviews>
+					</li>
+					<!-- Company-reviews Component / End-->
+				</ul>
 
-        <div *ngIf="userType=='emp'" class="centered-button margin-top-35"> 
-          <a
-            href="#small-dialog"
-            class="popup-with-zoom-anim button button-sliding-icon"
-            >Leave a Review <i class="icon-material-outline-arrow-right-alt"></i
-          ></a>
-        </div>
-      </div>
-      <!-- Boxed List / End -->
-    </div>
+				<div
+					*ngIf="userType == 'emp'"
+					class="centered-button margin-top-35"
+				>
+					<a
+						(click)="reviewAdd.openModal()"
+						class="popup-with-zoom-anim button button-sliding-icon"
+						>Leave a Review
+						<i class="icon-material-outline-arrow-right-alt"></i
+					></a>
+				</div>
+			</div>
+			<!-- Boxed List / End -->
+		</div>
 
-    <!-- Sidebar -->
-    <div class="col-xl-4 col-lg-4">
-      <div class="sidebar-container">
-        <!-- Company-sidebar Component / Start-->
-        <app-company-sidebar [company_data]="company_data"></app-company-sidebar>
-        <!-- Company-sidebar Component / End-->
-      </div>
-    </div>
-  </div>
+		<!-- Sidebar -->
+		<div class="col-xl-4 col-lg-4">
+			<div class="sidebar-container">
+				<!-- Company-sidebar Component / Start-->
+				<app-company-sidebar
+					[company_data]="company_data"
+				></app-company-sidebar>
+				<!-- Company-sidebar Component / End-->
+			</div>
+		</div>
+	</div>
 </div>
 
 <!-- Spacer -->
 <div class="margin-top-15"></div>
 <!-- Spacer / End-->
-
-<!-- Leave a Review Popup================================================== -->
-<div id="small-dialog" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
-  <!--Tabs -->
-  <div class="sign-in-form">
-    <ul class="popup-tabs-nav">
-      <li><a href="#tab">Leave a Review</a></li>
-    </ul>
-
-    <div class="popup-tabs-container">
-      <!-- Tab -->
-      <div class="popup-tab-content" id="tab">
-        <!-- Welcome Text -->
-        <div class="welcome-text">
-          <h3>What is it like to work at {{ company_data.name }}?</h3>
-
-          <!-- Form -->
-
-          <form method="post" id="leave-company-review-form" (ngSubmit)="onSubmit()">
-            <!-- Leave Rating -->
-            <div class="clearfix"></div>
-            <div class="leave-rating-container">
-              <div class="leave-rating margin-bottom-5">
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-5" value="5" required />
-                <label for="rating-5" class="icon-material-outline-star"></label>
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-4" value="4" required />
-                <label for="rating-4" class="icon-material-outline-star"></label>
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-3" value="3" required />
-                <label for="rating-3" class="icon-material-outline-star"></label>
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-2" value="2" required />
-                <label for="rating-2" class="icon-material-outline-star"></label>
-                <input type="radio" [(ngModel)]="reviewData.rating" name="rating" id="rating-1" value="1" required />
-                <label for="rating-1" class="icon-material-outline-star"></label>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-            <!-- Leave Rating / End -->
-
-            <div class="row">
-              <div class="col-xl-12">
-                <div class="input-with-icon-left" data-tippy-placement="bottom">
-                  <i class="icon-material-outline-account-circle"></i>
-                  <input type="text" [(ngModel)]="reviewData.name" name="name" id="name" placeholder="Enter Your Name" />
-                </div>
-              </div>
-
-              <div class="col-xl-12">
-                <div class="input-with-icon-left">
-                  <i class="icon-material-outline-rate-review"></i>
-                  <input type="text" [(ngModel)]="reviewData.title" name="title" id="title" placeholder="Review Title" required />
-                </div>
-              </div>
-            </div>
-
-            <textarea class="with-border" [(ngModel)]="reviewData.comment" name="comment" id="comment" cols="7" required placeholder="Type your opinion"></textarea>
-          </form>
-
-          <!-- Button -->
-          <button class="button margin-top-35 full-width button-sliding-icon ripple-effect" type="submit" form="leave-company-review-form">
-            Leave a Review
-            <i class="icon-material-outline-arrow-right-alt"></i>
-          </button>
-
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Leave a Review Popup / End -->

@@ -7,38 +7,41 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs" class="dark">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a routerLink="/">Home</a></li>
 						<li><a href="#">Payment</a></li>
 						<li>Checkout</li>
 					</ul>
 				</nav>
-
 			</div>
 			<!-- //add payment -->
-
 		</div>
 	</div>
 </div>
 
-
 <!--Content -->
-<div class="container ">
+<div class="container">
 	<div class="row">
 		<div class="col-xl-9 col-lg-8 content-right-offset">
-
 			<!--Ahmed khamiis -->
 			<div class="stripe payment">
 				<label class="payment-method">
-					<input name="payment-method" id="payment-method-paypal" value="paypal" type="radio"
-						(click)="paywithstripe()">
+					<input
+						name="payment-method"
+						id="payment-method-paypal"
+						value="paypal"
+						type="radio"
+						(click)="paywithstripe()"
+					/>
 					<span>stripe</span>
 				</label>
-					<p class="regular-price-tag ">With your selected payment plan, You will receive {{selectedFeature}} job listings </p>
+				<p class="regular-price-tag">
+					With your selected payment plan, You will receive
+					{{ selectedFeature }} job listings
+				</p>
 			</div>
 
-
-				<!-- Billing Cycle Radios (Mariam) -->
-<!-- <div class="billing-cycle margin-bottom-25 ">
+			<!-- Billing Cycle Radios (Mariam) -->
+			<!-- <div class="billing-cycle margin-bottom-25 ">
 
 	<div class="radio">
 	  <input id="payment-method-paypal" type="radio"  name="payment-method" value="paypal"   (click)="paywithstripe()">
@@ -53,50 +56,91 @@
   </div>
   </div> -->
 
-			  <div class="container form-checkout payment">
-			  <form *ngIf="paywithstripegate" [formGroup]="paywithstripegateform" (ngSubmit)="onSubmitStripe()"
-				name="frm-billing" >
-				<p class="row-in-form ">
-					<label for="phone" style="font-weight: 600 !important;">Card Number<span>*</span></label>
-					<input type="text" formControlName="number" value="4242 4242 4242 4242">
-				</p>
-				<!-- //date -->
-				<div class="formRow ">
-					<p class="row-in-form" >
-						<label for="phone"  style="font-weight: 600 !important;">Expirition Month<span>*</span></label>
-						<input type="text" formControlName="expired_month" value="12">
-					</p>
+			<div class="container form-checkout payment">
+				<form
+					*ngIf="paywithstripegate"
+					[formGroup]="paywithstripegateform"
+					(ngSubmit)="onSubmitStripe()"
+					name="frm-billing"
+				>
 					<p class="row-in-form">
-						<label for="add"  style="font-weight: 600 !important;">Expirition Year</label>
-						<input type="text" formControlName="expired_year" value="34">
-					</p>
-				</div>
-				<div class="formRow">
-					<p class="row-in-form">
-						<label for="add"  style="font-weight: 600 !important;">Cvv_no</label>
-						<input type="text" formControlName="cvc" value="34">
-					</p>
-					<p class="row-in-form">
-						<label for="add"  style="font-weight: 600 !important;">Amount</label>
-						<input type="text" formControlName="amount" value="50">
-					</p>
-				</div>
-
-				<p class="row-in-form">
-					<label for="add"  style="font-weight: 600 !important;">Description</label>
-					<input type="text" formControlName="description" value="this is the user one">
-				</p>
-				<p class="row-in-form">
-					<input value="Proceed Payment" type="submit" class="button big ripple-effect  "
+						<label for="phone" style="font-weight: 600 !important"
+							>Card Number<span>*</span></label
 						>
-				</p>
-			  </form>
-			  </div>
-<!--End Ahmed khamiss-->
+						<input
+							type="text"
+							formControlName="number"
+							value="4242 4242 4242 4242"
+						/>
+					</p>
+					<!-- //date -->
+					<div class="formRow">
+						<p class="row-in-form">
+							<label
+								for="phone"
+								style="font-weight: 600 !important"
+								>Expirition Month<span>*</span></label
+							>
+							<input
+								type="text"
+								formControlName="expired_month"
+								value="12"
+							/>
+						</p>
+						<p class="row-in-form">
+							<label for="add" style="font-weight: 600 !important"
+								>Expirition Year</label
+							>
+							<input
+								type="text"
+								formControlName="expired_year"
+								value="34"
+							/>
+						</p>
+					</div>
+					<div class="formRow">
+						<p class="row-in-form">
+							<label for="add" style="font-weight: 600 !important"
+								>Cvv_no</label
+							>
+							<input
+								type="text"
+								formControlName="cvc"
+								value="34"
+							/>
+						</p>
+						<p class="row-in-form">
+							<label for="add" style="font-weight: 600 !important"
+								>Amount</label
+							>
+							<input
+								type="text"
+								formControlName="amount"
+								value="50"
+							/>
+						</p>
+					</div>
 
+					<p class="row-in-form">
+						<label for="add" style="font-weight: 600 !important"
+							>Description</label
+						>
+						<input
+							type="text"
+							formControlName="description"
+							value="this is the user one"
+						/>
+					</p>
+					<p class="row-in-form">
+						<input
+							value="Proceed Payment"
+							type="submit"
+							class="button big ripple-effect"
+						/>
+					</p>
+				</form>
+			</div>
+			<!--End Ahmed khamiss-->
+		</div>
+	</div>
 </div>
-</div>
-</div>
-
-
-

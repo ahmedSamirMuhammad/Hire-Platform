@@ -12,7 +12,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs" class="dark">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a routerLink="/">Home</a></li>
 						<li><a href="#">Dashboard</a></li>
 						<li>Settings</li>
 					</ul>
@@ -51,10 +51,9 @@
 										>
 											<img
 												class="profile-pic"
-											src="http://localhost:8000/images/logo/{{ cmpForm.get('logo').value }}"
-													
-											 
-												 
+												src="http://localhost:8000/images/logo/{{
+													cmpForm.get('logo').value
+												}}"
 												alt=""
 											/>
 											<div class="upload-button"></div>
@@ -64,7 +63,6 @@
 												accept="image/*"
 												formControlName="logo"
 												(change)="selected($event)"
-
 											/>
 										</div>
 									</div>
@@ -494,19 +492,19 @@
 												style="margin-top: 35px"
 											>
 												<div class="submit-field">
-
 													<h3>
 														<a
-														href="#"
-														title="Linkedin"
-														data-tippy-placement="top"
-														class="me-2"
-													>
-														<i
-															class="icon-brand-linkedin"
-														></i>
-													</a>
-														Linkedin Profile</h3>
+															href="#"
+															title="Linkedin"
+															data-tippy-placement="top"
+															class="me-2"
+														>
+															<i
+																class="icon-brand-linkedin"
+															></i>
+														</a>
+														Linkedin Profile
+													</h3>
 													<div
 														class="freelancer-socials margin-top-25"
 													>
