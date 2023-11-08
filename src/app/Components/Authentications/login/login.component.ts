@@ -157,6 +157,20 @@ export class LoginComponent {
 		// Check for the token in the new tab's HTML content
 	}
 
+	loginGithub() {
+		// Create a unique state for the OAuth2 flow
+		const state = Math.random().toString(36).substring(7);
+		// Store the state in a session or a cookie for later verification
+
+		// Construct the Google OAuth2 URL
+		const oauthUrl = `http://127.0.0.1:8000/api/auth/github/redirect?state=${state}`;
+
+		// Open a new tab with the OAuth2 URL
+		const newTab = window.open(oauthUrl, "_blank");
+
+		// Check for the token in the new tab's HTML content
+	}
+
   canActivate(): boolean {
 		const check = localStorage.getItem("token");
 		if (check) {
