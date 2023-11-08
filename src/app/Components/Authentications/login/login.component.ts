@@ -49,6 +49,9 @@ export class LoginComponent {
 
 			// Navigate the user to the home page or another page as needed
 			this.router.navigate(["/"]);
+			setTimeout(function() {
+				location.reload();
+			  }, 1000);
 		}
     const isAuth = this.canActivate();
 
@@ -78,6 +81,10 @@ export class LoginComponent {
                 localStorage.setItem('name', this.name);
                 localStorage.setItem('role', 'emp');
                 this.router.navigate(['/']);
+				setTimeout(function() {
+					location.reload();
+				  }, 1000); // 1000 milliseconds = 1 second
+				  
                 this.toastr.success(JSON.stringify(this.data.msg), JSON.stringify(this.data.status), {
                   timeOut: 2000,
                   progressBar: true,
@@ -103,6 +110,10 @@ export class LoginComponent {
                 localStorage.setItem('role', 'cmp');
 
                 this.router.navigate(['/']);
+				setTimeout(function() {
+					location.reload();
+				  }, 1000); // 1000 milliseconds = 1 second
+				  
                 this.toastr.success(JSON.stringify(this.data.msg), JSON.stringify(this.data.status), {
                   timeOut: 2000,
                   progressBar: true,
