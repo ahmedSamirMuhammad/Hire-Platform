@@ -79,7 +79,7 @@
 
 						<!-- Trigger -->
 						<div class="header-notifications-trigger">
-							<a href="#"><i class="icon-feather-bell"></i><span>4</span></a>
+							<a><i class="icon-feather-bell"></i><span>4</span></a>
 						</div>
 
 						<!-- Dropdown -->
@@ -197,7 +197,7 @@
 					<!-- Messages -->
 					<div #userMenu class="header-notifications user-menu" (click)="open()">
 						<div class="header-notifications-trigger">
-							<a routerLink="">
+							<a style="cursor: pointer;">
 								<div class="user-avatar status-online"><img
 										src="../../../../assets/images/user-avatar-small-01.jpg" alt=""></div>
 							</a>
@@ -227,8 +227,8 @@
 							</div>
 
 							<ul  class="user-menu-small-nav">
-								<li><a routerLink=""><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
-								<li><a routerLink=""><i class="icon-material-outline-settings"></i> Settings</a></li>
+																<li><a routerLink="/dashboard"><i class="icon-material-outline-dashboard"></i> Dashboard</a></li>
+								<li><a routerLink="/dashboard/{{settingsLink}}"><i class="icon-material-outline-settings"></i> Settings</a></li>
 								<li><a href="/login" a (click)="logout()"><i
 											class="icon-material-outline-power-settings-new"></i> Logout</a>
 								</li>

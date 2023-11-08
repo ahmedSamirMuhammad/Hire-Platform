@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 	token: string = "";
 	notifications: any[] = [];
 	isMenuOpened = false;
+	settingsLink = localStorage.getItem('role')=='emp'?'user-settings':'company-settings';
 	constructor(
 		private router: Router,
 		private notificationService: NotificationService

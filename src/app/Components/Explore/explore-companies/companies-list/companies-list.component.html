@@ -7,7 +7,7 @@
   >
     <div class="company-inner-alignment">
       <span class="company-logo">
-        <img [src]="'/assets/images/' + company.logo" />
+        <img [src]="'http://localhost:8000/images/logo/' + company.logo" />
       </span>
       <h4>{{ company.name }}</h4>
       <div class="star-rating" [attr.data-rating]="company.rating || 0">

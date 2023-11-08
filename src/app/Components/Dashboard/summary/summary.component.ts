@@ -16,6 +16,8 @@ export class SummaryComponent {
 	location:'string';
 	about:'string';
 	name: 'string';
+	logo: string = '';
+	quantity: number = 100;
 	userType;
 	notifications;
 
@@ -35,6 +37,8 @@ export class SummaryComponent {
 				this.location = response.data.location;
 				this.name = response.data.name;
 				this.about = response.data.about;
+				this.logo = response.data.logo;
+				this.quantity = response.data.quantity;
 				console.log(response);
 				this.spinner.hide();
 			} else {

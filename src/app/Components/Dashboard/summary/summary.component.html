@@ -3,32 +3,18 @@
 
 	<div class="dashboard-content-container" data-simplebar="init">
 		<div class="simplebar-track vertical" style="visibility: visible">
-			<div
-				class="simplebar-scrollbar"
-				style="visibility: visible; top: 0px; height: 1589px"
-			></div>
+			<div class="simplebar-scrollbar" style="visibility: visible; top: 0px; height: 1589px"></div>
 		</div>
 		<div class="simplebar-track horizontal" style="visibility: visible">
-			<div
-				class="simplebar-scrollbar"
-				style="visibility: visible; left: 0px; width: 25px"
-			></div>
+			<div class="simplebar-scrollbar" style="visibility: visible; left: 0px; width: 25px"></div>
 		</div>
-		<div
-			class="simplebar-scroll-content"
-			style="padding-right: 17px; margin-bottom: -34px"
-		>
-			<div
-				class="simplebar-content"
-				style="padding-bottom: 17px; margin-right: -17px"
-			>
+		<div class="simplebar-scroll-content" style="padding-right: 17px; margin-bottom: -34px">
+			<div class="simplebar-content" style="padding-bottom: 17px; margin-right: -17px">
 				<div class="dashboard-content-inner">
 					<!-- Dashboard Headline -->
 					<div class="dashboard-headline">
 						<h3>{{ name }}</h3>
-						<span *ngIf="userType == 'emp'"
-							>We are glad to see you again!</span
-						>
+						<span *ngIf="userType == 'emp'">We are glad to see you again!</span>
 
 						<!-- Breadcrumbs -->
 						<nav id="breadcrumbs" class="dark">
@@ -40,23 +26,17 @@
 					</div>
 
 					<!-- Fun Facts Container -->
-					<div
-						class="fun-facts-container"
-						style="margin-bottom: 5px; justify-content: center"
-					>
+					<div class="fun-facts-container" style="margin-bottom: 5px; justify-content: center">
 						<div class="fun-fact" data-fun-fact-color="#b92309">
-							<div class="fun-fact-text">
+							<div class="fun-fact-text img">
 								<span>Image</span>
-								<div class="h4">{{ "soon" }}</div>
+								<div *ngIf="userType=='cmp'" class="h4"><img
+										[src]="'http://localhost:8000/images/logo/' +logo" alt=""></div>
+								<div *ngIf="userType=='emp'" class="h4"><img
+										[src]="'http://localhost:8000/images/avatar/' +logo" alt=""></div>
 							</div>
-							<div
-								class="fun-fact-icon"
-								style="background-color: #b9230912"
-							>
-								<i
-									class="icon-material-outline-add-a-photo"
-									style="color: #b92309"
-								></i>
+							<div class="fun-fact-icon" style="background-color: #b9230912">
+								<i class="icon-material-outline-add-a-photo" style="color: #b92309"></i>
 							</div>
 						</div>
 						<div class="fun-fact" data-fun-fact-color="#27725f">
@@ -64,17 +44,11 @@
 								<span>Name</span>
 								<div class="h4">{{ name }}</div>
 							</div>
-							<div
-								class="fun-fact-icon"
-								style="
+							<div class="fun-fact-icon" style="
 									background-color: rgba(239, 168, 15, 0.07);
-								"
-							>
-								<i
-									_ngcontent-slg-c87=""
-									class="icon-material-outline-account-circle"
-									style="color: #27725f"
-								></i>
+								">
+								<i _ngcontent-slg-c87="" class="icon-material-outline-account-circle"
+									style="color: #27725f"></i>
 							</div>
 						</div>
 						<div class="fun-fact" data-fun-fact-color="#49a53c">
@@ -82,129 +56,89 @@
 								<span>Location</span>
 								<div class="h4">{{ location }}</div>
 							</div>
-							<div
-								class="fun-fact-icon"
-								style="
+							<div class="fun-fact-icon" style="
 									background-color: rgba(78, 239, 15, 0.07);
-								"
-							>
-								<i
-									class="icon-material-outline-home"
-									style="color: #49a53c"
-								></i>
+								">
+								<i class="icon-material-outline-home" style="color: #49a53c"></i>
 							</div>
 						</div>
-						<div
-							class="fun-fact"
-							style="
+						<div class="fun-fact" style="
 								max-width: 0;
 								max-height: 0;
 								margin: 0;
 								padding: 0;
-							"
-						></div>
+							"></div>
 					</div>
-					<div
-						class="fun-facts-container"
-						style="margin-bottom: 25px"
-					>
-						<div
-							class="fun-fact"
-							data-fun-fact-color="#2008f7"
-							style="max-width: 100%"
-						>
+					<div class="fun-facts-container" style="margin-bottom: 25px">
+						<div class="fun-fact" data-fun-fact-color="#2008f7" style="max-width: 100%">
 							<div class="fun-fact-text">
 								<span class="h4">About</span>
 								<div class="text">{{ about }}</div>
 							</div>
-							<div
-								class="fun-fact-icon"
-								style="background-color: #2008f712"
-							>
-								<i
-									class="icon-material-outline-info"
-									data-fun-fact-color="#2008f7"
-								></i>
+							<div class="fun-fact-icon" style="background-color: #2008f712">
+								<i class="icon-material-outline-info" data-fun-fact-color="#2008f7"></i>
 							</div>
 						</div>
-						<div
-							class="fun-fact"
-							style="
+						<div class="fun-fact" style="
 								max-width: 0;
 								max-height: 0;
 								margin: 0;
 								padding: 0;
-							"
-						></div>
+							"></div>
 					</div>
-					<div
-						class="fun-facts-container"
-						style="justify-content: center"
-					>
-						<div
-							class="fun-fact"
-							data-fun-fact-color="#b81b7f"
-							*ngIf="userType == 'cmp'"
-						>
+					<div class="fun-facts-container" style="justify-content: center">
+						<div class="fun-fact" data-fun-fact-color="#b81b7f" *ngIf="userType == 'cmp'">
 							<div class="fun-fact-text">
 								<span>Jobs</span>
-								<h4>{{ jobsNumber }}</h4>
+								<div class="h4">{{ jobsNumber }}</div>
 							</div>
-							<div
-								class="fun-fact-icon"
-								style="
+							<div class="fun-fact-icon" style="
 									background-color: rgba(184, 27, 127, 0.07);
-								"
-							>
-								<i
-									class="icon-material-outline-business-center"
-									style="color: rgb(184, 27, 127)"
-								></i>
+								">
+								<i class="icon-material-outline-business-center" style="color: rgb(184, 27, 127)"></i>
 							</div>
 						</div>
 						<div class="fun-fact" data-fun-fact-color="#b81b7f">
 							<div class="fun-fact-text">
 								<span>Applications</span>
-								<h4>{{ jobsApplied }}</h4>
+								<div class="h4">{{ jobsApplied }}</div>
 							</div>
-							<div
-								class="fun-fact-icon"
-								style="
+							<div class="fun-fact-icon" style="
 									background-color: rgba(184, 27, 127, 0.07);
-								"
-							>
-								<i
-									class="icon-material-outline-file-copy"
-									style="color: rgb(184, 27, 127)"
-								></i>
+								">
+								<i class="icon-material-outline-file-copy" style="color: rgb(184, 27, 127)"></i>
 							</div>
 						</div>
 						<div class="fun-fact" data-fun-fact-color="#efa80f">
 							<div class="fun-fact-text">
 								<span>Reviews</span>
-								<h4>{{ reviewsNumber }}</h4>
+								<div class="h4">{{ reviewsNumber }}</div>
 							</div>
-							<div
-								class="fun-fact-icon"
-								style="
+							<div class="fun-fact-icon" style="
 									background-color: rgba(239, 168, 15, 0.07);
-								"
-							>
-								<i
-									class="icon-material-outline-rate-review"
-									style="color: rgb(239, 168, 15)"
-								></i>
+								">
+								<i class="icon-material-outline-rate-review" style="color: rgb(239, 168, 15)"></i>
 							</div>
 						</div>
-						<div
-							class="fun-fact"
-							style="
+						<div *ngIf="userType==='cmp'" class="fun-fact" data-fun-fact-color="#17ef0f">
+							<div class="fun-fact-text">
+								<span>Balance</span>
+								<div class="h4">{{ quantity }}</div>jobs
+							</div>
+							<div class="fun-fact-icon" style="
+									background-color: rgba(15, 239, 90, 0.07);
+								">
+								<i class="icon-material-outline-account-balance-wallet" style="color: #17ef0f"></i>
+							</div>
+						</div>
+
+
+						<div class="fun-fact" style="
 								max-width: 0;
 								max-height: 0;
 								margin: 0;
 								padding: 0;
-							"
-						></div>
+							"></div>
 					</div>
 
 					<!-- Row -->
@@ -214,210 +148,53 @@
 							<div class="dashboard-box">
 								<div class="headline">
 									<h3>
-										<i
-											class="icon-material-baseline-notifications-none"
-										></i>
+										<i class="icon-material-baseline-notifications-none"></i>
 										Notifications
 									</h3>
-									<button
-										class="mark-as-read ripple-effect-dark"
-										data-tippy-placement="left"
-										data-tippy=""
-										data-original-title="Mark all as read"
-									>
-										<i
-											class="icon-feather-check-square"
-										></i>
+									<button class="mark-as-read ripple-effect-dark" data-tippy-placement="left"
+										data-tippy="" data-original-title="Mark all as read">
+										<i class="icon-feather-check-square"></i>
 									</button>
 								</div>
 								<div class="content">
 									<ul class="dashboard-box-list">
-										<li
-											*ngFor="
+										<li *ngFor="
 												let notification of notifications
-											"
-										>
-											<span class="notification-icon"
-												><i
-													class="icon-material-outline-group"
-												></i
-											></span>
+											">
+											<span class="notification-icon"><i
+													class="icon-material-outline-group"></i></span>
 											<span class="notification-text">
-												<strong></strong
-												><a href="#">{{
+												<strong></strong><a href="#">{{
 													notification.data.subject
-												}}</a>
+													}}</a>
 											</span>
 											<!-- Buttons -->
-											<div
-												class="buttons-to-right single-right-button"
-											>
-												<a
-													href="#"
-													class="button ripple-effect ico"
-													data-tippy-placement="left"
-													data-tippy=""
-													data-original-title="Mark as read"
-													><i
-														class="icon-feather-check-square"
-													></i
-												></a>
+											<div class="buttons-to-right single-right-button">
+												<a href="#" class="button ripple-effect ico" data-tippy-placement="left"
+													data-tippy="" data-original-title="Mark as read"><i
+														class="icon-feather-check-square"></i></a>
 											</div>
 										</li>
+
+
 										<li>
-											<span class="notification-icon"
-												><i
-													class="icon-material-outline-group"
-												></i
-											></span>
-											<span class="notification-text">
-												<strong>Michael Shannah</strong>
-												<a href="#"
-													>Full Stack Software
-													Engineer</a
-												>
-											</span>
-											<!-- Buttons -->
-											<div
-												class="buttons-to-right single-right-button"
-											>
-												<a
-													href="#"
-													class="button ripple-effect ico"
-													data-tippy-placement="left"
-													data-tippy=""
-													data-original-title="Mark as read"
-													><i
-														class="icon-feather-check-square"
-													></i
-												></a>
-											</div>
-										</li>
-										<li>
-											<span class="notification-icon"
-												><i
-													class="icon-material-outline-gavel"
-												></i
-											></span>
-											<span class="notification-text">
-												<strong>Gilber Allanis</strong>
-												placed a bid on your
-												<a href="#"
-													>iOS App Development</a
-												>
-												project
-											</span>
-											<!-- Buttons -->
-											<div
-												class="buttons-to-right single-right-button"
-											>
-												<a
-													href="#"
-													class="button ripple-effect ico"
-													data-tippy-placement="left"
-													data-tippy=""
-													data-original-title="Mark as read"
-													><i
-														class="icon-feather-check-square"
-													></i
-												></a>
-											</div>
-										</li>
-										<li>
-											<span class="notification-icon"
-												><i
-													class="icon-material-outline-autorenew"
-												></i
-											></span>
-											<span class="notification-text">
-												Your job listing
-												<a href="#"
-													>Full Stack Software
-													Engineer</a
-												>
-												is expiring
-											</span>
-											<!-- Buttons -->
-											<div
-												class="buttons-to-right single-right-button"
-											>
-												<a
-													href="#"
-													class="button ripple-effect ico"
-													data-tippy-placement="left"
-													data-tippy=""
-													data-original-title="Mark as read"
-													><i
-														class="icon-feather-check-square"
-													></i
-												></a>
-											</div>
-										</li>
-										<li>
-											<span class="notification-icon"
-												><i
-													class="icon-material-outline-group"
-												></i
-											></span>
-											<span class="notification-text">
-												<strong>Sindy Forrest</strong>
-												applied for a job
-												<a href="#"
-													>Full Stack Software
-													Engineer</a
-												>
-											</span>
-											<!-- Buttons -->
-											<div
-												class="buttons-to-right single-right-button"
-											>
-												<a
-													href="#"
-													class="button ripple-effect ico"
-													data-tippy-placement="left"
-													data-tippy=""
-													data-original-title="Mark as read"
-													><i
-														class="icon-feather-check-square"
-													></i
-												></a>
-											</div>
-										</li>
-										<li>
-											<span class="notification-icon"
-												><i
-													class="icon-material-outline-rate-review"
-												></i
-											></span>
+											<span class="notification-icon"><i
+													class="icon-material-outline-rate-review"></i></span>
 											<span class="notification-text">
 												<strong>David Peterson</strong>
 												left you a
-												<span
-													class="star-rating no-stars"
-													data-rating="5.0"
-													><span class="star"></span
-													><span class="star"></span
-													><span class="star"></span
-													><span class="star"></span
-													><span class="star"></span
-												></span>
+												<span class="star-rating no-stars" data-rating="5.0"><span
+														class="star"></span><span class="star"></span><span
+														class="star"></span><span class="star"></span><span
+														class="star"></span></span>
 												rating after finishing
 												<a href="#">Logo Design</a> task
 											</span>
 											<!-- Buttons -->
-											<div
-												class="buttons-to-right single-right-button"
-											>
-												<a
-													href="#"
-													class="button ripple-effect ico"
-													data-tippy-placement="left"
-													data-tippy=""
-													data-original-title="Mark as read"
-													><i
-														class="icon-feather-check-square"
-													></i
-												></a>
+											<div class="buttons-to-right single-right-button">
+												<a href="#" class="button ripple-effect ico" data-tippy-placement="left"
+													data-tippy="" data-original-title="Mark as read"><i
+														class="icon-feather-check-square"></i></a>
 											</div>
 										</li>
 									</ul>
@@ -437,42 +214,22 @@
 						</div>
 						<ul class="footer-social-links">
 							<li>
-								<a
-									href="#"
-									data-tippy-placement="top"
-									data-tippy=""
-									data-original-title="Facebook"
-								>
+								<a href="#" data-tippy-placement="top" data-tippy="" data-original-title="Facebook">
 									<i class="icon-brand-facebook-f"></i>
 								</a>
 							</li>
 							<li>
-								<a
-									href="#"
-									data-tippy-placement="top"
-									data-tippy=""
-									data-original-title="Twitter"
-								>
+								<a href="#" data-tippy-placement="top" data-tippy="" data-original-title="Twitter">
 									<i class="icon-brand-twitter"></i>
 								</a>
 							</li>
 							<li>
-								<a
-									href="#"
-									data-tippy-placement="top"
-									data-tippy=""
-									data-original-title="Google Plus"
-								>
+								<a href="#" data-tippy-placement="top" data-tippy="" data-original-title="Google Plus">
 									<i class="icon-brand-google-plus-g"></i>
 								</a>
 							</li>
 							<li>
-								<a
-									href="#"
-									data-tippy-placement="top"
-									data-tippy=""
-									data-original-title="LinkedIn"
-								>
+								<a href="#" data-tippy-placement="top" data-tippy="" data-original-title="LinkedIn">
 									<i class="icon-brand-linkedin-in"></i>
 								</a>
 							</li>
