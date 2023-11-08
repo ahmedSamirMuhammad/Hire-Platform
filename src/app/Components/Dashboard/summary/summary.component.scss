@@ -5,3 +5,12 @@
     margin-top: 5px;
 }
 
+.fun-fact-text img {
+	height: 100px;
+}
+.fun-fact-text.img{
+	display: flex;
+
+	justify-content: space-around;
+
+}
