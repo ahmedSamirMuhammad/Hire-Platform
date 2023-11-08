@@ -50,10 +50,12 @@
 														href="#"
 														class="reviews-company-logo"
 													>
-														<img
-															src="{{
-																review.logo
-															}}"
+														<img *ngIf="userType=='cmp'"
+															[src]="'http://localhost:8000/images/logo/' +review.logo"
+															alt=""
+														/>
+														<img *ngIf="userType=='emp'"
+															[src]="'http://localhost:8000/images/avatar/' +review.logo"
 															alt=""
 														/>
 													</a>
