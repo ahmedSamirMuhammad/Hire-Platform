@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { DashboardHttpService } from "src/app/services/dashboard-http.service";
 import { NotificationService } from "src/app/notification.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
 	selector: "app-summary",
@@ -17,13 +18,15 @@ export class SummaryComponent {
 	name: 'string';
 	userType;
 	notifications;
-	constructor(private dashboardHttpService: DashboardHttpService,private notificationService: NotificationService) {}
+
+	constructor(private dashboardHttpService: DashboardHttpService,private notificationService: NotificationService,private spinner:NgxSpinnerService) {}
 	ngOnInit() {
 		this.userType = localStorage.getItem("role");
 		this.getSummary();
 		this.loadNotifications();
 	}
 	getSummary() {
+		this.spinner.show();
 		this.dashboardHttpService.getSummary().subscribe((response: any) => {
 			if (response.status === 200) {
 				this.jobsApplied = response.data.jobs_applied || 0;
@@ -33,8 +36,11 @@ export class SummaryComponent {
 				this.name = response.data.name;
 				this.about = response.data.about;
 				console.log(response);
+				this.spinner.hide();
 			} else {
 				console.error(response.message);
+				this.spinner.hide();
+
 			}
 		});
 	}
