@@ -42,15 +42,24 @@ export class LoginComponent {
 
 		const token = this.route.snapshot.queryParamMap.get("token");
 		const name = this.route.snapshot.queryParamMap.get("name");
-
-		if (token) {
+    if (token) {
 			// Token is present in the URL, save it to local storage
 			localStorage.setItem("token", token);
 			localStorage.setItem("name", name);
 
 			// Navigate the user to the home page or another page as needed
-			this.router.navigate(["/home"]);
+			this.router.navigate(["/"]);
 		}
+    const isAuth = this.canActivate();
+
+		if (isAuth) {
+			// User is not authenticated, you can proceed with other actions or leave this empty.
+		} else {
+			// User is authenticated, redirect to the home page
+			this.router.navigate(["/"]);
+		}
+
+		
 	}
 
 	selectedAccountType: string = "company"; // Default to 'company' if none selected
@@ -146,6 +155,17 @@ export class LoginComponent {
 		const newTab = window.open(oauthUrl, "_blank");
 
 		// Check for the token in the new tab's HTML content
+	}
+
+  canActivate(): boolean {
+		const check = localStorage.getItem("token");
+		if (check) {
+			// User is authenticated, so redirect to the home page
+			this.router.navigate(["/"]);
+			return false; // Prevent access to the route
+		} else {
+			return true; // User is not authenticated, allow access to the route
+		}
 	}
 }
 

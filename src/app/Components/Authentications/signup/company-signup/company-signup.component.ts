@@ -36,6 +36,15 @@ export class CompanySignupComponent {
     }, {
       validator: this.passwordMatchValidator // Custom validator function
     });
+
+    const isAuth = this.canActivate();
+
+		if (isAuth) {
+			// User is not authenticated, you can proceed with other actions or leave this empty.
+		} else {
+			// User is authenticated, redirect to the home page
+			this.router.navigate(["/"]);
+		}
   }
 
   // Custom validator function to check if password and password confirmation match
@@ -82,6 +91,17 @@ export class CompanySignupComponent {
         });
     }
   }
+
+  canActivate(): boolean {
+		const check = localStorage.getItem("token");
+		if (check) {
+			// User is authenticated, so redirect to the home page
+			this.router.navigate(["/"]);
+			return false; // Prevent access to the route
+		} else {
+			return true; // User is not authenticated, allow access to the route
+		}
+	}
   
 }
 
