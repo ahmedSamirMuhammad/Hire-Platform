@@ -47,14 +47,10 @@
 											<div class="d-flex">
 												<div>
 													<a
-														href="#"
+														routerLink="/{{userType=='emp'?'company-profile':'user-profile'}}/{{userType=='emp'?review.company_id:review.user_id}}"
 														class="reviews-company-logo"
 													>
-														<img *ngIf="userType=='cmp'"
-															[src]="'http://localhost:8000/images/logo/' +review.logo"
-															alt=""
-														/>
-														<img *ngIf="userType=='emp'"
+														<img
 															[src]="'http://localhost:8000/images/logo/' +review.logo"
 															alt=""
 														/>
