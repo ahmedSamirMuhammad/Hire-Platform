@@ -43,7 +43,10 @@ export class HeaderComponent implements OnInit {
 	}
 	open() {
 		if (!this.isMenuOpened) {
+
+			
 			this.userMenu.nativeElement.classList.add("active");
+
 			setTimeout(
 				() => this.userMenu.nativeElement.classList.add("open"),
 				100

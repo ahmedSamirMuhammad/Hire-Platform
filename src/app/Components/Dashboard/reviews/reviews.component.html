@@ -50,8 +50,12 @@
 														routerLink="/{{userType=='emp'?'company-profile':'user-profile'}}/{{userType=='emp'?review.company_id:review.user_id}}"
 														class="reviews-company-logo"
 													>
-														<img
+														<img *ngIf="userType=='cmp'"
 															[src]="'http://localhost:8000/images/logo/' +review.logo"
+															alt=""
+														/>
+														<img *ngIf="userType=='emp'"
+															[src]="'http://localhost:8000/images/avatars/' +review.logo"
 															alt=""
 														/>
 													</a>
