@@ -2,25 +2,13 @@
 	<app-sidebar></app-sidebar>
 	<div class="dashboard-content-container" data-simplebar="init">
 		<div class="simplebar-track vertical" style="visibility: visible">
-			<div
-				class="simplebar-scrollbar"
-				style="visibility: visible; top: 0px; height: 1081px"
-			></div>
+			<div class="simplebar-scrollbar" style="visibility: visible; top: 0px; height: 1081px"></div>
 		</div>
 		<div class="simplebar-track horizontal" style="visibility: visible">
-			<div
-				class="simplebar-scrollbar"
-				style="visibility: visible; left: 0px; width: 25px"
-			></div>
+			<div class="simplebar-scrollbar" style="visibility: visible; left: 0px; width: 25px"></div>
 		</div>
-		<div
-			class="simplebar-scroll-content"
-			style="padding-right: 17px; margin-bottom: -34px"
-		>
-			<div
-				class="simplebar-content"
-				style="padding-bottom: 17px; margin-right: -17px"
-			>
+		<div class="simplebar-scroll-content" style="padding-right: 17px; margin-bottom: -34px">
+			<div class="simplebar-content" style="padding-bottom: 17px; margin-right: -17px">
 				<div class="dashboard-content-inner">
 					<!-- Dashboard Headline -->
 					<div class="dashboard-headline">
@@ -44,9 +32,7 @@
 								<!-- Headline -->
 								<div class="headline">
 									<h3>
-										<i
-											class="icon-material-outline-business-center"
-										></i>
+										<i class="icon-material-outline-business-center"></i>
 										Bookmarked Jobs
 									</h3>
 								</div>
@@ -57,67 +43,55 @@
 											<!-- Job Listing -->
 											<div class="job-listing">
 												<!-- Job Listing Details -->
-												<div
-													class="job-listing-details"
-												>
+												<div class="job-listing-details">
 													<!-- Logo -->
-													<a
-														href="#"
-														class="job-listing-company-logo"
-													>
-														<img
-															[src]="'http://localhost:8000/images/logo/' +bookmark.logo"
-															alt=""
-														/><!-- logo in not set-->
+													<a href="/company-profile/{{bookmark.company_id}}"
+														class="job-listing-company-logo">
+														<img [src]="'http://localhost:8000/images/projects/' +bookmark.logo"
+															alt="" /><!-- logo in not set-->
 													</a>
 
 													<!-- Details -->
-													<div
-														class="job-listing-description"
-													>
-														<h3
-															class="job-listing-title"
-														>
+													<div class="job-listing-description">
+														<h3 class="job-listing-title">
 															<a href="#">{{
 																bookmark.name
-															}}</a>
+																}}</a>
 														</h3>
 
 														<!-- Job Listing Footer -->
-														<div
-															class="job-listing-footer"
-														>
+														<div class="job-listing-footer">
 															<ul>
 																<li>
-																	<i
-																		class="icon-material-outline-business"
-																	></i>
-																	{{
+
+																	<a routerLink="/company-profile/{{
+																	bookmark.company_id
+																}}">
+																		<i class="icon-material-outline-business"></i>
+																		{{
 																		bookmark.company_name
+																		}}
+																	</a>
+
+																</li>
+
+																<li>
+																	<i class="icon-material-outline-location-on"></i>
+																	{{
+																	bookmark.location
 																	}}
 																</li>
 																<li>
 																	<i
-																		class="icon-material-outline-location-on"
-																	></i>
+																		class="icon-material-outline-business-center"></i>
 																	{{
-																		bookmark.location
+																	bookmark.type
 																	}}
 																</li>
 																<li>
-																	<i
-																		class="icon-material-outline-business-center"
-																	></i>
+																	<i class="icon-material-outline-access-time"></i>
 																	{{
-																		bookmark.type
-																	}}
-																</li>
-																<li>
-																	<i
-																		class="icon-material-outline-access-time"
-																	></i>
-																	{{
-																		bookmark.create_at
+																	bookmark.create_at
 																	}}
 																</li>
 															</ul>
@@ -126,25 +100,15 @@
 												</div>
 											</div>
 											<!-- Buttons -->
-											<div
-												class="buttons-to-right single-right-button"
-												(click)="
+											<div class="buttons-to-right single-right-button" (click)="
 													deleteBookmark(
 														bookmark.job_id
 													)
-												"
-											>
-												<a
-													href=""
-													class="button red ripple-effect ico"
-													data-tippy-placement="left"
-													data-tippy=""
-													data-original-title="Remove"
-													onclick="return false"
-													><i
-														class="icon-feather-trash-2"
-													></i
-												></a>
+												">
+												<a href="" class="button red ripple-effect ico"
+													data-tippy-placement="left" data-tippy=""
+													data-original-title="Remove" onclick="return false"><i
+														class="icon-feather-trash-2"></i></a>
 											</div>
 										</li>
 									</ul>
@@ -152,9 +116,7 @@
 							</div>
 						</div>
 					</div>
-					<app-pagination
-						[paginationData]="paginationData"
-					></app-pagination>
+					<app-pagination [paginationData]="paginationData"></app-pagination>
 				</div>
 			</div>
 		</div>
