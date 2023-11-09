@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ApplyToJobService } from 'src/app/services/apply-to-job.service';
 import { JobService } from 'src/app/services/job.service';
 import { ToastrService } from "ngx-toastr";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-job-sidebar',
@@ -13,7 +14,7 @@ export class JobSidebarComponent {
   @Output() toggleBookmark = new EventEmitter<void>();
   userType = "cmp";
 
-  constructor(private applyToJobService: ApplyToJobService, private jobService: JobService, private toastr: ToastrService) {}
+  constructor(private applyToJobService: ApplyToJobService, private jobService: JobService, private toastr: ToastrService, private spinner:NgxSpinnerService) {}
 
   ngOnInit(){
     // get the role of the current user
@@ -21,6 +22,7 @@ export class JobSidebarComponent {
   }
 
   applyForJob(jobId: string) {
+	this.spinner.show();
     this.applyToJobService.applyForJob(jobId).subscribe(
       (response) => {
         this.toastr.success(
@@ -31,6 +33,10 @@ export class JobSidebarComponent {
               progressBar: true,
           }
       );
+	  setTimeout(() => {
+		/** spinner ends after 5 seconds */
+		this.spinner.hide();
+	}, 1000);
       },
       (error) => {
         this.toastr.error(
@@ -41,6 +47,10 @@ export class JobSidebarComponent {
               progressBar: true,
           }
       );
+	  setTimeout(() => {
+		/** spinner ends after 5 seconds */
+		this.spinner.hide();
+	}, 1000);
       }
     );
   }
@@ -49,5 +59,5 @@ export class JobSidebarComponent {
     // Emit an event to notify the parent component to toggle the bookmark
     this.toggleBookmark.emit();
   }
-  
+
 }

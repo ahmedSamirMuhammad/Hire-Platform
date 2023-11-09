@@ -86,7 +86,7 @@ export class CompanySignupComponent {
               progressBar: true,
             });
 
-            this.router.navigate(['/'])
+            this.router.navigate(['/login'])
           }
         });
     }
@@ -102,6 +102,6 @@ export class CompanySignupComponent {
 			return true; // User is not authenticated, allow access to the route
 		}
 	}
-  
+
 }
 

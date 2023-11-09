@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { ToastrService } from 'ngx-toastr';
-
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 
@@ -27,6 +27,7 @@ export class CheckoutComponent implements OnInit {
     private paymentService:PaymentService ,
     private data: DataService ,
     private toastr: ToastrService,
+	private spinner:NgxSpinnerService
 
   ) {}
   ngOnInit(): void {
@@ -49,7 +50,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   onSubmitStripe(): void {
-
+	this.spinner.show();
       const strpie: any = new FormData();
       strpie.append(
         'number',
@@ -87,8 +88,15 @@ export class CheckoutComponent implements OnInit {
             timeOut: 5000,
             progressBar: true,
           });
+		  setTimeout(() => {
+			/** spinner ends after 5 seconds */
+			this.spinner.hide();
+		}, 1000);
 
         },
+
+
+
       });
 
   }

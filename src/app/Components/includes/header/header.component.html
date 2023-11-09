@@ -52,7 +52,7 @@
 							routerLink="employee-signup"><a>Register</a></li>
 						<li style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="!token"
 							routerLink="login"><a>Login</a></li>
-						<li style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="token"><a
+						<li style="font-weight: 400; font-size: larger;" class="nav-header" *ngIf="storedRole === 'cmp'"><a
 								routerLink="payment">Payment</a>
 						</li>
 

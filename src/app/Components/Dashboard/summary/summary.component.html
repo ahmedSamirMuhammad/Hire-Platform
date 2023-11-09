@@ -29,11 +29,11 @@
 					<div class="fun-facts-container" style="margin-bottom: 5px; justify-content: center">
 						<div class="fun-fact" data-fun-fact-color="#b92309">
 							<div class="fun-fact-text img">
-								<span>Image</span>
+								<!-- <span>Image</span> -->
 								<div *ngIf="userType=='cmp'" class="h4"><img
 										[src]="'http://localhost:8000/images/logo/' +logo" alt=""></div>
 								<div *ngIf="userType=='emp'" class="h4"><img
-										[src]="'http://localhost:8000/images/avatar/' +logo" alt=""></div>
+										[src]="'http://localhost:8000/images/avatars/' +logo" alt=""></div>
 							</div>
 							<div class="fun-fact-icon" style="background-color: #b9230912">
 								<i class="icon-material-outline-add-a-photo" style="color: #b92309"></i>
@@ -100,7 +100,7 @@
 						</div>
 						<div class="fun-fact" data-fun-fact-color="#b81b7f">
 							<div class="fun-fact-text">
-								<span>Applications</span>
+								<span>Apps</span>
 								<div class="h4">{{ jobsApplied }}</div>
 							</div>
 							<div class="fun-fact-icon" style="
@@ -122,8 +122,8 @@
 						</div>
 						<div *ngIf="userType==='cmp'" class="fun-fact" data-fun-fact-color="#17ef0f">
 							<div class="fun-fact-text">
-								<span>Balance</span>
-								<div class="h4">{{ quantity }}</div>jobs
+								<span>Wallet</span>
+								<div class="h4">{{ quantity }}</div>
 							</div>
 							<div class="fun-fact-icon" style="
 									background-color: rgba(15, 239, 90, 0.07);
@@ -177,26 +177,7 @@
 										</li>
 
 
-										<li>
-											<span class="notification-icon"><i
-													class="icon-material-outline-rate-review"></i></span>
-											<span class="notification-text">
-												<strong>David Peterson</strong>
-												left you a
-												<span class="star-rating no-stars" data-rating="5.0"><span
-														class="star"></span><span class="star"></span><span
-														class="star"></span><span class="star"></span><span
-														class="star"></span></span>
-												rating after finishing
-												<a href="#">Logo Design</a> task
-											</span>
-											<!-- Buttons -->
-											<div class="buttons-to-right single-right-button">
-												<a href="#" class="button ripple-effect ico" data-tippy-placement="left"
-													data-tippy="" data-original-title="Mark as read"><i
-														class="icon-feather-check-square"></i></a>
-											</div>
-										</li>
+
 									</ul>
 								</div>
 							</div>
@@ -210,7 +191,7 @@
 					<div class="dashboard-footer-spacer"></div>
 					<div class="small-footer margin-top-15">
 						<div class="small-footer-copyrights">
-							© 2018 <strong>Hireo</strong>. All Rights Reserved.
+							© 2023 <strong>Hireo</strong>. All Rights Reserved.
 						</div>
 						<ul class="footer-social-links">
 							<li>

@@ -46,7 +46,7 @@ export class ProfileSettingComponent {
 		linkedin_account: [""],
 		github_account: [""],
 	  });
-    
+
     this.userService.getUserSkills().subscribe( (res)=>{
       this.userSkills = res;
       // console.log(this.userSkills);
@@ -54,7 +54,7 @@ export class ProfileSettingComponent {
   }
 
 
-	 
+
 	 AllSkills :any[];
 	 userSkills : any[];
 
@@ -85,7 +85,7 @@ export class ProfileSettingComponent {
     this.userFormData.append('twitter_account', this.userForm.get('twitter_account').value)
     this.userFormData.append('linkedin_account', this.userForm.get('linkedin_account').value)
     this.userFormData.append('github_account', this.userForm.get('github_account').value)
-     
+
 
 		  console.log("hi");
 	  console.log(this.userForm);
@@ -131,7 +131,7 @@ export class ProfileSettingComponent {
 
 	  }
 	  }
-	  
+
 
 
 
@@ -209,8 +209,8 @@ export class ProfileSettingComponent {
       console.log(selectedFiles)
       this.userFormData = new FormData
       this.userFormData.append('avatar', selectedFiles)
-  
-  
+
+
     }
 
     cv(event: any) {
@@ -218,8 +218,8 @@ export class ProfileSettingComponent {
       console.log(selectedFiles)
       this.userFormData = new FormData
       this.userFormData.append('cv', selectedFiles)
-  
-  
+
+
     }
 
 }

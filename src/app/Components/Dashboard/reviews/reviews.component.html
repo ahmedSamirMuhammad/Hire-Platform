@@ -51,11 +51,11 @@
 														class="reviews-company-logo"
 													>
 														<img *ngIf="userType=='cmp'"
-															[src]="'http://localhost:8000/images/logo/' +review.logo"
+															[src]="'http://localhost:8000/images/avatars/' +review.logo"
 															alt=""
 														/>
 														<img *ngIf="userType=='emp'"
-															[src]="'http://localhost:8000/images/avatars/' +review.logo"
+															[src]="'http://localhost:8000/images/logo/' +review.logo"
 															alt=""
 														/>
 													</a>

@@ -8,6 +8,7 @@ import { QueryStringService } from 'src/app/services/query-string.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
 	selector: 'app-explore-jobs',
@@ -29,7 +30,8 @@ export class ExploreJobsComponent implements OnInit {
 		private queryStringService: QueryStringService,
 		private router: Router,
 		private location: Location,
-		private toastr: ToastrService
+		private toastr: ToastrService,
+		private spinner:NgxSpinnerService
 	) {
 		this.filterForm = this.formBuilder.group({
 			location: [''],
@@ -80,6 +82,8 @@ export class ExploreJobsComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.spinner.show();
+
 		//<!---------- calling the function "getCategories" from "category" service / Start -------------->
 		this.catService.getCategories().subscribe(
 			(response: any) => {
@@ -97,6 +101,10 @@ export class ExploreJobsComponent implements OnInit {
 				console.error('Error fetching categories', error);
 			}
 		);
+		setTimeout(() => {
+			/** spinner ends after 5 seconds */
+			this.spinner.hide();
+		}, 1000);
 		//<!-------- calling the function "getCategories" from "category" service  / End ---------------->
 	}
 
