@@ -11,6 +11,7 @@ export class JobService {
 
 
   getHeaders() {
+    if (!localStorage.getItem("token")) return new HttpHeaders({});
 		const token = localStorage.getItem("token");
 		return new HttpHeaders({
 			authorization: `Bearer ${token}`,

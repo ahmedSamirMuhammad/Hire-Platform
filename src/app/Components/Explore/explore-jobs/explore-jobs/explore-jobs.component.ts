@@ -20,6 +20,7 @@ export class ExploreJobsComponent implements OnInit {
 	filterForm: FormGroup;
 	categories: Array<any> = [];
 	jobs_array: Array<any> = [];
+	is_authenticated: any;
 
 	constructor(
 		private catService: CategoryService,
@@ -57,9 +58,6 @@ export class ExploreJobsComponent implements OnInit {
 		if (params == '-') {
 			this.loadAllJobs();
 		} else {
-			//  console.log(this.queryStringService.parse(params));
-			// this.filterInputs = filterInputs;
-			// console.log(this.filterInputs);
 
 			const filterInputs = this.queryStringService.parse(params);
 			this.filterForm.setValue({
@@ -118,7 +116,7 @@ export class ExploreJobsComponent implements OnInit {
 		const page = this.activatedRoute.snapshot.params['page'];
 		this.jobService.getJobs(page).subscribe(
 			(response: any) => {
-				console.log(page);
+				console.log(response);
 				this.jobs_array = response.data.data;
 				this.paginationData.next({
 					current_page: response.data.current_page,
@@ -128,6 +126,7 @@ export class ExploreJobsComponent implements OnInit {
 					allowOnTurn: true,
 					disable: false,
 				});
+			this.is_authenticated = response.data.is_authenticated;
 			},
 			(error: any) => {
 				console.error('Error fetching jobs', error);
@@ -199,6 +198,7 @@ export class ExploreJobsComponent implements OnInit {
 				if (Array.isArray(response.data.data)) {
 					// If it's an array, update jobs_array with the new filtered data
 					this.jobs_array = response.data.data;
+					console.log(this.jobs_array);
 				} else {
 					console.error('Received data is not an array.');
 				}
@@ -255,10 +255,22 @@ export class ExploreJobsComponent implements OnInit {
 
 	//<!---------- calling the function "resetFilters" / Start -------------->
 	resetFilters() {
-		// Reset the form to its initial state
-		this.filterForm.reset();
-		// Fetch all jobs again with the current page number
-		const page = this.activatedRoute.snapshot.params['page'];
+		// Set the form controls to their initial values
+		this.filterForm.patchValue({
+			location: '',
+			category_name: '',
+			experience: '',
+			sort: '',
+			min_salary: '',
+			max_salary: '',
+			type: [],
+			full_time: false,
+			part_time: false,
+			contract: false,
+			temporary: false,
+			internship: false,
+		});
+		this.router.navigate([`/explore-jobs/-/1`]);
 		this.loadAllJobs();
 	}
 	//<!-------- calling the function "resetFilters"  / End ---------------->
