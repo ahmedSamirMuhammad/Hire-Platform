@@ -86,5 +86,27 @@ export class CompanyProfileComponent implements OnInit{
     );
   }
 
-
+    //<!---------- calling the function "companyFollow" from "company" service / Start -------------->
+    toggleFollow(companyId: number) {
+      this.companyService.companyFollow(companyId).subscribe({
+        next: (response) => {
+          // Handle success response here
+          if (response.msg === 'Followed successfully' || response.msg === 'Unfollowed successfully') {
+  
+            this.company_data.is_followed = !this.company_data.is_followed;
+            this.toastr.success(response.msg, '200', {
+              timeOut: 2000,
+              progressBar: true,
+            });
+          }
+        },
+        error: (error) => {
+          this.toastr.error('Error toggling company follow', '401', {
+            timeOut: 2000,
+            progressBar: true,
+          });
+        },
+      });
+    }
+    //<!---------- calling the function "companyFollow" from "company" service / End -------------->
 }
