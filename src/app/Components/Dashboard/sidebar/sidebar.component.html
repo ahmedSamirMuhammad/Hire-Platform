@@ -27,6 +27,10 @@
 							<a><i class="icon-material-outline-star-border"></i>
 								Bookmarks</a>
 						</li>
+						<li routerLink="/dashboard/followings" routerLinkActive="active" *ngIf="storedRole=='emp'">
+							<a><i class="icon-material-outline-outlined-flag"></i>
+								Followings</a>
+						</li>
 						<li routerLink="/dashboard/reviews" routerLinkActive="active">
 							<a><i class="icon-material-outline-rate-review"></i>
 								Reviews</a>

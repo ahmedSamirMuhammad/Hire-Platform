@@ -1,0 +1,16 @@
+a {
+    color: #66676b ;
+    transition: 0.3s;
+}
+a:hover,a:hover i{
+	color: #2a41e8;
+}
+a>*{
+	transition: ease-in 0.2s;
+}
+.hor-ln {
+	max-width: 1px;
+	height: 100%;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  margin-right: 1px;
+}
