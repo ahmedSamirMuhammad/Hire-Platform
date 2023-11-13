@@ -1,4 +1,4 @@
-<header id="header-container" class="fullwidth">
+<header id="header-container" class="fullwidth ">
 
 	<!-- Header -->
 	<div id="header">
@@ -211,7 +211,9 @@
 
 								<!-- User Name / Avatar -->
 								<div class="user-details">
-									<div class="user-avatar status-online"><img src="" alt="avatar"></div>
+									<div class="user-avatar status-online"><a [routerLink]="storedRole === 'emp' ? '/user-profile/' + id : '/company-profile/' + id">
+										<img [src]="'avatar.jpg'" alt="avatar">
+									  </a></div>
 									<div class="user-name">
 										{{ name }} <span>Engineer</span>
 									</div>

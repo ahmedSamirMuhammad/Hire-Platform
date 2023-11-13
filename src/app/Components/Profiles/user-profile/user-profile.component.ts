@@ -11,7 +11,8 @@ import { environment } from 'src/environments/environment';
 })
 export class UserProfileComponent implements OnInit {
   userId: number =0;
-  socials :any;
+  socials: any[] = [];
+
   API_URL = `${environment.API_URL}/profile`;
 
   profileData: any;

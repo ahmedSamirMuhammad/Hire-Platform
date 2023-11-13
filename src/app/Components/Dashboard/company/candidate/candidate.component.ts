@@ -15,14 +15,14 @@ export class CandidateComponent {
   }
  ngOnInit(){
   console.log(`from child  ${this.candidate}`);
-  
-}
-  delete(id:any){
-    const jobId = 2; 
-    this.candidateCrud.deleteCandidate(id).subscribe( res=>{
-      console.log('deleted');
-      
-    })
 
-  }
+}
+//   delete(id:any){
+//   console.log(id);
+//     this.candidateCrud.deleteCandidate(id).subscribe( res=>{
+//       console.log('deleted');
+
+//     })
+
+//   }
 }

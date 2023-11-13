@@ -15,6 +15,8 @@ export class IndexComponent implements OnInit {
   query: string = '';
   location: string = '';
   numberOfJobs!: number;
+  numberOfCompanies!: number;
+  numberOfEmployers!: number;
 
 
   ngOnInit() {
@@ -38,15 +40,16 @@ export class IndexComponent implements OnInit {
     });
   }
 
-  getNumberOfJobs(){
-    this.homeService.getNumberOfJobs()
-      .subscribe((response: any) => {
-        if (response.status === 200) {
-          this.numberOfJobs = response.data || 0;
-        } else {
-          console.error(response.message);
-        }
-      });
+  getNumberOfJobs() {
+	this.homeService.getNumberOfJobs().subscribe((response: any) => {
+	  if (response.status === 200) {
+		this.numberOfJobs = response.data.numberOfJobs || 0;
+		this.numberOfEmployers = response.data.numberOfEmployers || 0;
+		this.numberOfCompanies = response.data.numberOfCompanies || 0;
+	  } else {
+		console.error("An error occurred");
+	  }
+	});
   }
 }
 

@@ -16,7 +16,7 @@ export class ManageCandidatesComponent {
 
     this.candidateCrud.getAllCandidates().subscribe( (res)=>{
       this.candidates = res.data;
-      console.log(this.candidates);
+      console.log('candidte',this.candidates);
       })
 
   }

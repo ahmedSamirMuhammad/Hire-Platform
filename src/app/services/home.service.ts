@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,6 +13,13 @@ export class HomeService {
    private searchArray = new BehaviorSubject([])
 
   constructor(private http: HttpClient ) { }
+  getHeaders() {
+	const token = localStorage.getItem("token");
+
+	return new HttpHeaders({
+		authorization: `Bearer ${token}`,
+ 	});
+}
 
   search(query: string, location: string):Observable<any>{
     const params = { title: query, location: location }
@@ -32,6 +39,19 @@ export class HomeService {
   getNumberOfJobs(): Observable<any> {
     return this.http.get(`${this.url}/Home/jobs`);
 
+  }
+  headerUser(): Observable<any> {
+	return this.http.get(`${this.url}/Home/headerUser`, {
+	  headers: this.getHeaders(),
+	}).pipe(
+	  map((res: any) => {
+		return res.data || {}; // Assuming `data` contains the `id` value
+	  }),
+	  catchError((error: any) => {
+		console.error('Error fetching user:', error);
+		return throwError('Error fetching user');
+	  })
+	);
   }
 }
 

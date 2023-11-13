@@ -4,6 +4,7 @@ import { JobService } from 'src/app/services/job.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from "ngx-toastr";
 
+
 @Component({
   selector: 'app-job-profile',
   templateUrl: './job-profile.component.html',

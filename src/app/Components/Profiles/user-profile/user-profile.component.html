@@ -5,7 +5,7 @@
 <!-- <div id="wrapper"> -->
   <div class="single-page-header freelancer-header" data-background-image="../../../../assets/images/profile1.jpg">
     <div class="container">
-        <div class="row" *ngIf="profileData">
+        <div class="row" >
             <div class="col-md-12">
                 <div class="single-page-header-inner">
                     <div class="left-side">
@@ -61,7 +61,7 @@
                     <h3 style="font-weight: 600 ;"><i class="icon-material-outline-business"></i> Employment History</h3>
                 </div>
                 <ul class="boxed-list-ul">
-                    <li *ngFor="let data of profileData.history">
+                    <li >
                         <div class="boxed-list-item" >
                             <!-- Avatar -->
                             <div class="item-image">
@@ -70,13 +70,31 @@
 
                             <!-- Content -->
                             <div class="item-content">
-                                <h4 style="text-transform: capitalize;">{{data.job_name}}</h4>
+                                <h4 style="text-transform: capitalize;">{{profileData.history[0].job_name}}</h4>
                                 <div class="item-details margin-top-7">
-                                    <div class="detail-item"><a href="#"><i class="icon-material-outline-business"></i> {{data.company_name}}</a></div>
-                                    <div class="detail-item"><i class="icon-material-outline-date-range"></i> {{data.date_from}}</div>
+                                    <div class="detail-item"><a href="#"><i class="icon-material-outline-business"></i> {{profileData.history[0].company_name}}</a></div>
+                                    <div class="detail-item"><i class="icon-material-outline-date-range"></i> {{profileData.history[0].date_from}}</div>
                                 </div>
                                 <div class="item-description ">
-                                    <p >{{data.description}}</p>
+                                    <p >{{profileData.history[0].description}}</p>
+                                </div>
+                            </div>
+                        </div>
+						<div class="boxed-list-item" >
+                            <!-- Avatar -->
+                            <div class="item-image">
+                                <img src="../../../../assets/images/browse-companies-04.png" alt="">
+                            </div>
+
+                            <!-- Content -->
+                            <div class="item-content">
+                                <h4 style="text-transform: capitalize;">{{profileData.history[1].job_name}}</h4>
+                                <div class="item-details margin-top-7">
+                                    <div class="detail-item"><a href="#"><i class="icon-material-outline-business"></i> {{profileData.history[1].company_name}}</a></div>
+                                    <div class="detail-item"><i class="icon-material-outline-date-range"></i> {{profileData.history[1].date_from}}</div>
+                                </div>
+                                <div class="item-description ">
+                                    <p >{{profileData.history[1].description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -103,11 +121,11 @@
                 <!-- Widget -->
                 <div class="sidebar-widget">
                     <h3 class="head-widget">Social Profiles</h3>
-					<div class="freelancer-socials margin-top-25">
+					<div class="freelancer-socials margin-top-25" *ngIf="socials && socials.length > 0">
 						<ul>
-							<li><a href="{{socials[0].github}}" title="GitHub" data-tippy-placement="top"><i class="icon-brand-github"></i></a></li>
-							<li><a href="{{socials[0].twitter}}" title="Twitter" data-tippy-placement="top"><i class="icon-brand-twitter"></i></a></li>
-							<li><a href="{{socials[0].linkedin}}" title="linkedin" data-tippy-placement="top"><i class="icon-brand-linkedin"></i></a></li>
+							<li><a href="{{socials[0].github}}" title="GitHub" data-tippy-placement="top" target="_blank"><i class="icon-brand-github"></i></a></li>
+							<li><a href="{{socials[0].twitter}}" title="Twitter" data-tippy-placement="top" target="_blank"><i class="icon-brand-twitter"></i></a></li>
+							<li><a href="{{socials[0].linkedin}}" title="linkedin" data-tippy-placement="top" target="_blank"><i class="icon-brand-linkedin"></i></a></li>
 						</ul>
 					</div>
                 </div>

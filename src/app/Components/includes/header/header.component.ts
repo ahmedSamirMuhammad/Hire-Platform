@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { NotificationService } from "src/app/notification.service";
+import { HomeService } from "src/app/services/home.service";
 
 @Component({
 	selector: "app-header",
@@ -16,10 +17,13 @@ export class HeaderComponent implements OnInit {
 	token: string = "";
 	notifications: any[] = [];
 	isMenuOpened = false;
+	id:any;
 	settingsLink = localStorage.getItem('role')=='emp'?'user-settings':'company-settings';
 	constructor(
 		private router: Router,
-		private notificationService: NotificationService
+		private notificationService: NotificationService,
+		private homeService: HomeService
+
 	) {}
 
 	ngOnInit(): void {
@@ -27,6 +31,11 @@ export class HeaderComponent implements OnInit {
 		//adding
 		this.token = localStorage.getItem("token") || "";
 		this.loadNotifications();
+		this.homeService.headerUser().subscribe((res:any )=>{
+			this.id = res;
+			console.log(this.id)
+		});
+
 	}
 
 	loadNotifications() {
@@ -44,7 +53,7 @@ export class HeaderComponent implements OnInit {
 	open() {
 		if (!this.isMenuOpened) {
 
-			
+
 			this.userMenu.nativeElement.classList.add("active");
 
 			setTimeout(

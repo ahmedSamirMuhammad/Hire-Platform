@@ -80,7 +80,17 @@ export class PostJobComponent {
             });
           }
 
-      }, );
+      },
+	  (err) => {
+		this.toastr.error('You need to pay to increase your job posting allowance.', '403', {
+		  timeOut: 5000,
+		  progressBar: true,
+		  positionClass: 'toast-top-full-width'
+
+		});
+	  }
+
+	  );
     }
     else{
       this.toastr.error(

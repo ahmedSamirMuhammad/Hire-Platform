@@ -47,6 +47,7 @@ export class CompanySettingsComponent {
 			confirmedPass: [""],
 			//   twitter_account: [""],
 			linkedin_account: [""],
+			mobile_number:[""]
 
 		});
 
@@ -80,6 +81,7 @@ export class CompanySettingsComponent {
 		this.userFormData.append('new_password', this.cmpForm.get('new_password').value)
 		this.userFormData.append('confirmedPass', this.cmpForm.get('confirmedPass').value)
 		this.userFormData.append('linkedin_account', this.cmpForm.get('linkedin_account').value)
+		this.userFormData.append('mobile_number', this.cmpForm.get('mobile_number').value)
 		console.log("hi");
 
 		if (this.cmpForm.valid) {
@@ -143,7 +145,7 @@ export class CompanySettingsComponent {
 		//spinner
 		// this.spinner.show();
 		this.cmpService.getCmpData().subscribe((res) => {
-
+			console.log(res);
 			this.cmpForm.patchValue({
 				first_name: res["first_name"],
 				last_name: res["last_name"],
