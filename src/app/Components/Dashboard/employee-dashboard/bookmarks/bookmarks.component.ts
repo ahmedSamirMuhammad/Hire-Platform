@@ -31,6 +31,7 @@ export class BookmarksComponent {
 		this.dashboardHttpService
 			.getBookmarks(page)
 			.subscribe((response: any) => {
+				console.log(response)
 				if (response.status === 200) {
 					this.bookmarks = response.data.data.map((bookmark) => {
 						bookmark.created_at = this.time.timeAgo(

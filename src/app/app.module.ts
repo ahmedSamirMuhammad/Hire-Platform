@@ -76,6 +76,7 @@ import { EditJobComponent } from "./Components/Dashboard/company/edit-job/edit-j
 import { ManageJobsComponent } from "./Components/Dashboard/company/manage-jobs/manage-jobs.component";
 import { PostJobComponent } from "./Components/Dashboard/company/post-job/post-job.component";
 import { ManageCandidatesComponent } from "./Components/Dashboard/company/manage-candidates/manage-candidates.component";
+import { FollowingsComponent } from './Components/Dashboard/employee-dashboard/followings/followings.component';
 interface NgxSpinnerConfig {
 	type?: string;
   }
@@ -118,6 +119,7 @@ interface NgxSpinnerConfig {
 		RatingStarsComponent,
 		PaymentPlansComponent,
 		CheckoutComponent,
+  FollowingsComponent,
 
 	],
 
