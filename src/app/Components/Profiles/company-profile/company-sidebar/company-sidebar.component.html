@@ -20,7 +20,14 @@
 
   <!-- Sidebar Widget -->
   <div class="sidebar-widget">
-    <h3>Bookmark or Share</h3>
+    <h3>Follow or Share</h3>
+
+    <!-- Follow Button -->
+    <button *ngIf="userType=='emp'" class="bookmark-button margin-bottom-25" [ngClass]="{'bookmarked': company_data.is_followed}" (click)="onToggleFollow()">
+      <span class="bookmark-icon"></span>
+      <span class="bookmark-text">Follow</span>
+      <span class="bookmarked-text">Following</span>
+    </button>
 
     <!-- Copy URL -->
     <div class="copy-url">

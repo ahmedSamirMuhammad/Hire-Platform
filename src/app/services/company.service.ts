@@ -32,4 +32,9 @@ export class CompanyService {
     const apiUrl = `${environment.API_URL}/companies/apply?page=${page}`;
     return this.httpClient.get(apiUrl, { params });
   }
+
+  companyFollow(companyId: number): Observable<any> {
+    const apiUrl = `${environment.API_URL}/companies/toggleFollow/${companyId}`;
+    return this.httpClient.post(apiUrl, null, {headers: this.getHeaders()});
+  }
 }

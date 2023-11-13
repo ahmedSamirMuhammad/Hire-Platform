@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 declare var Microsoft: any; 
 
 @Component({
@@ -8,9 +8,14 @@ declare var Microsoft: any;
 })
 export class CompanySidebarComponent implements OnInit{
   @Input() company_data: any;
+  @Output() toggleFollow = new EventEmitter<void>(); 
+  userType = "cmp";
   mapUrl: string;
 
   ngOnInit() {
+    // get the role of the current user
+    this.userType = localStorage.getItem('role');
+
     this.loadMicrosoftMaps().then(() => {
       this.getCoordinatesForCity(this.company_data.location).then(([latitude, longitude]) => {
         this.initializeMap(latitude, longitude);
@@ -74,5 +79,10 @@ export class CompanySidebarComponent implements OnInit{
         document.body.appendChild(script);
       }
     });
+  }
+
+  onToggleFollow() {
+    // Emit an event to notify the parent component to toggle the follow
+    this.toggleFollow.emit();
   }
 }

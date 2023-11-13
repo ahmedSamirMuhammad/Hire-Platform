@@ -90,6 +90,7 @@
 				<!-- Company-sidebar Component / Start-->
 				<app-company-sidebar
 					[company_data]="company_data"
+					(toggleFollow)="toggleFollow(companyId)"
 				></app-company-sidebar>
 				<!-- Company-sidebar Component / End-->
 			</div>
