@@ -27,6 +27,10 @@
             /></a>
 
           </h4>
+		  <h5 class="freelancer-detail-item d-block"
+		  >
+		  {{ candidate['job'] }}</h5
+		>
 
           <!-- Details -->
           <span class="freelancer-detail-item"
@@ -40,16 +44,13 @@
             {{ candidate['mobile'] }}</span
           >
 
-          <!-- Rating -->
-          <div class="freelancer-rating">
-            <div class="star-rating" data-rating="5.0"></div>
-          </div>
+
 
           <!-- Buttons -->
           <div
             class="buttons-to-right always-visible margin-top-25 margin-bottom-5"
           >
-            <a href="http://localhost:8000/images/cv/{{ candidate['cv']}}" download="my-document.pdf" class="button ripple-effect"
+            <a href="http://localhost:8000/images/cv/{{ candidate['cv']}}" download="my-document.pdf" class="button ripple-effect" target="_blank"
               ><i class="icon-feather-file-text"></i> Download
               CV</a
             >

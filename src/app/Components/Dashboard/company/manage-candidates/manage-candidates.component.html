@@ -31,22 +31,21 @@
 									<i
 										class="icon-material-outline-supervisor-account"
 									></i>
-									<span>{{ candidates[0].length }} </span>
+									<span>{{ candidates.length }} </span>
 									Candidates
 								</h3>
 							</div>
 
 							<div class="content">
-								<ul class="dashboard-box-list">
-									<li
-										*ngFor="let candidateData of candidates[0]"
-									>
-										<app-candidate
-											[candidate]="candidateData"
-										></app-candidate>
-									</li>
-								</ul>
+								<ng-container *ngFor="let candidatesList of candidates">
+									<ul class="dashboard-box-list">
+										<li *ngFor="let candidate of candidatesList">
+											<app-candidate [candidate]="candidate"></app-candidate>
+										</li>
+									</ul>
+								</ng-container>
 							</div>
+
 						</div>
 					</div>
 				</div>
