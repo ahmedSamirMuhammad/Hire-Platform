@@ -35,8 +35,9 @@
 					<!-- Job Listing -->
 
 					<!-- Company-Openjob Component / Start-->
-					<div
+					<a
 						*ngFor="let open_job of open_jobs_list"
+						href="javascript:;"
 						class="job-listing"
 					>
 						<app-company-openjobs
@@ -46,7 +47,7 @@
 								toggleBookmark(companyId, open_job.id)
 							"
 						></app-company-openjobs>
-					</div>
+					</a>
 					<!-- Company-Openjob Component / End-->
 				</div>
 			</div>

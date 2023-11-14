@@ -50,5 +50,14 @@ export class DashboardHttpService {
 			headers: this.getHeaders(),
 		});
 	}
+		getFollowings(page): Observable<any> {
+		return this.http.get(`${this.api}/dashboard-followings?page=${page}`, {
+			headers: this.getHeaders(),
+		});
+	}
+	unfollow(id): Observable<any> {
+		return this.http.post(`${this.api}/companies/toggleFollow/${id}`, '', {
+			headers: this.getHeaders(),});
+	}
 
 }
