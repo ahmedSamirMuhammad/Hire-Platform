@@ -1,0 +1,15 @@
+.reviews-company-logo {
+	flex: 1;
+	max-width: 55px;
+	margin-right: 25px;
+	position: relative;
+	top: 3px;
+}
+
+.reviews-company-logo img {
+	object-fit: cover;
+	width: 55px;
+	height: 55px;
+	border-radius: 4px;
+	transform: translate3d(0, 0, 0);
+}

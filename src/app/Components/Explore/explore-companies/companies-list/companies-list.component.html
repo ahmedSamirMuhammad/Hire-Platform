@@ -1,0 +1,21 @@
+<div class="companies-list">
+  <!-- Company Card / Start -->
+  <a
+    href="company-profile/{{company.id}}"
+
+    class="company"
+
+  >
+    <div class="company-inner-alignment">
+      <span class="company-logo">
+        <img [src]="'http://localhost:8000/images/logo/' + company.logo" />
+      </span>
+      <h4>{{ company.name }}</h4>
+      <div class="star-rating" [attr.data-rating]="company.rating || 0">
+        <span class="star" *ngFor="let star of getFilledStars(company.rating)"></span>
+        <span class="star empty" *ngFor="let star of getEmptyStars(company.rating)"></span>
+      </div>
+    </div>
+  </a>
+  <!-- Company Card / End -->
+</div>

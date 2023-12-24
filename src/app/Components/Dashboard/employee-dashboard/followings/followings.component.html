@@ -1,0 +1,98 @@
+<div class="dashboard-container">
+	<app-sidebar></app-sidebar>
+	<div class="dashboard-content-container" data-simplebar="init">
+		<div class="simplebar-track vertical" style="visibility: visible">
+			<div class="simplebar-scrollbar" style="visibility: visible; top: 0px; height: 1081px"></div>
+		</div>
+		<div class="simplebar-track horizontal" style="visibility: visible">
+			<div class="simplebar-scrollbar" style="visibility: visible; left: 0px; width: 25px"></div>
+		</div>
+		<div class="simplebar-scroll-content" style="padding-right: 17px; margin-bottom: -34px">
+			<div class="simplebar-content" style="padding-bottom: 17px; margin-right: -17px">
+				<div class="dashboard-content-inner">
+					<!-- Dashboard Headline -->
+					<div class="dashboard-headline">
+						<h3>Followings</h3>
+
+						<!-- Breadcrumbs -->
+						<nav id="breadcrumbs" class="dark">
+							<ul>
+								<li><a routerLink="/">Home</a></li>
+								<li><a href="#">Dashboard</a></li>
+								<li>Bookmarks</li>
+							</ul>
+						</nav>
+					</div>
+
+					<!-- Row -->
+					<div class="row" style="margin-bottom: 20px">
+						<!-- Dashboard Box -->
+						<div class="col-xl-12">
+							<div class="dashboard-box margin-top-0">
+								<!-- Headline -->
+								<div class="headline">
+									<h3>
+										<i class="icon-material-outline-business"></i>
+										Following companies
+									</h3>
+								</div>
+
+								<div class="content">
+									<ul class="dashboard-box-list">
+										<li *ngFor="let follow of followings">
+											<!-- Job Listing -->
+											<div class="job-listing">
+												<!-- Job Listing Details -->
+												<div class="job-listing-details">
+													<!-- Logo -->
+													<a href="/company-profile/{{follow.company_id}}"
+														class="job-listing-company-logo">
+														<img [src]="'http://localhost:8000/images/logo/'+follow.logo"
+															alt="" /><!-- logo in not set-->
+													</a>
+
+													<!-- Details -->
+													<div class="job-listing-description">
+														<h3 class="job-listing-title">
+															<a href="/company-profile/{{follow.company_id}}">{{
+																follow.company_name
+																}}</a>
+														</h3>
+
+														<!-- Job Listing Footer -->
+														<div class="job-listing-footer">
+															<ul>
+
+
+																<li>
+																	<i class="icon-material-outline-location-on"></i>
+																	{{
+																	follow.location
+																	}}
+																</li>
+															</ul>
+														</div>
+													</div>
+													<button class="bookmark-button bookmarked" style="padding: 10px; margin: 0; " (click)="unfollow(follow.company_id)">
+														<span style="line-height: 0;" class="bookmark-text">Follow</span>
+														<span style="line-height: 0;" class="bookmarked-text">Following</span>
+													</button>
+
+												</div>
+											</div>
+
+
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<app-pagination [paginationData]="paginationData"></app-pagination>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Follow Button -->

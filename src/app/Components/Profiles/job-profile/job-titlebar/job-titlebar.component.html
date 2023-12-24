@@ -1,0 +1,50 @@
+<div
+  class="single-page-header"
+  data-background-image="../../../../assets/images/profile1.jpg"
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="single-page-header-inner">
+          <div class="left-side">
+            <div class="header-image">
+              <a>
+                <img src="http://localhost:8000/images/projects/{{ jobData.logo }}" alt="" />
+              </a>
+            </div>
+            <div class="header-details">
+              <h3>{{ jobData.job_name }}</h3>
+              <h5>About the Employer</h5>
+              <ul>
+                <li>
+                  <a href="/company-profile/{{ jobData.company_id }}"
+                    ><i class="icon-material-outline-business"></i> {{ jobData.company_name }}</a
+                  >
+                </li>
+                <li>
+                  <div class="star-rating1" [attr.data-rating]="jobData.company_rating || 0">
+                    <span class="star" *ngFor="let star of getFilledStars(jobData.company_rating)"></span>
+                    <span class="star empty" *ngFor="let star of getEmptyStars(jobData.company_rating)"></span>
+                  </div>
+                </li>
+                <li>
+                  <img class="flag" [src]="'/assets/images/flags/' + jobData.company_nationality + '.svg'" alt="" />
+                  {{ jobData.company_nationality }}
+                </li>
+                <li>
+                  <div class="verified-badge-with-title" *ngIf="jobData.company_verified">Verified</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="salary-box">
+              <div class="salary-type">Monthly Salary</div>
+              <div class="salary-amount">${{ jobData.min_salary }} - ${{ jobData.max_salary }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

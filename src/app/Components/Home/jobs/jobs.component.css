@@ -1,0 +1,16 @@
+.job-listing-description h3 {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.job-listing-description li {
+  text-transform: capitalize;
+}
+
+.head-jobs {
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  font-size: 30px;
+  color: #333;
+}/*# sourceMappingURL=jobs.component.css.map */

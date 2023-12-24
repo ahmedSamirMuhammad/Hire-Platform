@@ -1,0 +1,10 @@
+a {
+    color: #66676b ;
+    transition: 0.3s;
+}
+a:hover,a:hover i{
+	color: #2a41e8;
+}
+a>*{
+	transition: ease-in 0.2s;
+}

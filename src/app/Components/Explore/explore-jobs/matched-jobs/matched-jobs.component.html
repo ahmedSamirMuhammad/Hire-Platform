@@ -1,0 +1,59 @@
+<!-- Job Listing Details -->
+<a href="/job-profile/{{ matched_job.job_id }}" class="job-listing-details">
+	<!-- Logo -->
+	<div class="job-listing-company-logo">
+		<img
+			src="http://localhost:8000/images/projects/{{ matched_job.logo }}"
+			alt=""
+		/>
+	</div>
+
+	<!-- Details -->
+	<div class="job-listing-description">
+		<h3 class="job-listing-title">{{ matched_job.job_name }}</h3>
+
+		<!-- Job Listing Footer -->
+		<div class="job-listing-footer">
+			<ul>
+				<li>
+					<i class="icon-material-outline-business"></i>
+					{{ matched_job.company_name }}
+					<div
+						[class.verified-badge]="matched_job.company_verified"
+						title="Verified Employer"
+						data-tippy-placement="top"
+					></div>
+				</li>
+				<li>
+					<i class="icon-material-outline-location-on"></i>
+					{{ matched_job.job_location }}
+				</li>
+				<li>
+					<i class="icon-material-outline-business-center"></i>
+					{{ matched_job.job_type }}
+				</li>
+				<li>
+					<i class="bi bi-person-lines-fill"></i>
+					{{ matched_job.job_experience }} years
+				</li>
+				<li>
+					<i class="bi bi-coin"></i>
+					{{ matched_job.min_salary }} - {{ matched_job.max_salary }}
+				</li>
+				<li>
+					<i class="icon-material-outline-access-time"></i>
+					{{ matched_job.job_date }}
+				</li>
+			</ul>
+		</div>
+	</div>
+</a>
+
+<!-- Bookmark -->
+<span
+	*ngIf="userType=='emp'"
+	#bookmarkBtn
+	class="bookmark-icon1"
+	[ngClass]="{ bookmarked1: matched_job.job_bookmarked }"
+	(click)="onToggleBookmark($event, matched_job.job_id)"
+></span>

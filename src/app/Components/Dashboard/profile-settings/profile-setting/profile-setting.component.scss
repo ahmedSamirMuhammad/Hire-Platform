@@ -1,0 +1,35 @@
+.skill-text { padding-right: 12px;  }
+.keyword.skill-removed {
+    max-width: 0;
+    margin: 0;
+    overflow: hidden;
+    opacity: 0;
+	animation: KeywordOut 0.4s ease-in-out;
+	animation-fill-mode: both;
+	pointer-events: none;
+}
+.keyword .skill-remove:before {
+	display: inline-block;
+	cursor: pointer;
+	font-family: "Feather-Icons";
+	content: "\ea02";
+	line-height: 20px;
+	position: relative;
+	top: 2px;
+	margin-right: 4px;
+	margin-left: 10px;
+	font-size: 15px;
+}
+.keyword.skill-removed {
+    max-width: 0;
+    margin: 0;
+    overflow: hidden;
+    opacity: 0;
+	animation: KeywordOut 0.4s ease-in-out;
+	animation-fill-mode: both;
+	pointer-events: none;
+}
+.repErrorMsg{
+    color: red;
+    font-size: 16px;
+}

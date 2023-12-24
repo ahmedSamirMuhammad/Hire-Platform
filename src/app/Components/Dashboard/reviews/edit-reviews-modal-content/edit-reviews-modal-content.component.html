@@ -1,0 +1,73 @@
+<form class="popup-tab-content" id="tab" [formGroup]="reviewForm">
+
+	<!-- Welcome Text -->
+	<div class="welcome-text">
+		<h3>What is it like to work at {{company_name}}?</h3>
+
+		<!-- Form -->
+		<div id="leave-company-review-form">
+
+			<!-- Leave Rating -->
+			<input type="hidden" formControlName="id">
+			<div class="clearfix"></div>
+
+			<div class="leave-rating-container">
+				<input type="hidden" formControlName="rating">
+				<div class="d-flex" style="justify-content: space-around;">
+					<div class="leave-rating1">
+						<input type="radio" id="rating1" (click)="rate(5)" name="rating">
+						<label #rating5 for="rating1" class="icon-material-outline-star"></label>
+						<input type="radio" id="rating2" (click)="rate(4)" name="rating">
+						<label #rating4 for="rating2" class="icon-material-outline-star"></label>
+						<input type="radio" id="rating3" (click)="rate(3)" name="rating">
+						<label #rating3 for="rating3" class="icon-material-outline-star"></label>
+						<input type="radio" id="rating4" (click)="rate(2)" name="rating">
+						<label #rating2 for="rating4" class="icon-material-outline-star"></label>
+						<input type="radio" id="rating5" (click)="rate(1)" name="rating">
+						<label #rating1 for="rating5" class="icon-material-outline-star"></label>
+					</div>
+				</div>
+			</div>
+			<div class="err" *ngIf="reviewForm.get('rating').hasError('required')">
+				Rating is required.
+			</div>
+			<div class="err" *ngIf="reviewForm.get('rating').hasError('min')">
+				Rating must be at least 1.
+			</div>
+			<div class="err" *ngIf="reviewForm.get('rating').hasError('max')">
+				Rating must be at most 5.
+			</div>
+			<div class="err" class="clearfix"></div>
+			<!-- Leave Rating / End-->
+
+		</div>
+	</div>
+
+
+	<div class="row">
+
+		<div class="col-xl-12">
+			<div class="input-with-icon-left">
+				<i class="icon-material-outline-rate-review"></i>
+				<input type="text" class="input-text with-border" formControlName="title" id="reviewtitle"
+					placeholder="Review Title" required="">
+				<div class="err" *ngIf="reviewForm.get('title').hasError('required')">
+					Title is required.
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<textarea class="with-border" placeholder="Review" formControlName="comment" id="message" cols="7"
+		required=""></textarea>
+	<div class="err" *ngIf="reviewForm.get('comment').hasError('required')">
+		Comment is required.
+	</div>
+
+
+	<!-- Button -->
+	<button (click)="onSubmit()" class="button margin-top-35 full-width button-sliding-icon ripple-effect"
+		style="width: 1000px;" type="submit" form="leave-company-review-form"> Edit Review <i
+			class="icon-material-outline-arrow-right-alt"></i></button>
+
+</form>

@@ -1,0 +1,74 @@
+
+    <!-- Overview -->
+    <div class="freelancer-overview manage-candidates">
+      <div class="freelancer-overview-inner">
+        <!-- Avatar -->
+        <div class="freelancer-avatar">
+          <div class="verified-badge"></div>
+          <a href="#"
+            ><img
+			src="http://localhost:8000/images/avatars/{{candidate['logo']}}" height="70"
+          />
+
+
+		</a>
+        </div>
+
+        <!-- Name -->
+        <div class="freelancer-name">
+          <h4>
+            <a href="#">{{ candidate['f-name'] }}  {{ candidate['l-name'] }}
+              <img
+                class="flag"
+                src="../../../../../assets//images/flags/ad.svg"
+                alt=""
+                title="Australia"
+                data-tippy-placement="top"
+            /></a>
+
+          </h4>
+		  <h5 class="freelancer-detail-item d-block"
+		  >
+		  {{ candidate['job'] }}</h5
+		>
+
+          <!-- Details -->
+          <span class="freelancer-detail-item"
+            ><a [href]="'mailto:' + candidate['email']"
+              ><i class="icon-feather-mail"></i>
+              {{ candidate['email'] }}</a
+            ></span
+          >
+          <span class="freelancer-detail-item"
+            ><i class="icon-feather-phone"></i>
+            {{ candidate['mobile'] }}</span
+          >
+
+
+
+          <!-- Buttons -->
+          <div
+            class="buttons-to-right always-visible margin-top-25 margin-bottom-5"
+          >
+            <a href="http://localhost:8000/images/cv/{{ candidate['cv']}}" download="my-document.pdf" class="button ripple-effect" target="_blank"
+              ><i class="icon-feather-file-text"></i> Download
+              CV</a
+            >
+            <a
+              href="http://127.0.0.1:8000/chatify" target="_blank"
+              class="popup-with-zoom-anim button dark ripple-effect"
+              ><i class="icon-feather-mail"></i> Send Message</a
+            >
+            <!-- <a
+
+              class="button gray ripple-effect ico"
+              title="Remove Candidate"
+              data-tippy-placement="top"
+              (click)="delete(candidate['id'])"
+              ><i class="icon-feather-trash-2"></i
+            ></a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+

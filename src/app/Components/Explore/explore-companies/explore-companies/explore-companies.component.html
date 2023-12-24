@@ -1,0 +1,80 @@
+<div id="wrapper">
+	<!-- Titlebar / Start -->
+	<div id="titlebar" class="gradient">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Browse Companies</h2>
+
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs" class="dark">
+						<ul>
+							<li><a routerLink="/">Home</a></li>
+							<li><a routerLink="explore-jobs">Find Work</a></li>
+							<li>Browse Companies</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Titlebar / End -->
+
+	<!-- Page Content / Start -->
+	<div class="container">
+		<form [formGroup]="filterForm" (ngSubmit)="goFilter()">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="intro-banner-search-form margin-bottom-30">
+						<!-- Sort Field -->
+						<div class="intro-search-field">
+							<select
+								class="form-select hide-tick margin-bottom-0"
+								aria-label="Default select example"
+								formControlName="sort"
+							>
+								<option value="" disabled selected>
+									Sort Alphabetically
+								</option>
+								<option value="a-z">Sort A to Z</option>
+								<option value="z-a">Sort Z to A</option>
+							</select>
+						</div>
+
+						<!-- Search Field -->
+						<div class="intro-search-field">
+							<input
+								id="intro-keywords"
+								type="text"
+								placeholder="Search for Company"
+								formControlName="company_name"
+							/>
+						</div>
+
+						<!-- Button -->
+						<div class="intro-search-button">
+							<button type="submit" class="button ripple-effect">
+								Search
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<!-- companies-listing-child-component / Start -->
+		<div class="companies-list">
+			<div class="col-md-6 col-lg-4" *ngFor="let company of company_list">
+				<app-companies-list [company]="company"></app-companies-list>
+			</div>
+		</div>
+	</div>
+	<!-- companies-listing-child-component / End -->
+
+	<!-- Page Content / End -->
+
+	<!-- Spacer -->
+	<div class="margin-top-70"></div>
+	<!-- Spacer / End-->
+	<app-pagination [paginationData]="paginationData"></app-pagination>
+</div>

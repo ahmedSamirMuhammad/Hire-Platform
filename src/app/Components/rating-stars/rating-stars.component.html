@@ -1,0 +1,4 @@
+<div class="star-rating1" [attr.data-rating]="rating || 0">
+	<span class="star" *ngFor="let star of getFilledStars(rating)"></span>
+	<span class="star empty" *ngFor="let star of getEmptyStars(rating)"></span>
+</div>

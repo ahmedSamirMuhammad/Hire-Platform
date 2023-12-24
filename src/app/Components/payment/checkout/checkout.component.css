@@ -1,0 +1,36 @@
+#titlebar {
+  margin-bottom: 15px;
+}
+
+.form-checkout {
+  box-shadow: 0px 0px 19px -6px rgba(0, 0, 0, 0.13);
+}
+.form-checkout form {
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.form-checkout form .formRow {
+  display: flex;
+  justify-content: space-between;
+}
+.form-checkout form .formRow .row-in-form {
+  width: 45%;
+}
+
+.stripe {
+  padding: 10px;
+  height: 90px;
+  margin-bottom: 5px;
+}
+.stripe .payment-method {
+  padding: 0;
+  display: flex;
+}
+.stripe .payment-method input {
+  margin-top: 7px;
+  margin-bottom: 2px;
+}
+.stripe .payment-method span {
+  margin-left: 5px;
+  font-size: 20px;
+}/*# sourceMappingURL=checkout.component.css.map */

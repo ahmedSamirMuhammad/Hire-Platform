@@ -1,0 +1,161 @@
+
+
+
+<!-- Wrapper -->
+<!-- <div id="wrapper"> -->
+  <div class="single-page-header freelancer-header" data-background-image="../../../../assets/images/profile1.jpg">
+    <div class="container">
+        <div class="row" >
+            <div class="col-md-12">
+                <div class="single-page-header-inner">
+                    <div class="left-side">
+                        <div class="header-image freelancer-avatar"><img src="http://localhost:8000/images/avatars/{{ profileData.avatar}}" alt=""></div>
+                        <div class="header-details">
+                            <h3 style="font-weight: 500 !important; text-transform: capitalize;">{{profileData.first_name}} {{profileData.last_name}}<span>{{profileData.title}}</span></h3>
+
+							<ul>
+
+								<li><img class="flag" src="../../../assets/images/flags/de.svg" alt=""> {{profileData.nationality}}</li>
+
+								<li><div class="verified-badge-with-title" *ngIf="profileData.verafied">Verified</div></li>
+							</ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Content -->
+        <div class="col-xl-8 col-lg-8 content-right-offset">
+
+            <!-- Page Content -->
+            <div class="single-page-section">
+                <h3 class="margin-bottom-25" style="font-weight:500 !important;">About Me</h3>
+                <p style="text-transform: capitalize; font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">{{profileData.aboat}}</p>
+
+
+            </div>
+
+            <!-- Boxed List -->
+
+            <!-- Boxed List / End -->
+
+            <!-- Boxed List -->
+            <div class="boxed-list margin-bottom-60">
+                <div class="boxed-list-headline">
+                    <h3 style="font-weight: 600 ;"><i class="icon-material-outline-business"></i> Employment History</h3>
+                </div>
+                <ul class="boxed-list-ul">
+                    <li >
+                        <div class="boxed-list-item" >
+                            <!-- Avatar -->
+                            <div class="item-image">
+                                <img src="../../../../assets/images/browse-companies-03.png" alt="">
+                            </div>
+
+                            <!-- Content -->
+                            <div class="item-content">
+                                <h4 style="text-transform: capitalize;">{{profileData.history[0].job_name}}</h4>
+                                <div class="item-details margin-top-7">
+                                    <div class="detail-item"><a href="#"><i class="icon-material-outline-business"></i> {{profileData.history[0].company_name}}</a></div>
+                                    <div class="detail-item"><i class="icon-material-outline-date-range"></i> {{profileData.history[0].date_from}}</div>
+                                </div>
+                                <div class="item-description ">
+                                    <p >{{profileData.history[0].description}}</p>
+                                </div>
+                            </div>
+                        </div>
+						<div class="boxed-list-item" >
+                            <!-- Avatar -->
+                            <div class="item-image">
+                                <img src="../../../../assets/images/browse-companies-04.png" alt="">
+                            </div>
+
+                            <!-- Content -->
+                            <div class="item-content">
+                                <h4 style="text-transform: capitalize;">{{profileData.history[1].job_name}}</h4>
+                                <div class="item-details margin-top-7">
+                                    <div class="detail-item"><a href="#"><i class="icon-material-outline-business"></i> {{profileData.history[1].company_name}}</a></div>
+                                    <div class="detail-item"><i class="icon-material-outline-date-range"></i> {{profileData.history[1].date_from}}</div>
+                                </div>
+                                <div class="item-description ">
+                                    <p >{{profileData.history[1].description}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </li>
+
+                </ul>
+            </div>
+            <!-- Boxed List / End -->
+
+        </div>
+        <!-- Sidebar -->
+        <div class="col-xl-4 col-lg-4">
+            <div class="sidebar-container">
+
+                <!-- Profile Overview -->
+
+
+                <!-- Button -->
+
+
+
+                <!-- Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="head-widget">Social Profiles</h3>
+					<div class="freelancer-socials margin-top-25" *ngIf="socials && socials.length > 0">
+						<ul>
+							<li><a href="{{socials[0].github}}" title="GitHub" data-tippy-placement="top" target="_blank"><i class="icon-brand-github"></i></a></li>
+							<li><a href="{{socials[0].twitter}}" title="Twitter" data-tippy-placement="top" target="_blank"><i class="icon-brand-twitter"></i></a></li>
+							<li><a href="{{socials[0].linkedin}}" title="linkedin" data-tippy-placement="top" target="_blank"><i class="icon-brand-linkedin"></i></a></li>
+						</ul>
+					</div>
+                </div>
+
+                <!-- Widget -->
+                <div class="sidebar-widget" >
+                    <h3 class="head-widget">Skills</h3>
+                    <div class="task-tags" >
+                        <span id="skill-specific"  *ngFor=" let data of profileData.skill_name">{{data.skill_name}}</span>
+                    </div>
+                </div>
+
+                <!-- Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="head-widget">Attachments</h3>
+                    <div class="attachments-container">
+                        <a href="http://localhost:8000/images/cv/{{profileData.cv}}" downloud class="attachment-box ripple-effect"><span>CV</span><i></i></a>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Spacer -->
+<div class="margin-top-15"></div>
+<!-- Spacer / End-->

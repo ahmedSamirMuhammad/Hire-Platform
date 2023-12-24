@@ -1,0 +1,37 @@
+.leave-rating1 {
+  height: 24px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 15px;
+  display: block;
+}
+
+.leave-rating1 input:checked ~ label {
+  color: #febe42 !important;
+}
+
+.leave-rating1 input[type=radio] {
+  display: inline-block;
+  width: 1px;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 100%;
+  margin-left: 50%;
+  left: 0;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.icon-material-outline-star:before {
+  content: "\e988";
+}
+
+.leave-rating1 label {
+  font-size: 24px;
+  float: right;
+  letter-spacing: 0px;
+  color: #dadada;
+  cursor: pointer;
+  transition: 0.3s;
+}/*# sourceMappingURL=edit-reviews-modal-content.component.css.map */

@@ -1,0 +1,237 @@
+<div class="dashboard-container">
+  <app-sidebar></app-sidebar>
+
+  <div class="dashboard-content-container" data-simplebar>
+    <div class="dashboard-content-inner">
+      <!-- Dashboard Headline -->
+      <div class="dashboard-headline">
+        <h3>Post a Job</h3>
+
+        <!-- Breadcrumbs -->
+        <nav id="breadcrumbs" class="dark">
+          <ul>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+            <li>Post a Job</li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Row -->
+      <div class="row">
+        <!-- Dashboard Box -->
+        <div class="col-xl-12">
+          <div class="dashboard-box margin-top-0">
+            <!-- Headline -->
+            <div class="headline">
+              <h3>
+                <i class="icon-feather-folder-plus"></i> Job Submission Form
+              </h3>
+            </div>
+
+            <div class="content with-padding padding-bottom-10">
+              <form
+                [formGroup]="jobForm"
+                action=""
+                method="post"
+                (ngSubmit)="onSubmit()"
+              >
+                <div class="row">
+                  <div class="col-xl-6">
+
+                    <div class="submit-field">
+                      <h5>Job Title</h5>
+                      <input
+                        formControlName="name"
+                        type="text"
+                        class=""
+
+                      />
+                    </div>
+
+                      <p  style="color: red;" *ngIf="jobForm.controls['name'].touched && jobForm.controls['name'].errors?.['required']">its required field</p>
+                      <p  style="color: red;" *ngIf="jobForm.controls['name'].touched && jobForm.controls['name'].errors?.['minlength']">min value is two characters</p>
+                  </div>
+
+                  <div class="col-xl-6">
+                    <div class="submit-field">
+                      <h5>Job Type</h5>
+                      <select
+                        formControlName="type"
+                        class=""
+                        data-size="7"
+                        title="Select Job Type"
+                      >
+                        <option value="full_time">Full Time</option>
+                        <option value="part_time">Part Time</option>
+                        <option value="internship">Internship</option>
+                        <option value="contract">Contract</option>
+                        <option value="temporary">Temporary</option>
+
+
+
+                      </select>
+                    </div>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['type'].touched && jobForm.controls['type'].errors?.['required']">its required field</p>
+                  </div>
+
+                  <div class="col-xl-6">
+
+                    <div class="submit-field">
+                      <h5>Job Category</h5>
+                      <select
+
+                        formControlName="category_id"
+                        class=""
+                        data-size="7"
+                        title="Select Category"
+
+                      >
+                      <option  *ngFor="let category of categories"  value="{{ category.id }}">{{ category.name }}</option>
+
+                      </select>
+                    </div>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['category_id'].touched && jobForm.controls['category_id'].errors?.['required']">its required field</p>
+
+                  </div>
+
+                  <div class="col-xl-6">
+                    <div class="submit-field">
+                      <h5>Needed Experience </h5>
+                      <select
+
+                        formControlName="experience"
+                        class=""
+                        data-size="7"
+                        title="Select Experience"
+
+                      >
+					  <option value="0-1">0-1 years</option>
+					  <option value="1-3">1-3 years</option>
+					  <option value="3-6">3-6 years</option>
+					  <option value="6-10">6-10 years</option>
+					  <option value="10-15">10-15 years</option>
+					  <option value="15-20">15-20 years</option>
+                      </select>
+                    </div>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['category_id'].touched && jobForm.controls['category_id'].errors?.['required']">its required field</p>
+
+                  </div>
+
+                  <div class="col-xl-6">
+                    <div class="submit-field">
+                      <h5>Location</h5>
+                      <div class="input-with-icon">
+                        <div id="autocomplete-container">
+                          <input
+                            formControlName="location"
+                            id="autocomplete-input"
+                            class="with-border"
+                            type="text"
+                            placeholder="Type Address"
+
+                          />
+                        </div>
+                        <i class="icon-material-outline-location-on"></i>
+                      </div>
+                    </div>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['location'].touched && jobForm.controls['location'].errors?.['required']">its required field</p>
+
+                  </div>
+
+                  <div class="col-xl-6">
+                    <div class="submit-field">
+                      <h5>Salary</h5>
+                      <div class="row">
+                        <div class="col-xl-6">
+                          <div class="input-with-icon">
+                            <input
+                              formControlName="min_salary"
+                              class="with-border"
+                              type="number"
+                              placeholder="Min"
+                            />
+                            <i class="currency">USD</i>
+                          </div>
+                        </div>
+                        <div class="col-xl-6">
+                          <div class="input-with-icon">
+                            <input
+                              formControlName="max_salary"
+                              class="with-border"
+                              type="number"
+                              placeholder="Max"
+                            />
+                            <i class="currency">USD</i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-xl-12">
+                    <div class="submit-field">
+                      <h5>Job Description</h5>
+                      <textarea
+                        formControlName="about"
+                        cols="30"
+                        rows="5"
+                        class="with-border"
+
+                      ></textarea>
+
+                    <p  style="color: red;" *ngIf="jobForm.controls['about'].touched &&jobForm.controls['about'].errors?.['required']">its required field</p>
+
+                      <div class="uploadButton margin-top-30">
+                        <input
+                          formControlName="logo"
+                          class="uploadButton-input"
+                          type="file"
+                          accept="image/*, application/pdf"
+                          id="upload"
+                          multiple
+                          (change)="selected($event)"
+
+                        />
+                        <label
+                          class="uploadButton-button ripple-effect"
+                          for="upload"
+                          >Upload Files</label
+                        >
+                        <span class="uploadButton-file-name"
+                          >Images or documents that might be helpful in
+                          describing your job</span
+                        >
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-xl-12">
+                  <!-- <a href="#" class="button ripple-effect big margin-top-30" -->
+
+
+                  <input
+                    type="submit"
+                    value="Post"
+                    class="button ripple-effect big margin-top-30"
+
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row / End -->
+
+
+    </div>
+  </div>
+  <!-- Dashboard Content / End -->
+</div>
